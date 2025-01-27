@@ -92,6 +92,9 @@ body {
     z-index: 1;
 
 }
+.login_main .login_btn{
+    z-index: 2000;
+  }
 
 /* hero section css start */
 .carousel_main {
@@ -105,3 +108,86 @@ body {
 }
 
 /* hero section css start */
+
+/* Game section css start */
+
+.available_games_heading p {
+    writing-mode: vertical-rl; 
+    transform: rotate(180deg); 
+    text-align: center;
+    white-space: nowrap;
+    font-size: 50px;
+    font-weight: bold;
+  }
+  .game_list{
+   width: 50%;
+   padding-left: 11%;
+   padding-top: 120px;
+  }
+  .gradient-text {
+    background-image: linear-gradient(to top, #ff1717, #9d04f6);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  .games_vr_line{
+    background-image: linear-gradient(to top, #ff1717, #9d04f6);
+    height: 40vh;
+    width: 5px;
+  }
+  .games_vr_line_right{
+    background-image: linear-gradient(to top, #ff1717, #9d04f6);
+    margin-right: 20px;
+    height: 67vh;
+    width: 5px;
+  }
+  .games_section{
+   font-family: "play",serif;  
+   background-color: #D9D9D9; 
+   padding-bottom: 50px;
+  }
+  #bgmi_tab{
+    font-size: 70px;
+    font-weight: bold;
+  }
+  #cod_tab{
+    font-size: 30px;
+  }
+  #freefire_tab{
+    font-size: 30px;
+  }
+  .main_games_section{
+    width: 100vw;
+    height: 90vh;
+    /* padding: 85px 0px 70px 0; */
+    background-color: #D9D9D9;
+  }
+  .card{
+    border-radius: 100px;
+  }
+  .card img{
+    padding: 25px 15px 0px 15px;
+    border-radius: 20px;
+  }
+.game_image_container{
+    padding-top: 80px;
+    padding-left: 32px;
+}
+.game_image_container .card{
+    border-radius: 10px;
+}
+.card-title{
+    font-size: 30px;
+    padding-left: 20px;
+}
+.card-text{
+    padding-left: 20px;
+}
+.user_percentage{
+    padding-left: 50px;
+}
+.game_lead_section{
+    width: 100vw;
+    height: 87vh;
+    background-color: #0B0202;
+}
