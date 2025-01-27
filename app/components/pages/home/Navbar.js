@@ -22,6 +22,7 @@ export default function Navbar() {
             </div>
           </div>
         </div>
+        
         <div className='second_nav'>
           <div className='nav_hr_line'>
 
