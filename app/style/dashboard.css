@@ -1,11 +1,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Play:wght@400;700&display=swap');
 
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  background-color: #0B0202;
+  /* background-color: #0B0202; */
 
 }
 
@@ -86,7 +87,8 @@ body {
   width: 64%;
   border-left: 5px solid #F83333;
   border-right: 5px solid #BD09A9;
-  margin-top: 50px;
+  margin-top: 70px;
+  padding-top:20px ;
 
 }
 .ads_tabs{
@@ -136,4 +138,10 @@ body {
   font-size: 30px;
   letter-spacing: 2px;
 
+}
+.tournament_card{
+    width: 300px;
+    height: 300px;
+    border-radius: 50px;
+    background-color: red;
 }
