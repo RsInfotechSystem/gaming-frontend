@@ -8,6 +8,8 @@ import RecentNews from './components/pages/home/RecentNews';
 import Footer from './components/pages/home/Footer';
 import "./style/main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 const Page = () => {
   useEffect(() => {
