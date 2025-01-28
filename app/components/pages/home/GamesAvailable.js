@@ -17,7 +17,7 @@ export default function GamesAvailable() {
           <div className="games_vr_line"></div>
           <span className="games_vr_line_right"></span>
 
-          <div>
+          <div className="list_of-games">
             <p id="bgmi_tab">BGMI</p>
 
             <p id="cod_tab">Call of Duty</p>
