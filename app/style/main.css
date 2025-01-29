@@ -75,15 +75,15 @@ body {
   border-radius: 0 10px 10px 0;
 }
 .login_btn{
-    border-radius: 20px;
+    /* border-radius: 20px; */
     padding: 10px 40px;
     margin-left: 25px;
     margin-top: -20px;
     border: none;
     color: #fff;
     font-size: 15px;
-    background: rgb(251,22,30);
-    background: linear-gradient(90deg, rgba(251,22,30,1) 70%, rgba(171,6,213,1) 100%);
+    /* background: rgb(251,22,30); */
+    /* background: linear-gradient(90deg, rgba(251,22,30,1) 70%, rgba(171,6,213,1) 100%); */
     font-family: "Orbitron", sans-serif;
     font-weight: 700;
     font-style: normal;
@@ -104,7 +104,7 @@ body {
 /* hero section css start */
 .carousel_main {
     height: 100vh;
-    width: 102vw;
+    width: 100vw;
   background: linear-gradient(180deg, #0B0202 0%, rgba(11, 2, 2, 0.87) 35.51%, rgba(11, 2, 2, 0.8) 87.49%, #0B0202 100%),
   url('/homepage/d1a189d23eb45fa3184a0c7c3f19afa0.jpeg');
 
@@ -136,12 +136,14 @@ body {
 }
 .gun_set{
   position: relative;
-  bottom: 200px;
+  bottom: 230px;
   right: 50px;
 }
-.gun_set image{
-  /* height: 200px; */
+.remote_set{
+  position: relative;
+  bottom: 80px;
 }
+
 /* hero section css End */
 
 /* Game section css start */
@@ -199,17 +201,17 @@ body {
   }
   .main_games_section{
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
     /* padding: 85px 0px 70px 0; */
     background-color: #000000;
   }
   /* .card{
     border-radius: 100px;
   } */
-  .card img{
-    padding: 25px 15px 0px 15px;
-    border-radius: 20px;
-  }
+  .card img {
+    padding: 10px;
+    border-radius: 20px 20px 0px 0px;
+}
 .game_image_container{
     padding-top: 80px;
     padding-left: 32px;
@@ -229,13 +231,83 @@ body {
 }
 .game_lead_section{
     width: 100vw;
-    height: 87vh;
+    height: 90vh;
     background-color: #0B0202;
+    background-image: url('../../public/homepage/gun.png');
+    /* .background-container { */
+      background: linear-gradient(
+          360deg,
+          #0b0202 10%,
+          rgba(11, 2, 2, 0.87) 20.51%,
+          rgba(11, 2, 2, 0.8) 87.49%,
+          #0b0202 10%
+        ),
+        url('../../public/homepage/gun.png');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      box-shadow: inset 0 0 100px 50px rgba(0, 0, 0, 0.9); /* Dark shadow effect */
+    /* } */
+    
+    /* background-size: cover; */
+    background-position: center;
+    background-repeat: no-repeat;
 }
+
 .lead_vr_line{
   background-color: #FB161E;
-  height: 40vh;
-  width: 5px;
+  height: 156px;
+  width: 3px;
+}
+.game_lead_head p {
+  font-size: 30px;
+ font-family: play;
+ font-weight: 700;
+ background-image: linear-gradient(to top, #ff1717, #9d04f6);
+ -webkit-background-clip: text;
+ color: transparent;
+ padding:30px 0px 0px 100px;
+}
+.gamer_image{
+  text-align: right;
+
+}
+.game_lead_main{
+  width: 100%;
+  padding-top: 100px;
+}
+.game_lead_main .play_main{
+  width: 70%;
+}
+.game_lead_main .gamer_image{
+  width: 30%;
+}
+.game_lead_main .gamer_image{
+  padding-left:150px ;
+}
+.play_with p{
+  color: #FFFFFF;
+  font-size: 70px;
+  font-weight: 800;
+  font-family: Orbitron;
+  letter-spacing: 8px;
+  text-align: right;
+  padding-right: 80px;
+  line-height: 87.78px;
+}
+.play_with_content p{
+  color: #FFFFFF;
+  font-size: 22px;
+  font-weight: 400;
+  font-family: play;
+  margin:0px 18px 0px 165px;
+  line-height: 25.45px;
+  /* width: 79%; */
+  text-align: right;
+  /* padding-right: 70px; */
+}
+.right_play_content .lead_vr_line{
+  margin:0px 87px 0px 0px;
 }
 
 /* Game section css End */
@@ -248,17 +320,51 @@ body {
   background-color: #0B0202;
   padding: 0px 115px 0px 115px;
 }
+.news_head p{
+  font-weight: 700;
+  font-size: 30px;
+  font-family: play;
+  line-height: 34.71px;
+  background-image: linear-gradient(to top, #ff1717, #9d04f6);
+ -webkit-background-clip: text;
+ color: transparent;
+}
 .news_section .card{
   width: 320px;
   height: 484px;
+  border-radius: 20px;
+  border: 4px solid red;
 }
 .news_section .card image{
   padding: 500px;
 }
 .cards_image{
-  width: 310px;
+  width: 313px;
   height: 320px;
   padding: 50px;
+}
+.cards_content{
+  
+  border-radius: 50px;
+}
+.body_content_btn{
+  background-color: red;
+  /* padding: 0px 20px 10px 10px; */
+  margin:0px 10px 10px 10px;
+  /* height: 20px; */
+}
+.read_btn{
+  font-family: play;
+  font-size: 15px;
+  line-height: 15px;
+  font-weight: bold;
+  background-color: green;
+  padding: 5px 20px;
+}
+.card-title{
+  font-family: Orbitron;
+  font-size: 25px;
+  font-weight: 500;
 }
 
 /* News section css End */
@@ -266,7 +372,7 @@ body {
 /* Footer section css Start */
 .footer_section{
   width: 100vw;
-  background-color: #0B0202;
+  /* background-color: #0B0202; */
   background-image: url(../../public/homepage/footerImage.png);
   height: 100vh;
 }
@@ -280,6 +386,27 @@ body {
   display: flex;
   align-items: end;
 }
+.footer_bg_video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+/* .footer_bg_video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+.footer_content {
+  position: relative;
+  z-index: 1;
+} */
+
 
 
 .footer_section .d-flex {

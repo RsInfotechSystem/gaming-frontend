@@ -8,21 +8,21 @@ export default function GameLead() {
     <>
     <section className='game_lead_section'>
       <div className='main_game_lead_section'>
-         <div>
-            <p style={{color:"white"}}>#theGameLead</p>
+         <div className="game_lead_head">
+            <p>#theGameLead</p>
          </div>
 
-         <div className="d-flex">
-             <div>
-              <Image src={leadImage} alt="Lo Angeles" className="d-block" style={{height:"90%"}}/> 
+         <div className="d-flex game_lead_main">
+             <div className="gamer_image">
+              <Image src={leadImage} alt="Lo Angeles" className="d-block" style={{width:"180px",height:"180px",borderRadius:"50%",border:"1px solid red"}}/> 
              </div>
-             <div>
-                 <div>
-                   <p style={{color:"white"}}>PLAY WITH US</p>
+             <div className="play_main">
+                 <div className="play_with">
+                     <p>PLAY WITH US</p>
                  </div>
-                 <div className="d-flex">
-                   <div>
-                    <p style={{color:"white"}}>Ruiner uses a very distinct all red color palette for their UI. The monochrome palette here gives a sense of power and anger with the red. When I first played through Ruiner I thought the red was the brightest read I've ever seen. But now that I'm looking at it, it kind of has a little purple in it. nd</p>
+                 <div className="d-flex right_play_content">
+                   <div className="play_with_content">
+                    <p>Ruiner uses a very distinct all red color palette for their UI. The monochrome palette here gives a sense of power and anger with the red. When I first played through Ruiner I thought the red was the brightest read I've ever seen. But now that I'm looking at it, it kind of has a little purple in it. nd</p>
                     </div>
                     <div>
                     <p className="lead_vr_line"></p>
