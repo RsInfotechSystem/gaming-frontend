@@ -166,7 +166,6 @@ body {
     -webkit-background-clip: text;
     color: transparent;
   }
-  
   .games_vr_line {
     background-image: linear-gradient(to bottom, #ff1717, #9d04f6);
     height: 40vh;
