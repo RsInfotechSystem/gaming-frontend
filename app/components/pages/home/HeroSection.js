@@ -27,7 +27,7 @@ export default function HeroSection() {
     Maybe if you<br></br>played as a Police man in the Ruiner world.
   </p>
   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-    <p>
+    <p className='remote_set'>
       <Image src={Group} alt="Lo Angeles" className="d-block" style={{ width: "120px", height: "110px" }} />
     </p>
     <span className='gun_set'>
@@ -55,7 +55,7 @@ export default function HeroSection() {
             <span className="carousel-control-next-icon"></span>
           </button>
         </div>
-
+        
         
       </section>
 
