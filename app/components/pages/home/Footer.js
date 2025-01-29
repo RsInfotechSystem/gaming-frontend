@@ -12,12 +12,12 @@ export default function Footer() {
         </video> */}
 
         <div className='footer_content'>
-          <div className='d-flex'>
+          <div className='d-flex top_footer'>
             <div className='left_side_footer'>
-              <p>Stay up to date, subscribe to our news about any tournament and others</p>
+              <p>Stay up to date, subscribe to<br></br>our news about any tournament and others</p>
               <div className="input-group w-50">
-                <input type="email" className="form-control" placeholder="Email" />
-                <button className="btn btn-primary" type="button">Let's GO</button>
+                <input type="email" className="form-control email_box" placeholder="Email" />
+                <button className="btn btn-primary lets_go_btn" type="button">Let's GO</button>
               </div>
             </div>
 
@@ -29,29 +29,36 @@ export default function Footer() {
             </div>
           </div>
 
-          <p className='text-center' style={{ color: "#FFFFFF" }}>
-            LET'S PLAY <span>XYZ GAMING</span>
-          </p>
+         <div className='frame_logo' style={{textAlign:"right"}}>
+           <img src="/homepage/Frame.png" className="" alt="..." height={80} />  
+         </div>
 
-          <div className='text-center'>
-            <button type="button" className="btn btn-danger">Danger</button>
+         <div className='lets_play'>
+              <p className='text-center' style={{ color: "#FFFFFF" }}>
+                  LET'S PLAY <span className='xyz_gaming'>XYZ GAMING</span>
+              </p>
+         </div>
+          
+
+          <div className='text-center register_btn'>
+            <button type="button">REGISTER NOW</button>
           </div>
 
-          <div className='social_media_icon text-center'>
+          <div className='social_media_icon text-center d-flex'>
             <a href='/'><i className="bi bi-facebook"></i></a>
             <a href='/'><i className="bi bi-instagram"></i></a>
             <a href='/'><i className="bi bi-linkedin"></i></a>
             <a href='/'><i className="bi bi-youtube"></i></a>
           </div>
 
-          <div className='text-center'>
+          <div className='terms_condtion text-center d-flex'>
             <span style={{ color: "#FFFFFF" }}>FAQs</span>
             <span style={{ color: "#FFFFFF" }}>Contact us</span>
             <span style={{ color: "#FFFFFF" }}>T&C</span>
           </div>
 
-          <div className='text-center'>
-            <p style={{ color: "#FFFFFF" }}>
+          <div className='text-center company_design'>
+            <p style={{ color: "#FF8183" }}>
               Designed & Developed by RS Infotech System Pvt. Ltd.
             </p>
           </div>
