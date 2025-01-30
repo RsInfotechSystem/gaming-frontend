@@ -29,10 +29,10 @@ export default function GamesAvailable() {
         {/* Second div with image */}
         <div className="game_image_container">
            <div className="card" style={{ width: '30rem' }}>
-             <img src="/homepage/pubg_1.jpg" className="card-img-top" alt="..." height={300}/>
+             <img src="/homepage/pubg_1.jpg" className="poster_image" alt="..." height={300}/>
              <div className="card-body">
-               <h5 className="card-title">BGMI</h5>
-               <p className="card-text">Battle Ground Mobile India
+               <h5 className="game_name">BGMI</h5>
+               <p className="game_title">Battle Ground Mobile India
                 <span style={{paddingLeft:"75px",color:"red",fontWeight:"bold"}}>75% User Playing</span></p>
                {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
              </div>
