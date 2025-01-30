@@ -14,7 +14,7 @@ export default function CardsCarousel() {
           <div className="card">
             <Image src={dance} alt="Card 1" className="cards_image d-block" />
             <div className="body_content_btn card-body">
-              <h5 className="card-name">NEWS 109</h5>
+              <p className="card-name">NEWS 109</p>
               <p className="card-content">Usually white text goes good with a red background but by using both black and..</p>
               <button className="read_btn">READ MORE</button>
             </div>
@@ -24,7 +24,7 @@ export default function CardsCarousel() {
           <div className="card">
             <Image src={dance} alt="Card 2" className="cards_image d-block" />
             <div className="body_content_btn card-body">
-              <h5 className="card-name">NEWS 109</h5>
+              <p className="card-name">NEWS 109</p>
               <p className="card-content">Usually white text goes good with a red background but by using both black and..</p>
               <button className="read_btn">READ MORE</button>
             </div>
@@ -34,7 +34,7 @@ export default function CardsCarousel() {
           <div className="card">
             <Image src={dance} alt="Card 3" className="cards_image d-block" />
             <div className="body_content_btn card-body">
-              <h5 className="card-name">NEWS 109</h5>
+              <p className="card-name">NEWS 109</p>
               <p className="card-content">Usually white text goes good with a red background but by using both black and..</p>
               <button className="read_btn">READ MORE</button>
             </div>

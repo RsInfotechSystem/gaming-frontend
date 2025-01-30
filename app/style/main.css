@@ -223,22 +223,26 @@ body {
     padding-left: 20px;
 } */
 .game_name {
+  padding: 10px 0px 0px 39px;
   font-size: 30px;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   font-weight: 500;
   font-family: 'Play';
 }
 .game_title{
-    padding-left: 20px;
+    padding-left: 40px;
+}
+.game_title p{
+  margin-bottom: 0px;
 }
 .user_percentage{
     padding-left: 50px;
 }
 .game_lead_section{
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
     background-color: #0B0202;
-    background-image: url('../../public/homepage/gun.png');
+    /* background-image: url('../../public/homepage/gun.png'); */
     /* .background-container { */
       background: linear-gradient(
           360deg,
@@ -254,7 +258,6 @@ body {
       box-shadow: inset 0 0 100px 50px rgba(0, 0, 0, 0.9); /* Dark shadow effect */
     /* } */
     
-    /* background-size: cover; */
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -333,40 +336,52 @@ body {
   background-image: linear-gradient(to top, #ff1717, #9d04f6);
  -webkit-background-clip: text;
  color: transparent;
+ /* padding:50px; */
+ /* margin: 50px; */
+ height: 35px;
+}
+.news_section{
+  background-color: #000000;
 }
 .news_section .card{
-  width: 320px;
+  width: 319px;
   height: 484px;
   border-radius: 20px;
-  border: 4px solid red;
+  border: 3px solid red;
+  background-color: #000000;
 }
 .news_section .card image{
   padding: 500px;
 }
 .cards_image{
   width: 313px;
-  height: 330px;
+  height: 320px;
   padding: 10px;
+  border-radius: 20px 20px 0px 0px;
 }
 .cards_content{
-  
   border-radius: 50px;
 }
 .body_content_btn{
-  background-color: red;
-  /* padding: 0px 20px 10px 10px; */
+  background-image: linear-gradient(to left,rgb(72,26,29),rgb(57,23,63));;
   margin:0px 10px 10px 10px;
-  /* height: 20px; */
+  border-radius: 0px 0px 10px 10px;
 }
 .read_btn {
   font-family: play;
   font-size: 15px;
   line-height: 15px;
   font-weight: bold;
-  background-color: #556055;
-  padding: 2px 20px;
+  background-color: rgb(255,86,86);
+  color: #FFFFFF;
+  padding: 6px 25px;
   border-radius: 50px;
   align-items: center;
+  border: none;
+  margin-left: 80px;
+}
+.carousel_main_news{
+  background-color: #000000;
 }
 /* .card-title{
   font-family: play;
@@ -378,7 +393,7 @@ body {
 /* Footer section css Start */
 .footer_section{
   width: 100vw;
-  /* background-color: #0B0202; */
+  background-color: #0B0202;
   background-image: url(../../public/homepage/footerImage.png);
   height: 100vh;
 }
@@ -387,7 +402,7 @@ body {
   font-weight: 700;
   font-size: 15px;
   line-height: 17.36px;
-  padding: 40px 0px 0px 50px;
+  padding: 40px 0px 0px 40px;
 
 }
 .left_side_footer{
@@ -407,24 +422,23 @@ body {
 .footer_bg_video {
   position: absolute;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   object-fit: cover;
   z-index: -1;
 }
-/* .footer_bg_video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
+.footer_content{
+  background-image: url(../../public/homepage/footerImage.png);
+  height: 80vh;
+  width: 100vw;
 }
-.footer_content {
-  position: relative;
-  z-index: 1;
-} */
-
+.dark_top_area{
+  height: 10vh;
+  background-color: #000000;
+}
+.dark_bottom_area{
+  height: 10vh;
+  background-color: #000000;
+}
 
 
 .footer_section .d-flex {
@@ -454,26 +468,35 @@ body {
   height: 20px;
 }
 .card-name{
-  padding: 10px 0px 0px 10px;
+  padding: 5px 0px 0px 15px;
   font-family: orbitron;
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 0px;
+  color: rgb(255,188,188);
 }
 .card-content {
-  padding-left: 10px;
+  padding: 0px 10px 0px 15px ;
   font-family: play;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  line-height: 17px;
+  color: #FFFFFF;
 }
-.input-group .lets_go_btn{
+.input-group .lets_go_btn {
   width: 99px;
   height: 44px;
   border-radius: 15px;
   z-index: 5;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 17.36px;
 }
 .input-group .email_box {
   border-radius: 15px;
-  z-index: 1;
+  opacity: 0.2;
 }
 .lets_play p{
  font-size: 70px;
@@ -529,4 +552,28 @@ padding-top: 30px;
   line-height: 15.05px;
   letter-spacing: 1px;
   padding-top: 20px;
+}
+.lets_go_btn{
+  background-image: linear-gradient(to right, #ff1717, #9d04f6);
+  border: none;
+}
+.icon_size{
+  height: 200px;
+  width: 200px;
+}
+
+.right_hr_line {
+  display: flex;
+  justify-content: flex-end; /* Align content to the right */
+  align-items: center; /* Align vertically */
+  height: 10vh;
+  background-color: black;
+}
+
+.right_hr_line p {
+  height: 5px;
+  background-image: linear-gradient(to left, #ff1717, #9d04f6);
+  border-radius: 10px 0px 0px 10px;
+  width: 1013px;
+  margin-left: auto; /* Pushes the red line to the right */
 }
