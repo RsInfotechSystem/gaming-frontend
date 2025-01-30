@@ -6,11 +6,11 @@ export default function Footer() {
   return (
     <>
       <section className='footer_section'>
-        {/* Background Video */}
-        {/* <video autoPlay loop muted playsInline className="footer_bg_video">
-        <source src="/homepage/homepage.background_play.mp4" type="video/mp4" />
-        </video> */}
-
+        
+        <video autoPlay loop muted playsInline className="footer_bg_video">
+        <source src="/public/homepage.background_play.mp4" type="video/mp4" />
+        </video>
+        {/* E:\Gaming_Website\gaming-frontend\public\homepage */}
         <div className='footer_content'>
           <div className='d-flex top_footer'>
             <div className='left_side_footer'>
@@ -45,10 +45,10 @@ export default function Footer() {
           </div>
 
           <div className='social_media_icon text-center d-flex'>
-            <a href='/'><i className="bi bi-facebook"></i></a>
-            <a href='/'><i className="bi bi-instagram"></i></a>
-            <a href='/'><i className="bi bi-linkedin"></i></a>
-            <a href='/'><i className="bi bi-youtube"></i></a>
+            <a href='/'><i className="icon_size bi bi-facebook"></i></a>
+            <a href='/'><i className="icon_size bi bi-instagram"></i></a>
+            <a href='/'><i className="icon_size bi bi-linkedin"></i></a>
+            <a href='/'><i className="icon_size bi bi-youtube"></i></a>
           </div>
 
           <div className='terms_condtion text-center d-flex'>
