@@ -1,5 +1,7 @@
 "use client"
 import React from 'react';
+import pubgPoster from "../../../../public/homepage/pubgPoster.jpg";
+import freefire from "../../../../public/homepage/freefire.jpg";
 import Group from '../../../../public/homepage/Group.png';
 import Maskgroup from '../../../../public/homepage/Maskgroup.png';
 
@@ -37,13 +39,13 @@ export default function HeroSection() {
 </div>
 
             <div className="carousel-item">
-              {/* <Image src={dance} alt="Lo Angeles" className="d-block" style={{ width: "1175px",height:"500px"}}/> */}
+              <Image src={pubgPoster} alt="Lo Angeles" className="d-block" style={{ width: "800px",height:"330px"}}/>
             </div>
             <div className="carousel-item">
-            {/* <Image src={dance} alt="Lo Angeles" className="d-block" style={{ width: "100%" }}/> */}
+            <Image src={freefire} alt="Lo Angeles" className="d-block" style={{ width: "800px",height:"330px"}}/>
             </div>
             <div className="carousel-item">
-            {/* <Image src={dance} alt="Lo Angeles" className="d-block" style={{ width: "100%" }}/> */}
+            {/* <Image src={} alt="Lo Angeles" className="d-block" style={{ width: "700px",height:"320px"}}/> */}
             </div>
           </div>
 
