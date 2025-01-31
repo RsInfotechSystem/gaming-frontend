@@ -167,10 +167,18 @@ body {
     font-size: 45px;
     font-weight: bold;
   }
+  /* .available_games_heading{
+    transform: perspective(50em) rotatey(30deg);
+	box-shadow: 0 60px 123px -25px rgba(22, 31, 39, 0.42),
+		0 35px 75px -35px rgba(19, 26, 32, 0.08);
+  } */
   .game_list{
    width: 50%;
    padding-left: 11%;
    padding-top: 120px;
+   transform: perspective(50em) rotatey(30deg);
+	/* box-shadow: 0 60px 123px -25px rgba(22, 31, 39, 0.42),
+		0 35px 75px -35px rgba(19, 26, 32, 0.08); */
   }
   .gradient-text {
     background-image: linear-gradient(to top, #ff1717, #9d04f6);
@@ -193,27 +201,29 @@ body {
    background-color: #000000; 
    padding-bottom: 50px;
   }
-  .list_of-games p{
+  .list_of_games p{
    font-family: "Orbitron",serif;  
   }
   #bgmi_tab{
     font-size: 70px;
     font-weight: bold;
-    color: #FFFFFF;
+    color: #000000;
   }
   #cod_tab{
-    font-size: 30px;
-    color: #FFFFFF;
+    font-size: 27px;
+    color: #000000;
+    font-weight: bold;
   }
   #freefire_tab{
-    font-size: 30px;
-    color: #FFFFFF;
+    font-size: 26px;
+    color: #000000;
+    font-weight: bold;
+
   }
   .main_games_section{
     width: 100vw;
     height: 100vh;
-    /* padding: 85px 0px 70px 0; */
-    background-color: #000000;
+    background-color: #D9D9D9;
   }
   /* .card{
     border-radius: 100px;
@@ -225,10 +235,16 @@ body {
 .game_image_container{
     padding-top: 100px;
     padding-left: 32px;
+    transform: perspective(50em) rotateY(-30deg);
+/* box-shadow: 0 60px 123px -25px rgba(22, 31, 39, 0.42),
+    0 35px 75px -35px rgba(19, 26, 32, 0.08); */
+ padding-right: 130px;
 }
 .game_image_container .card {
   border-radius: 20px;
+  border: 1px solid;
 }
+.card
 /* .card-title{
     font-size: 30px;
     padding-left: 20px;
@@ -286,11 +302,14 @@ body {
 }
 .gamer_image{
   text-align: right;
-
 }
 .game_lead_main{
   width: 100%;
   padding-top: 100px;
+}
+.game_image_container .poster_div{
+  /* background-image: linear-gradient(to bottom, #ff1717, #9d04f6); */
+    /* filter: grayscale(30%) brightness(90%) contrast(80%); */
 }
 .game_lead_main .play_main{
   width: 70%;
