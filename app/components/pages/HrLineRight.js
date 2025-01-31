@@ -6,7 +6,7 @@ import React from "react";
 
 export default function HrLineRight() {
   return (
-         <div className="right_hr_line" style={{height:"5vh",backgroundColor:"black"}}>
+         <div className="right_hr_line" style={{backgroundColor:"black"}}>
              <p>
 
              </p>

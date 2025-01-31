@@ -5,6 +5,7 @@ import dance from "../../../../public/homepage/dance.jpg";
 
 export default function CardsCarousel() {
   return (
+    <>
     <section className="news_section">
       <div className="news_head">
          <p>Recent News</p>
@@ -52,5 +53,9 @@ export default function CardsCarousel() {
         </div> */}
       </div>
     </section>
+    <div className='nav_hr_line_right'>
+
+      </div>
+    </>
   );
 }

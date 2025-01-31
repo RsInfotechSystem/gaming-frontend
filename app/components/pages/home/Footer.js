@@ -7,9 +7,9 @@ export default function Footer() {
     <>
       <section className='footer_section'>
         
-        <video autoPlay loop muted playsInline className="footer_bg_video">
+        {/* <video autoPlay loop muted playsInline className="footer_bg_video">
         <source src="/public/homepage.background_play.mp4" type="video/mp4" />
-        </video>
+        </video> */}
         {/* E:\Gaming_Website\gaming-frontend\public\homepage */}
         <div className='footer_content'>
           <div className='d-flex top_footer'>

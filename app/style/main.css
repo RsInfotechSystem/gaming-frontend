@@ -107,14 +107,13 @@ body {
     width: 100vw;
   background: linear-gradient(180deg, #0B0202 0%, rgba(11, 2, 2, 0.87) 35.51%, rgba(11, 2, 2, 0.8) 87.49%, #0B0202 100%),
   url('/homepage/d1a189d23eb45fa3184a0c7c3f19afa0.jpeg');
-
-    /* background: 
-        linear-gradient(rgba(11, 2, 2, 0.8), rgba(11, 2, 2, 0.8)), 
-        url('/homepage/d1a189d23eb45fa3184a0c7c3f19afa0.jpeg'); */
     background-size: cover;
     background-position: center;
-    padding: 40px 40px;
+    /* padding: 40px 40px; */
     
+}
+.carousel_main .play_for_skill {
+  padding: 190px 0px 0px 120px;
 }
 .carousel-inner image{
   margin-top: 150px;
@@ -122,26 +121,38 @@ body {
 
 .skill_play{
   letter-spacing: 8px;
-  font-size: 67px;
+  font-size: 70px;
+  font-weight: 900;
   font-family: Orbitron;
   font-weight: bold;
 }
 .skill_play_content{
   font-family: play;
   font-size: 20px;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
 }
 .carousel-item{
   padding: 152px 85px ;
 }
 .gun_set{
   position: relative;
-  bottom: 230px;
-  right: 50px;
+  bottom: 240px;
+  right: 120px;
 }
 .remote_set{
   position: relative;
-  bottom: 80px;
+  bottom: 89px;
+}
+.next_btn_height{
+  height: 200px;
+}
+.carousel-control-next-icon{
+  height: 200px;
+}
+.carousel_images image{
+  position: absolute;
+  bottom: 500px;
+  top: 500px;
 }
 
 /* hero section css End */
@@ -153,7 +164,7 @@ body {
     transform: rotate(180deg); 
     text-align: center;
     white-space: nowrap;
-    font-size: 50px;
+    font-size: 45px;
     font-weight: bold;
   }
   .game_list{
@@ -168,13 +179,13 @@ body {
   }
   .games_vr_line {
     background-image: linear-gradient(to bottom, #ff1717, #9d04f6);
-    height: 40vh;
+    height: 36vh;
     width: 5px;
 }
   .games_vr_line_right {
     background-image: linear-gradient(to bottom, #ff1717, #9d04f6);
     margin-right: 20px;
-    height: 67vh;
+    height: 60vh;
     width: 5px;
 }
   .games_section{
@@ -212,7 +223,7 @@ body {
     border-radius: 25px;
 }
 .game_image_container{
-    padding-top: 80px;
+    padding-top: 100px;
     padding-left: 32px;
 }
 .game_image_container .card {
@@ -261,7 +272,7 @@ body {
 
 .lead_vr_line{
   background-color: #FB161E;
-  height: 156px;
+  height: 127px;
   width: 3px;
 }
 .game_lead_head p {
@@ -314,6 +325,7 @@ body {
 .right_play_content .lead_vr_line{
   margin:0px 87px 0px 0px;
 }
+
 
 /* Game section css End */
 
@@ -432,7 +444,17 @@ body {
   justify-content: space-between; /* Ensures left and right sides are apart */
   align-items: center; /* Aligns items vertically */
 }
-
+/* .nav_hr_line{
+margin-top: 50px;
+} */
+.nav_hr_line_right {
+  height: 5px;
+  width: 1013px;
+  background-image: linear-gradient(to right, #ff1717, #9d04f6);
+  border-radius: 10px 0px 0px 10px;
+  float: right;
+  background-color: #000000;
+}
 .right_side_footer {
   text-align: right; /* Aligns text and image to the right */
   font-family: play;

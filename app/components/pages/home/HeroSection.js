@@ -3,6 +3,7 @@ import React from 'react';
 import pubgPoster from "../../../../public/homepage/pubgPoster.jpg";
 import freefire from "../../../../public/homepage/freefire.jpg";
 import Group from '../../../../public/homepage/Group.png';
+import cod from '../../../../public/homepage/cod.jpg';
 import Maskgroup from '../../../../public/homepage/Maskgroup.png';
 
 import Image from 'next/image';
@@ -22,7 +23,7 @@ export default function HeroSection() {
           </div>
 
           <div className="carousel-inner">
-          <div className="carousel-item active">
+          <div className="carousel-item active play_for_skill">
   <p className="skill_play" style={{ color: "white" }}>PLAY FOR SKILL</p>
   <p className="skill_play_content" style={{ color: "white" }}>
     The electric blue color reminds me of the police.
@@ -33,19 +34,19 @@ export default function HeroSection() {
       <Image src={Group} alt="Lo Angeles" className="d-block" style={{ width: "120px", height: "110px" }} />
     </p>
     <span className='gun_set'>
-      <Image src={Maskgroup} alt="Lo Angeles" className="d-block" style={{ width: "250px", height: "280px" }} />
+      <Image src={Maskgroup} alt="gun Image" className="d-block" style={{ width: "250px", height: "290px" }} />
     </span>
   </div>
 </div>
 
-            <div className="carousel-item">
-              <Image src={pubgPoster} alt="Lo Angeles" className="d-block" style={{ width: "800px",height:"330px"}}/>
+            <div className="carousel-item carousel_images">
+              <Image src={pubgPoster} alt="Pubg_Image" className="d-block" style={{ width: "1000px",height:"450px",paddingBottom:"110px",paddingLeft:"120px"}}/>
             </div>
-            <div className="carousel-item">
-            <Image src={freefire} alt="Lo Angeles" className="d-block" style={{ width: "800px",height:"330px"}}/>
+            <div className="carousel-item carousel_images">
+            <Image src={freefire} alt="FreeFire_Image" className="d-block" style={{ width: "1000px",height:"450px",paddingBottom:"110px",paddingLeft:"120px"}}/>
             </div>
-            <div className="carousel-item">
-            {/* <Image src={} alt="Lo Angeles" className="d-block" style={{ width: "700px",height:"320px"}}/> */}
+            <div className="carousel-item carousel_images">
+            <Image src={cod} alt="COD_Image" className="d-block" style={{ width: "1000px",height:"450px",paddingBottom:"110px",paddingLeft:"120px"}}/>
             </div>
           </div>
 
@@ -54,7 +55,7 @@ export default function HeroSection() {
             
           </button>
           <button className="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-            <span className="carousel-control-next-icon"></span>
+            <span className="carousel-control-next-icon next_btn_height"></span>
           </button>
         </div>
         
