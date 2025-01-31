@@ -8,7 +8,6 @@ export default function GamesAvailable() {
   return (
     <section className="games_section">
       <div className="d-flex main_games_section">
-        {/* first div with image */}
         <div className="game_list d-flex">
           <div className="available_games_heading">
             <p className="gradient-text">Games Available</p>
@@ -17,18 +16,19 @@ export default function GamesAvailable() {
           <div className="games_vr_line"></div>
           <span className="games_vr_line_right"></span>
 
-          <div className="list_of-games">
+          <div className="list_of_games">
             <p id="bgmi_tab">BGMI</p>
 
             <p id="cod_tab">Call of Duty</p>
 
             <p id="freefire_tab">Free Fire</p>
           </div>
+      
         </div>
 
         {/* Second div with image */}
         <div className="game_image_container">
-           <div className="card" style={{ width: '30rem',height:"400px"}}>
+           <div className="card poster_div" style={{ width: '30rem',height:"400px"}}>
              <img src="/homepage/pubg_1.jpg" className="poster_image" alt="..." height={300}/>
              <div className="card-body">
                <h5 className="game_name">BGMI</h5>
@@ -38,8 +38,10 @@ export default function GamesAvailable() {
              </div>
            </div>
          </div>
-
       </div>
+      {/* <div className="bottom_image_container">
+        <img src="/homepage/Rectangle.png" alt="Bottom Image" className="bottom_image" />
+      </div> */}
     </section>
   );
 }
