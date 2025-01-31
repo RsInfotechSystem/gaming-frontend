@@ -1,7 +1,22 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import LoginModal from '../LoginModal';
 
 export default function Navbar() {
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  useEffect(() => {
+    if (isLoginOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isLoginOpen]);
+
 
   return (
     <>
@@ -28,7 +43,9 @@ export default function Navbar() {
 
           </div>
           <div className='login_main'>
-            <button className='login_btn'>LOG IN</button>
+            <button onClick={() => setIsLoginOpen(true)} className='login_btn'>LOG IN</button>
+             {/* Login Popup Modal */}
+      <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
           </div>
         </div>
         
