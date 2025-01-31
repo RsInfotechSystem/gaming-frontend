@@ -118,6 +118,56 @@ export default function GameCoins() {
 
               </div>
             </div>
+            <div className='d-flex justify-content-between mb-3'>
+              <div className='coin_div'>
+                <div className="text-center">
+                  <Image src={coins} width={60} height={60} alt="coins"></Image>
+                </div>
+                <div className="text-center py-3">
+                  <Image src={coin_img} width={30} height={30} alt="coins"></Image><span className='coins_amount'>300</span>
+                </div>
+                <div className="text-center">
+                  <button className='get_coin_btn'>&#8377; 10</button>
+                </div>
+
+              </div>
+              <div className='coin_div'>
+                <div className="text-center">
+                  <Image src={coins} width={60} height={60} alt="coins"></Image>
+                </div>
+                <div className="text-center py-3">
+                  <Image src={coin_img} width={30} height={30} alt="coins"></Image><span className='coins_amount'>300</span>
+                </div>
+                <div className="text-center">
+                  <button className='get_coin_btn'>&#8377; 10</button>
+                </div>
+
+              </div>
+              <div className='coin_div'>
+                <div className="text-center">
+                  <Image src={coins} width={60} height={60} alt="coins"></Image>
+                </div>
+                <div className="text-center py-3">
+                  <Image src={coin_img} width={30} height={30} alt="coins"></Image><span className='coins_amount'>300</span>
+                </div>
+                <div className="text-center">
+                  <button className='get_coin_btn'>&#8377; 10</button>
+                </div>
+
+              </div>
+              <div className='coin_div'>
+                <div className="text-center">
+                  <Image src={coins} width={60} height={60} alt="coins"></Image>
+                </div>
+                <div className="text-center py-3">
+                  <Image src={coin_img} width={30} height={30} alt="coins"></Image><span className='coins_amount'>300</span>
+                </div>
+                <div className="text-center">
+                  <button className='get_coin_btn'>&#8377; 10</button>
+                </div>
+
+              </div>
+            </div>
             
           </div>
         </div>
