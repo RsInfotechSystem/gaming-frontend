@@ -11,6 +11,8 @@ export default function UserRightSidebar() {
                         <div className='dash_ads_div'>
                             <div className='dash_ads'></div>
                             <div className='dash_ads'></div>
+                            <div className='dash_ads'></div>
+                            <div className='dash_ads'></div>
                         </div>
 
                     </div>
