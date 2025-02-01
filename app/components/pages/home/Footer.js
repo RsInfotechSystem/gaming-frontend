@@ -45,9 +45,7 @@ export default function Footer() {
           </div>
 
           <div className='social_media_icon text-center d-flex'>
-            <img>
-               <a href=''></a>
-            </img>
+            <a href='/'><i className="icon_size bi bi-facebook" style={{width:"20px",height:"20px"}}></i></a>
             <a href='/'><i className="icon_size bi bi-instagram" style={{width:"20px",height:"20px"}}></i></a>
             <a href='/'><i className="icon_size bi bi-linkedin" style={{width:"20px",height:"20px"}}></i></a>
             <a href='/'><i className="icon_size bi bi-youtube" style={{width:"20px",height:"20px"}}></i></a>
