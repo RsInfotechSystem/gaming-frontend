@@ -24,7 +24,7 @@ export default function HeroSection() {
 
           <div className="carousel-inner">
           <div className="carousel-item active play_for_skill">
-  <p className="skill_play" style={{ color: "white" }}>PLAY FOR SKILL</p>
+  <p className="skill_play">PLAY FOR SKILL</p>
   <p className="skill_play_content" style={{ color: "white" }}>
     The electric blue color reminds me of the police.
     Maybe if you<br></br>played as a Police man in the Ruiner world.
