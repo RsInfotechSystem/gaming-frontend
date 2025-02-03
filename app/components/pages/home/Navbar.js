@@ -1,9 +1,13 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import LoginModal from '../LoginModal';
+import SignUpModal from '../SignUpModal';
+import ForgotPasswordModal from '../ForgotPasswordModal';
 
 export default function Navbar() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isSignUpOpen, setSignUpOpen] = useState(false);
+  const [isForgotPasswordOpen, setForgotPasswordOpen] = useState(false);
 
   useEffect(() => {
     if (isLoginOpen) {
@@ -44,8 +48,20 @@ export default function Navbar() {
           </div>
           <div className='login_main'>
             <button onClick={() => setIsLoginOpen(true)} className='login_btn'>LOG IN</button>
-             {/* Login Popup Modal */}
-      <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
+           
+      {/* <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} /> */}
+      <LoginModal 
+                isOpen={isLoginOpen} 
+                onClose={() => setIsLoginOpen(false)} 
+                openSignUp={() => setSignUpOpen(true)} 
+                openForgotPassword={() => setForgotPasswordOpen(true)} 
+            />
+
+            {/* SignUp Modal */}
+            <SignUpModal isOpen={isSignUpOpen} onClose={() => setSignUpOpen(false)} />
+
+            {/* ForgotPassword Modal */}
+            <ForgotPasswordModal isOpen={isForgotPasswordOpen} onClose={() => setForgotPasswordOpen(false)} />
           </div>
         </div>
         
