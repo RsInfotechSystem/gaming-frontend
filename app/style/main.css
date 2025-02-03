@@ -273,30 +273,23 @@ body {
 .game_lead_section{
     width: 100vw;
     height: 90vh;
-    background-color: #0B0202;
-      
+    background-color: #000000;
       background-size: cover;
       background-position: center;
       position: relative;
-      box-shadow: inset 0 0 100px 50px rgba(0, 0, 0, 0.9); /* Dark shadow effect */
 }
 .main_game_lead_section{
   background: radial-gradient(54.35% 54.35% at 50% 45.65%, rgba(0, 0, 0, 0.42) 0%, #000000 100%),
         url('../../public/homepage/gun.png');
     background-repeat: no-repeat;
-    
+    background-color: #000000;
 }
-/* linear-gradient(
-          360deg,
-          #0b0202 10%,
-          rgba(11, 2, 2, 0.87) 20.51%,
-          rgba(11, 2, 2, 0.8) 87.49%,
-          #0b0202 10%
-        ) */
 .lead_vr_line{
   background-color: #FB161E;
-  height: 127px;
-  width: 3px;
+  height: 140px;
+  width: 2px;
+  position: relative;
+  bottom: 19px;
 }
 .game_lead_head p {
   font-size: 30px;
@@ -343,14 +336,12 @@ body {
   font-size: 22px;
   font-weight: 400;
   font-family: play;
-  margin:0px 18px 0px 165px;
+  margin:0px 16px 0px 150px;
   line-height: 25.45px;
-  /* width: 79%; */
   text-align: right;
-  /* padding-right: 70px; */
 }
 .right_play_content .lead_vr_line{
-  margin:0px 87px 0px 0px;
+  margin:0px 105px 0px 0px;
 }
 
 
@@ -360,8 +351,8 @@ body {
 
 .news_section{
   width: 100vw;
-  height: 100vh;
-  background-color: #0B0202;
+  height: 110vh;
+  background-color: #000000;
   padding: 0px 115px 0px 115px;
 }
 .news_head p{
@@ -372,13 +363,15 @@ body {
   background-image: linear-gradient(to top, #ff1717, #9d04f6);
  -webkit-background-clip: text;
  color: transparent;
+ padding-bottom: 22px;
 }
 .news_section .card {
   width: 320px;
   height: 484px;
-  border-radius: 30px;
+  /* border-radius: 30px; */
   border: 3px solid;
-  border-image: linear-gradient(to bottom, #ff1717, #9d04f6) 1;
+  /* border-image: linear-gradient(45deg,to bottom, #ff1717, #9d04f6) 1; */
+  border-image: linear-gradient(160deg, #ff1717, #9d04f6) 100;
   background-color: black;
   z-index: 2;
 }
@@ -393,7 +386,7 @@ body {
   border-radius: 20px 20px 0px 0px;
 }
 .cards_content{
-  border-radius: 50px;
+  /* border-radius: 50px; */
 }
 .body_content_btn {
   background-image: linear-gradient(to right,rgb(56,22,63) , rgb(71,25,30));
@@ -413,10 +406,6 @@ body {
   position: relative;
   left: 80px;
 }
-/* .card-title{
-  font-family: play;
-  font-weight: 500;
-} */
 
 /* News section css End */
 
@@ -425,7 +414,9 @@ body {
   width: 100vw;
   /* background-color: #0B0202; */
   /* background-image: url(../../public/homepage/footerImage.png); */
-  height: 100vh;
+  height: 95vh;
+  overflow: hidden;
+  position: relative;
   overflow: hidden;
 }
 .top_footer {
@@ -433,16 +424,18 @@ body {
   font-weight: 700;
   font-size: 15px;
   line-height: 17.36px;
-  padding: 25px 0px 0px 50px;
+  padding: 25px 0 0 10px;
 }
 .left_side_footer{
   width: 100%;
   color: #FFFFFF;
 }
+.left_side_footer p{
+  margin-bottom: 6px;
+}
 .right_side_footer p{
   width: 353px;
-  /* padding-right: 40px; */
-  margin-right: 40px;
+  margin-right: 18px;
 }
 /* .right_side_footer p image{
   width: 10px;
@@ -456,37 +449,39 @@ body {
   object-fit: cover;
   z-index: -1;
 }
-/* .footer_bg_video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
+
 .footer_content {
   position: relative;
-  z-index: 1;
-} */
-
-
+  z-index: 1; /* Ensures content stays above the video */
+  color: white;
+  padding: 20px;
+}
 
 .footer_section .d-flex {
   display: flex;
   justify-content: space-between; /* Ensures left and right sides are apart */
   align-items: center; /* Aligns items vertically */
 }
-/* .nav_hr_line{
-margin-top: 50px;
-} */
+
 .nav_hr_line_right {
-  height: 5px;
+  /* height: 5px;
   width: 1013px;
   background-image: linear-gradient(to right, #ff1717, #9d04f6);
   border-radius: 10px 0px 0px 10px;
   float: right;
   background-color: #000000;
+  margin-top: 20px; */
+}
+.main_right_hr_line{
+  height: 5vh;
+  background-color: #000000;
+}
+.main_right_hr_line .right_bottom_line {
+  height: 4.5px;
+  width: 1013px;
+  background-image: linear-gradient(to left, #ff1717, #9d04f6);
+  border-radius: 10px 0px 0px 10px;
+  float: right;
 }
 .right_side_footer {
   text-align: right; /* Aligns text and image to the right */
@@ -535,12 +530,23 @@ margin-top: 50px;
   font-weight: 600;
   background-image: linear-gradient(to right, #ff1717, #9d04f6);
   border: none;
+  position: relative;
+  bottom: 2px;
 }
 .input-group .email_box {
   border-radius: 15px;
   z-index: 1;
   opacity: 0.4;
   height: 40px;
+}
+.input_btn input{
+  font-size: 20px;
+  color: #FFFFFF;
+}
+.input_btn{
+  width: 420px;
+  position: relative;
+  right: 10px;
 }
 .lets_play p{
  font-size: 70px;
@@ -557,17 +563,21 @@ margin-top: 50px;
   line-height: 25.08px;
   position: relative;
   bottom: 34px;
-  left: 220px;
+  left: 142px;
   letter-spacing: 2px;
+}
+.lets_play_set{
+  position: relative;
+  left: 85px;
 }
 .frame_logo img{
   position: relative;
-  right: 60px;
+  right: 38px;
   /* padding-bottom: 50px; */
-  margin-bottom: 20px;
+  margin: 15px 0px 5px 0px ;
 }
 .register_btn button{
-  border-radius: 50px;
+border-radius: 50px;
 width: 192px;
 height: 48px;
 font-family: orbitron;
@@ -579,27 +589,37 @@ border: none;
 color: #FFFFFF;
 }
 .social_media_icon{
-  margin: 0px 510px;
-  padding-top: 30px;
+  margin: auto;
+  padding-top: 35px;
+  width: 17%;
 }
 .social_media_icon a i{
   width: 200px;
   height: 200px;
 }
 .terms_condtion{
-  margin: 0px 390px;
+  margin: 10px 390px;
+  height: 19px;
   font-family: Orbitron;
   font-size: 15px;
-font-weight: 700;
-padding-top: 30px;
+  font-weight: 700;
+  padding-top: 30px;
+  color: #FFFFFF;
+  line-height: 18.81px;
+}
+.terms_condtion span {
+  letter-spacing: 2px;
 }
 .company_design{
+  width: 421px;
+  height: 15px;
+  margin: auto;
   font-family: Orbitron;
   font-size: 12px;
   font-weight: 600;
   line-height: 15.05px;
   letter-spacing: 1px;
-  padding-top: 20px;
+  padding-top: 25px;
 }
 /* start css for loginModal by abhishek ***********************/
 .modal-overlay {
@@ -694,16 +714,6 @@ padding-top: 30px;
   text-decoration: none;
   cursor: pointer;
   padding: 0;
-}
-
-.footer_bg_video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1; 
 }
 
 

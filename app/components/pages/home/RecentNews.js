@@ -1,7 +1,10 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import dance from "../../../../public/homepage/dance.jpg";
+import tournament1 from "../../../../public/homepage/tournament1.jpg";
+import tournament2 from "../../../../public/homepage/tournament2.jpg";
+import tournament_cod from "../../../../public/homepage/tournament_cod.jpg";
+
 
 export default function CardsCarousel() {
   return (
@@ -13,7 +16,7 @@ export default function CardsCarousel() {
       <div className="row">
         <div className="cards_content col-md-4">
           <div className="card">
-            <Image src={dance} alt="Card 1" className="cards_image d-block" />
+            <Image src={tournament1} alt="Card 1" className="cards_image d-block" />
             <div className="body_content_btn card-body">
               <p className="card-name">NEWS 109</p>
               <p className="card-content">Usually white text goes good with a red background but by using both black and..</p>
@@ -23,7 +26,7 @@ export default function CardsCarousel() {
         </div>
         <div className="cards_content col-md-4">
           <div className="card">
-            <Image src={dance} alt="Card 2" className="cards_image d-block" />
+            <Image src={tournament2} alt="Card 2" className="cards_image d-block" />
             <div className="body_content_btn card-body">
               <p className="card-name">NEWS 109</p>
               <p className="card-content">Usually white text goes good with a red background but by using both black and..</p>
@@ -33,7 +36,7 @@ export default function CardsCarousel() {
         </div>
         <div className="cards_content col-md-4">
           <div className="card">
-            <Image src={dance} alt="Card 3" className="cards_image d-block" />
+            <Image src={tournament_cod} alt="Card 3" className="cards_image d-block" />
             <div className="body_content_btn card-body">
               <p className="card-name">NEWS 109</p>
               <p className="card-content">Usually white text goes good with a red background but by using both black and..</p>
@@ -41,21 +44,12 @@ export default function CardsCarousel() {
             </div>
           </div>
         </div>
-        {/* <div className="col-md-3">
-          <div className="card">
-            <Image src={dance} alt="Card 4" className="d-block w-100" />
-            <div className="card-body">
-              <h5 className="card-title">Card 4</h5>
-              <p className="card-text">This is the content of the fourth card.</p>
-              <button className="read_btn">Learn More</button>
-            </div>
-          </div>
-        </div> */}
       </div>
-    </section>
-    <div className='nav_hr_line_right'>
+      {/* <div className='nav_hr_line_right'>
 
-      </div>
+      </div> */}
+    </section>
+    
     </>
   );
 }

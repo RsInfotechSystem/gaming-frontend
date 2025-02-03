@@ -14,7 +14,7 @@ export default function Footer() {
           <div className='d-flex top_footer'>
             <div className='left_side_footer'>
               <p>Stay up to date, subscribe to<br></br>our news about any tournament and others</p>
-              <div className="input-group w-50">
+              <div className="input-group input_btn">
                 <input type="email" className="form-control email_box" placeholder="Email" />
                 <button className="btn btn-primary lets_go_btn" type="button">Let's GO</button>
               </div>
@@ -29,13 +29,13 @@ export default function Footer() {
           </div>
 
          <div className='frame_logo' style={{textAlign:"right"}}>
-           <img src="/homepage/Frame.png" className="" alt="..." height={80} />  
+           <img src="/homepage/Frame.png" alt="..." height={72} />  
          </div>
 
          <div className='lets_play'>
               <p className='text-center lets_play_set'>
                   LET'S PLAY 
-                  {/* <span className='xyz_gaming'>XYZ GAMING</span> */}
+                  <span className='xyz_gaming'>XYZ GAMING</span>
               </p>
          </div>
           
@@ -45,16 +45,31 @@ export default function Footer() {
           </div>
 
           <div className='social_media_icon text-center d-flex'>
-            <a href='/'><i className="icon_size bi bi-facebook" style={{width:"20px",height:"20px"}}></i></a>
-            <a href='/'><i className="icon_size bi bi-instagram" style={{width:"20px",height:"20px"}}></i></a>
-            <a href='/'><i className="icon_size bi bi-linkedin" style={{width:"20px",height:"20px"}}></i></a>
-            <a href='/'><i className="icon_size bi bi-youtube" style={{width:"20px",height:"20px"}}></i></a>
+          <a href='/'>
+            <img src='/homepage/facebook.png' width={20} height={20}>
+            </img>
+            </a>
+
+            <a href='/'>
+            <img src='/homepage/insta.png' width={20} height={20}>
+            </img>
+            </a>
+
+            <a href='/'>
+            <img src='/homepage/linkdin.png' width={20} height={18}>
+            </img>
+            </a>
+
+            <a href='/'>
+            <img src='/homepage/youtube.png' width={20} height={16}>
+            </img>
+            </a>
           </div>
 
           <div className='terms_condtion text-center d-flex'>
-            <span style={{ color: "#FFFFFF" }}>FAQs</span>
-            <span style={{ color: "#FFFFFF" }}>Contact us</span>
-            <span style={{ color: "#FFFFFF" }}>T&C</span>
+            <span>FAQs</span>
+            <span>Contact us</span>
+            <span>T&C</span>
           </div>
 
           <div className='text-center company_design'>
