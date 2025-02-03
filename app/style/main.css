@@ -75,7 +75,6 @@ body {
   border-radius: 0 10px 10px 0;
 }
 .login_btn{
-    /* border-radius: 20px; */
     padding: 10px 40px;
     margin-left: 25px;
     margin-top: -20px;
@@ -245,7 +244,8 @@ body {
 }
 .game_image_container .card {
   border-radius: 20px;
-  border: 1px solid;
+  border: 2px solid ;
+  border-image: linear-gradient(45deg, #ff0000, #0000ff) 1;
 }
 .card
 /* .card-title{
@@ -254,12 +254,16 @@ body {
 } */
 .game_name {
   font-size: 30px;
-  padding-left: 20px;
+  padding-left: 50px;
   font-weight: 500;
   font-family: 'Play';
+  color: white;
+  letter-spacing: 2px;
 }
 .game_title{
-    padding-left: 20px;
+    padding-left: 50px;
+  color: white;
+  letter-spacing: 0.5px;
 }
 .user_percentage{
     padding-left: 50px;
@@ -309,8 +313,7 @@ body {
   padding-top: 100px;
 }
 .game_image_container .poster_div{
-  /* background-image: linear-gradient(to bottom, #ff1717, #9d04f6); */
-    /* filter: grayscale(30%) brightness(90%) contrast(80%); */
+  background-image: linear-gradient(to bottom, #DBC5CB, #D6C5D8);
 }
 .game_lead_main .play_main {
   width: 70%;
@@ -423,13 +426,12 @@ body {
   height: 100vh;
   overflow: hidden;
 }
-.top_footer{
+.top_footer {
   font-family: play;
   font-weight: 700;
   font-size: 15px;
   line-height: 17.36px;
-  padding: 40px 0px 0px 50px;
-
+  padding: 25px 0px 0px 50px;
 }
 .left_side_footer{
   width: 100%;
@@ -536,6 +538,7 @@ margin-top: 50px;
   border-radius: 15px;
   z-index: 1;
   opacity: 0.4;
+  height: 40px;
 }
 .lets_play p{
  font-size: 70px;
@@ -566,7 +569,7 @@ margin-top: 50px;
 width: 192px;
 height: 48px;
 font-family: orbitron;
-font-size: 13px;
+font-size: 15px;
 font-weight: 600;
 letter-spacing: 2px;
 background-image: linear-gradient(to right, #ff1717, #9d04f6);
