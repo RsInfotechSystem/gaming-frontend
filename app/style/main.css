@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Play:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Oxanium:wght@200..800&family=Play:wght@400;700&display=swap');
 
 
 
@@ -710,10 +711,22 @@ color: #FFFFFF;
 .text-link {
   background: none;
   border: none;
-  color: blue;
+  color: #B207C5;
   text-decoration: none;
+  font-family: "Oxanium",sans-serif;
+  font-weight: 400;
+  font-size: 15px;
   cursor: pointer;
   padding: 0;
 }
-
+.login_input::placeholder {
+  color: #fff;
+  opacity: 1;
+}
+.backarrow_btn {
+border:none;
+background:none;
+float:left;
+padding-left:5px;
+}
 
