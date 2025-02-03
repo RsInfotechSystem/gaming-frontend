@@ -6,7 +6,7 @@ import React from "react";
 
 export default function HrLineLeft() {
   return (
-    <div style={{backgroundColor:"black",height:"9vh",display:"flex",alignItems: "center",}}>
+    <div style={{backgroundColor:"black",height:"8vh",display:"flex",alignItems: "center",}}>
     <div className='nav_hr_line'>
 
     </div>
