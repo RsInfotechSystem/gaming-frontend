@@ -22,31 +22,31 @@ export default function HeroSection() {
             <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
           </div>
 
-          <div className="carousel-inner">
+          <div className="carousel-inner content_height">
           <div className="carousel-item active play_for_skill">
-  <p className="skill_play">PLAY FOR SKILL</p>
-  <p className="skill_play_content" style={{ color: "white" }}>
-    The electric blue color reminds me of the police.
-    Maybe if you<br></br>played as a Police man in the Ruiner world.
-  </p>
-  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-    <p className='remote_set'>
-      <Image src={Group} alt="Lo Angeles" className="d-block" style={{ width: "120px", height: "110px" }} />
-    </p>
-    <span className='gun_set'>
-      <Image src={Maskgroup} alt="gun Image" className="d-block" style={{ width: "250px", height: "290px" }} />
-    </span>
-  </div>
-</div>
+             <p className="skill_play">PLAY FOR SKILL</p>
+                <p className="skill_play_content">
+               The electric blue color reminds me of the police.
+               Maybe if you<br></br>played as a Police man in the Ruiner world.
+                </p>
+           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <p className='remote_set'>
+                  <Image src={Group} alt="Lo Angeles" className="d-block"/>
+              </p>
+                <span className='gun_set'>
+                  <Image src={Maskgroup} alt="gun Image" className="d-block"/>
+                 </span>
+             </div>
+         </div>
 
             <div className="carousel-item carousel_images">
-              <Image src={pubgPoster} alt="Pubg_Image" className="d-block" style={{ width: "1000px",height:"450px",paddingBottom:"110px",paddingLeft:"120px"}}/>
+              <Image src={pubgPoster} alt="Pubg_Image" className="d-block"/>
             </div>
             <div className="carousel-item carousel_images">
-            <Image src={freefire} alt="FreeFire_Image" className="d-block" style={{ width: "1000px",height:"450px",paddingBottom:"110px",paddingLeft:"120px"}}/>
+            <Image src={freefire} alt="FreeFire_Image" className="d-block"/>
             </div>
             <div className="carousel-item carousel_images">
-            <Image src={cod} alt="COD_Image" className="d-block" style={{ width: "1000px",height:"450px",paddingBottom:"110px",paddingLeft:"120px"}}/>
+            <Image src={cod} alt="COD_Image" className="d-block" />
             </div>
           </div>
 
