@@ -30,8 +30,8 @@ export default function GamesAvailable() {
 
         {/* Second div with image */}
         <div className="game_image_container">
-           <div className="card poster_div" style={{ width: '500px',height:"390px"}}>
-             <img src="/homepage/pubg_1.jpg" className="poster_image" alt="..." height={320}/>
+           <div className="card poster_div">
+             <img src="/homepage/pubg_1.jpg" className="poster_image" alt="..." height={300}/>
              <div className="card-body">
                <h5 className="game_name">BGMI</h5>
                <p className="game_title">Battle Ground Mobile India
