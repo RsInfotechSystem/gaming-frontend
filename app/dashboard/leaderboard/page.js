@@ -1,12 +1,12 @@
 "use client"
 import React from 'react';
-import GamesList from './games-list/GamesList';
+import LeaderBoard from './LeaderBoard';
 
 export default function GameLead() {
 
   return (
     <>
-     <GamesList/>
+     <LeaderBoard/>
     </>
   );
 }
