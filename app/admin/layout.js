@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
-import UserLeftSidebar from "../dashboard/UserLeftSidebar";
 import UserNavbar from "../dashboard/UserNavbar";
 import "../style/admin.css";
+import Sidenav from './Sidenav';
 
 
 export default function RootLayout({ children }) {
@@ -9,7 +9,7 @@ export default function RootLayout({ children }) {
         <div className="root_wrapper">
             <Suspense>
                 <UserNavbar />
-                <UserLeftSidebar />
+                <Sidenav />
                 <div className="routes_view">
                     {children}
                 </div>

@@ -1,3 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --green_color: #184965;
+    --black_color_dark_shade: #272727;
+    --blue_color_dark_shade: #48505e;
+    --grey_color_light_shade1: #d0d3d9;
+    --grey_color_light_shade2: #f1f5f9;
+    --subtable_data: #1849654f;
+    /* --skyblue_color_light_shade1: #dcf4e6; */
+    --skyblue_color_light_shade1: #b7c7cf;
+    --skyblue_color_light_shade2: #f3f8ff;
+    --red_color: #dc3545;
+    --yellow_color: #184965;
+    --orange_color: #ff7246;
+    --blue_color: #0d6efd;
+    --aqua_color: #00cccd;
+    --white-color: #ffffff;
+    --black_transparent: rgba(0, 0, 0, 0.686);
+}
+
+
 .root_wrapper {
     width: 100dvw;
     height: 100dvh;
@@ -15,3 +38,644 @@
     min-height: 100vh;
 
 }
+
+.tabs_dash_div {
+    margin: 10px 0;
+}
+
+.dash_tab {
+    color: #fff;
+    text-decoration: none;
+    background: rgb(255, 55, 55);
+    background: linear-gradient(90deg, rgba(255, 55, 55, 1) 0%, rgba(22, 10, 10, 1) 77%);
+    padding: 30px 20px;
+    font-family: "Orbitron", serif;
+    font-weight: 500;
+    display: block;
+    /* width: 220px; */
+    letter-spacing: 2px;
+}
+
+.tab_inactive {
+    color: #fff;
+    text-decoration: none;
+    background: rgb(20, 19, 19);
+    background: linear-gradient(90deg, rgb(22, 21, 21) 0%, rgba(22, 10, 10, 1) 77%);
+    padding: 30px 20px;
+    font-family: "Orbitron", serif;
+    font-weight: 500;
+    display: block;
+    /* width: 220px; */
+    letter-spacing: 2px;
+}
+
+.top_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5%;
+}
+
+.top_header .tab_title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    margin-left: 10px;
+}
+
+.top_header .back_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+    color: #fff;
+    ;
+    cursor: pointer;
+}
+
+/* search btn wrapper styling  */
+.search_btn_wrapper {
+    /* height: 12%; */
+    height: 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+}
+
+.search_btn_wrapper .buttons_wrapper {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+
+
+/****************** COMMON PERCENTAGE WIDTH CLASSES CSS START ******************/
+div:where(.col_1p,
+    .col_2p,
+    .col_3p,
+    .col_4p,
+    .col_5p,
+    .col_6p,
+    .col_7p,
+    .col_8p,
+    .col_9p,
+    .col_10p,
+    .col_11p,
+    .col_12p,
+    .col_13p,
+    .col_14p,
+    .col_15p,
+    .col_16p,
+    .col_17p,
+    .col_18p,
+    .col_19p,
+    .col_20p,
+    .col_21p,
+    .col_22p,
+    .col_23p,
+    .col_24p,
+    .col_25p,
+    .col_26p,
+    .col_27p,
+    .col_28p,
+    .col_29p,
+    .col_30p,
+    .col_31p,
+    .col_32p,
+    .col_33p,
+    .col_34p,
+    .col_35p,
+    .col_36p,
+    .col_37p,
+    .col_38p,
+    .col_39p,
+    .col_40p,
+    .col_41p,
+    .col_42p,
+    .col_43p,
+    .col_44p,
+    .col_45p,
+    .col_46p,
+    .col_47p,
+    .col_48p,
+    .col_49p,
+    .col_50p,
+    .col_51p,
+    .col_52p,
+    .col_53p,
+    .col_54p,
+    .col_55p,
+    .col_56p,
+    .col_57p,
+    .col_58p,
+    .col_59p,
+    .col_60p,
+    .col_61p,
+    .col_62p,
+    .col_63p,
+    .col_64p,
+    .col_65p,
+    .col_66p,
+    .col_67p,
+    .col_68p,
+    .col_69p,
+    .col_70p,
+    .col_71p,
+    .col_72p,
+    .col_73p,
+    .col_74p,
+    .col_75p,
+    .col_76p,
+    .col_77p,
+    .col_78p,
+    .col_79p,
+    .col_80p,
+    .col_81p,
+    .col_82p,
+    .col_83p,
+    .col_84p,
+    .col_85p,
+    .col_86p,
+    .col_87p,
+    .col_88p,
+    .col_89p,
+    .col_90p,
+    .col_91p,
+    .col_92p,
+    .col_93p,
+    .col_94p,
+    .col_95p,
+    .col_96p,
+    .col_97p,
+    .col_98p,
+    .col_99p,
+    .col_100p) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 10px;
+    overflow: hidden;
+}
+
+div:where(.col_1p) {
+    width: 1%;
+}
+
+div:where(.col_2p) {
+    width: 2%;
+}
+
+div:where(.col_3p) {
+    width: 3%;
+}
+
+div:where(.col_4p) {
+    width: 4%;
+}
+
+div:where(.col_5p) {
+    width: 5%;
+}
+
+div:where(.col_6p) {
+    width: 6%;
+}
+
+div:where(.col_7p) {
+    width: 7%;
+}
+
+div:where(.col_8p) {
+    width: 8%;
+}
+
+div:where(.col_9p) {
+    width: 9%;
+}
+
+div:where(.col_10p) {
+    width: 10%;
+}
+
+div:where(.col_11p) {
+    width: 11%;
+}
+
+div:where(.col_12p) {
+    width: 12%;
+}
+
+div:where(.col_13p) {
+    width: 13%;
+}
+
+div:where(.col_14p) {
+    width: 14%;
+}
+
+div:where(.col_15p) {
+    width: 15%;
+}
+
+div:where(.col_16p) {
+    width: 16%;
+}
+
+div:where(.col_17p) {
+    width: 17%;
+}
+
+div:where(.col_18p) {
+    width: 18%;
+}
+
+div:where(.col_19p) {
+    width: 19%;
+}
+
+div:where(.col_20p) {
+    width: 20%;
+}
+
+div:where(.col_21p) {
+    width: 21%;
+}
+
+div:where(.col_22p) {
+    width: 22%;
+}
+
+div:where(.col_23p) {
+    width: 23%;
+}
+
+div:where(.col_24p) {
+    width: 24%;
+}
+
+div:where(.col_25p) {
+    width: 25%;
+}
+
+div:where(.col_26p) {
+    width: 26%;
+}
+
+div:where(.col_27p) {
+    width: 27%;
+}
+
+div:where(.col_28p) {
+    width: 28%;
+}
+
+div:where(.col_29p) {
+    width: 29%;
+}
+
+div:where(.col_30p) {
+    width: 30%;
+}
+
+div:where(.col_31p) {
+    width: 31%;
+}
+
+div:where(.col_32p) {
+    width: 32%;
+}
+
+div:where(.col_33p) {
+    width: 33%;
+}
+
+div:where(.col_34p) {
+    width: 34%;
+}
+
+div:where(.col_35p) {
+    width: 35%;
+}
+
+div:where(.col_36p) {
+    width: 36%;
+}
+
+div:where(.col_37p) {
+    width: 37%;
+}
+
+div:where(.col_38p) {
+    width: 38%;
+}
+
+div:where(.col_39p) {
+    width: 39%;
+}
+
+div:where(.col_40p) {
+    width: 40%;
+}
+
+div:where(.col_41p) {
+    width: 41%;
+}
+
+div:where(.col_42p) {
+    width: 42%;
+}
+
+div:where(.col_43p) {
+    width: 43%;
+}
+
+div:where(.col_44p) {
+    width: 44%;
+}
+
+div:where(.col_45p) {
+    width: 45%;
+}
+
+div:where(.col_46p) {
+    width: 46%;
+}
+
+div:where(.col_47p) {
+    width: 47%;
+}
+
+div:where(.col_48p) {
+    width: 48%;
+}
+
+div:where(.col_49p) {
+    width: 49%;
+}
+
+div:where(.col_50p) {
+    width: 50%;
+}
+
+div:where(.col_51p) {
+    width: 51%;
+}
+
+div:where(.col_52p) {
+    width: 52%;
+}
+
+div:where(.col_53p) {
+    width: 53%;
+}
+
+div:where(.col_54p) {
+    width: 54%;
+}
+
+div:where(.col_55p) {
+    width: 55%;
+}
+
+div:where(.col_56p) {
+    width: 56%;
+}
+
+div:where(.col_57p) {
+    width: 57%;
+}
+
+div:where(.col_58p) {
+    width: 58%;
+}
+
+div:where(.col_59p) {
+    width: 59%;
+}
+
+div:where(.col_60p) {
+    width: 60%;
+}
+
+div:where(.col_61p) {
+    width: 61%;
+}
+
+div:where(.col_62p) {
+    width: 62%;
+}
+
+div:where(.col_63p) {
+    width: 63%;
+}
+
+div:where(.col_64p) {
+    width: 64%;
+}
+
+div:where(.col_65p) {
+    width: 65%;
+}
+
+div:where(.col_66p) {
+    width: 66%;
+}
+
+div:where(.col_67p) {
+    width: 67%;
+}
+
+div:where(.col_68p) {
+    width: 68%;
+}
+
+div:where(.col_69p) {
+    width: 69%;
+}
+
+div:where(.col_70p) {
+    width: 70%;
+}
+
+div:where(.col_71p) {
+    width: 71%;
+}
+
+div:where(.col_72p) {
+    width: 72%;
+}
+
+div:where(.col_73p) {
+    width: 73%;
+}
+
+div:where(.col_74p) {
+    width: 74%;
+}
+
+div:where(.col_75p) {
+    width: 75%;
+}
+
+div:where(.col_76p) {
+    width: 76%;
+}
+
+div:where(.col_77p) {
+    width: 77%;
+}
+
+div:where(.col_78p) {
+    width: 78%;
+}
+
+div:where(.col_79p) {
+    width: 79%;
+}
+
+div:where(.col_80p) {
+    width: 80%;
+}
+
+div:where(.col_81p) {
+    width: 81%;
+}
+
+div:where(.col_82p) {
+    width: 82%;
+}
+
+div:where(.col_83p) {
+    width: 83%;
+}
+
+div:where(.col_84p) {
+    width: 84%;
+}
+
+div:where(.col_85p) {
+    width: 85%;
+}
+
+div:where(.col_86p) {
+    width: 86%;
+}
+
+div:where(.col_87p) {
+    width: 87%;
+}
+
+div:where(.col_88p) {
+    width: 88%;
+}
+
+div:where(.col_89p) {
+    width: 89%;
+}
+
+div:where(.col_90p) {
+    width: 90%;
+}
+
+div:where(.col_91p) {
+    width: 91%;
+}
+
+div:where(.col_92p) {
+    width: 92%;
+}
+
+div:where(.col_93p) {
+    width: 93%;
+}
+
+div:where(.col_94p) {
+    width: 94%;
+}
+
+div:where(.col_95p) {
+    width: 95%;
+}
+
+div:where(.col_96p) {
+    width: 96%;
+}
+
+div:where(.col_97p) {
+    width: 97%;
+}
+
+div:where(.col_98p) {
+    width: 98%;
+}
+
+div:where(.col_99p) {
+    width: 99%;
+}
+
+div:where(.col_100p) {
+    width: 100%;
+}
+
+/****************** COMMON PERCENTAGE WIDTH CLASSES CSS END ******************/
+
+/* table styling  */
+.table_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.table_main {
+    width: 100%;
+    background: #181818;
+    /* Dark background */
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.table_section {
+    width: 100%;
+}
+
+.table_header,
+.table_data {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.table_header {
+    background: #222222;
+    /* Darker shade for header */
+    font-weight: bold;
+    border-radius: 10px;
+    color: #f8f8f8;
+    /* Light text */
+}
+
+.table_data {
+    background: #1e1e1e;
+    /* Slightly lighter than main background */
+    border-radius: 8px;
+    margin: 5px 0;
+    color: #ffffff;
+    /* White text */
+}
+
+.no_data {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #fff;
+}
+
+
+
+/* table styling  end*/
