@@ -3,7 +3,7 @@ import React from "react";
 import backarrow from "../../../public/homepage/backarrow.png";
 import Image from "next/image";
 
-export default function ForgotPasswordModal({ isOpen, onClose,openLoginModal }) {
+export default function ForgotPasswordModal({ isOpen, onClose, openLoginModal }) {
     if (!isOpen) return null;
 
     return (

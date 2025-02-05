@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getCookie } from "cookies-next";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const nodeEnvironment = process.env.NEXT_PUBLIC_NODE_ENV;
 const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL;
@@ -25,13 +25,13 @@ export function getServerUrl() {
 export const communication = {
     login: async function (dataToSend) {
         try {
-            return axios.post(`${getServerUrl()}/user/login`, dataToSend, {
+            return axios.post(`${getServerUrl()}/player/login-player`, dataToSend, {
                 headers: {
                     "Content-Type": "application/json",
                 },
             });
         } catch (error) {
-            toast.error(error.message);
+            Swal.fire({ text: error.message, icon: "warning" });
         }
     },
 
