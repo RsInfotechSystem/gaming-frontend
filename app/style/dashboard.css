@@ -302,4 +302,79 @@ body {
   font-size: 19px;
   margin-left: 10px;
 }
+/* leaderboard css start */
+.nav_search{
+  display: flex;
+  justify-content: space-between;
+}
+.search_box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 250px;
+}
+.add_btn_main {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 100px;
+}
+.add_btn {
+ background-color: #AB06D5;
+ border: none;
+ padding: 4px 40px;
+ color: #ffffff;
+ border-radius: 10px;
+
+}
+
+.search_input {
+  width: 100%;
+  padding: 5px 40px 5px 15px; /* Left padding for text, right for icon */
+  background-color: #2b2b2b;
+  border: 1px solid white;
+  border-radius: 8px;
+  font-size: 16px;
+  color: white;
+  outline: none;
+}
+
+/* Placeholder Styling */
+.search_input::placeholder {
+  color: white;
+  opacity: 0.7; /* Make it slightly dim */
+  padding-left: 5px; /* Adds padding inside placeholder */
+}
+
+/* Search Icon */
+.search_icon {
+  position: absolute;
+  right: 12px; /* Moves the icon inside */
+  font-size: 18px;
+  color: white;
+  pointer-events: none; /* Prevents clicking the icon */
+}
+.add_btn{
+  padding: 10px 20px;
+  /* margin-top: -20px; */
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  position: relative; 
+  z-index: 1;
+  letter-spacing: 2px;
+}
+.add_btn_main .add_btn {
+  width: 170px;
+  /* height: 40px; */
+  border-radius: 50px;
+  background-image: linear-gradient(to right, #ff1717, #9d04f6);
+  position: relative;
+  /* bottom: 10px; */
+}
 

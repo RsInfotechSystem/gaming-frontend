@@ -19,7 +19,7 @@ export default function UserLeftSidebar() {
                         <a href='#' className='dash_tab'><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={mygames} alt="user"></Image> MY GAMES</a>
                     </div>
                     <div className='tabs_dash_div'>
-                        <a href='#' className='dash_tab'><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={winnings} alt="user"></Image> WINNINGS</a>
+                        <a href='../dashboard/leaderboard' className='dash_tab'><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={winnings} alt="user"></Image> Leaderboard</a>
                     </div>
                     <div className='tabs_dash_div'>
                         <a href='#' className='dash_tab'><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={user_img} alt="user"></Image> PROFILE</a>
