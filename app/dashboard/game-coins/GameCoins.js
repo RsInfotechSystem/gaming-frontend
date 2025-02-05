@@ -11,10 +11,8 @@ export default function GameCoins() {
 
   return (
     <>
-      <UserNavbar />
-      <section className='tournament_main'>
+      {/* <section className='tournament_main'> */}
 
-        <UserLeftSidebar />
         <div className='tournament_list'>
           <div className='mt-1 coin_pack'>
             <p className='tournament_text'>COINS PACK </p>
@@ -172,9 +170,8 @@ export default function GameCoins() {
           </div>
         </div>
 
-        <UserRightSidebar />
 
-      </section>
+      {/* </section> */}
 
     </>
   );

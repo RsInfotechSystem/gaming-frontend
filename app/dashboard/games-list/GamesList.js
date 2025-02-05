@@ -46,7 +46,7 @@ export default function GamesList() {
   return (
     <>
      
-      <section className='tournament_main'>
+      {/* <section className='tournament_main'> */}
 
      
 
@@ -279,8 +279,8 @@ export default function GamesList() {
           </div>
         </div>
 
-
-      </section>
+ 
+      {/* </section> */}
 
     </>
   );
