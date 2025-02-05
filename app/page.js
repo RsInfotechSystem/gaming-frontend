@@ -11,6 +11,9 @@ import "./style/main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import HrLineLeft from './components/pages/home/HrLineLeft';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 
 const Page = () => {

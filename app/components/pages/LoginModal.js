@@ -14,9 +14,9 @@ export default function LoginModal({ isOpen, onClose, openSignUp, openForgotPass
             <div className="modal-overlay" onClick={onClose}>
                 <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                     <div className="login_page_name">
-                        <button className="backarrow_btn" >
+                        {/* <button className="backarrow_btn" >
                             <Image src={backarrow} alt="backarrow" width={12}></Image>
-                        </button>
+                        </button> */}
                         <p className="mb-0">LOG IN</p>
                     </div>
                     <hr className="modal-hr" />
