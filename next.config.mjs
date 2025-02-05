@@ -1,5 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    redirects: async () => {
+        return [
+            {
+                source: "/admin",
+                destination: "/admin/game-list",
+                permanent: false
+            }
+        ]
+    },
     images: {
         remotePatterns: [
             {

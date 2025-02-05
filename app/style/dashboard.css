@@ -19,6 +19,13 @@ body {
     scroll-behavior: smooth !important;
     position: relative;
 }
+
+.root_wrapper{
+  width: 100dvw;
+  height: 100dvh;
+}
+
+
 .dashboard_nav {
     height: 80px;
     width: 100vw;
