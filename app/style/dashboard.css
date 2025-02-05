@@ -19,6 +19,13 @@ body {
     scroll-behavior: smooth !important;
     position: relative;
 }
+
+.root_wrapper{
+  width: 100dvw;
+  height: 100dvh;
+}
+
+
 .dashboard_nav {
     height: 80px;
     width: 100vw;
@@ -156,18 +163,44 @@ body {
   letter-spacing: 2px;
 
 }
+.tournament_card_main {
+  display: flex;
+  justify-content: center;
+}
+
 .tournament_card {
   width: 100%;
-  max-width: 350px;
+  /* max-width: 350px; */
   position: relative;
   z-index: 0;
   font-family: "Play", sans-serif;
   font-weight: 700;
   background-color: #2b2b2b;
-  /* background-image: url("/dashboard/tour_rectangle.png"); */
-  /* background-size: contain; 
-  background-position: center; 
-  background-repeat: no-repeat; */
+  border-radius: 10px;
+  padding: 3px;
+  overflow: hidden; /* Ensures the inner content stays clipped */
+}
+
+/* Creating the gradient border effect */
+.tournament_card::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(110deg, #f83333, #bd09a9);
+  border-radius: inherit; /* Ensures it follows the card's border-radius */
+  z-index: -1;
+}
+
+/* Inner container to create the border illusion */
+.tournament_card > .card-body {
+  background: #2b2b2b;
+  border-radius: 0px 0px 10px 10px;
+  padding: 15px;
+  position: relative;
+  z-index: 1; /* Ensures content is above the gradient */
 }
 
 .tournament_card_img {
@@ -187,30 +220,43 @@ body {
 .tournament_card p {
   font-weight: 400;
 }
-.games_bg{
-  /* background-image: url(../../public/dashboard/games_bg.png); */
-  background-color: #2b2b2b;
-  color: #fff;
+.games_bg {
   display: flex;
   align-items: center;
   width: 45%;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 2px 3px 5px 1px rgba(251, 22, 30, 0.7); 
-  position:relative ;
-
+  padding: 3px; /* Small padding to create the illusion of a border */
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
 }
-.games_bg:before {
+
+/* Gradient border effect */
+.games_bg::before {
   content: "";
   position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  border-radius: 14px;
-  background: radial-gradient(circle, #fb161e, #e3ff55, #55ffad, #9d04f6);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(110deg, #f83333, #bd09a9);
+  border-radius: inherit;
   z-index: -1;
 }
+
+/* Inner container to hold the actual content */
+.games_bg_inner {
+  display: flex;
+  align-items: center;
+  background-color: #2b2b2b;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px; /* Ensure it has a slightly smaller radius */
+  width: 100%;
+  position: relative;
+  z-index: 1; /* Ensure it appears above the gradient */
+}
+
 
 .game_name{
   font-family: "Play", sans-serif;

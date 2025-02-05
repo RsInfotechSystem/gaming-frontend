@@ -13,7 +13,7 @@ export default function UserLeftSidebar() {
             {/* <section className='tournament_main'> */}
                 <div className='menu_tabs'>
                     <div className='tabs_dash_div'>
-                        <a href='../dashboard' className='dash_tab'><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={gameslist} alt="user"></Image> GAMES LIST</a>
+                        <a href='../dashboard/games-list' className='dash_tab'><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={gameslist} alt="user"></Image> GAMES LIST</a>
                     </div>
                     <div className='tabs_dash_div'>
                         <a href='#' className='dash_tab'><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={mygames} alt="user"></Image> MY GAMES</a>
