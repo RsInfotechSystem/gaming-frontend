@@ -45,10 +45,10 @@ export default function GamesList() {
 
   return (
     <>
-      <UserNavbar />
+     
       <section className='tournament_main'>
 
-        <UserLeftSidebar />
+     
 
         <div className="tournament_list">
           <div style={{ width: "90%", margin: "0px auto" }}>
@@ -279,7 +279,6 @@ export default function GamesList() {
           </div>
         </div>
 
-        <UserRightSidebar />
 
       </section>
 
