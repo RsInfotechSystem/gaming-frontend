@@ -911,7 +911,7 @@ div:where(.col_100p) {
 .table_data {
     display: flex;
     align-items: center;
-    padding: 8px;
+    padding: 5px;
     /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
   border: 1px solid #d80f6ead;
 
@@ -930,7 +930,7 @@ div:where(.col_100p) {
     background: #1e1e1e;
     /* Slightly lighter than main background */
     border-radius: 8px;
-    margin: 5px 0;
+    margin: 2px 0;
     color: #ffffff;
     /* White text */
 }
@@ -941,8 +941,15 @@ div:where(.col_100p) {
     font-size: 16px;
     color: #fff;
 }
+.fontfam_play {
+    font-family: "Play", serif;
+    /* font-weight: 700;
+    font-size: 16px; */
+
+}
 
 
 
 /* table styling  end*/
+
 
