@@ -180,7 +180,7 @@ body {
     transform: rotate(180deg); 
     text-align: center;
     white-space: nowrap;
-    font-size: 45px;
+    font-size: 40px;
     font-weight: bold;
   }
   /* .available_games_heading{
@@ -191,7 +191,8 @@ body {
   .game_list{
    width: 50%;
    padding-left: 11%;
-   padding-top: 120px;
+   padding-top: 10%;
+   /* width: 50%; */
    transform: perspective(50em) rotatey(30deg);
 	/* box-shadow: 0 60px 123px -25px rgba(22, 31, 39, 0.42),
 		0 35px 75px -35px rgba(19, 26, 32, 0.08); */
@@ -203,13 +204,13 @@ body {
   }
   .games_vr_line {
     background-image: linear-gradient(to bottom, #ff1717, #9d04f6);
-    height: 36vh;
+    height: 32vh;
     width: 5px;
 }
   .games_vr_line_right {
     background-image: linear-gradient(to bottom, #ff1717, #9d04f6);
-    margin-right: 20px;
-    height: 60vh;
+    margin-right: 5%;
+    height: 55vh;
     width: 5px;
 }
   .games_section{
@@ -224,7 +225,7 @@ body {
     font-size: 70px;
     font-weight: bold;
     color: #000000;
-    padding-top: 25px;
+    padding-top: 4%;
   }
   #cod_tab{
     font-size: 27px;
@@ -250,12 +251,12 @@ body {
     border-radius: 40px;
 }
 .game_image_container{
-    padding-top: 80px;
-    padding-left: 32px;
+    padding-top: 7%;
+    /* padding-left: 32px; */
     transform: perspective(60em) rotateY(-17deg);
 /* box-shadow: 0 60px 123px -25px rgba(22, 31, 39, 0.42),
     0 35px 75px -35px rgba(19, 26, 32, 0.08); */
- padding-right: 130px;
+ padding-right: 5%;
 }
 .game_image_container .poster_div{
   border-radius: 30px;
@@ -746,36 +747,85 @@ padding-left:5px;
 /* Media Query Start  */
 
 @media only screen and (max-width: 375px) {
-  .nav_tab {
-    display: none;
-} 
+ 
+}
+
+@media only screen and (min-width: 1254px) and (max-width: 1440px) {
+ 
+}
+
+@media only screen and (min-width: 1440px) and (max-width: 1990px) {
+  .skill_play {
+    letter-spacing: 8px;
+    font-size: 80px;
+}
 .carousel_main {
-  height: 35vh;
-  width: 100vw;
-  background: linear-gradient(180deg, #0B0202 0%, rgba(11, 2, 2, 0.87) 35.51%, rgba(11, 2, 2, 0.8) 87.49%, #0B0202 100%),
-  url('/homepage/d1a189d23eb45fa3184a0c7c3f19afa0.jpeg');
-    background-size: cover;
-    background-position: center;
+  height: 55vh;
 }
-.carousel_images img{
-height: 100px;
-padding: 0px;
-width: 150px;
-padding: 0px;
+.nav_tab {
+  margin-right: 17%;
 }
-.remote_set img{
-  width: 60px;
-  height: 50px;
+.main_games_section {
+  height: 60vh;
+}
+.games_vr_line {
+  height: 18vh;
+}
+.games_vr_line_right {
+  height: 32vh;
+}
+}
+@media only screen and (min-width: 1440px) and (max-width: 1990px) {
+  .nav_hr_line {
+    height: 5px;
+    width: 85vw;
+    background-image: linear-gradient(to right, #ff1717, #9d04f6);
+    border-radius: 0 10px 10px 0;
+}
+  .skill_play {
+    letter-spacing: 8px;
+    font-size: 105px;
+    font-weight: 900;
+    color: #e8dbdc;
+    font-family: Orbitron;
+}
+.skill_play_content {
+  font-family: play;
+  font-size: 30px;
+  letter-spacing: 1.5px;
+  color: #e8dbdc;
+}
+.carousel_main {
+  height: 55vh;
+}
+.nav_tab {
+  margin-right: 13%;
+}
+.main_games_section {
+  height: 60vh;
+}
+.games_vr_line {
+  height: 18vh;
+}
+.games_vr_line_right {
+  height: 32vh;
+}
+.carousel_main .play_for_skill {
+  padding: 9% 0 0 9%;
+}
+.gun_set img {
+  width: 360px;
+  height: 400px;
   position: relative;
-  left: 35px;
-  top: 40px;
+  bottom: 80px;
 }
-.gun_set img{
-  width: 120px;
-  height: 140px;
+.remote_set {
   position: relative;
-  top: 150px;
-  left: 100px;
+  bottom: 150px;
+}
+.carousel_images img {
+  width: 70%;
+  height: 450px;
 }
 }
 
