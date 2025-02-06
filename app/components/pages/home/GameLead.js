@@ -14,7 +14,7 @@ export default function GameLead() {
  
          <div className="d-flex game_lead_main">
              <div className="gamer_image">
-              <Image src={leadImage} alt="Lo Angeles" className="d-block" style={{width:"180px",height:"180px"}}/> 
+              <Image src={leadImage} alt="Lo Angeles" className="d-block"/> 
              </div>
              <div className="play_main">
                  <div className="play_with">

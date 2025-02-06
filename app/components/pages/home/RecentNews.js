@@ -14,7 +14,7 @@ export default function CardsCarousel() {
          <p>Recent News</p>
       </div>
       <div className="row card_section">
-        <div className="cards_content col-md-4">
+        <div className="cards_content col-md-4 col-lg-6 col-xl-4">
           <div className="card card_radius">
             <Image src={tournament1} alt="Card 1" className="cards_image d-block" />
             <div className="body_content_btn card-body">
@@ -24,7 +24,7 @@ export default function CardsCarousel() {
             </div>
           </div>
         </div>
-        <div className="cards_content col-md-4">
+        <div className="cards_content col-md-4 col-lg-6 col-xl-4">
           <div className="card card_radius">
             <Image src={tournament2} alt="Card 2" className="cards_image d-block" />
             <div className="body_content_btn card-body">
@@ -34,7 +34,7 @@ export default function CardsCarousel() {
             </div>
           </div>
         </div>
-        <div className="cards_content col-md-4">
+        <div className="cards_content col-md-4 col-lg-6 col-xl-4">
           <div className="card card_radius">
             <Image src={tournament_cod} alt="Card 3" className="cards_image d-block" />
             <div className="body_content_btn card-body">
