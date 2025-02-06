@@ -88,7 +88,7 @@ export default function Navbar() {
             {/* Success Modal */}
             <RegisterSuccessModal
               isOpen={isSuccessOpen}
-              onClose={() => setSuccessOpen(false)} 
+              onClose={() => setSuccessOpen(false)}
               openOtpModal={() => setOtpOpen(true)}
 
             />

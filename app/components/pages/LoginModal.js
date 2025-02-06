@@ -1,7 +1,6 @@
 "use client";
-import React, { useState } from "react";
-import SignUpModal from "./SignUpModal";
-import ForgotPasswordModal from "./ForgotPasswordModal";
+import React from "react";
+import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser, setError } from "@/redux-stores/slices/userSlice";
@@ -15,20 +14,20 @@ export default function LoginModal({ isOpen, onClose, openSignUp, openForgotPass
     const dispatch = useDispatch();
     const router = useRouter();
     const { isLoading } = useSelector((state) => state.loader);
-    const { error, user } = useSelector((state) => state.user);
+    const { error } = useSelector((state) => state.user);
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    // Initialize form handling
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
 
     // Handle Login API Call
-    const handleLogin = async () => {
-        if (!email || !password) {
-            return Swal.fire({ text: "Please enter email and password", icon: "warning" });
-        }
-
+    const handleLogin = async (data) => {
         try {
             dispatch(showLoader()); // Show loader
-            const dataToSend = { email: email.toUpperCase(), password };
+            const dataToSend = { email: data?.email, password: data?.password };
 
             const response = await communication.login(dataToSend);
 
@@ -50,63 +49,57 @@ export default function LoginModal({ isOpen, onClose, openSignUp, openForgotPass
     };
 
     return (
-        <>
-            <div className="modal-overlay" onClick={onClose}>
-                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                    <div className="login_page_name">
-                        <p className="mb-0">LOG IN</p>
-                    </div>
-                    <hr className="modal-hr" />
-                    <div className="p-4">
+        <div className="modal-overlay" onClick={onClose}>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                <div className="login_page_name">
+                    <p className="mb-0">LOG IN</p>
+                </div>
+                <hr className="modal-hr" />
+                <div className="p-4">
+                    {/* Login Form */}
+                    <form onSubmit={handleSubmit(handleLogin)}>
                         <input
                             className="login_input"
                             type="email"
                             placeholder="Email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            {...register("email", { required: "Email is required" })}
                         />
+                        {errors.email && <p className="text-danger">{errors.email.message}</p>}
+
                         <input
                             className="login_input"
                             type="password"
                             placeholder="Password"
                             autoComplete="new-password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            {...register("password", {
+                                required: "Password is required",
+                                minLength: { value: 8, message: "Password must be at least 8 characters" },
+                            })}
                         />
+                        {errors.password && <p className="text-danger">{errors.password.message}</p>}
+
                         <div className="login_main mt-5 mb-4">
-                            <button className="popup_btn" onClick={handleLogin} disabled={isLoading}>
+                            <button className="popup_btn" type="submit" disabled={isLoading}>
                                 {isLoading ? "Logging in..." : "LET’S PLAY"}
                             </button>
                         </div>
-                        {error && <p style={{ color: "red" }}>{error}</p>}
-                        {user && <p>Welcome, {user.name}!</p>}
-                        <div>
-                            <p className="mb-0">
-                                <button
-                                    className="text-link"
-                                    onClick={() => {
-                                        onClose();
-                                        setTimeout(openSignUp, 300);
-                                    }}
-                                >
-                                    Create New Account
-                                </button>
-                            </p>
-                            <p>
-                                <button
-                                    className="text-link"
-                                    onClick={() => {
-                                        onClose();
-                                        setTimeout(openForgotPassword, 300);
-                                    }}
-                                >
-                                    Forgot password?
-                                </button>
-                            </p>
-                        </div>
+                    </form>
+                    {error && <p className="text-danger">{error}</p>}
+
+                    <div>
+                        <p className="mb-0">
+                            <button className="text-link" onClick={() => { onClose(); setTimeout(openSignUp, 300); }}>
+                                Create New Account
+                            </button>
+                        </p>
+                        <p>
+                            <button className="text-link" onClick={() => { onClose(); setTimeout(openForgotPassword, 300); }}>
+                                Forgot password?
+                            </button>
+                        </p>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
