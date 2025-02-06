@@ -2,7 +2,7 @@
 import React from 'react';
 import LeaderBoard from './LeaderBoard';
 
-export default function GameLead() {
+export default function page() {
 
   return (
     <>
