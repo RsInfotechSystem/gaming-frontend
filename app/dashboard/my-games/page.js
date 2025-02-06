@@ -1,13 +1,12 @@
 "use client"
 import React from 'react';
-import GamesList from './GameCoins';
-import GameCoins from './GameCoins';
+import MyGames from './MyGames';
 
 export default function page() {
 
   return (
     <>
-     <GameCoins/>
+     <MyGames/>
     </>
   );
 }

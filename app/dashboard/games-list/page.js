@@ -2,7 +2,7 @@
 import React from 'react';
 import GamesList from './GamesList';
 
-export default function GameLead() {
+export default function page() {
 
   return (
     <>
