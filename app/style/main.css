@@ -775,7 +775,7 @@ padding-left:5px;
   height: 32vh;
 }
 }
-@media only screen and (min-width: 1800px) and (max-width: 1990px) {
+@media only screen and (min-width: 1440px) and (max-width: 1990px) {
   .nav_hr_line {
     height: 5px;
     width: 85vw;
@@ -796,7 +796,7 @@ padding-left:5px;
   color: #e8dbdc;
 }
 .carousel_main {
-  height: 55vh;
+  height: 100vh;
 }
 .nav_tab {
   margin-right: 13%;
