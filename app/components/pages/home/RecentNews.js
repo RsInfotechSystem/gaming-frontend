@@ -13,7 +13,7 @@ export default function CardsCarousel() {
       <div className="news_head">
          <p>Recent News</p>
       </div>
-      <div className="row">
+      <div className="row card_section">
         <div className="cards_content col-md-4">
           <div className="card card_radius">
             <Image src={tournament1} alt="Card 1" className="cards_image d-block" />
