@@ -215,7 +215,7 @@ body {
 
 .tournament_card_img {
   width: 100%;
-  height: 8rem;
+  min-height: 8rem;
   object-fit: cover; 
   position: relative;
   z-index: 1;
@@ -961,5 +961,63 @@ div:where(.col_100p) {
 
 
 /* table styling  end*/
+
+/* my games tab css  start*/
+.games_desc{
+    color: #fff;
+    margin-bottom: 7px;
+  }
+  .games_info {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  .hr_line_games {
+    padding: 1px;
+    background-color: red;
+    border: none;
+    margin: 4px 0px;
+  }
+  
+/* my games tab css  end*/
+/* Profile tab css  start*/
+.profile-card {
+    width: 350px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    text-align: center;
+  }
+  
+  .profile-img {
+    border: 4px solid white;
+    object-fit: cover;
+  }
+  
+  .rank-text {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  
+  .team-text {
+    font-size: 16px;
+    font-style: italic;
+    color: #ddd;
+  }
+  
+  .btn-primary {
+    background-color: #ffcc00;
+    border: none;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .btn-primary:hover {
+    background-color: #e6b800;
+  }
+  
+/* Profile tab css  end*/
 
 
