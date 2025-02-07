@@ -34,7 +34,7 @@ export default function Winnings() {
                 <div style={{ width: "90%", margin: "0px auto" }}>
                     <div className="mt-1">
                         <p className="tournament_text">
-                        Winnings{" "}
+                         WINNINGS{" "}
                             <Image className="me-2" width={25} height={20} src={network} alt="network" />
                         </p>
                     </div>
