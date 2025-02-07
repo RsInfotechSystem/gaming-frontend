@@ -73,9 +73,11 @@ export default function Footer() {
           </div>
 
           <div className='text-center company_design'>
-            <p style={{ color: "#FF8183" }}>
-              Designed & Developed by RS Infotech System Pvt. Ltd.
-            </p>
+            <a href='https://rsinfotechsys.com/' target='_blank'>
+               <p>
+                 Designed & Developed by Right Serve Infotech Systems Pvt. Ltd.
+               </p>
+            </a>
           </div>
         </div>
       </section>

@@ -28,7 +28,7 @@ export default function Navbar() {
 
   return (
     <>
-      <section className='nav'>
+      <section className='nav row'>
         <div className='nav_main'>
           <div className='logo'>
             <p>Logo</p>
