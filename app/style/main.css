@@ -16,7 +16,7 @@
 }
 
 body {
-    background-color: #fff;
+    /* background-color: #fff; */
     scroll-behavior: smooth !important;
     position: relative;
 }
@@ -119,6 +119,11 @@ body {
 .carousel-inner image{
   margin-top: 150px;
 }
+/* .hero_image .remote_set , .gun_set{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
 
 .skill_play{
   letter-spacing: 8px;
@@ -291,15 +296,15 @@ body {
     width: 100vw;
     height: 90vh;
     background-color: #000000;
-      background-size: cover;
-      background-position: center;
-      position: relative;
+    position: relative;
 }
 .main_game_lead_section{
   background: radial-gradient(54.35% 54.35% at 50% 45.65%, rgba(0, 0, 0, 0.42) 0%, #000000 100%),
         url('../../public/homepage/gun.png');
     background-repeat: no-repeat;
     background-color: #000000;
+    background-size: cover;
+    background-position: center;
 }
 .lead_vr_line{
   background-color: #FB161E;
@@ -317,14 +322,14 @@ body {
  color: transparent;
  padding:0px 0px 0px 100px;
 }
-.gamer_image{
+/* .gamer_image{
   text-align: right;
   height: 180px;
   width: 180px;
-}
+} */
 .gamer_image img{
-  width: 100px;
-    height: 100px;
+  width: 180px;
+    height: 180px;
     border-radius: 50%;
     box-shadow: 0 0 0 1px red;
 }
@@ -395,7 +400,7 @@ body {
   /* box-shadow: 0 0 0 3px red; */
   
 }
-.news_section .card_radius{
+.card_radius{
   width: 320px;
   height: 484px;
   border-radius: 15px;
@@ -638,6 +643,10 @@ color: #FFFFFF;
   letter-spacing: 1px;
   padding-top: 25px;
 }
+.company_design a{
+  text-decoration: none;
+  color: #FF8183;
+}
 /* start css for loginModal by abhishek ***********************/
 .modal-overlay {
   position: fixed;
@@ -748,248 +757,119 @@ padding-left:5px;
 
 /* Media Query Start  */
 
-@media only screen and (max-width: 375px) {
- 
+/* 4K Screens: 1440px and above */
+@media (min-width: 1440px) {
+  
 }
 
-@media only screen and (min-width: 1254px) and (max-width: 1440px) {
- 
+/* Large screens: 1024px - 1439px */
+@media (min-width: 1024px) {
+  .skill_play{
+    letter-spacing: 8px;
+    font-size: 70px;
+  }
 }
 
-@media only screen and (min-width: 1440px) and (max-width: 1990px) {
+/* Tablets and small desktops: 768px - 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  
+}
+
+/* Small screens: 320px - 767px */
+@media (max-width: 767px) {
+  .nav_tab {
+    display: none;
+}
+.login_btn{
+  font-size: 10px;
+  width: 20px;
+}
+.login_main .login_btn {
+  width: 100px;
+  height: 30px;
+}
+.nav_hr_line {
+  height: 4px;
+  width: 100vw;
+}
+.carousel-control-prev,
+  .carousel-control-next {
+    display: none;
+  }
   .skill_play {
-    letter-spacing: 8px;
-    font-size: 80px;
-}
-.carousel_main {
-  height: 55vh;
-}
-.nav_tab {
-  margin-right: 17%;
-}
-.main_games_section {
-  height: 60vh;
-}
-.games_vr_line {
-  height: 18vh;
-}
-.games_vr_line_right {
-  height: 32vh;
-}
-}
-@media only screen and (min-width: 1440px) and (max-width: 1990px) {
-  .nav_hr_line {
-    height: 5px;
-    width: 85vw;
-    background-image: linear-gradient(to right, #ff1717, #9d04f6);
-    border-radius: 0 10px 10px 0;
-}
-  .skill_play {
-    letter-spacing: 8px;
-    font-size: 105px;
-    font-weight: 900;
-    color: #e8dbdc;
-    font-family: Orbitron;
+    font-size: 25px;
+    letter-spacing: 2;
+    margin-bottom: 10px;
 }
 .skill_play_content {
-  font-family: play;
-  font-size: 30px;
-  letter-spacing: 1.5px;
-  color: #e8dbdc;
-}
-.carousel_main {
-  height: 100vh;
-}
-.nav_tab {
-  margin-right: 13%;
-}
-.main_games_section {
-  height: 100vh;
-}
-.games_vr_line {
-  height: 25vh;
-}
-.games_vr_line_right {
-  height: 42vh;
+  font-size: 12px;
+  letter-spacing: 0;
+  width: 70%;
+  line-height: 15px;
 }
 .carousel_main .play_for_skill {
-  padding: 9% 0 0 9%;
-  margin-top: 13%;
-}
-.gun_set img {
-  width: 360px;
-  height: 400px;
-  position: relative;
-  bottom: 80px;
-}
-.remote_set {
-  position: relative;
-  bottom: 150px;
+  padding: 190px 0 0 35px;
 }
 .carousel_images img {
-  width: 70%;
-  height: 450px;
-  margin-top: 12%;
+  width: 300px;
+  height: 310px;
+  padding-bottom: 0px;
 }
-.available_games_heading p {
-  font-size: 58px;
+.carousel-item {
+  padding: 152px 0px;
 }
-#bgmi_tab {
-  font-size: 100px;
-  margin-bottom: 6%;
+.gun_set img {
+  width: 100px;
+  height: 140px;
+  position: relative;
+  top: 100px;
+  left: 30px;
 }
-#cod_tab {
-  font-size: 40px;
-  margin-top: 6%;
+.remote_set img {
+  width: 60px;
+  height: 50px;
+  position: relative;
+  top: 40px;
 }
-#freefire_tab {
-  font-size: 40px;
-  margin-top: 10%;
+.game_image_container .poster_div {
+  width: 180px;
+  height: 230px;
 }
 .game_image_container {
-  padding-top: 8%;
-  padding-left: 7%;
+  padding-right: 0;
 }
-
-
-.game_lead_head p {
-  font-size: 35px;
-  padding: 4% 0 0 10%;
-  margin-bottom: 5%;
+.card .poster_image {
+  padding: 10px 5px 10px 4px;
+  border-radius: 40px;
 }
-.play_with_content p {
- margin-left: 30%;
- font-size: 31px;
- line-height: 1.1;
+.game_list {
+  padding-left: 0;
 }
-.lead_vr_line {
- height: 195px;
+.main_games_section {
+  padding-top: 23%;
 }
-.play_with p {
-  color: #e8dbdc;
-  font-size: 105px;
-  margin-bottom: 3%;
+.available_games_heading p {
+  font-size: 25px;
+  transform: rotate(0deg);
+  writing-mode: horizontal-tb;
 }
-.gamer_image img {
-  width: 250px;
-  height: 250px;
-  position: relative;
-  left: 20%;
-}
-.news_head p {
-  font-weight: 700;
-  font-size: 35px;
-  padding: 6% 0% 5%;
-}
-.cards_content{
-  width: 30%;
-}
-.news_section .card_radius {
-  width: 100%;
-  height: 650px;
-}
-.cards_image {
-  width: 100%;
-  height: 67%;
-  margin: auto;
-}
-.card-name {
-  font-size: 40px;
-}
-.card-content {
-  font-size: 21px;
-  padding-bottom: 5%;
-}
-.read_btn {
-  font-size: 20px;
-  padding: 10px 25px;
-  width: 40%;
-  margin-left: 10%;
-  line-height: 0.5;
-}
-.main_right_hr_line .right_bottom_line {
-  width: 85vw;
-}
-.lets_play p {
-  font-size: 105px;
-  font-weight: 900;
-  font-family: orbitron;
-  position: relative;
-  left: 6%;
-  padding-top: 20px;
-}
-.left_side_footer p {
+#bgmi_tab {
   font-size: 23px;
-  line-height: 1;
 }
-.right_side_footer p {
-  margin: 0px;
-  font-size: 23px;
-  line-height: 1;
-  width: 540px;
-  margin-bottom: 5%;
+#cod_tab {
+  font-size: 9px;
 }
-.input_btn {
-  width: 50%;
-  margin-top: 1%;
+#freefire_tab {
+  font-size: 9px;
 }
-.left_side_footer {
-  width: 60%;
+.games_vr_line {
+  width: 2px;
+  height: 20vh;
 }
-.input_btn .lets_go_btn {
-  font-size: 18px;
-  height: 55px;
+.games_vr_line_right {
+  background-image: linear-gradient(#ff1717, #9d04f6);
+  margin-right: 5%;
+  height: 33vh;
+  width: 2px;
 }
-.footer_content{
-  padding: 8% -1% 0%;
-  margin-top: 5%;
 }
-.input_btn .email_box {
-  height: 50px;
-}
-.news_section .card_section{
-  width: 100%;
-  margin: auto;
-}
-.lets_play .xyz_gaming {
-  position: relative;
-  bottom: 55px;
-  left: 15%;
-  font-size: 26;
-}
-.frame_logo img {
-  height: 100px;
-  position: absolute;
-  right: 3%;
-}
-.lets_play{
-  margin-top: 7%;
-}
-.register_btn button {
-  width: 15%;
-  height: 60px;
-  font-size: 20px;
-  margin-top: 2%;
-  margin-bottom: 2%;
-}
-.social_media_icon a img{
-  width: 25px;
-  height: 25px;
-}
-.terms_condtion span {
-  font-size: 22px;
-  margin-top: 3%;
-}
-.company_design{
-  font-size: 20px;
-  width: 100%;
-  margin-top: 3%;
-}
-.card_section{
-  width: 90%;
-}
-
-}
-
-
-
