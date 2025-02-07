@@ -162,7 +162,7 @@ export default function MyGames() {
           </p>
           <div className="row">
             {[1, 2, 3, 4].map((item, index) => (
-              <div key={index} className="col-md-6 col-lg-6 col-xl-4 col-xxl-4 mb-3">
+              <div key={index} className="col-md-6 col-lg-6 col-xl-6 col-xxl-6 mb-3">
                 <div className="card tournament_card">
                   <Image
                     src="/dashboard/tournament_bgmi.png"

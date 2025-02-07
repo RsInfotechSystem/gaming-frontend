@@ -45,6 +45,7 @@ body {
     position: fixed;  
     top: 0;          
     left: 0;
+    letter-spacing: 2px;
 }
 .dashboard_nav::after {
   content: '';
