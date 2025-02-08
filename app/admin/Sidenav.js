@@ -38,7 +38,7 @@ export default function Sidenav() {
                     <div className={currentUrl.includes("wining") ? "dash_tab" : "tab_inactive"}><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={user_img} alt="user"></Image> PROFILE</div>
                 </div> */}
                 <div className='tabs_dash_div' onClick={() => router.push("/admin/buy-coins")}>
-                    <div className={currentUrl.includes("buy-coins") ? "dash_tab" : "tab_inactive"}><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={coins} alt="user"></Image> Buy Coins</div>
+                    <div className={currentUrl.includes("buy-coins") ? "dash_tab" : "tab_inactive"}><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={coins} alt="user"></Image> Coins Management</div>
                 </div>
 
                 <div className='tabs_dash_div' onClick={() => router.push("/admin/player")}>

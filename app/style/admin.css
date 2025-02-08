@@ -935,3 +935,24 @@ div:where(.col_100p) {
     align-items: center;
     column-gap: 15px;
 }
+/* ***********Coins Tab css start************** */
+.coin_div{
+    width: 22%;
+    background-color: #242424;
+    height: 210px;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    color: #fff;
+    padding: 20px 0px;
+    position: relative;
+    margin-bottom: 20px;
+  }
+.delete_btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    /* color: red; */
+  }
+/* ***********Coins Tab css END************** */

@@ -5,6 +5,8 @@ import network from '../../../public/dashboard/network.png';
 import bgmi_game from '../../../public/dashboard/bgmi_game.jpeg';
 import cod_game from '../../../public/dashboard/cod_game.jpeg';
 import freefire_game from '../../../public/dashboard/freefire_game_rd.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 
 const GameListAdmin = () => {
@@ -12,7 +14,7 @@ const GameListAdmin = () => {
 
     return (
         // <div  style={{minHeight:"100vh"}}>
-        <div style={{ width: "90%", margin: "0px auto"}}>
+        <div style={{ width: "90%", margin: "0px auto" }}>
             <div className="mt-1">
                 <p className="tournament_text">
                     All GAMES{" "}
@@ -35,6 +37,7 @@ const GameListAdmin = () => {
                 <div className='d-flex justify-content-around mb-3'>
                     <div className="games_bg">
                         <div className="games_bg_inner">
+                            <FontAwesomeIcon icon={faTrashCan} className="edit_icon delete_btn" />
                             <div>
                                 <Image
                                     className="me-2"
@@ -54,7 +57,7 @@ const GameListAdmin = () => {
 
                     <div className='games_bg'>
                         <div className="games_bg_inner">
-
+                            <FontAwesomeIcon icon={faTrashCan} className="edit_icon delete_btn" />
                             <div>
                                 <Image className='me-2' style={{ borderRadius: "15px" }} width={76} height={76} src={freefire_game} alt="user"></Image>
                             </div>
@@ -68,6 +71,7 @@ const GameListAdmin = () => {
                 <div className='d-flex justify-content-around mb-3'>
                     <div className='games_bg'>
                         <div className="games_bg_inner">
+                            <FontAwesomeIcon icon={faTrashCan} className="edit_icon delete_btn" />
                             <div>
                                 <Image className='me-2' style={{ borderRadius: "15px" }} width={76} height={76} src={cod_game} alt="user"></Image>
                             </div>
@@ -79,6 +83,7 @@ const GameListAdmin = () => {
                     </div>
                     <div className='games_bg'>
                         <div className="games_bg_inner">
+                            <FontAwesomeIcon icon={faTrashCan} className="edit_icon delete_btn" />
                             <div>
                                 <Image className='me-2' style={{ borderRadius: "15px" }} width={76} height={76} src={freefire_game} alt="user"></Image>
                             </div>
@@ -89,8 +94,6 @@ const GameListAdmin = () => {
                         </div>
                     </div>
                 </div>
-             
-                
             </div>
         </div>
         // </div>
