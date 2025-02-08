@@ -86,7 +86,7 @@ const RoleList = () => {
                             <div className="table_scroll">
                                 <div className="table_section">
                                     <div className="table_header fontfam_play">
-                                        <div className="col_20p"><h5>Rank</h5></div>
+                                        <div className="col_20p"><h5>Sr No</h5></div>
                                         <div className="col_100p"><h5>Team Name</h5></div>
                                         <div className="col_100p"><h5>Points</h5></div>
                                         <div className="col_100p"><h5>Points</h5></div>

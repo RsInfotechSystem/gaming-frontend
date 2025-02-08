@@ -71,5 +71,43 @@ export const adminCommunication = {
             Swal.fire({ text: error.message, icon: "warning" });
         }
     },
+    getUserById: async function (userId) {
+        try {
+            return axios.post(`${getServerUrl()}/user/get-user-by-id`, { userId }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    //----------------Role Manegement------------------------------
+    getActiveRoles: async function () {
+        try {
+            return axios.get(`${getServerUrl()}/role/get-active-role`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
 
+    //----------------------------Player Manegement------------------------
+    getPlayerList: async function (page = 1, searchString) {
+        try {
+            return axios.post(`${getServerUrl()}/player/get-player-list`, { page, searchString, }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
 }
