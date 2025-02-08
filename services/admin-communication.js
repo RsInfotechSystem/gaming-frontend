@@ -110,4 +110,55 @@ export const adminCommunication = {
             Swal.fire({ text: error.message, icon: "warning" });
         }
     },
+
+    //--------------------------Coins Management---------------------------
+    createCoins: async function (dataToSend) {
+        try {
+            return axios.post(`${getServerUrl()}/coin/create-coin`, dataToSend, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    updateCoins: async function (dataToSend) {
+        try {
+            return axios.post(`${getServerUrl()}/coin/update-coin`, dataToSend, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    getCoinById: async function (coinId) {
+        try {
+            return axios.post(`${getServerUrl()}/coin/get-coin-by-id`, { coinId }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    getCoinsList: async function () {
+        try {
+            return axios.post(`${getServerUrl()}/coin/get-coin-list`, {}, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+
 }
