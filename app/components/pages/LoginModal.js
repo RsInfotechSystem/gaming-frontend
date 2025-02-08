@@ -34,7 +34,7 @@ export default function LoginModal({ isOpen, onClose, openSignUp, openForgotPass
             if (response?.data?.status === "SUCCESS") {
                 dispatch(setUser(response?.data?.userDetails));
                 Swal.fire({ text: response?.data?.message, icon: "success", timer: 2000 });
-                router.push("/dashboard/manage-request");
+                router.push("/dashboard/games-list");
                 onClose(); // Close modal after successful login
             } else {
                 dispatch(setError(response?.data?.message || "Login failed"));
