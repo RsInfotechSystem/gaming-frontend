@@ -1,19 +1,18 @@
 "use client";
-// import Image from "next/image";
-// import dance from "../../../../public/homepage/dance.jpg";
-// import pubg_1 from "../../../../public/homepage/pubg_1.jpg";
 import React from "react";
 
 export default function GamesAvailable() {
   return (
     <section className="games_section">
       <div className="d-flex main_games_section">
-        <div className="game_list d-flex">
+        <div className="game_list d-flex justify-content-center">
           <div className="available_games_heading">
             <p className="gradient-text">Games Available</p>
+            <span className="games_vr_line"></span>
+            <span className="games_vr_line_right"></span>
           </div>
 
-          <div className="games_vr_line"></div>
+          <span className="games_vr_line"></span>
           <span className="games_vr_line_right"></span>
 
           <div className="list_of_games">
@@ -23,9 +22,7 @@ export default function GamesAvailable() {
 
             <p id="freefire_tab">Free Fire</p>
           </div>
-          {/* <span>
-             <img src="/homepage/leftshadow.png" alt="Bottom Image" className="bottom_image" style={{position:"relative",top:"300px",right:"200px"}}/>
-          </span> */}
+      
         </div>
 
         {/* Second div with image */}
@@ -36,14 +33,11 @@ export default function GamesAvailable() {
                <h5 className="game_name">BGMI</h5>
                <p className="game_title">Battle Ground Mobile India
                 <span style={{paddingLeft:"65px",color:"red",fontWeight:"bold"}}>75% User Playing</span></p>
-               {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
              </div>
            </div>
          </div>
       </div>
-      {/* <div className="bottom_image_container">
-        <img src="/homepage/Rectangle.png" alt="Bottom Image" className="bottom_image" />
-      </div> */}
+      
     </section>
   );
 }
