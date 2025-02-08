@@ -9,7 +9,23 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+.carousel-control-next, .carousel-control-prev {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  background: none;
+  border: 0;
+  opacity: .5;
+  transition: opacity .15s;
+}
 
 ::-webkit-scrollbar {
     display: none;
@@ -104,77 +120,86 @@ body {
 
 /* hero section css start */
 .carousel_main {
-    height: 100vh;
-    width: 100vw;
-  background: linear-gradient(180deg, #0B0202 0%, rgba(11, 2, 2, 0.87) 35.51%, rgba(11, 2, 2, 0.8) 87.49%, #0B0202 100%),
-  url('/homepage/d1a189d23eb45fa3184a0c7c3f19afa0.jpeg');
-    background-size: cover;
-    background-position: center;
-    /* padding: 40px 40px; */
-    
+  height: 100vh;
+  width: 100vw;
+background: linear-gradient(180deg, #0B0202 0%, rgba(11, 2, 2, 0.87) 35.51%, rgba(11, 2, 2, 0.8) 87.49%, #0B0202 100%),
+url('/homepage/d1a189d23eb45fa3184a0c7c3f19afa0.jpeg');
+  background-size: cover;
+  background-position: center;
+  /* padding: 40px 40px; */
+  
+}
+.hero_center{
+  padding: 15% 8%;
 }
 .carousel_main .play_for_skill {
-  padding: 190px 0px 0px 120px;
+padding: 190px 0px 0px 120px;
 }
 .carousel-inner image{
-  margin-top: 150px;
+margin-top: 150px;
 }
 /* .hero_image .remote_set , .gun_set{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+display: flex;
+justify-content: space-between;
+align-items: center;
 } */
 
 .skill_play{
-  letter-spacing: 8px;
-  font-size: 70px;
-  font-weight: 900;
-  font-family: Orbitron;
-  font-weight: bold;
-  color: #E8DBDC;
+letter-spacing: 8px;
+font-size: 70px;
+font-weight: 900;
+font-family: Orbitron;
+font-weight: bold;
+color: #E8DBDC;
+margin-bottom: 8px;
 }
 .skill_play_content{
-  font-family: play;
-  font-size: 20px;
-  letter-spacing: 1.5px;
-  color: #E8DBDC;
+font-family: play;
+font-size: 20px;
+letter-spacing: 1.5px;
+color: #E8DBDC;
 }
-.carousel-item{
-  padding: 152px 85px ;
+.games_set img{
+ height: 100%;
+ width: 100%;
+ margin: auto;
 }
-.gun_set{
-  position: relative;
-  bottom: 240px;
-  right: 40px;
-  width: 30%;
-}
+/* .gun_set{
+position: relative;
+bottom: 240px;
+right: 40px;
+width: 30%;
+} */
 .gun_set img{
-  width: 250px;
-  height: 290px;
+width: 250px;
+height: 290px;
+position: relative;
+bottom: 3rem;
 }
 .remote_set{
-  position: relative;
-  bottom: 89px;
+position: relative;
+bottom: 0.5rem;
 }
 .remote_set img{
-  width: 120px;
-  height: 110px;
+width: 120px;
+height: 110px;
 }
 .next_btn_height{
-  height: 200px;
+height: 200px;
 }
 .carousel-control-next-icon{
-  height: 200px;
+height: 200px;
 }
 .carousel_images img{
-  /* position: absolute; */
-  /* bottom: 500px;
-  top: 500px; */
-  width: 800px;
-  height: 450px;
-  margin: auto;
-  padding: 0px 0px 110px 0px;
+/* position: absolute; */
+/* bottom: 500px;
+top: 500px; */
+width: 800px;
+height: 350px;
+margin: auto;
+/* padding: 0px 0px 110px 0px; */
 }
+.carousel-item{}
 
 /* hero section css End */
 
@@ -188,19 +213,12 @@ body {
     font-size: 40px;
     font-weight: bold;
   }
-  /* .available_games_heading{
-    transform: perspective(50em) rotatey(30deg);
-	box-shadow: 0 60px 123px -25px rgba(22, 31, 39, 0.42),
-		0 35px 75px -35px rgba(19, 26, 32, 0.08);
-  } */
   .game_list{
    width: 50%;
    padding-left: 11%;
    padding-top: 10%;
    /* width: 50%; */
    transform: perspective(50em) rotatey(30deg);
-	/* box-shadow: 0 60px 123px -25px rgba(22, 31, 39, 0.42),
-		0 35px 75px -35px rgba(19, 26, 32, 0.08); */
   }
   .gradient-text {
     background-image: linear-gradient(to top, #ff1717, #9d04f6);
@@ -259,8 +277,6 @@ body {
     padding-top: 7%;
     /* padding-left: 32px; */
     transform: perspective(60em) rotateY(-17deg);
-/* box-shadow: 0 60px 123px -25px rgba(22, 31, 39, 0.42),
-    0 35px 75px -35px rgba(19, 26, 32, 0.08); */
  padding-right: 5%;
 }
 .game_image_container .poster_div{
@@ -271,11 +287,6 @@ body {
   width: 500px;
   height: 390px;
 }
-.card
-/* .card-title{
-    font-size: 30px;
-    padding-left: 20px;
-} */
 .game_name {
   font-size: 30px;
   padding-left: 50px;
@@ -369,7 +380,6 @@ body {
   margin:0px 105px 0px 0px;
 }
 
-
 /* Game section css End */
 
 /* News section css Start */
@@ -436,8 +446,10 @@ body {
   background-color: rgb(255,86,86);
   border: none;
   color: #FFFFFF;
-  position: relative;
-  left: 80px;
+  /* position: relative;
+  left: 80px; */
+  display: block;
+  margin: 0 auto;
 }
 
 /* News section css End */
@@ -451,6 +463,9 @@ body {
   overflow: hidden;
   position: relative;
   overflow: hidden;
+}
+.btn-primary{
+  color: #FFFFFF;
 }
 .top_footer {
   font-family: play;
@@ -759,24 +774,196 @@ padding-left:5px;
 
 /* 4K Screens: 1440px and above */
 @media (min-width: 1440px) {
-  
+  .skill_play {
+    font-size: 80px;
+    font-weight: 900;
+    color: #e8dbdc;
+}
+.skill_play_content {
+  font-family: play;
+  font-size: 23px;
+  letter-spacing: 1.5px;
+  color: #e8dbdc;
+}
+/* .carousel-item img{
+  width: 80%;
+  height: 20%;
+} */
+ .carousel_images{
+  width: 100px;
+  margin-top: 20px;
+  padding-top: 20px;
+ }
+ .carousel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Adjust spacing */
+}
+
+.carousel-item{
+padding-top: 12%;
+}
+.remote_set {
+  position: relative;
+  bottom: 0;
+}
+.gun_set img {
+  width: 250px;
+  height: 290px;
+  position: relative;
+  bottom: 50px;
+}
 }
 
 /* Large screens: 1024px - 1439px */
 @media (min-width: 1024px) {
-  .skill_play{
-    letter-spacing: 8px;
-    font-size: 70px;
-  }
+  
 }
 
 /* Tablets and small desktops: 768px - 1023px */
 @media (min-width: 768px) and (max-width: 1023px) {
-  
+  .carousel_main .play_for_skill {
+    padding: 20% 0 0 10%;
+}
+.skill_play {
+  letter-spacing: 5px;
+  font-size: 57px;
+  font-weight: 900;
+  color: #e8dbdc;
+}
+.skill_play_content {
+  font-family: play;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  color: #e8dbdc;
+}
+.gun_set img {
+  width: 210px;
+  height: 250px;
+  position: relative;
+  top: 2rem;
+}
+.remote_set img {
+  width: 90px;
+  height: 80px;
+}
+.carousel_images img {
+  width: 45rem;
+  height: 26rem;
+  margin: auto;
+  padding: 0 0 110px;
+}
+.available_games_heading p {
+  font-size: 44px;
+}
+.games_vr_line {
+  height: 35vh;
+}
+.games_vr_line_right {
+  height: 58vh;
+}
+.game_list {
+  padding-left: 8%;
+}
+#bgmi_tab {
+  padding-top: 11%;
+}
+.game_image_container {
+  padding-right: 0;
+}
+.game_image_container .poster_div {
+  width: 27rem;
+  height: 24rem;
+}
+.card .game_name {
+  font-size: 30px;
+  padding-left: 9%;
+}
+.game_title {
+  font-size: 14px;
+  padding-left: 9%;
+}
+.games_section {
+  padding-bottom: 2rem;
+}
+.play_with p {
+  color: #e8dbdc;
+  font-size: 57px;
+  font-weight: 800;
+  letter-spacing: 7px;
+  padding-right: 5%;
+}
+.right_play_content .lead_vr_line {
+  margin: 0 3.5rem 0 0;
+}
+.play_with_content p {
+  color: #fff;
+  font-size: 18px;
+}
+.news_section {
+  padding: 0 3rem;
+}
+.cards_content{
+ width: 33%;
+}
+.cards_image {
+  width: 100%;
+}
+.news_section .card {
+  height: 28rem;
+}
+.game_lead_main {
+  padding-top: 7rem;
+}
+.card-name {
+  font-size: 22px;
+}
+.card-content {
+  font-size: 13px;
+  line-height: 15px;
+}
+.read_btn {
+  font-size: 11px;
+  width: 90px;
+  padding: 3px 2px;
+  position: relative;
+  bottom: 17px;
+}
+.lets_play p {
+  font-size: 57px;
+  font-weight: 900;
+}
+.input_btn {
+  width: 22rem;
+}
+.input_btn .lets_go_btn {
+  width: 88px;
+  height: 40px;
+  font-size: 13px;
+}
+.input_btn .email_box {
+  height: 36px;
+  font-size: 20px;
+}
+.left_side_footer p {
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 15px;
+}
+.right_side_footer p {
+ font-size: 12px;
+ margin: 0;
+ width: 290px;
+ line-height: 15px;
+}
+.lets_play .xyz_gaming {
+  font-size: 12px;
+}
 }
 
 /* Small screens: 320px - 767px */
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
   .nav_tab {
     display: none;
 }
@@ -872,4 +1059,4 @@ padding-left:5px;
   height: 33vh;
   width: 2px;
 }
-}
+} */
