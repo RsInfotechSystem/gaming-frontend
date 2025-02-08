@@ -5,16 +5,14 @@ import tournament1 from "../../../../public/homepage/tournament1.jpg";
 import tournament2 from "../../../../public/homepage/tournament2.jpg";
 import tournament_cod from "../../../../public/homepage/tournament_cod.jpg";
 
-
 export default function CardsCarousel() {
   return (
-    <>
     <section className="news_section">
       <div className="news_head">
-         <p>Recent News</p>
+        <p>Recent News</p>
       </div>
-      <div className="row card_section">
-        <div className="cards_content col-md-4 col-lg-6 col-xl-4">
+      <div className="row card_section flex-wrap justify-content-center">
+        <div className="cards_content col-md-3 col-xl-4 d-flex justify-content-center">
           <div className="card card_radius">
             <Image src={tournament1} alt="Card 1" className="cards_image d-block" />
             <div className="body_content_btn card-body">
@@ -24,7 +22,7 @@ export default function CardsCarousel() {
             </div>
           </div>
         </div>
-        <div className="cards_content col-md-4 col-lg-6 col-xl-4">
+        <div className="cards_content col-md-3 col-xl-4 d-flex justify-content-center">
           <div className="card card_radius">
             <Image src={tournament2} alt="Card 2" className="cards_image d-block" />
             <div className="body_content_btn card-body">
@@ -34,7 +32,7 @@ export default function CardsCarousel() {
             </div>
           </div>
         </div>
-        <div className="cards_content col-md-4 col-lg-6 col-xl-4">
+        <div className="cards_content col-md-3 col-xl-4 d-flex justify-content-center">
           <div className="card card_radius">
             <Image src={tournament_cod} alt="Card 3" className="cards_image d-block" />
             <div className="body_content_btn card-body">
@@ -45,11 +43,6 @@ export default function CardsCarousel() {
           </div>
         </div>
       </div>
-      {/* <div className='nav_hr_line_right'>
-
-      </div> */}
     </section>
-    
-    </>
   );
 }

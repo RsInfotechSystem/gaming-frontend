@@ -5,7 +5,6 @@ import freefire from "../../../../public/homepage/freefire.jpg";
 import Group from '../../../../public/homepage/Group.png';
 import cod from '../../../../public/homepage/cod.jpg';
 import Maskgroup from '../../../../public/homepage/Maskgroup.png';
-
 import Image from 'next/image';
 
 export default function HeroSection() {
@@ -29,7 +28,7 @@ export default function HeroSection() {
                The electric blue color reminds me of the police.
                Maybe if you<br></br>played as a Police man in the Ruiner world.
                 </p>
-           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+           <div className='hero_image' style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <p className='remote_set'>
                   <Image src={Group} alt="Lo Angeles" className="d-block"/>
               </p>
