@@ -11,6 +11,8 @@ import CreateCoins from './CreateCoins';
 import { useRouter } from 'next/navigation';
 import { adminCommunication } from '@/services/admin-communication';
 import Loader from '@/app/common-component/Loader';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 
 const BuyCoinsAdmin = () => {
@@ -71,6 +73,7 @@ const BuyCoinsAdmin = () => {
               {coinsArray?.map((ele, index) => {
                 return (
                   <div className='coin_div' key={index}>
+                       <FontAwesomeIcon icon={faTrashCan} className="edit_icon delete_btn" />
                     <div className="text-center">
                       <Image src={coins} width={60} height={60} alt="coins"></Image>
                     </div>
