@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getCookie } from "cookies-next";
+import { getCookies } from "cookies-next";
 import Swal from "sweetalert2";
 
 const nodeEnvironment = process.env.NEXT_PUBLIC_NODE_ENV;
@@ -31,8 +31,33 @@ export const communication = {
                 },
             });
         } catch (error) {
-            Swal.fire({ text: error.message, icon: "warning" });
+            Swal.fire({ text: error?.message, icon: "warning" });
         }
     },
 
+    createPlayer: async function (dataToSend) {
+        try {
+            return axios.post(`${getServerUrl()}/player/create-player`, dataToSend, {
+                headers: {
+                    "Content-Type": "application/json",
+                    // "Authorization": `Bearer ${getCookies("GAMING")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error?.message, icon: "warning" });
+        }
+    },
+    forgetPassword: async function (dataToSend) {
+        try {
+            console.log("dataToSend : ", dataToSend)
+            return axios.post(`${getServerUrl()}/player/forget-password`, dataToSend, {
+                headers: {
+                    "Content-Type": "application/json",
+                    // "Authorization": `Bearer ${getCookies("GAMING")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error?.message, icon: "warning" });
+        }
+    },
 }

@@ -12,26 +12,26 @@ export default function UserLeftSidebar() {
     return (
         <>
             {/* <section className='tournament_main'> */}
-                <div className='menu_tabs'>
-                    <div className='tabs_dash_div'>
-                        <Link href='/dashboard/games-list' className='dash_tab'><Image width={25} height={25} src={gameslist} alt="user"></Image> GAMES LIST</Link>
-                    </div>
-                    <div className='tabs_dash_div'>
-                        <Link href='/dashboard/my-games' className='dash_tab'><Image width={25} height={25} src={mygames} alt="user"></Image> MY GAMES</Link>
-                    </div>
-                    <div className='tabs_dash_div'>
-                        <Link href='/dashboard/winnings' className='dash_tab'><Image width={25} height={25} src={winnings} alt="user"></Image> WINNINGS</Link>
-                    </div>
-                    {/* <div className='tabs_dash_div'>
+            <div className='menu_tabs'>
+                <div className='tabs_dash_div'>
+                    <Link href='/dashboard/games-list' className='dash_tab'><Image width={25} height={25} src={gameslist} alt="user"></Image> GAMES LIST</Link>
+                </div>
+                <div className='tabs_dash_div'>
+                    <Link href='/dashboard/my-games' className='dash_tab'><Image width={25} height={25} src={mygames} alt="user"></Image> MY GAMES</Link>
+                </div>
+                <div className='tabs_dash_div'>
+                    <Link href='/dashboard/winnings' className='dash_tab'><Image width={25} height={25} src={winnings} alt="user"></Image> WINNINGS</Link>
+                </div>
+                {/* <div className='tabs_dash_div'>
                         <Link href='/dashboard/leaderboard' className='dash_tab'><Image width={25} height={25} src={winnings} alt="user"></Image> Leaderboard</Link>
                     </div> */}
-                    <div className='tabs_dash_div'>
-                        <Link href='/dashboard/profile' className='dash_tab'><Image width={25} height={25} src={user_img} alt="user"></Image> PROFILE</Link>
-                    </div>
-                    <div className='tabs_dash_div'>
-                        <Link href='/dashboard/game-coins' className='dash_tab'><Image width={25} height={25} src={coins} alt="user"></Image> BUY COINS</Link>
-                    </div>
+                <div className='tabs_dash_div'>
+                    <Link href='/dashboard/profile' className='dash_tab'><Image width={25} height={25} src={user_img} alt="user"></Image> PROFILE</Link>
                 </div>
+                <div className='tabs_dash_div'>
+                    <Link href='/dashboard/game-coins' className='dash_tab'><Image width={25} height={25} src={coins} alt="user"></Image> BUY COINS</Link>
+                </div>
+            </div>
             {/* </section> */}
 
 
