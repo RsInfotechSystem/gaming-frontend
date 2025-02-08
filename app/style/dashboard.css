@@ -924,6 +924,7 @@ div:where(.col_100p) {
     padding: 2px;
     /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
   border: 1px solid #d80f6ead;
+  padding: 2px 10px;
 
 }
 

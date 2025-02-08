@@ -27,7 +27,7 @@ export default function Sidenav() {
                     <div className={currentUrl.includes("game-list") ? "dash_tab" : "tab_inactive"} ><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={gameslist} alt="user"></Image> GAMES LIST</div>
                 </div>
 
-                <div className='tabs_dash_div'>
+                {/* <div className='tabs_dash_div'>
                     <div className={currentUrl.includes("my-game") ? "dash_tab" : "tab_inactive"}><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={mygames} alt="user"></Image> MY GAMES</div>
                 </div>
                 
@@ -36,9 +36,9 @@ export default function Sidenav() {
                 </div>
                 <div className='tabs_dash_div'>
                     <div className={currentUrl.includes("wining") ? "dash_tab" : "tab_inactive"}><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={user_img} alt="user"></Image> PROFILE</div>
-                </div>
-                <div className='tabs_dash_div'>
-                    <div className={currentUrl.includes("game-coins") ? "dash_tab" : "tab_inactive"}><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={coins} alt="user"></Image> BUY COINS</div>
+                </div> */}
+                <div className='tabs_dash_div' onClick={() => router.push("/admin/buy-coins")}>
+                    <div className={currentUrl.includes("buy-coins") ? "dash_tab" : "tab_inactive"}><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={coins} alt="user"></Image> BUY COINS</div>
                 </div>
             </div>
             {/* </section> */}
