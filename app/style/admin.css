@@ -628,17 +628,16 @@ div:where(.col_100p) {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 20px 0px;
 }
 
 .table_main {
-    width: 100%;
-    background: #181818;
-    /* Dark background */
-    border-radius: 10px;
-    padding: 10px;
+  width: 100%;
+  min-width: 700px;
+  border-radius: 10px;
+  /* padding: 10px; */
+  /* border: 1px solid #d80f6ead; */
 }
-
 .table_section {
     width: 100%;
 }
@@ -647,8 +646,10 @@ div:where(.col_100p) {
 .table_data {
     display: flex;
     align-items: center;
-    padding: 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2px;
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
+  border: 1px solid #d80f6ead;
+
 }
 
 .table_header {
@@ -659,12 +660,15 @@ div:where(.col_100p) {
     color: #f8f8f8;
     /* Light text */
 }
+.table_header > div > h5 , .table_data > div > h6{
+   margin-bottom: 0px;
+}
 
 .table_data {
     background: #1e1e1e;
     /* Slightly lighter than main background */
     border-radius: 8px;
-    margin: 5px 0;
+    margin: 2px 0;
     color: #ffffff;
     /* White text */
 }
@@ -675,6 +679,24 @@ div:where(.col_100p) {
     font-size: 16px;
     color: #fff;
 }
+.fontfam_play {
+    font-family: "Play", serif;
+    /* font-weight: 700;
+    font-size: 16px; */
+
+}
+.table_scroll {
+    width: 100%;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    max-width: 100%;
+}
+
+/* Ensures the table doesn't shrink */
+.table_section {
+    min-width: 1400px; /* Adjust based on your content */
+    white-space: nowrap; /* Prevents text from wrapping */
+}
+
 
 
 
