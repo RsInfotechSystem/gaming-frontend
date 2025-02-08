@@ -1,13 +1,13 @@
 "use client"
 import React from 'react';
-import GameListAdmin from './GameListAdmin';
+import BuyCoinsAdmin from './BuyCoinsAdmin';
 
 
 const page = () => {
     
 
     return (
-        <GameListAdmin/>
+        <BuyCoinsAdmin/>
     )
 }
 

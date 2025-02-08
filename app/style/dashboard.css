@@ -921,9 +921,10 @@ div:where(.col_100p) {
 .table_data {
     display: flex;
     align-items: center;
-    padding: 5px;
+    padding: 2px;
     /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
   border: 1px solid #d80f6ead;
+  padding: 2px 10px;
 
 }
 
@@ -934,6 +935,9 @@ div:where(.col_100p) {
     border-radius: 10px;
     color: #f8f8f8;
     /* Light text */
+}
+.table_header > div > h5 , .table_data > div > h6{
+   margin-bottom: 0px;
 }
 
 .table_data {
@@ -957,6 +961,18 @@ div:where(.col_100p) {
     font-size: 16px; */
 
 }
+.table_scroll {
+    width: 100%;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    max-width: 100%;
+}
+
+/* Ensures the table doesn't shrink */
+.table_section {
+    min-width: 800px; /* Adjust based on your content */
+    white-space: nowrap; /* Prevents text from wrapping */
+}
+
 
 
 

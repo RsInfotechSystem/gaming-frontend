@@ -17,6 +17,9 @@ export default function UserLeftSidebar() {
                     <Link href='/dashboard/games-list' className='dash_tab'><Image width={25} height={25} src={gameslist} alt="user"></Image> GAMES LIST</Link>
                 </div>
                 <div className='tabs_dash_div'>
+                    <Link href='/dashboard/game-coins' className='dash_tab'><Image width={25} height={25} src={coins} alt="user"></Image> BUY COINS</Link>
+                </div>
+                <div className='tabs_dash_div'>
                     <Link href='/dashboard/my-games' className='dash_tab'><Image width={25} height={25} src={mygames} alt="user"></Image> MY GAMES</Link>
                 </div>
                 <div className='tabs_dash_div'>
