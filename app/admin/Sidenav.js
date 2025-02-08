@@ -24,7 +24,7 @@ export default function Sidenav() {
                 </div>
 
                 <div className='tabs_dash_div' onClick={() => router.push("/admin/game-list")}>
-                    <div className={currentUrl.includes("game-list") ? "dash_tab" : "tab_inactive"} ><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={gameslist} alt="user"></Image> GAMES LIST</div>
+                    <div className={currentUrl.includes("game-list") ? "dash_tab" : "tab_inactive"} ><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={gameslist} alt="user"></Image> Games List</div>
                 </div>
 
                 {/* <div className='tabs_dash_div'>
@@ -38,11 +38,20 @@ export default function Sidenav() {
                     <div className={currentUrl.includes("wining") ? "dash_tab" : "tab_inactive"}><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={user_img} alt="user"></Image> PROFILE</div>
                 </div> */}
                 <div className='tabs_dash_div' onClick={() => router.push("/admin/buy-coins")}>
-                    <div className={currentUrl.includes("buy-coins") ? "dash_tab" : "tab_inactive"}><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={coins} alt="user"></Image> BUY COINS</div>
+                    <div className={currentUrl.includes("buy-coins") ? "dash_tab" : "tab_inactive"}><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={coins} alt="user"></Image> Buy Coins</div>
                 </div>
 
                 <div className='tabs_dash_div' onClick={() => router.push("/admin/player")}>
                     <div className={currentUrl.includes("player") ? "dash_tab" : "tab_inactive"} ><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={gameslist} alt="user"></Image> Players</div>
+                </div>
+                <div className='tabs_dash_div' onClick={() => router.push("/admin/results")}>
+                    <div className={currentUrl.includes("results") ? "dash_tab" : "tab_inactive"} ><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={gameslist} alt="user"></Image> Results</div>
+                </div>
+                <div className='tabs_dash_div' onClick={() => router.push("/admin/win-history")}>
+                    <div className={currentUrl.includes("win-history") ? "dash_tab" : "tab_inactive"} ><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={gameslist} alt="user"></Image> Win History</div>
+                </div>
+                <div className='tabs_dash_div' onClick={() => router.push("/admin/withdrawal-history")}>
+                    <div className={currentUrl.includes("withdrawal-history") ? "dash_tab" : "tab_inactive"} ><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={gameslist} alt="user"></Image> Withdrawal History</div>
                 </div>
             </div>
             {/* </section> */}
