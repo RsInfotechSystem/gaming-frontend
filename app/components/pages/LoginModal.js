@@ -7,7 +7,7 @@ import { setUser, setError } from "@/redux-stores/slices/userSlice";
 import { useRouter } from "next/navigation";
 import { communication } from "@/services/communication";
 import { hideLoader, showLoader } from "@/redux-stores/loaderReducer";
-
+import { setCookie } from "cookies-next";
 export default function LoginModal({ isOpen, onClose, openSignUp, openForgotPassword }) {
     if (!isOpen) return null;
 
@@ -33,8 +33,10 @@ export default function LoginModal({ isOpen, onClose, openSignUp, openForgotPass
 
             if (response?.data?.status === "SUCCESS") {
                 dispatch(setUser(response?.data?.userDetails));
+                setCookie("GAMING", response?.data?.token);
+                setCookie("gamingUserDetails", response?.data?.userDetails);
                 Swal.fire({ text: response?.data?.message, icon: "success", timer: 2000 });
-                router.push("/dashboard/manage-request");
+                router.push("/dashboard/games-list");
                 onClose(); // Close modal after successful login
             } else {
                 dispatch(setError(response?.data?.message || "Login failed"));
