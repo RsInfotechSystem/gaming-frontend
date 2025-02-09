@@ -25,8 +25,7 @@ export default function SignUpModal({ isOpen, onClose, openLoginModal, openOtpMo
     const handleSignUp = async (data) => {
         try {
             dispatch(showLoader()); // Show loader
-
-            const response = await communication.createPlayer(...data);
+            const response = await communication.createPlayer(data);
 
             if (response?.data?.status === "SUCCESS") {
                 dispatch(setUser(response?.data?.userDetails));
