@@ -63,6 +63,7 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 25px;
+    font-family: Orbitron ;
 }
 
 .nav_tab {
@@ -191,13 +192,13 @@ height: 200px;
 height: 200px;
 }
 .carousel_images img{
-/* position: absolute; */
-/* bottom: 500px;
-top: 500px; */
+display: flex;
+justify-content: center;
+align-items: center;
+padding-top: 10%;
 width: 800px;
-height: 350px;
+height: 450px;
 margin: auto;
-/* padding: 0px 0px 110px 0px; */
 }
 .carousel-item{}
 
@@ -770,6 +771,38 @@ float:left;
 padding-left:5px;
 }
 
+
+/* FAQ SECTION START */
+
+.main_faq{
+  height: 80vh;
+}
+.FAQ_section{
+  margin-top: 10%;
+
+}
+.FAQ_section p{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+  text-align: center;
+  font-family: play;
+}
+.FAQ_Head{
+  margin-bottom: 5px;
+  font-size: 19px;
+}
+.FAQ_Head_main{
+font-size: 50px;
+font-weight: 600;
+}
+.FAQ_Content{
+  width: 48%;
+  margin: auto;
+  font-size: 20px;
+}
+
 /* Media Query Start  */
 
 /* 4K Screens: 1440px and above */
@@ -785,25 +818,27 @@ padding-left:5px;
   letter-spacing: 1.5px;
   color: #e8dbdc;
 }
-/* .carousel-item img{
-  width: 80%;
-  height: 20%;
-} */
- .carousel_images{
+ /* .carousel_images{
   width: 100px;
   margin-top: 20px;
   padding-top: 20px;
- }
+ } */
  .carousel-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px; /* Adjust spacing */
+  gap: 20px;
+}
+.carousel_images img {
+  padding-top: 8%;
+}
+.hero_center {
+  padding: 8% 8%;
 }
 
-.carousel-item{
+/* .carousel-item{
 padding-top: 12%;
-}
+} */
 .remote_set {
   position: relative;
   bottom: 0;
@@ -823,12 +858,15 @@ padding-top: 12%;
 
 /* Tablets and small desktops: 768px - 1023px */
 @media (min-width: 768px) and (max-width: 1023px) {
+  .hero_center{
+    padding: 40% 10%;
+  }
   .carousel_main .play_for_skill {
     padding: 20% 0 0 10%;
 }
 .skill_play {
   letter-spacing: 5px;
-  font-size: 57px;
+  font-size: 35px;
   font-weight: 900;
   color: #e8dbdc;
 }
@@ -839,8 +877,8 @@ padding-top: 12%;
   color: #e8dbdc;
 }
 .gun_set img {
-  width: 210px;
-  height: 250px;
+  width: 190px;
+  height: 230px;
   position: relative;
   top: 2rem;
 }
@@ -961,102 +999,3 @@ padding-top: 12%;
   font-size: 12px;
 }
 }
-
-/* Small screens: 320px - 767px */
-/* @media (max-width: 767px) {
-  .nav_tab {
-    display: none;
-}
-.login_btn{
-  font-size: 10px;
-  width: 20px;
-}
-.login_main .login_btn {
-  width: 100px;
-  height: 30px;
-}
-.nav_hr_line {
-  height: 4px;
-  width: 100vw;
-}
-.carousel-control-prev,
-  .carousel-control-next {
-    display: none;
-  }
-  .skill_play {
-    font-size: 25px;
-    letter-spacing: 2;
-    margin-bottom: 10px;
-}
-.skill_play_content {
-  font-size: 12px;
-  letter-spacing: 0;
-  width: 70%;
-  line-height: 15px;
-}
-.carousel_main .play_for_skill {
-  padding: 190px 0 0 35px;
-}
-.carousel_images img {
-  width: 300px;
-  height: 310px;
-  padding-bottom: 0px;
-}
-.carousel-item {
-  padding: 152px 0px;
-}
-.gun_set img {
-  width: 100px;
-  height: 140px;
-  position: relative;
-  top: 100px;
-  left: 30px;
-}
-.remote_set img {
-  width: 60px;
-  height: 50px;
-  position: relative;
-  top: 40px;
-}
-.game_image_container .poster_div {
-  width: 180px;
-  height: 230px;
-}
-.game_image_container {
-  padding-right: 0;
-}
-.card .poster_image {
-  padding: 10px 5px 10px 4px;
-  border-radius: 40px;
-}
-.game_list {
-  padding-left: 0;
-}
-.main_games_section {
-  padding-top: 23%;
-}
-.available_games_heading p {
-  font-size: 25px;
-  transform: rotate(0deg);
-  writing-mode: horizontal-tb;
-}
-#bgmi_tab {
-  font-size: 23px;
-}
-#cod_tab {
-  font-size: 9px;
-}
-#freefire_tab {
-  font-size: 9px;
-}
-.games_vr_line {
-  width: 2px;
-  height: 20vh;
-}
-.games_vr_line_right {
-  background-image: linear-gradient(#ff1717, #9d04f6);
-  margin-right: 5%;
-  height: 33vh;
-  width: 2px;
-}
-} */
