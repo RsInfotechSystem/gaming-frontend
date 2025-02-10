@@ -7,10 +7,11 @@ import { useRouter } from "next/navigation";
 import { hideLoader, showLoader } from "@/redux-stores/loaderReducer";
 import { setError } from "@/redux-stores/slices/userSlice";
 import Swal from "sweetalert2";
+import { setCookie } from "cookies-next";
 import { communication } from "@/services/communication";
 import { useForm } from "react-hook-form";
 
-export default function ForgotPasswordModal({ isOpen, onClose, openLoginModal }) {
+export default function ResetPasswordModal({ isOpen, onClose, openLoginModal }) {
     if (!isOpen) return null;
 
     const dispatch = useDispatch();
@@ -30,12 +31,7 @@ export default function ForgotPasswordModal({ isOpen, onClose, openLoginModal })
         try {
             dispatch(showLoader()); // Show loader
 
-            let dataToSend = {
-                email: data?.email,
-                userName: data?.userName
-            }
-
-            const response = await communication.forgetPassword(dataToSend);
+            const response = await communication.resetPassword(data);
 
             if (response?.data?.status === "SUCCESS") {
                 Swal.fire({ text: response?.data?.message, icon: "success", timer: 2000 });
@@ -63,18 +59,11 @@ export default function ForgotPasswordModal({ isOpen, onClose, openLoginModal })
                     }}>
                         <Image src={backarrow} alt="backarrow" width={12}></Image>
                     </button>
-                    <p className="mb-0">FORGOT PASSWORD</p>
+                    <p className="mb-0">RESET PASSWORD</p>
                 </div>
                 <hr className="modal-hr" />
                 <div className="p-5">
                     <form onSubmit={handleSubmit(handleReset)}>
-                        <input
-                            className="login_input"
-                            type="text"
-                            placeholder="Username"
-                            {...register("userName", { required: "Username is required" })}
-                        />
-                        {errors?.userName && <p className="text-danger">{errors?.userName?.message}</p>}
 
                         <input
                             className="login_input"
@@ -83,6 +72,30 @@ export default function ForgotPasswordModal({ isOpen, onClose, openLoginModal })
                             {...register("email", { required: "Email is required" })}
                         />
                         {errors?.email && <p className="text-danger">{errors?.email?.message}</p>}
+
+                        <input
+                            className="login_input"
+                            type="password"
+                            placeholder="New Password"
+                            autoComplete="new-password"
+                            {...register("newPassword", {
+                                required: "New Password is required",
+                                minLength: { value: 8, message: "Password must be at least 8 characters" },
+                            })}
+                        />
+                        {errors?.newPassword && <p className="text-danger">{errors?.newPassword?.message}</p>}
+
+                        <input
+                            className="login_input"
+                            type="password"
+                            placeholder="Confirm New Password"
+                            autoComplete="new-password"
+                            {...register("confirmNewPassword", {
+                                required: "Confirm New Password is required",
+                                minLength: { value: 8, message: "Password must be at least 8 characters" },
+                            })}
+                        />
+                        {errors?.confirmNewPassword && <p className="text-danger">{errors?.confirmNewPassword?.message}</p>}
 
                         <div className="login_main mt-5">
                             <button className="popup_btn" type="submit">RESET</button>
