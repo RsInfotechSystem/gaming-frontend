@@ -35,11 +35,10 @@ export default function Footer() {
          <div className='lets_play'>
               <p className='text-center lets_play_set'>
                   LET'S PLAY 
-                  <span className='xyz_gaming'>XYZ GAMING</span>
+                  <span className='xyz_gaming'>PlayZone GAMING</span>
               </p>
          </div>
           
-
           <div className='text-center register_btn'>
             <button type="button">REGISTER NOW</button>
           </div>

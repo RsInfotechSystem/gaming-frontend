@@ -31,7 +31,7 @@ export default function Navbar() {
       <section className='nav row'>
         <div className='nav_main'>
           <div className='logo'>
-            <p>Logo</p>
+            <p>PlayZone</p>
           </div>
           <div className='nav_tab'>
             <div className='tabs'>
