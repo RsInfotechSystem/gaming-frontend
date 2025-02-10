@@ -5,11 +5,13 @@ import SignUpModal from '../SignUpModal';
 import ForgotPasswordModal from '../ForgotPasswordModal';
 import OtpModal from '../OtpModal';
 import RegisterSuccessModal from '../RegisterSuccessModal';
+import ResetPasswordModal from '../ResetPasswordModal';
 
 export default function Navbar() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSignUpOpen, setSignUpOpen] = useState(false);
   const [isForgotPasswordOpen, setForgotPasswordOpen] = useState(false);
+  const [isResetPasswordOpen, setResetPasswordOpen] = useState(false);
   const [isOtpOpen, setOtpOpen] = useState(false);
   const [isSuccessOpen, setSuccessOpen] = useState(false);
 
@@ -76,6 +78,12 @@ export default function Navbar() {
               openLoginModal={() => setIsLoginOpen(true)}
             />
 
+            {/* ForgotPassword Modal */}
+            <ResetPasswordModal
+              isOpen={isResetPasswordOpen}
+              onClose={() => setResetPasswordOpen(true)}
+              openLoginModal={() => setIsLoginOpen(true)}
+            />
 
             {/* OTP Modal */}
             <OtpModal

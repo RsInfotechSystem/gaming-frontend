@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getCookies } from "cookies-next";
+import { getCookie, getCookies } from "cookies-next";
 import Swal from "sweetalert2";
 
 const nodeEnvironment = process.env.NEXT_PUBLIC_NODE_ENV;
@@ -49,7 +49,6 @@ export const communication = {
     },
     forgetPassword: async function (dataToSend) {
         try {
-            console.log("dataToSend : ", dataToSend)
             return axios.post(`${getServerUrl()}/player/forget-password`, dataToSend, {
                 headers: {
                     "Content-Type": "application/json",
@@ -58,6 +57,32 @@ export const communication = {
             });
         } catch (error) {
             Swal.fire({ text: error?.message, icon: "warning" });
+        }
+    },
+    resetPassword: async function (dataToSend) {
+        try {
+            return axios.post(`${getServerUrl()}/player/reset-player-password`, dataToSend, {
+                headers: {
+                    "Content-Type": "application/json",
+                    // "Authorization": `Bearer ${getCookies("GAMING")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error?.message, icon: "warning" });
+        }
+    },
+
+    //game list tab api`s
+    getContestList: async () => {
+        try {
+            return await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/contest/get-contest-list`, {}, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("GAMING")}`,
+                },
+            });
+        } catch (error) {
+            throw error;
         }
     },
 }
