@@ -66,7 +66,7 @@ body {
   margin: 0px 2px;
 }
 .coin_btn{
-  padding: 3px 10px;
+  padding: 6px 10px;
   background-color: transparent;
   color: #fff;
   border: 1px solid #fff;
@@ -1000,9 +1000,9 @@ div:where(.col_100p) {
 /* my games tab css  end*/
 /* Profile tab css  start*/
 .profile-card {
-    width: 350px;
+    /* width: 350px; */
     border-radius: 15px;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    background: linear-gradient(135deg, #f8333395, #bd09a88e);
     color: white;
     text-align: center;
   }
