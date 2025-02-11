@@ -6,9 +6,10 @@ import ForgotPasswordModal from "../ForgotPasswordModal";
 import OtpModal from "../OtpModal";
 import RegisterSuccessModal from "../RegisterSuccessModal";
 import ResetPasswordModal from "../ResetPasswordModal";
-// import FAQ from ""; // Import FAQ Component
+// import FAQ from "FAQ"; // Import FAQ Component
 
-export default function Navbar() {
+export default function FAQ({isOpen}) {
+  if (!isOpen) return null; // Don't render if not open
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSignUpOpen, setSignUpOpen] = useState(false);
   const [isForgotPasswordOpen, setForgotPasswordOpen] = useState(false);
@@ -106,7 +107,7 @@ export default function Navbar() {
       </section>
 
       {/* FAQ Component */}
-      {/* <FAQ isOpen={isFaqOpen} /> */}
+      <FAQ isOpen={isFaqOpen} />
     </>
   );
 }
