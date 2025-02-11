@@ -46,6 +46,7 @@ export default function GamesList() {
 
 
   const [contestList, setContestList] = useState([]);
+  const [gameList, setGameList] = useState([]);
   const [loader, setLoader] = useState(false);
   const router = useRouter();
   const NEXT_PUBLIC_SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
@@ -57,7 +58,6 @@ export default function GamesList() {
       const serverResponse = await communication.getContestList();
       if (serverResponse?.data?.status === "SUCCESS") {
         setContestList(serverResponse?.data?.contestList);
-        Swal.fire({ text: serverResponse?.data?.message, icon: "success", timer: 2000 });
         setLoader(false);
       } else if (serverResponse?.data?.status === "JWT_INVALID") {
         Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
@@ -74,9 +74,31 @@ export default function GamesList() {
     }
   };
 
+  //get Contest on initial load
+  const getGamesList = async () => {
+    try {
+      setLoader(true);
+      const serverResponse = await communication.getGamesList();
+      if (serverResponse?.data?.status === "SUCCESS") {
+        setGameList(serverResponse?.data?.gameList);
+        setLoader(false);
+      } else if (serverResponse?.data?.status === "JWT_INVALID") {
+        Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
+        router.push("/");
+        setLoader(false);
+      } else {
+        Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
+      }
+    } catch (error) {
+      Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
+      setLoader(false);
+    } finally {
+      setLoader(false);
+    }
+  };
   useEffect(() => {
     getContestList()
-    // getGameList(currentPage, searchString);
+    getGamesList();
   }, []);
 
 
@@ -135,72 +157,44 @@ export default function GamesList() {
 
           </div>
 
+          {
+            console.log("gameList", gameList)
+          }
           {/* games list */}
-          <div className='mt-1'>
-            <p className='tournament_text mt-5'>ALL GAMES  <Image className='me-2' width={25} height={20} src={all_games} alt="user"></Image></p>
-            <div className='d-flex justify-content-around mb-3'>
-              <div className="games_bg">
-                <div className="games_bg_inner">
-                  <div>
-                    <Image
-                      className="me-2"
-                      style={{ borderRadius: "15px" }}
-                      width={76}
-                      height={76}
-                      src={bgmi_game}
-                      alt="user"
-                    />
+          <div className="mt-1">
+            <p className="tournament_text mt-5">
+              ALL GAMES <Image className="me-2" width={25} height={20} src={all_games} alt="all games" />
+            </p>
+            <div className="d-flex flex-wrap justify-content-around mb-3">
+              {gameList?.length > 0 ? (
+                gameList?.map((game, index) => (
+                  <div className="games_bg mb-3" key={index}>
+                    <div className="games_bg_inner">
+                      <div>
+                        <Image
+                          className="me-2"
+                          style={{ borderRadius: "15px" }}
+                          width={76}
+                          height={76}
+                          src={game?.gamefiles?.[0]?.fileUrl ? `${NEXT_PUBLIC_SERVER_URL}/getFiles/${game?.gamefiles[0].fileUrl}` : "/dashboard/default_game.png"}
+                          alt={"game img"}
+                        />
+                      </div>
+                      <div>
+                        <p className="game_name">{game?.name || "Unknown Game"}</p>
+                        <p className="game_info">{game?.playedCount || "0"} Millions played</p>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <p className="game_name">BGMI</p>
-                    <p className="game_info">5.3 Millions played</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className='games_bg'>
-                <div className="games_bg_inner">
-
-                  <div>
-                    <Image className='me-2' style={{ borderRadius: "15px" }} width={76} height={76} src={freefire_game} alt="user"></Image>
-                  </div>
-                  <div>
-                    <p className='game_name'>FREE FIRE</p>
-                    <p className='game_info'>5.3 Millions played</p>
-                  </div>
-                </div>
-              </div>
+                ))
+              ) : (
+                <p className="no_data">No Games Available</p>
+              )}
             </div>
-            <div className='d-flex justify-content-around mb-3'>
-              <div className='games_bg'>
-                <div className="games_bg_inner">
-                  <div>
-                    <Image className='me-2' style={{ borderRadius: "15px" }} width={76} height={76} src={cod_game} alt="user"></Image>
-                  </div>
-                  <div>
-                    <p className='game_name'>COD</p>
-                    <p className='game_info'>5.3 Millions played</p>
-                  </div>
-                </div>
-              </div>
-              <div className='games_bg'>
-                <div className="games_bg_inner">
-                  <div>
-                    <Image className='me-2' style={{ borderRadius: "15px" }} width={76} height={76} src={freefire_game} alt="user"></Image>
-                  </div>
-                  <div>
-                    <p className='game_name'>FREE FIRE</p>
-                    <p className='game_info'>5.3 Millions played</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
+
         </div >
       </div >
-
-
       {/* </section> */}
 
     </>

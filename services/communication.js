@@ -85,4 +85,16 @@ export const communication = {
             throw error;
         }
     },
+    getGamesList: async () => {
+        try {
+            return await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/game/get-game-list`, {}, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("GAMING")}`,
+                },
+            });
+        } catch (error) {
+            throw error;
+        }
+    },
 }
