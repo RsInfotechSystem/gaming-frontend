@@ -7,6 +7,7 @@ import GameLead from './components/pages/home/GameLead';
 import RecentNews from './components/pages/home/RecentNews';
 import HrLineRight from './components/pages/HrLineRight';
 import Footer from './components/pages/home/Footer';
+import FAQ from './components/pages/home/FAQ'
 import "./style/main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -21,14 +22,15 @@ const Page = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar />
       <HeroSection />
       <GamesAvailable />
       <GameLead />
       <RecentNews />
       <HrLineRight />
       <Footer />
-      <HrLineLeft />
+      <HrLineLeft /> */}
+      <FAQ/>
     </>
   );
 };
