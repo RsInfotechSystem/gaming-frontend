@@ -33,7 +33,7 @@ export default function UserNavbar() {
                                       <span className=''> 99,999 </span> </div>
                                   </div>
                                   <div>
-                                      <button className='coin_btn profile_btn d-flex'>  <span className=''> Zywfo </span> <Image className='mx-1 my-auto' width={13} height={13} src={down_arrow}  alt="user"/></button>
+                                      <button className='coin_btn profile_btn d-flex'>  <span className=''> abhi </span> <Image className='mx-1 my-auto' width={13} height={13} src={down_arrow}  alt="user"/></button>
                           
                                   </div>
                               </div>
