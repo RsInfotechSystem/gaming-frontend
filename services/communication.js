@@ -85,4 +85,41 @@ export const communication = {
             throw error;
         }
     },
+    getGamesList: async () => {
+        try {
+            return await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/game/get-game-list`, {}, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("GAMING")}`,
+                },
+            });
+        } catch (error) {
+            throw error;
+        }
+    },
+    getCoinList: async () => {
+        try {
+            return await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/coin/get-coin-list`, {}, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("GAMING")}`,
+                },
+            });
+        } catch (error) {
+            throw error;
+        }
+    },
+    getJoinedContestList: async () => {
+        try {
+            return await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/contest/get-joined-contest-list`, {}, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("GAMING")}`,
+                },
+            });
+        } catch (error) {
+            throw error;
+        }
+    },
+
 }
