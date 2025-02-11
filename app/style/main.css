@@ -849,6 +849,15 @@ padding-top: 12%;
   position: relative;
   bottom: 50px;
 }
+.hero_center {
+  padding: 13% 8%;
+}
+.games_vr_line {
+  height: 20vh;
+}
+.games_vr_line_right {
+  height: 38vh;
+}
 }
 
 /* Large screens: 1024px - 1439px */
