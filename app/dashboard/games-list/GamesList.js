@@ -48,7 +48,7 @@ export default function GamesList() {
   const [contestList, setContestList] = useState([]);
   const [loader, setLoader] = useState(false);
   const router = useRouter();
-
+  const NEXT_PUBLIC_SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
   //get Contest on initial load
   const getContestList = async () => {
@@ -57,7 +57,7 @@ export default function GamesList() {
       const serverResponse = await communication.getContestList();
       if (serverResponse?.data?.status === "SUCCESS") {
         setContestList(serverResponse?.data?.contestList);
-        Swal.fire({ text: response?.data?.message, icon: "success", timer: 2000 });
+        Swal.fire({ text: serverResponse?.data?.message, icon: "success", timer: 2000 });
         setLoader(false);
       } else if (serverResponse?.data?.status === "JWT_INVALID") {
         Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
@@ -83,7 +83,6 @@ export default function GamesList() {
   return (
     <>
       {/* <section className='tournament_main'> */}
-
       <div className="tournament_list">
         <div style={{ width: "90%", margin: "0px auto" }}>
           <div className="mt-1">
@@ -93,172 +92,47 @@ export default function GamesList() {
             </p>
 
             {/* Tournament Slider */}
+            {/* Tournament Slider - Horizontal */}
             <Slider {...settings}>
-              <div className='px-2'>
-                {/* {contestList?.length > 0 ? (
-                  <>
-                    {contestList?.map((contestDetails, index) => {
-                      return ( */}
-                <div className="card tournament_card">
-                  <Image
-                    src="/dashboard/tournament_bgmi.png"
-                    width={300}
-                    height={200}
-                    alt="Battle Ground Mobile India"
-                    className="tournament_card_img"
-                  />
-                  <div className="card-body d-flex justify-content-between align-items-center">
-                    <div>
-                      <h5 className="card-title card_content">BGMI - SOLO test 1</h5>
-                      <p className="card-text card_content">Game is not a game, it's an emotion</p>
-                    </div>
-                    <div
-                      className="d-flex align-items-center"
-                      style={{
-                        backgroundColor: "#2b2b2b",
-                        padding: "8px 12px",
-                        borderRadius: "8px",
-                        minWidth: "80px", // Prevents collapsing
-                      }}
-                    >
-                      <Image className="me-2" width={25} height={25} src={coin_img} alt="coin" />
-                      <span className="text-white fw-bold">2000</span>
-                    </div>
-                  </div>
-
-                </div>
-                {/* );
-                    })}
-                  </>
-                ) : (
-                  <p className="no_data">Data Not Available</p>
-                )} */}
-
-              </div>
-              <div className='px-2'>
-                <div className="card tournament_card">
-                  <Image
-                    src="/dashboard/tournament_bgmi.png"
-                    width={300}
-                    height={200}
-                    alt="Battle Ground Mobile India"
-                    className="tournament_card_img"
-                  />
-                  <div className="card-body d-flex justify-content-between align-items-center">
-                    <div>
-                      <h5 className="card-title card_content">BGMI - SOLO test 2</h5>
-                      <p className="card-text card_content">Game is not a game, it's an emotion</p>
-                    </div>
-                    <div
-                      className="d-flex align-items-center"
-                      style={{
-                        backgroundColor: "#2b2b2b",
-                        padding: "8px 12px",
-                        borderRadius: "8px",
-                        minWidth: "80px", // Prevents collapsing
-                      }}
-                    >
-                      <Image className="me-2" width={25} height={25} src={coin_img} alt="coin" />
-                      <span className="text-white fw-bold">2000</span>
+              {contestList?.length > 0 ? (
+                contestList.map((contestDetails, index) => (
+                  <div className="px-2" key={index}>
+                    <div className="card tournament_card d-flex">
+                      <Image
+                        src={contestDetails?.contestFiles?.[0]?.fileUrl
+                          ? `${NEXT_PUBLIC_SERVER_URL}/getFiles/${contestDetails.contestFiles[0].fileUrl}`
+                          : "/dashboard/tournament_bgmi.png"}
+                        width={300}
+                        height={200}
+                        alt={contestDetails?.name || "Contest Image"}
+                        className="tournament_card_img"
+                      />
+                      <div className="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                          <h5 className="card-title card_content">{contestDetails?.name}</h5>
+                          <p className="card-text card_content">{contestDetails?.description}</p>
+                        </div>
+                        <div
+                          className="d-flex align-items-center"
+                          style={{
+                            backgroundColor: "#2b2b2b",
+                            padding: "8px 12px",
+                            borderRadius: "8px",
+                            minWidth: "80px",
+                          }}
+                        >
+                          <Image className="me-2" width={25} height={25} src={coin_img} alt="coin" />
+                          <span className="text-white fw-bold">{contestDetails?.winningPrice}</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-
-                </div>
-              </div>
-              <div className='px-2'>
-                <div className="card tournament_card">
-                  <Image
-                    src="/dashboard/tournament_bgmi.png"
-                    width={300}
-                    height={200}
-                    alt="Battle Ground Mobile India"
-                    className="tournament_card_img"
-                  />
-                  <div className="card-body d-flex justify-content-between align-items-center">
-                    <div>
-                      <h5 className="card-title card_content">BGMI - SOLO</h5>
-                      <p className="card-text card_content">Game is not a game, it's an emotion</p>
-                    </div>
-                    <div
-                      className="d-flex align-items-center"
-                      style={{
-                        backgroundColor: "#2b2b2b",
-                        padding: "8px 12px",
-                        borderRadius: "8px",
-                        minWidth: "80px", // Prevents collapsing
-                      }}
-                    >
-                      <Image className="me-2" width={25} height={25} src={coin_img} alt="coin" />
-                      <span className="text-white fw-bold">2000</span>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-              <div className='px-2'>
-                <div className="card tournament_card">
-                  <Image
-                    src="/dashboard/tournament_bgmi.png"
-                    width={300}
-                    height={200}
-                    alt="Battle Ground Mobile India"
-                    className="tournament_card_img"
-                  />
-                  <div className="card-body d-flex justify-content-between align-items-center">
-                    <div>
-                      <h5 className="card-title card_content">BGMI - SOLO</h5>
-                      <p className="card-text card_content">Game is not a game, it's an emotion</p>
-                    </div>
-                    <div
-                      className="d-flex align-items-center"
-                      style={{
-                        backgroundColor: "#2b2b2b",
-                        padding: "8px 12px",
-                        borderRadius: "8px",
-                        minWidth: "80px", // Prevents collapsing
-                      }}
-                    >
-                      <Image className="me-2" width={25} height={25} src={coin_img} alt="coin" />
-                      <span className="text-white fw-bold">2000</span>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-              <div className='px-2'>
-                <div className="card tournament_card">
-                  <Image
-                    src="/dashboard/tournament_bgmi.png"
-                    width={300}
-                    height={200}
-                    alt="Battle Ground Mobile India"
-                    className="tournament_card_img"
-                  />
-                  <div className="card-body d-flex justify-content-between align-items-center">
-                    <div>
-                      <h5 className="card-title card_content">BGMI - SOLO</h5>
-                      <p className="card-text card_content">Game is not a game, it's an emotion</p>
-                    </div>
-                    <div
-                      className="d-flex align-items-center"
-                      style={{
-                        backgroundColor: "#2b2b2b",
-                        padding: "8px 12px",
-                        borderRadius: "8px",
-                        minWidth: "80px", // Prevents collapsing
-                      }}
-                    >
-                      <Image className="me-2" width={25} height={25} src={coin_img} alt="coin" />
-                      <span className="text-white fw-bold">2000</span>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-
-
+                ))
+              ) : (
+                <p className="no_data">Data Not Available</p>
+              )}
             </Slider>
+
           </div>
 
           {/* games list */}
@@ -323,8 +197,8 @@ export default function GamesList() {
             </div>
 
           </div>
-        </div>
-      </div>
+        </div >
+      </div >
 
 
       {/* </section> */}
