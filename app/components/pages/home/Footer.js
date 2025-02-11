@@ -68,7 +68,7 @@ export default function Footer() {
           <div className='terms_condtion text-center d-flex'>
             <span>FAQs</span>
             <span>Contact us</span>
-            <Link href="/terms" className="text-gray-500 hover:underline">
+            <Link href="../" className="text-gray-500 hover:underline">
             <span>T&C</span>
             </Link>
           </div>
