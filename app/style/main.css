@@ -467,6 +467,118 @@ position: relative;
   position: relative;
   overflow: hidden;
 }
+
+/* FAQ section start*/
+  .faq_section{
+    color: #FFFFFF;
+    font-family: play;
+    height: 100vh;
+    padding-top: 10%;
+    background: linear-gradient(180deg, #0B0202 0%, rgba(11, 2, 2, 0.87) 35.51%, rgba(11, 2, 2, 0.8) 87.49%, #0B0202 100%),
+url('/homepage/d1a189d23eb45fa3184a0c7c3f19afa0.jpeg');
+  background-size: cover;
+  background-position: center;
+  }
+  .faq_head{
+    font-size: 18px;
+  }
+  .faq_head_main{
+    font-size: 50px;
+    font-weight: 600;
+  }
+  .faq_content{
+    font-size: 19px;
+    width: 45%;
+    margin: auto;
+  }
+  .horizontal_line{
+    height: 15px;
+    background-image: linear-gradient(to left, #ff1717, #9d04f6);
+    width: 80%;
+    clip-path: polygon(0 0, 100% 0%, 99% 100%, 0 100%);
+    border: none;
+    margin-top: 12%;
+  }
+  .horizontal_line_small{
+    height: 15px;
+    background-image: linear-gradient(to left, #ff1717, #9d04f6);
+    width: 70%;
+    clip-path: polygon(0 0, 100% 0%, 99% 100%, 0 100%);
+    border: none;
+  }
+  .has-search {
+    position: relative;
+}
+
+.has-search .form-control {
+    padding-right: 2.375rem; /* Shift padding to the right */
+    padding-left: 0.75rem; /* Adjust left padding */
+}
+
+.has-search .form-control-feedback {
+    right: 0.5rem;
+    left: auto; 
+}
+.input-group-text {
+  border-left: none; /* Removes left border to blend with input */
+}
+.input_bar{
+  padding: 0% 4.5%;
+  height: 100vh;
+  font-family: play;
+}
+.faq_bar{
+  padding-right: 20px;
+}
+.search_bar{
+  padding-left: 20px;
+}
+.input_parent{
+  border: 1px solid gray;
+  opacity: 1.0;
+}
+.input_parent input{
+  margin: 30px 0px 30px 30px;
+  padding: 12px;
+}
+.input_parent span{
+  margin: 30px 30px 30px 0px;
+}
+.horizontal_line_right{
+  height: 15px;
+  background-image: linear-gradient(to right, #ff1717, #9d04f6);
+  width: 80%;
+  position: absolute;
+  right: 0;
+  bottom: 102vh;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 1% 100%);
+}
+.horizontal_line_sright{
+    height: 15px;
+    background-image: linear-gradient(to right, #ff1717, #9d04f6);
+    width: 70%;
+    position: absolute;
+    right: 0;
+    bottom: 100vh;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 1% 100%);
+}
+.games_faqs{
+  color: #FFFFFF;
+  border: 1px solid gray;
+  margin-top: 40px;
+  padding-left: 30px;
+}
+.games_faqs .games_head p{
+  font-size: 22px;
+  font-weight: bold;
+  padding-top: 25px;
+}
+.faqgames_list{
+  font-size: 18px;
+  padding-bottom: 20px;
+}
+/* FAQ section end*/
+
 .btn-primary{
   color: #FFFFFF;
 }
