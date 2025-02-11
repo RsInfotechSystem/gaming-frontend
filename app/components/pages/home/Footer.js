@@ -1,6 +1,6 @@
 "use client"
-import Image from 'next/image';
 import React from 'react';
+import Link from "next/link";
 export default function Footer() {
   return (
     <>
@@ -30,13 +30,6 @@ export default function Footer() {
 
           <div className='frame_logo' style={{ textAlign: "right" }}>
             <img src="/homepage/Frame.png" alt="..." height={72} />
-          </div>
-
-          <div className='lets_play'>
-            <p className='text-center lets_play_set'>
-              LET'S PLAY
-              <span className='xyz_gaming'>XYZ GAMING</span>
-            </p>
           </div>
 
          <div className='lets_play'>
@@ -75,7 +68,9 @@ export default function Footer() {
           <div className='terms_condtion text-center d-flex'>
             <span>FAQs</span>
             <span>Contact us</span>
+            <Link href="../" className="text-gray-500 hover:underline">
             <span>T&C</span>
+            </Link>
           </div>
 
           <div className='text-center company_design'>

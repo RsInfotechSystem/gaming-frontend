@@ -8,7 +8,7 @@ import RegisterSuccessModal from '../RegisterSuccessModal';
 import ResetPasswordModal from '../ResetPasswordModal';
 import Footer from './Footer';
 
-export default function FAQ() {
+export default function Navbar() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSignUpOpen, setSignUpOpen] = useState(false);
   const [isForgotPasswordOpen, setForgotPasswordOpen] = useState(false);
