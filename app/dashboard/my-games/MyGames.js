@@ -38,7 +38,7 @@ export default function MyGames() {
         router.push("/");
       } else {
         setContestList([])
-      }ashbo
+      }
       setLoader(false);
     } catch (error) {
       Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
