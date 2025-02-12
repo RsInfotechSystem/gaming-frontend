@@ -8,9 +8,8 @@ import { useRouter } from "next/navigation";
 import { communication } from "@/services/communication";
 import { hideLoader, showLoader } from "@/redux-stores/loaderReducer";
 import { setCookie } from "cookies-next";
-export default function LoginModal({ isOpen, onClose, openSignUp, openForgotPassword }) {
-    if (!isOpen) return null;
 
+export default function LoginModal({ onClose, openSignUp, openForgotPassword }) {
     const dispatch = useDispatch();
     const router = useRouter();
     const { isLoading } = useSelector((state) => state.loader);
@@ -82,7 +81,7 @@ export default function LoginModal({ isOpen, onClose, openSignUp, openForgotPass
 
                         <div className="login_main mt-5 mb-4">
                             <button className="popup_btn" type="submit" disabled={isLoading}>
-                                {isLoading ? "Logging in..." : "LET’S PLAY"}
+                                {isLoading ? "Logging in..." : "Login"}
                             </button>
                         </div>
                     </form>

@@ -9,6 +9,7 @@ import UserNavbar from '../UserNavbar';
 import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
 import { communication } from '@/services/communication';
+import Loader from '@/app/common-component/Loader';
 
 export default function GameCoins() {
   const [coinList, setCoinList] = useState([]);
@@ -22,18 +23,15 @@ export default function GameCoins() {
       const serverResponse = await communication.getCoinList();
       if (serverResponse?.data?.status === "SUCCESS") {
         setCoinList(serverResponse?.data?.coinList);
-        setLoader(false);
       } else if (serverResponse?.data?.status === "JWT_INVALID") {
-        Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
+        Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
         router.push("/");
-        setLoader(false);
       } else {
-        Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
+        setCoinList([])
       }
+      setLoader(false);
     } catch (error) {
       Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
-      setLoader(false);
-    } finally {
       setLoader(false);
     }
   };
@@ -44,39 +42,41 @@ export default function GameCoins() {
 
   return (
     <>
-      {/* <section className='tournament_main'> */}
-
-      <div className='tournament_list'>
-        <div className='mt-1 coin_pack'>
-          <p className='tournament_text'>COINS PACK </p>
-          <div className='d-flex justify-content-between mb-3'>
-            {coinList?.length > 0 ? (
-              <>
-                {coinList.map((coin, index) => (
-                  <div className='coin_div' key={index}>
-                    <div className="text-center">
-                      <Image src={coins} width={60} height={60} alt="coins"></Image>
-                    </div>
-                    <div className="text-center py-3">
-                      <Image src={coin_img} width={30} height={30} alt="coins"></Image><span className='coins_amount'>{coin?.coinsCount}</span>
-                    </div>
-                    <div className="text-center">
-                      <button className='get_coin_btn'>&#8377; {coin?.rupeesAmt}</button>
-                    </div>
-                  </div>
-                ))}
-              </>
-            ) : (
-              <p className="no_data">Data Not Available</p>
-            )}
+      {loader === true ?
+        <Loader />
+        :
+        <div className='tournament_list'>
+          <div className='mt-1 coin_pack'>
+            <p className='tournament_text'>COINS PACK </p>
+            <div className="container mt-4">
+              <div className="row">
+                {coinList?.length > 0 ? (
+                  <>
+                    {coinList?.map((coin, index) => (
+                      <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4" key={index}>
+                        <div className="card custom-card p-3 text-center coin_div">
+                          <div className="text-center">
+                            <Image src={coins} width={60} height={60} alt="coins"></Image>
+                          </div>
+                          <div className="py-3">
+                            <Image src={coin_img} width={30} height={30} alt="coins" />
+                            <span className="coins_amount ms-2">{coin?.coinsCount}</span>
+                          </div>
+                          <div className="text-center">
+                            <button className='get_coin_btn'>&#8377; {coin?.rupeesAmt}</button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </>
+                ) : (
+                  <p className="no_data">Data Not Available</p>
+                )}
+              </div>
+            </div>
           </div>
-
         </div>
-      </div>
-
-
-      {/* </section> */}
-
+      }
     </>
   );
 }

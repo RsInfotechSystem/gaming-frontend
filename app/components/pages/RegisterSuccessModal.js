@@ -4,9 +4,7 @@ import SignUpModal from "./SignUpModal";
 import backarrow from "../../../public/homepage/backarrow.png";
 import Image from "next/image";
 
-export default function RegisterSuccessModal({ isOpen, onClose, openSignUp, openOtpModal }) {
-    if (!isOpen) return null;
-
+export default function RegisterSuccessModal({ onClose, openSignUp, openOtpModal }) {
 
     return (
         <>

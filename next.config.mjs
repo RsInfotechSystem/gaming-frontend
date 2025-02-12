@@ -1,22 +1,22 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
-  // redirects: async () => {
-  //     return [
-  //         {
-  //             source: "/",
-  //             destination: "/panel",
-  //             permanent: false
-  //         }
-  //     ]
-  // },
+  redirects: async () => {
+    return [
+      {
+        source: "/admin",
+        destination: "/admin/game-list",
+        permanent: false
+      }
+    ]
+  },
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "example.com", // ✅ Replace with the actual hostname
-        port: "", // Optional
-        pathname: "/path/to/images/**", // Optional
+        protocol: process.env.NEXT_PUBLIC_PROTOCAL,
+        hostname: process.env.NEXT_PUBLIC_HOSTNAME,
+        port: process.env.NEXT_PUBLIC_PORT,
+        pathname: '/getFiles/**',
       },
     ],
   },
