@@ -121,5 +121,20 @@ export const communication = {
             throw error;
         }
     },
-
+    getProfileDetails: async function (id) {
+        try {
+            return axios.post(
+                `${getServerUrl()}/player/get-player-by-id`,
+                { id },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${getCookie("GAMING")}`,
+                    },
+                }
+            );
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
 }

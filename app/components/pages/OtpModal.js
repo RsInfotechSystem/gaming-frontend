@@ -4,19 +4,17 @@ import SignUpModal from "./SignUpModal";
 import backarrow from "../../../public/homepage/backarrow.png";
 import Image from "next/image";
 
-export default function OtpModal({ isOpen, onClose, openSignUp, openSuccessModal }) {
-    if (!isOpen) return null;
-
+export default function OtpModal({ onClose, openSignUp, openSuccessModal }) {
 
     return (
         <>
             <div className="modal-overlay" onClick={onClose}>
                 <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                     <div className="login_page_name">
-                        <button className="backarrow_btn"  onClick={() => {
-                                        onClose(); 
-                                        setTimeout(openSignUp, 300);
-                                    }}>
+                        <button className="backarrow_btn" onClick={() => {
+                            onClose();
+                            setTimeout(openSignUp, 300);
+                        }}>
                             <Image src={backarrow} alt="backarrow" width={12}></Image>
                         </button>
                         <p className="mb-0">REGISTER</p>

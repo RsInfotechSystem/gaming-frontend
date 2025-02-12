@@ -7,6 +7,8 @@ import cod_game from "../../../public/dashboard/cod_game.jpeg";
 import { communication } from "@/services/communication";
 import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
+import { getCookie } from "cookies-next";
+import { getUserDetails } from "@/utilities/get-user-details-from-cokies";
 
 export default function Profile() {
 
@@ -16,29 +18,35 @@ export default function Profile() {
 
   //get Contest on initial load
   const getProfileDetails = async () => {
-    // try {
-    //   setLoader(true);
-    //   const serverResponse = await communication.getProfileDetails();
-    //   if (serverResponse?.data?.status === "SUCCESS") {
-    //     setProfile(serverResponse?.data?.player);
-    //     setLoader(false);
-    //   } else if (serverResponse?.data?.status === "JWT_INVALID") {
-    //     Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
-    //     router.push("/");
-    //     setLoader(false);
-    //   } else {
-    //     Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
-    //   }
-    // } catch (error) {
-    //   Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
-    //   setLoader(false);
-    // } finally {
-    //   setLoader(false);
-    // }
+    try {
+      setLoader(true);
+      const userDetails = getUserDetails(router);
+      const serverResponse = await communication.getProfileDetails(userDetails?.id);
+      if (serverResponse?.data?.status === "SUCCESS") {
+        setProfile(serverResponse?.data?.player);
+        setLoader(false);
+      } else if (serverResponse?.data?.status === "JWT_INVALID") {
+        Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
+        router.push("/");
+        setLoader(false);
+      } else {
+        Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
+      }
+    } catch (error) {
+      Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
+      setLoader(false);
+    } finally {
+      setLoader(false);
+    }
   };
 
   useEffect(() => {
-    getProfileDetails()
+    const userDetails = getCookie("gamingUserDetails");
+    if (!userDetails) {
+      router.push("/");
+    } else {
+      getProfileDetails()
+    }
   }, []);
 
   console.log("profile : ", profile)
@@ -63,9 +71,11 @@ export default function Profile() {
 
           {/* Profile Details Section */}
           <div className="col-md-8 text-center text-md-start">
-            <h3 className="fw-bold">John Doe</h3>
-            <p className="rank-text fs-5">🏆 Rank: #1</p>
-            <p className="team-text fs-5">Team: Warriors</p>
+            <h3 className="fw-bold">{profile?.name}</h3>
+            {/* <p className="rank-text fs-5">🏆 Rank: #1</p> */}
+            {/* <p className="team-text fs-5">Team: Warriors</p> */}
+            <p className="rank-text fs-5">{profile?.email}</p>
+            <p className="rank-text fs-5">{profile?.mobile}</p>
             {/* <button className="btn btn-primary mt-3">View Profile</button> */}
           </div>
         </div>

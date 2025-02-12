@@ -10,8 +10,7 @@ import { hideLoader, showLoader } from "@/redux-stores/loaderReducer";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function SignUpModal({ isOpen, onClose, openLoginModal, openOtpModal }) {
-    if (!isOpen) return null;
+export default function SignUpModal({ onClose, openLoginModal, openOtpModal }) {
 
     const dispatch = useDispatch();
     const router = useRouter();
