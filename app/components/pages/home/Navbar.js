@@ -56,42 +56,42 @@ export default function Navbar() {
             <button onClick={() => setIsLoginOpen(true)} className='login_btn'>LOG IN</button>
 
             {/* Login Modal */}
-            <LoginModal
-              isOpen={isLoginOpen}
-              onClose={() => setIsLoginOpen(false)}
-              openSignUp={() => setSignUpOpen(true)}
-              openForgotPassword={() => setForgotPasswordOpen(true)}
-            />
+            {isLoginOpen &&
+              <LoginModal
+                onClose={() => setIsLoginOpen(false)}
+                openSignUp={() => setSignUpOpen(true)}
+                openForgotPassword={() => setForgotPasswordOpen(true)}
+              />}
 
             {/* SignUp Modal */}
-            <SignUpModal
-              isOpen={isSignUpOpen}
-              onClose={() => setSignUpOpen(false)}
-              openLoginModal={() => setIsLoginOpen(true)}
-              openOtpModal={() => setOtpOpen(true)}
-            />
+            {isSignUpOpen &&
+              <SignUpModal
+                onClose={() => setSignUpOpen(false)}
+                openLoginModal={() => setIsLoginOpen(true)}
+                openOtpModal={() => setOtpOpen(true)}
+              />}
 
             {/* ForgotPassword Modal */}
-            <ForgotPasswordModal
-              isOpen={isForgotPasswordOpen}
-              onClose={() => setForgotPasswordOpen(false)}
-              openLoginModal={() => setIsLoginOpen(true)}
-            />
+            {isForgotPasswordOpen &&
+              <ForgotPasswordModal
+                onClose={() => setForgotPasswordOpen(false)}
+                openLoginModal={() => setIsLoginOpen(true)}
+              />}
 
             {/* OTP Modal */}
-            <OtpModal
-              isOpen={isOtpOpen}
-              onClose={() => setOtpOpen(false)}
-              openSignUp={() => setSignUpOpen(true)}
-              openSuccessModal={() => setSuccessOpen(true)}
-            />
+            {isOtpOpen &&
+              <OtpModal
+                onClose={() => setOtpOpen(false)}
+                openSignUp={() => setSignUpOpen(true)}
+                openSuccessModal={() => setSuccessOpen(true)}
+              />}
 
             {/* Success Modal */}
-            <RegisterSuccessModal
-              isOpen={isSuccessOpen}
-              onClose={() => setSuccessOpen(false)}
-              openOtpModal={() => setOtpOpen(true)}
-            />
+            {isSuccessOpen &&
+              <RegisterSuccessModal
+                onClose={() => setSuccessOpen(false)}
+                openOtpModal={() => setOtpOpen(true)}
+              />}
           </div>
         </div>
       </section>
