@@ -10,8 +10,7 @@ import Swal from "sweetalert2";
 import { communication } from "@/services/communication";
 import { useForm } from "react-hook-form";
 
-export default function ForgotPasswordModal({ isOpen, onClose, openLoginModal }) {
-    if (!isOpen) return null;
+export default function ForgotPasswordModal({ onClose, openLoginModal }) {
 
     const dispatch = useDispatch();
     const router = useRouter();
