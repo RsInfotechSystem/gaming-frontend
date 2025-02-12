@@ -160,5 +160,66 @@ export const adminCommunication = {
             Swal.fire({ text: error.message, icon: "warning" });
         }
     },
+    //?----------------Game Tab APIs-----------------------------------------------------------------------------------------------------
+    createGame: async function (dataToSend) {
+        try {
+            return axios.post(`${getServerUrl()}/game/create-game`, dataToSend, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    updateGame: async function (dataToSend) {
+        try {
+            return axios.post(`${getServerUrl()}/game/update-game`, dataToSend, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    getGameById: async function (gameId) {
+        try {
+            return axios.post(`${getServerUrl()}/game/get-game-by-id`, { gameId }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    getGameList: async function (page = 1, searchString) {
+        try {
+            return axios.post(`${getServerUrl()}/game/get-game-list`, { page, searchString, }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    deleteGame: async function (gameIds) {
+        try {
+            return axios.post(`${getServerUrl()}/game/delete-game`, { gameIds }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
 
 }

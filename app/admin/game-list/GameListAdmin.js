@@ -1,102 +1,162 @@
 "use client"
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import network from '../../../public/dashboard/network.png';
 import bgmi_game from '../../../public/dashboard/bgmi_game.jpeg';
 import cod_game from '../../../public/dashboard/cod_game.jpeg';
 import freefire_game from '../../../public/dashboard/freefire_game_rd.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import Loader from '@/app/common-component/Loader';
+import CreateGame from './CreateGame';
+import { useRouter } from 'next/navigation';
+import { adminCommunication } from '@/services/admin-communication';
+import Swal from 'sweetalert2';
 
 
 const GameListAdmin = () => {
+    const [modalStates, setModalStates] = useState({ type: "", modal: false, gameId: "" })
+    const [loader, setLoader] = useState(false);
+    const [searchString, setSearchString] = useState("");
+    const [games, setGames] = useState([]);
+    const [paginationData, setPaginationData] = useState({
+        currentPage: 1,
+        isPageUpdated: false,
+        totalPages: 1,
+        page: 1
+    });
+    const router = useRouter();
+    async function getGameList(page = 1, searchString = "") {
+        try {
+            setLoader(true);
+            const serverResponse = await adminCommunication.getGameList(page, searchString);
+            if (serverResponse.data.status === "SUCCESS") {
+                setGames(serverResponse?.data?.gameList);
+                setPaginationData(pre => ({
+                    ...pre, totalPages: serverResponse?.data?.totalPages,
+                    page: page,
+                    currentPage: page,
+                }))
+            } else if (serverResponse?.data?.status === "JWT_INVALID") {
+                Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+                router.push("/login");
+            } else {
+                setGames([]);
+                setPaginationData(pre => ({
+                    ...pre, totalPages: 0,
+                }))
+            }
+            setLoader(false)
+        } catch (error) {
+            Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning", });
+            setLoader(false)
+        }
+    }
 
+    async function deleteGame(gameId) {
+        try {
+
+            Swal.fire({
+                text: "Are you sure ,you want to Delete the Game?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes",
+                cancelButtonText: "No",
+            }).then(async function (result) {
+                if (result.isConfirmed) {
+                    try {
+                        setLoader(true);
+                        const serverResponse = await adminCommunication.deleteGame([gameId]);
+                        if (serverResponse.data.status === "SUCCESS") {
+                            Swal.fire({ text: serverResponse?.data?.message, icon: "success" });
+                            getGameList(1, "")
+                        } else if (serverResponse?.data?.status === "JWT_INVALID") {
+                            Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+                            router.push("/login");
+                        } else {
+                            Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+                        }
+                        setLoader(false)
+                    } catch (error) {
+                        Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning", });
+                        setLoader(false)
+                    }
+
+                } else {
+                    return;
+                }
+            });
+
+            setLoader(false)
+        } catch (error) {
+            Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning", });
+            setLoader(false)
+        }
+    }
+
+    useEffect(() => {
+        getGameList(paginationData.currentPage, searchString);
+    }, [paginationData.isPageUpdated]);
 
     return (
-        // <div  style={{minHeight:"100vh"}}>
-        <div style={{ width: "90%", margin: "0px auto" }}>
-            <div className="mt-1">
-                <p className="tournament_text">
-                    All GAMES{" "}
-                    <Image className="me-2" width={25} height={20} src={network} alt="network" />
-                </p>
-            </div>
-            <div className='nav_search'>
-                <div className="search_box">
-                    <input type="search" placeholder="Search" className="search_input" />
-                    <i className="fas fa-search search_icon"></i>
-                </div>
-                <div className="add_btn_main">
-                    <button className='add_btn'>Add</button>
-                </div>
-            </div>
-
-
-            <div className='mt-4'>
-
-                <div className='d-flex justify-content-around mb-3'>
-                    <div className="games_bg">
-                        <div className="games_bg_inner">
-                            <FontAwesomeIcon icon={faTrashCan} className="edit_icon delete_btn" />
-                            <div>
-                                <Image
-                                    className="me-2"
-                                    style={{ borderRadius: "15px" }}
-                                    width={76}
-                                    height={76}
-                                    src={bgmi_game}
-                                    alt="user"
-                                />
-                            </div>
-                            <div>
-                                <p className="game_name">BGMI</p>
-                                <p className="game_info">5.3 Millions played</p>
-                            </div>
+        <>
+            {loader === true ?
+                <Loader />
+                :
+                <div style={{ width: "90%", margin: "0px auto" }}>
+                    <div className="mt-1">
+                        <p className="tournament_text">
+                            All GAMES{" "}
+                            <Image className="me-2" width={25} height={20} src={network} alt="network" />
+                        </p>
+                    </div>
+                    <div className='nav_search'>
+                        <div className="search_box">
+                            <input type="search" placeholder="Search" className="search_input" />
+                            <i className="fas fa-search search_icon"></i>
+                        </div>
+                        <div className="add_btn_main">
+                            <button className='add_btn' onClick={() => setModalStates({ modal: true, type: "create", gameId: "" })}>Add</button>
                         </div>
                     </div>
 
-                    <div className='games_bg'>
-                        <div className="games_bg_inner">
-                            <FontAwesomeIcon icon={faTrashCan} className="edit_icon delete_btn" />
-                            <div>
-                                <Image className='me-2' style={{ borderRadius: "15px" }} width={76} height={76} src={freefire_game} alt="user"></Image>
-                            </div>
-                            <div>
-                                <p className='game_name'>FREE FIRE</p>
-                                <p className='game_info'>5.3 Millions played</p>
-                            </div>
+
+                    <div className='mt-4'>
+
+                        <div className='d-flex justify-content-around mb-3'>
+                            {games?.map((gameDetails, index) => {
+                                return (
+                                    <div className="games_bg" key={index + 1}>
+                                        <div className="games_bg_inner">
+                                            {/* <FontAwesomeIcon icon={faPenToSquare} onClick={() => setModalStates({ type: "update", modal: true, gameId: gameDetails?.id })} className="edit_icon" /> */}
+                                            <FontAwesomeIcon icon={faTrashCan} className="edit_icon delete_btn" onClick={() => deleteGame(gameDetails.id)} />
+                                            <div>
+                                                <Image
+                                                    className="me-2"
+                                                    style={{ borderRadius: "15px" }}
+                                                    width={76}
+                                                    height={76}
+                                                    src={bgmi_game}
+                                                    alt="game_image"
+                                                />
+                                            </div>
+                                            <div>
+                                                <p className="game_name">{gameDetails?.name}</p>
+                                                <p className="game_info">{gameDetails?.description}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+
                         </div>
+
                     </div>
                 </div>
-                <div className='d-flex justify-content-around mb-3'>
-                    <div className='games_bg'>
-                        <div className="games_bg_inner">
-                            <FontAwesomeIcon icon={faTrashCan} className="edit_icon delete_btn" />
-                            <div>
-                                <Image className='me-2' style={{ borderRadius: "15px" }} width={76} height={76} src={cod_game} alt="user"></Image>
-                            </div>
-                            <div>
-                                <p className='game_name'>COD</p>
-                                <p className='game_info'>5.3 Millions played</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='games_bg'>
-                        <div className="games_bg_inner">
-                            <FontAwesomeIcon icon={faTrashCan} className="edit_icon delete_btn" />
-                            <div>
-                                <Image className='me-2' style={{ borderRadius: "15px" }} width={76} height={76} src={freefire_game} alt="user"></Image>
-                            </div>
-                            <div>
-                                <p className='game_name'>FREE FIRE</p>
-                                <p className='game_info'>5.3 Millions played</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        // </div>
+            }
+            {modalStates?.modal && <CreateGame setModalStates={setModalStates} type={modalStates?.type} gameId={modalStates?.gameId ?? ""} getGameList={getGameList} />}
+        </>
+
     )
 }
 
