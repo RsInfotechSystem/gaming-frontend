@@ -41,6 +41,9 @@ body {
     height: 85px;
     width: 100vw;
     background-color: #0B0202;
+    position: sticky;
+    top: 0px;
+    z-index: 3000;
 }
 .nav_main {
     /* height: 80px; */
@@ -113,7 +116,7 @@ body {
   width: 192px;
   height: 48px;
   border-radius: 50px;
-  background-image: linear-gradient(to right, #ff1717, #9d04f6);
+  background-image: linear-gradient(45deg, #ff1717, #9d04f6);
   position: relative;
   bottom: 10px;
   align-items: center;
@@ -128,7 +131,6 @@ url('/homepage/d1a189d23eb45fa3184a0c7c3f19afa0.jpeg');
   background-size: cover;
   background-position: center;
   /* padding: 40px 40px; */
-  
 }
 .hero_center{
   padding: 15% 8%;
@@ -483,6 +485,7 @@ url('/homepage/d1a189d23eb45fa3184a0c7c3f19afa0.jpeg');
   .faq_head_main{
     font-size: 50px;
     font-weight: 600;
+    letter-spacing: 2px;
   }
   .faq_content{
     font-size: 19px;
@@ -505,20 +508,28 @@ url('/homepage/d1a189d23eb45fa3184a0c7c3f19afa0.jpeg');
     border: none;
   }
   .has-search {
-    position: relative;
-}
-
-.has-search .form-control {
-    padding-right: 2.375rem; /* Shift padding to the right */
-    padding-left: 0.75rem; /* Adjust left padding */
-}
+     position: relative;
+  }
 
 .has-search .form-control-feedback {
-    right: 0.5rem;
-    left: auto; 
+    position: absolute;
+    z-index: 2;
+    width: 2.375rem;
+    top: 50%;
+    right: 15%; /* Move the icon to the right side */
+    transform: translateY(-50%); /* Center the icon vertically */
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
 }
+.has-search .form-control {
+  padding-right: 2.375rem; /* Add padding on the right to prevent text overlap with icon */
+  padding-left: 10px; /* Keep some left padding */
+}
+  
 .input-group-text {
-  border-left: none; /* Removes left border to blend with input */
+  border-left: none; 
 }
 .input_bar{
   padding: 0% 4.5%;
@@ -529,18 +540,16 @@ url('/homepage/d1a189d23eb45fa3184a0c7c3f19afa0.jpeg');
   padding-right: 20px;
 }
 .search_bar{
-  padding-left: 20px;
+  /* padding: 8% 10%; */
+  border: 1px solid red;
+  padding: 10%;
+  /* margin: 5% 7%; */
 }
-.input_parent{
-  border: 1px solid gray;
-  opacity: 1.0;
+.search_bar input{
+  padding: 15px;
 }
-.input_parent input{
-  margin: 30px 0px 30px 30px;
-  padding: 12px;
-}
-.input_parent span{
-  margin: 30px 30px 30px 0px;
+.parent_input{
+ padding-left: 20px;
 }
 .horizontal_line_right{
   height: 15px;
@@ -576,6 +585,89 @@ url('/homepage/d1a189d23eb45fa3184a0c7c3f19afa0.jpeg');
   padding-bottom: 20px;
 }
 /* FAQ section end*/
+
+/* CONTACT section Start*/
+.contact_section{
+  color: #FFFFFF;
+  font-family: play;
+  /* margin-top: 13%; */
+  height: 90vh;
+  background: 
+  url('/homepage/contact_back.jpg');
+    background-size: cover;
+    background-position: center; 
+}
+.center_head{
+  padding-top: 13%;
+}
+.combo_section{
+  padding: 0% 4%;
+  font-family: play;
+  margin-top: 9%;
+  margin-bottom: 6%;
+}
+ .form_section {
+  padding-right: 3%;
+ }
+ .form_section textarea{
+  height: 35vh;
+ }
+.form_section form{
+  padding: 0% 8%;
+  background-image: linear-gradient(40deg, #ff1717, #9d04f6);
+  border-radius: 15px;
+}
+.form_section form input{
+  padding: 10px;
+}
+.contact_right_side{
+  padding-left: 4%;
+  margin-top: 3%;
+}
+.contact_page{
+  font-size: 50px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.get_touch p{
+  font-size: 18px;
+  color: red;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.touch_with_us{
+  font-size: 45px;
+  font-weight: 600;
+  line-height: 70%;
+}
+.touch_with_us p{
+  color: #FFFFFF;
+}
+.touch_with_us span{
+  color: red;
+}
+.contact_content_right{
+  margin-top: 9%;
+  color: #FFFFFF;
+}
+.contact_deatails p a{
+  text-decoration: none;
+  color: #FFFFFF;
+}
+.contact_deatails i{
+  font-size: 30px;
+  padding-right: 20px;
+}
+.contact_deatails p{
+  background-color: red;
+  padding: 9px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  box-shadow: 5px 5px 2px pink;
+}
+/* CONTACT section End*/
 
 .btn-primary{
   color: #FFFFFF;
