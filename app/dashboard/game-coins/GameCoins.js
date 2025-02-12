@@ -44,39 +44,38 @@ export default function GameCoins() {
 
   return (
     <>
-      {/* <section className='tournament_main'> */}
 
       <div className='tournament_list'>
         <div className='mt-1 coin_pack'>
           <p className='tournament_text'>COINS PACK </p>
-          <div className='d-flex justify-content-between mb-3'>
-            {coinList?.length > 0 ? (
-              <>
-                {coinList.map((coin, index) => (
-                  <div className='coin_div' key={index}>
-                    <div className="text-center">
-                      <Image src={coins} width={60} height={60} alt="coins"></Image>
+          <div className="container mt-4">
+            <div className="row">
+              {coinList?.length > 0 ? (
+                <>
+                  {coinList.map((coin, index) => (
+                    <div className="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4" key={index}>
+                      <div className="card custom-card p-3 text-center coin_div">
+                        <div className="text-center">
+                          <Image src={coins} width={60} height={60} alt="coins"></Image>
+                        </div>
+                        <div className="py-3">
+                          <Image src={coin_img} width={30} height={30} alt="coins" />
+                          <span className="coins_amount ms-2">{coin?.coinsCount}</span>
+                        </div>
+                        <div className="text-center">
+                          <button className='get_coin_btn'>&#8377; {coin?.rupeesAmt}</button>
+                        </div>
+                      </div>
                     </div>
-                    <div className="text-center py-3">
-                      <Image src={coin_img} width={30} height={30} alt="coins"></Image><span className='coins_amount'>{coin?.coinsCount}</span>
-                    </div>
-                    <div className="text-center">
-                      <button className='get_coin_btn'>&#8377; {coin?.rupeesAmt}</button>
-                    </div>
-                  </div>
-                ))}
-              </>
-            ) : (
-              <p className="no_data">Data Not Available</p>
-            )}
+                  ))}
+                </>
+              ) : (
+                <p className="no_data">Data Not Available</p>
+              )}
+            </div>
           </div>
-
         </div>
       </div>
-
-
-      {/* </section> */}
-
     </>
   );
 }

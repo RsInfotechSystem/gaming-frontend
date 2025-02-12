@@ -283,7 +283,7 @@ body {
 }
 /* coin page css start */
 .coin_div{
-  width: 22%;
+  /* width: 22%; */
   background-color: #242424;
   height: 210px;
   border: 1px solid #fff;
