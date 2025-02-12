@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style/dashboard.css";
 import { Providers } from "./provider";
-// import "bootstrap/dist/js/bootstrap.bundle.min";
+// import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 
 
@@ -27,6 +27,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Providers>{children}</Providers>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
       </body>
     </html>
   );
