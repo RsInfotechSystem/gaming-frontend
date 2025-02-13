@@ -60,14 +60,14 @@ export default function GamesList() {
       if (serverResponse?.data?.status === "SUCCESS") {
         setContestList(serverResponse?.data?.contestList);
       } else if (serverResponse?.data?.status === "JWT_INVALID") {
-        Swal.fire({ text: serverResponse?.data?.message, icon: "error" });
+        Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
         router.push("/");
       } else {
         setContestList([])
       }
       setLoader(false);
     } catch (error) {
-      Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
+      Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning" });
       setLoader(false);
     }
   };
@@ -80,17 +80,22 @@ export default function GamesList() {
       if (serverResponse?.data?.status === "SUCCESS") {
         setGameList(serverResponse?.data?.gameList);
       } else if (serverResponse?.data?.status === "JWT_INVALID") {
-        Swal.fire({ text: serverResponse?.data?.message, icon: "error" });
+        Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
         router.push("/");
       } else {
         setGameList([])
       }
       setLoader(false);
     } catch (error) {
-      Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
+      Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning" });
       setLoader(false);
     }
   };
+
+  const handleGameClick = (id) => {
+    router.push(`/dashboard/games-list/game-info?gameId=${id}`)
+  }
+
   useEffect(() => {
     getContestList()
     getGamesList();
@@ -103,7 +108,7 @@ export default function GamesList() {
         :
         <div className="tournament_list">
           <div style={{ width: "90%", margin: "0px auto" }}>
-            {contestList?.length > 0 || gameList.length > 0 ? (
+            {contestList?.length > 0 || gameList?.length > 0 ? (
               <>
                 {contestList?.length > 0 && (
                   <div className="mt-1">
@@ -161,7 +166,7 @@ export default function GamesList() {
                     <div className="d-flex flex-wrap justify-content-around mb-3">
                       {gameList?.map((game, index) => (
                         <div className="games_bg mb-3" key={index}>
-                          <div className="games_bg_inner">
+                          <div className="games_bg_inner" onClick={() => handleGameClick(game?.id)}>
                             <div>
                               <Image
                                 className="me-2"

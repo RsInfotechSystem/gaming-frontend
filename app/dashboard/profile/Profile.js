@@ -32,7 +32,8 @@ export default function Profile() {
       }
       setLoader(false);
     } catch (error) {
-      Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
+      Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning" });
+      setLoader(false)
     } finally {
       setLoader(false);
     }
