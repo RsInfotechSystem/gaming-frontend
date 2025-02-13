@@ -15,6 +15,7 @@ import { formatDate } from "@/helper/formatDate";
 export default function GameInfo() {
   const [activeTab, setActiveTab] = useState("home");
   const [loader, setLoader] = useState(false);
+  const [joinContest, setJoinContest] = useState(false);
   const [gameWiseContestsList, setGameWiseContestsList] = useState([]);
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -40,6 +41,9 @@ export default function GameInfo() {
     }
   };
 
+  const handleJoinClick = () => {
+    setJoinContest(true)
+  }
 
   useEffect(() => {
     getGameWiseContestList()
@@ -119,7 +123,7 @@ export default function GameInfo() {
                                 </div>
                                 <div className="col-6">
                                   <p className="label-contest">Perspective</p>
-                                  <p className="value-contest">TPP</p>
+                                  {/* <p className="value-contest">{contest}</p> */}
                                 </div>
                               </div>
 
@@ -148,7 +152,7 @@ export default function GameInfo() {
                               </div> */}
                               </div>
 
-                              <button className="btn btn-warning-contest w-100 mt-3 fw-bold">JOIN NOW</button>
+                              <button className="btn btn-warning-contest w-100 mt-3 fw-bold" data-bs-toggle="modal" data-bs-target="#contestModal" onClick={() => handleJoinClick()}>JOIN NOW</button>
                             </div>
                           </div>
 
@@ -216,7 +220,7 @@ export default function GameInfo() {
                               </div> */}
                               </div>
 
-                              <button className="btn btn-warning-contest w-100 mt-3 fw-bold">JOIN NOW</button>
+                              <button className="btn btn-warning-contest w-100 mt-3 fw-bold" data-bs-toggle="modal" data-bs-target="#contestModal" onClick={() => handleJoinClick()}>JOIN NOW</button>
                             </div>
                           </div>
 
@@ -284,7 +288,7 @@ export default function GameInfo() {
                               </div> */}
                               </div>
 
-                              <button className="btn btn-warning-contest w-100 mt-3 fw-bold">JOIN NOW</button>
+                              <button className="btn btn-warning-contest w-100 mt-3 fw-bold" data-bs-toggle="modal" data-bs-target="#contestModal" onClick={() => handleJoinClick()}>JOIN NOW</button>
                             </div>
                           </div>
 
@@ -294,6 +298,43 @@ export default function GameInfo() {
                   </div>
                 )}
 
+
+                {joinContest &&
+                  <div className="modal fade" id="contestModal" tabIndex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+                    <div className="modal-dialog">
+                      <div className="modal-content-contest">
+
+                        {/* <!-- Modal Header --> */}
+                        <div className="modal-header-contest">
+                          <h5 className="modal-title-contest" id="modalTitle">First Come First Serve</h5>
+                          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        {/* <!-- Modal Body --> */}
+                        <div className="modal-body">
+                          <p>Stumble Guys - SOLO <span className="float-end">14th Feb 2025 11:30 PM</span></p>
+
+                          {/* <!-- Confirmation Box --> */}
+                          <div className="confirmation-box">Confirmation
+                            Coin Balance = <span>270</span>
+                          </div>
+
+                          {/* <!-- Entry Fee & Payment --> */}
+                          <div className="entry-box">
+                            <span>Entry Fee</span> <span>Free</span>
+                          </div>
+                          <div className="entry-box">
+                            <span>To Pay</span>
+                            <span>Free</span>
+                          </div>
+
+                          {/* <!-- Join Button --> */}
+                          <button className="join-btn">JOIN CONTEST →</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                }
               </div>
             </div>
           </div>

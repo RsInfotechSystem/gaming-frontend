@@ -8,13 +8,13 @@ import "../style/dashboard.css";
 export default function RootLayout({ children }) {
     return (
         <div className="root_wrapper">
-            <Suspense> 
+            <Suspense>
                 <UserNavbar />
                 <UserLeftSidebar />
                 <div className="tournament_main">
                     {children}
                 </div>
-                <UserRightSidebar/>
+                {/* <UserRightSidebar/> */}
             </Suspense>
         </div>
     );
