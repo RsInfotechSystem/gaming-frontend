@@ -1147,3 +1147,74 @@ div:where(.col_100p) {
       transform: rotate(360deg);
   }
 }
+
+/* ===============join contest cofirmation css start================ */
+
+.modal-content-contest {
+  background-color: #121a33;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.modal-header-contest {
+  border-bottom: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header-contest .btn-close {
+  background-color: red;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.modal-title-contest {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
+.confirmation-box {
+  background: linear-gradient(to right, #ff1717, #9d04f6);
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.confirmation-box span {
+  color: gold;
+}
+
+.entry-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border-bottom: 1px solid #ffffff40;
+}
+
+.entry-box span {
+  font-weight: bold;
+}
+
+.join-btn {
+  display: block;
+  width: 100%;
+  background: black;
+  color: white;
+  border-radius: 20px;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+  border: none;
+}
+
+.join-btn:hover {
+  background: #222;
+/* ===============join contest cofirmation css end================ */
+}

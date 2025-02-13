@@ -1,46 +1,72 @@
 "use client"
 import Image from 'next/image';
-import React from 'react';
-import user_img from '../../public/dashboard/usericon.png';
-import gameslist from '../../public/dashboard/gameslist.png';
-import coins from '../../public/dashboard/coins.png';
-import mygames from '../../public/dashboard/mygames.png';
+import React, { useEffect, useState } from 'react';
 import coin_img from '../../public/dashboard/coin_img.png';
 import down_arrow from '../../public/dashboard/down_arrow.png';
-import network from '../../public/dashboard/network.png';
-import all_games from '../../public/dashboard/all_games.png';
-import bgmi_game from '../../public/dashboard/bgmi_game.jpeg';
-import cod_game from '../../public/dashboard/cod_game.jpeg';
-import freefire_game from '../../public/dashboard/freefire_game_rd.png';
-import winnings from '../../public/dashboard/winnings.png';
-import tournament_bgmi from '../../public/dashboard/tournament_bgmi.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { communication } from '@/services/communication';
+import { setCoins } from '@/redux-stores/slices/coinSlice';
+import Swal from 'sweetalert2';
+import Loader from '../common-component/Loader';
+import { useRouter } from 'next/navigation';
 
 export default function UserNavbar() {
+    const dispatch = useDispatch();
+    const coins = useSelector(state => state.coins.coins);
+    const [user, setUser] = useState({});
+    const [loader, setLoader] = useState(false);
+    const router = useRouter()
+    //get User by Id
+    async function getUserById() {
+        try {
+            setLoader(true);
+            const serverResponse = await communication.getPlayerDetails();
+            if (serverResponse.data.status === "SUCCESS") {
+                dispatch(setCoins(serverResponse?.data?.coin));
+                setUser(serverResponse?.data?.user)
+            } else if (serverResponse?.data?.status === "JWT_INVALID") {
+                Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+                router.push("/");
+            } else {
+                Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+            }
+            setLoader(false)
+        } catch (error) {
+            Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning", });
+            setLoader(false)
+        }
+    }
+
+    useEffect(() => {
+        getUserById()
+    }, [])
+
     return (
         <>
-            <section>
-                          <div className='dashboard_nav' style={{ zIndex: "10" }}>
-                              <div className='nav_dash_width'>
-                              </div>
-                              <div className='main_dash_heading'>
-                                  <p>DASHBOARD</p>
-                              </div>
-                              <div className='dash_btn nav_dash_width' >
-                                  <div>
-                                      <div className='coin_btn d-flex'>
-                                      <Image className='me-2' width={25} height={25} src={coin_img}  alt="user"/>
-          
-                                      <span className=''> 99,999 </span> </div>
-                                  </div>
-                                  <div>
-                                      <button className='coin_btn profile_btn d-flex'>  <span className=''> abhi </span> <Image className='mx-1 my-auto' width={13} height={13} src={down_arrow}  alt="user"/></button>
-                          
-                                  </div>
-                              </div>
-                          </div>
-                      </section>
+            {loader ? <Loader />
+                :
+                <section>
+                    <div className='dashboard_nav' style={{ zIndex: "10" }}>
+                        <div className='nav_dash_width'>
+                        </div>
+                        <div className='main_dash_heading'>
+                            <p>DASHBOARD</p>
+                        </div>
+                        <div className='dash_btn nav_dash_width' >
+                            <div>
+                                <div className='coin_btn d-flex'>
+                                    <Image className='me-2' width={25} height={25} src={coin_img} alt="user" />
 
+                                    <span className=''> {coins} </span> </div>
+                            </div>
+                            <div>
+                                <button className='coin_btn profile_btn d-flex'>  <span className=''> {user?.name ?? ""} </span> <Image className='mx-1 my-auto' width={13} height={13} src={down_arrow} alt="user" /></button>
 
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            }
         </>
     );
 }

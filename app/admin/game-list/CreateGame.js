@@ -4,6 +4,7 @@ import { adminCommunication } from '@/services/admin-communication';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
@@ -13,7 +14,7 @@ const CreateGame = ({ setModalStates, type, gameId, getGameList }) => {
     const [loader, setLoader] = useState(false);
     const [selectedImages, setSelectedImages] = useState([]);
     const fileInputRef = useRef(null);
-
+    const router = useRouter();
     const handleImageChange = (e) => {
         const files = Array.from(e.target.files);
         setSelectedImages(prevImages => [...prevImages, ...files]);

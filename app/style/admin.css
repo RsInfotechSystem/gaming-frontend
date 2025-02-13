@@ -112,7 +112,7 @@
     margin-left: auto;
 }
 
-.tournament_list_admin{
+.tournament_list_admin {
     /* width: 64%; */
     height: 100%;
     border-left: 5px solid #F83333;
@@ -122,8 +122,8 @@
     /* margin-left: 18%;  */
     /* margin-right: 18%;  */
     min-height: 100vh;
-  
-  }
+
+}
 
 /****************** COMMON PERCENTAGE WIDTH CLASSES CSS START ******************/
 div:where(.col_1p,
@@ -661,8 +661,8 @@ div:where(.col_100p) {
     align-items: center;
     padding: 2px;
     /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
-  border: 1px solid #d80f6ead;
-  padding: 2px 10px;
+    border: 1px solid #d80f6ead;
+    padding: 2px 10px;
 
 }
 
@@ -673,7 +673,7 @@ div:where(.col_100p) {
     border-radius: 10px;
     color: #f8f8f8;
     /* Light text */
-   
+
 
 }
 
@@ -935,8 +935,9 @@ div:where(.col_100p) {
     align-items: center;
     column-gap: 15px;
 }
+
 /* ***********Coins Tab css start************** */
-.coin_div{
+.coin_div {
     width: 22%;
     background-color: #242424;
     height: 210px;
@@ -946,7 +947,8 @@ div:where(.col_100p) {
     padding: 20px 0px;
     position: relative;
     margin-bottom: 20px;
-  }
+}
+
 .delete_btn {
     position: absolute;
     top: 10px;
@@ -954,5 +956,11 @@ div:where(.col_100p) {
     cursor: pointer;
     font-size: 18px;
     /* color: red; */
-  }
+}
+
 /* ***********Coins Tab css END************** */
+
+option {
+    background-color: black;
+    /* Background color for options */
+}

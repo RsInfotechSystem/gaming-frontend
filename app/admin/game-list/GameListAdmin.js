@@ -6,11 +6,11 @@ import bgmi_game from '../../../public/dashboard/bgmi_game.jpeg';
 import cod_game from '../../../public/dashboard/cod_game.jpeg';
 import freefire_game from '../../../public/dashboard/freefire_game_rd.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import Loader from '@/app/common-component/Loader';
 import CreateGame from './CreateGame';
 import { useRouter } from 'next/navigation';
-import { adminCommunication } from '@/services/admin-communication';
+import { adminCommunication, getServerUrl } from '@/services/admin-communication';
 import Swal from 'sweetalert2';
 
 
@@ -26,6 +26,7 @@ const GameListAdmin = () => {
         page: 1
     });
     const router = useRouter();
+
     async function getGameList(page = 1, searchString = "") {
         try {
             setLoader(true);
@@ -129,14 +130,16 @@ const GameListAdmin = () => {
                                     <div className="games_bg" key={index + 1}>
                                         <div className="games_bg_inner">
                                             {/* <FontAwesomeIcon icon={faPenToSquare} onClick={() => setModalStates({ type: "update", modal: true, gameId: gameDetails?.id })} className="edit_icon" /> */}
+                                            <FontAwesomeIcon icon={faEdit} className="edit_icon delete_btn me-5"/>
                                             <FontAwesomeIcon icon={faTrashCan} className="edit_icon delete_btn" onClick={() => deleteGame(gameDetails.id)} />
+                                           
                                             <div>
                                                 <Image
                                                     className="me-2"
                                                     style={{ borderRadius: "15px" }}
                                                     width={76}
                                                     height={76}
-                                                    src={bgmi_game}
+                                                    src={`${getServerUrl()}/getFiles/${gameDetails?.gamefiles[0].fileUrl}`}
                                                     alt="game_image"
                                                 />
                                             </div>

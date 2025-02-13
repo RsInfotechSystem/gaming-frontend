@@ -28,11 +28,12 @@ export default function Profile() {
         Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
         router.push("/");
       } else {
-        setProfile([])
+        Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
       }
       setLoader(false);
     } catch (error) {
-      Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
+      Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning" });
+      setLoader(false)
     } finally {
       setLoader(false);
     }

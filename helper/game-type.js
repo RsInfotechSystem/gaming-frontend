@@ -1,0 +1,1 @@
+export const gameTypeArray = ["SOLO", "DUO", "SQUAD"]

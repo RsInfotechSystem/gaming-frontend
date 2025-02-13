@@ -99,7 +99,7 @@ export const communication = {
     },
     getCoinList: async () => {
         try {
-            return await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/coin/get-coin-list`, {}, {
+            return await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/coin/get-coin-list-for-user`, {}, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${getCookie("GAMING")}`,
@@ -132,6 +132,49 @@ export const communication = {
                         Authorization: `Bearer ${getCookie("GAMING")}`,
                     },
                 }
+            );
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+
+    getGameWiseContestList: async function (id) {
+        try {
+            return axios.post(
+                `${getServerUrl()}/contest/get-game-wise-contest-list`,
+                { gameId: id },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${getCookie("GAMING")}`,
+                    },
+                }
+            );
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    purchaseCoins: async function (dataToSend) {
+        try {
+            return axios.post(`${getServerUrl()}/coin/purchase-coins`, dataToSend, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${getCookie("GAMING")}`,
+                },
+            }
+            );
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    getPlayerDetails: async function () {
+        try {
+            return axios.get(`${getServerUrl()}/coin/get-player-coins`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${getCookie("GAMING")}`,
+                },
+            }
             );
         } catch (error) {
             Swal.fire({ text: error.message, icon: "warning" });

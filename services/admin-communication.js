@@ -221,5 +221,65 @@ export const adminCommunication = {
             Swal.fire({ text: error.message, icon: "warning" });
         }
     },
-
+    getActiveGames: async function () {
+        try {
+            return axios.get(`${getServerUrl()}/game/get-active-game`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    //-----------------------------------------Contest APIs----------------------------------------
+    createContest: async function (dataToSend) {
+        try {
+            return axios.post(`${getServerUrl()}/contest/create-contest`, dataToSend, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    updateContest: async function (dataToSend) {
+        try {
+            return axios.post(`${getServerUrl()}/contest/update-contest`, dataToSend, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    getContestList: async function (page = 1, searchString, gameId, gameType) {
+        try {
+            return axios.post(`${getServerUrl()}/contest/get-contest-list`, { page, searchString, gameId, gameType }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    addRoomId: async function (dataToSend) {
+        try {
+            return axios.post(`${getServerUrl()}/contest/update-room-id`, dataToSend, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
 }
