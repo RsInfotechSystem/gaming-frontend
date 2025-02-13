@@ -102,7 +102,7 @@ export default function GameInfo() {
                     <div className="row gy-4">
 
                       {gameWiseContestsList?.map((contest, index) =>
-                      (contest?.gameType === "duo" &&
+                      (contest?.gameType === "solo" &&
                         <div className="col-sm-12 col-md-6 col-lg-6" key={index}>
                           <div className="card custom-card-contest">
                             <div className="card-header-contest d-flex justify-content-between align-items-center">
