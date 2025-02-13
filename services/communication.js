@@ -137,6 +137,23 @@ export const communication = {
             Swal.fire({ text: error.message, icon: "warning" });
         }
     },
+
+    getGameWiseContestList: async function (id) {
+        try {
+            return axios.post(
+                `${getServerUrl()}/contest/get-game-wise-contest-list`,
+                { gameId: id },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${getCookie("GAMING")}`,
+                    },
+                }
+            );
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
     purchaseCoins: async function (dataToSend) {
         try {
             return axios.post(`${getServerUrl()}/coin/purchase-coins`, dataToSend, {

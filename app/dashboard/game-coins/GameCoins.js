@@ -28,14 +28,14 @@ export default function GameCoins() {
       if (serverResponse?.data?.status === "SUCCESS") {
         setCoinList(serverResponse?.data?.coinList);
       } else if (serverResponse?.data?.status === "JWT_INVALID") {
-        Swal.fire({ text: serverResponse?.data?.message, icon: "error" });
+        Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
         router.push("/");
       } else {
-        Swal.fire({ text: serverResponse?.data?.message, icon: "error" });
+        Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
       }
       setLoader(false);
     } catch (error) {
-      Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning", });
+      Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning" });
       setLoader(false);
     }
   };
