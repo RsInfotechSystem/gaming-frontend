@@ -9,7 +9,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 
-const CreateContest = ({ setModalStates, type, getGameList }) => {
+const CreateContest = ({ setModalStates, type,contestId, getGameList }) => {
     const { register, handleSubmit, formState: { errors }, getValues, watch, setValue } = useForm();
     const [loader, setLoader] = useState(false);
     const [selectedImages, setSelectedImages] = useState([]);
@@ -20,37 +20,15 @@ const CreateContest = ({ setModalStates, type, getGameList }) => {
     const gameId = watch("gameId");
     const gameType = watch("gameType");
 
-    const handleImageChange = (e) => {
-        const files = Array.from(e.target.files);
-        setSelectedImages(prevImages => [...prevImages, ...files]);
-        // Reset the file input value
-        if (fileInputRef.current) {
-            fileInputRef.current.value = '';
-        }
-    };
-
-    const removeImage = (index) => {
-        setSelectedImages(prevImages => prevImages.filter((_, i) => i !== index));
-    };
-
 
     //On  submit call api
     async function onSubmit(params) {
         try {
-            if (selectedImages?.length === 0) {
-                return Swal.fire({ text: "Please select at least one image", icon: "warning" });
-            }
             setLoader(true);
-            const formData = new FormData();
-            selectedImages.forEach((file) => {
-                formData.append("gamefiles", file);
-            });
-            formData.append("gameDetails", JSON.stringify({ ...params, title: params.name }));
-            const serverResponse = (type === "create") ? await adminCommunication.createGame(formData) : await adminCommunication.updateGame({ ...params, gameId });
+            const serverResponse = (type === "create") ? await adminCommunication.createContest(params) : await adminCommunication.updateContest({ ...params, contestId });
             if (serverResponse.data.status === "SUCCESS") {
                 Swal.fire({ text: serverResponse?.data?.message, icon: "success", timer: 2000 });
-                setModalStates({ gameId: "", type: "", modal: false });
-                getGameList(1, "")
+                setModalStates({ contestId: "", type: "", modal: false });
             } else if (serverResponse?.data?.status === "JWT_INVALID") {
                 Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
                 router.push("/login");
@@ -89,6 +67,8 @@ const CreateContest = ({ setModalStates, type, getGameList }) => {
         }
     }
 
+    
+
 
     async function getGames() {
         try {
@@ -120,132 +100,148 @@ const CreateContest = ({ setModalStates, type, getGameList }) => {
                 <Loader />
                 :
                 <div className="modal-overlay" >
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                    <div className="modal-content" style={{ width: "900px", height: "550px", overflow: "auto" }} onClick={(e) => e.stopPropagation()}>
                         <div className="login_page_name">
-                            <p className="mb-0">{type === "create" ? "Create Game" : "Update Game"}</p>
+                            <p className="mb-0">{type === "create" ? "Create Contest" : "Update Contest"}</p>
                         </div>
                         <hr className="modal-hr" />
                         <div className="p-4">
                             {/* Login Form */}
                             <form onSubmit={handleSubmit(onSubmit)}>
-                                <select
-                                    className="login_input"
-                                    {...register("gameId", { required: "Game is required" })}
-                                    value={getValues("gameId") ?? ""}
-                                >
-                                    <option value="">Select Games</option>
-                                    {games?.map((ele, index) => (
-                                        <option value={ele?.id} key={index + 1}>
-                                            {ele?.name}
-                                        </option>
-                                    ))}
-                                </select>
-                                {errors?.gameId && <p className="text-danger">{errors?.gameId?.message}</p>}
-
-                                <select
-                                    className="login_input"
-                                    {...register("gameType", { required: "Game Type is required" })}
-                                    value={getValues("gameType") ?? ""}
-                                >
-                                    <option value="">Select Type</option>
-                                    {gameTypeArray?.map((ele, index) => (
-                                        <option value={ele} key={index + 1}>
-                                            {ele}
-                                        </option>
-                                    ))}
-                                </select>
-                                {errors?.gameType && <p className="text-danger">{errors?.gameType?.message}</p>}
-
-                                <input
-                                    className="login_input"
-                                    type="number"
-                                    placeholder="Contest Limit"
-                                    {...register("playersLimit", {
-                                        required: "Contest Limit is required",
-                                    })}
-                                />
-                                {errors?.playersLimit && <p className="text-danger">{errors?.playersLimit?.message}</p>}
-
-                                <input
-                                    className="login_input"
-                                    type="date"
-                                    placeholder="Contest Date"
-                                    {...register("contestDate", {
-                                        required: "Contest Date is required",
-                                    })}
-                                />
-                                {errors?.contestDate && <p className="text-danger">{errors?.contestDate?.message}</p>}
-
-                                <input
-                                    className="login_input"
-                                    type="time"
-                                    placeholder="Contest Time"
-                                    {...register("contestTime", {
-                                        required: "Contest time is required",
-                                    })}
-                                />
-                                {errors?.contestTime && <p className="text-danger">{errors?.contestTime?.message}</p>}
-
-                                <input
-                                    className="login_input"
-                                    type="number"
-                                    placeholder="Entry Fee In coins"
-                                    {...register("reqCoinsToJoin", {
-                                        required: "Entry Fees is required",
-                                    })}
-                                />
-                                {errors?.reqCoinsToJoin && <p className="text-danger">{errors?.reqCoinsToJoin?.message}</p>}
-
-                                <input
-                                    className="login_input"
-                                    type="number"
-                                    placeholder="Winning Price"
-                                    {...register("winningPrice", {
-                                        required: "Winning Price is required",
-                                    })}
-                                />
-                                {errors?.winningPrice && <p className="text-danger">{errors?.winningPrice?.message}</p>}
-
-                                <input
-                                    className="login_input"
-                                    type="file"
-                                    accept="image/*"
-                                    placeholder="Select Images"
-                                    multiple
-                                    ref={fileInputRef}
-                                    onChange={handleImageChange}
-                                    style={{
-                                        marginBottom: '10px',
-                                    }}
-                                />
-                                {selectedImages?.length > 0 && (
-                                    <div style={{ marginBottom: '10px' }}>
-                                        <p>Selected Images:</p>
-                                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                                            {selectedImages?.map((file, index) => (
-                                                <div key={index} style={{ position: 'relative', width: '100px', height: '100px' }}>
-                                                    <Image
-                                                        src={URL.createObjectURL(file)}
-                                                        alt={`Selected ${index + 1}`}
-                                                        layout="fill"
-                                                        objectFit="cover"
-                                                        style={{
-                                                            border: '1px solid #ccc',
-                                                            borderRadius: '4px',
-                                                        }}
-                                                    />
-                                                    <FontAwesomeIcon icon={faTrash} style={{
-                                                        color: 'white', position: 'absolute', cursor: 'pointer',
-                                                        zIndex: 1,
-                                                        top: '5px',
-                                                        right: '5px',
-                                                    }} onClick={() => removeImage(index)} />
-                                                </div>
-                                            ))}
-
-                                        </div>
+                                <div className='row'>
+                                    <div className='col-md-6'>
+                                        <input
+                                            className="login_input"
+                                            type="text"
+                                            placeholder="Title"
+                                            {...register("name", {
+                                                required: "Contest Title is required",
+                                            })}
+                                        />
+                                        {errors?.name && <p className="text-danger">{errors?.name?.message}</p>}
                                     </div>
-                                )}
+                                    <div className='col-md-6'>
+                                        <input
+                                            className="login_input"
+                                            type="text"
+                                            placeholder="Contest description"
+                                            {...register("description", {
+                                                required: "Contest description is required",
+                                            })}
+                                        />
+                                        {errors?.description && <p className="text-danger">{errors?.description?.message}</p>}
+                                    </div>
+                                </div>
+                                <div className='row'>
+                                    <div className='col-md-6'>
+                                        <select
+                                            className="login_input"
+                                            {...register("gameId", { required: "Game is required" })}
+                                            value={getValues("gameId") ?? ""}
+                                        >
+                                            <option value="">Select Games</option>
+                                            {games?.map((ele, index) => (
+                                                <option value={ele?.id} key={index + 1}>
+                                                    {ele?.name}
+                                                </option>
+                                            ))}
+                                        </select>
+                                        {errors?.gameId && <p className="text-danger">{errors?.gameId?.message}</p>}
+                                    </div>
+                                    <div className='col-md-6'>
+                                        <select
+                                            className="login_input"
+                                            {...register("gameType", { required: "Game Type is required" })}
+                                            value={getValues("gameType") ?? ""}
+                                        >
+                                            <option value="">Select Type</option>
+                                            {gameTypeArray?.map((ele, index) => (
+                                                <option value={ele} key={index + 1}>
+                                                    {ele}
+                                                </option>
+                                            ))}
+                                        </select>
+                                        {errors?.gameType && <p className="text-danger">{errors?.gameType?.message}</p>}
+                                    </div>
+                                </div>
+
+                                <div className='row'>
+                                    <div className='col-md-6'>
+                                        <input
+                                            className="login_input"
+                                            type="date"
+                                            placeholder="Contest Date"
+                                            {...register("contestDate", {
+                                                required: "Contest Date is required",
+                                            })}
+                                        />
+                                        {errors?.contestDate && <p className="text-danger">{errors?.contestDate?.message}</p>}
+                                    </div>
+                                    <div className='col-md-6'>
+                                        <input
+                                            className="login_input"
+                                            type="time"
+                                            placeholder="Contest Time"
+                                            {...register("contestTime", {
+                                                required: "Contest time is required",
+                                            })}
+                                        />
+                                        {errors?.contestTime && <p className="text-danger">{errors?.contestTime?.message}</p>}
+                                    </div>
+                                </div>
+
+                                <div className='row'>
+                                    <div className='col-md-6'>
+                                        <input
+                                            className="login_input"
+                                            type="number"
+                                            placeholder="Entry Fee In coins"
+                                            {...register("reqCoinsToJoin", {
+                                                required: "Entry Fees is required",
+                                            })}
+                                        />
+                                        {errors?.reqCoinsToJoin && <p className="text-danger">{errors?.reqCoinsToJoin?.message}</p>}
+                                    </div>
+                                    <div className='col-md-6'>
+
+                                        <input
+                                            className="login_input"
+                                            type="number"
+                                            placeholder="Contest Limit"
+                                            {...register("playersLimit", {
+                                                required: "Contest Limit is required",
+                                            })}
+                                        />
+                                        {errors?.playersLimit && <p className="text-danger">{errors?.playersLimit?.message}</p>}
+
+                                    </div>
+                                </div>
+
+                                <div className='row'>
+                                    <div className='col-md-6'>
+                                        <input
+                                            className="login_input"
+                                            type="number"
+                                            placeholder="Winning Price"
+                                            {...register("winningPrice", {
+                                                required: "Winning Price is required",
+                                            })}
+                                        />
+                                        {errors?.winningPrice && <p className="text-danger">{errors?.winningPrice?.message}</p>}
+                                    </div>
+                                    <div className='col-md-6'>
+                                        <input
+                                            className="login_input"
+                                            type="number"
+                                            placeholder="No Of Winners"
+                                            {...register("noOfWinners", {
+                                                required: "No Of winners is required",
+                                            })}
+                                        />
+                                        {errors?.noOfWinners && <p className="text-danger">{errors?.noOfWinners?.message}</p>}
+                                    </div>
+                                </div>
+
 
                                 <div className="login_main modal_button_wrapper mt-5 mb-4">
                                     <button className="popup_btn" type="submit">

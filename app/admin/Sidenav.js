@@ -27,6 +27,10 @@ export default function Sidenav() {
                     <div className={currentUrl.includes("game-list") ? "dash_tab" : "tab_inactive"} ><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={gameslist} alt="user"></Image> Games List</div>
                 </div>
 
+                <div className='tabs_dash_div' onClick={() => router.push("/admin/contest")}>
+                    <div className={currentUrl.includes("contest") ? "dash_tab" : "tab_inactive"} ><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={gameslist} alt="user"></Image> Contest Management</div>
+                </div>
+
                 {/* <div className='tabs_dash_div'>
                     <div className={currentUrl.includes("my-game") ? "dash_tab" : "tab_inactive"}><Image style={{ backgroundColor: "transparent" }} width={25} height={25} src={mygames} alt="user"></Image> MY GAMES</div>
                 </div>
