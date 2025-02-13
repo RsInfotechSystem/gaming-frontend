@@ -1,1 +1,1 @@
-export const gameTypeArray = ["SOLO", "DUAL", "SQUAD"]
+export const gameTypeArray = ["SOLO", "DUO", "SQUAD"]
