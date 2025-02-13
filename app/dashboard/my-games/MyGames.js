@@ -17,6 +17,7 @@ import { communication } from '@/services/communication';
 import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
 import { formatDate } from '@/helper/formatDate';
+import Loader from '@/app/common-component/Loader';
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 
 export default function MyGames() {
@@ -32,22 +33,18 @@ export default function MyGames() {
       const serverResponse = await communication.getJoinedContestList();
       if (serverResponse?.data?.status === "SUCCESS") {
         setContestList(serverResponse?.data?.contestList);
-        setLoader(false);
       } else if (serverResponse?.data?.status === "JWT_INVALID") {
-        Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
+        Swal.fire({ text: serverResponse?.data?.message, icon: "error" });
         router.push("/");
-        setLoader(false);
       } else {
-        Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
+        setContestList([])
       }
+      setLoader(false);
     } catch (error) {
       Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
       setLoader(false);
-    } finally {
-      setLoader(false);
     }
   };
-  console.log("contestList : ", contestList);
 
   useEffect(() => {
     getJoinedContestList()
@@ -56,81 +53,85 @@ export default function MyGames() {
 
   return (
     <>
-      <div className="tournament_list container-fluid overflow-hidden">
-        <div className="tournament_div">
-          <div className="mt-1">
-            <p className="tournament_text d-flex align-items-center">
-              MY GAMES{" "}
-              {contestList?.length > 0 && (
-                <>
-                  {contestList.map((contest, index) => (
-                    <Image
-                      key={index}
-                      className="ms-2"
-                      width={25} height={20} alt="network"
-                      src={
-                        contest?.contestFiles?.[0]?.fileUrl
-                          ? `${NEXT_PUBLIC_SERVER_URL}/getFiles/${contest.contestFiles[0].fileUrl}`
-                          : "/dashboard/tournament_bgmi.png"
-                      }
-                    />
-                  ))}
-                </>)}
-            </p>
-            <div className="row">
-              {contestList?.length > 0 ? (
-                <>
-                  {contestList.map((contest, index) => (
-                    <div key={index} className="col-md-6 col-lg-6 col-xl-6 col-xxl-6 mb-3">
-                      <div className="card tournament_card">
-                        <Image
-                          src="/dashboard/tournament_bgmi.png"
-                          width={300}
-                          height={200}
-                          alt="Battle Ground Mobile India"
-                          className="tournament_card_img img-fluid"
-                        />
-                        <div className="card-body">
-                          <div className='d-flex justify-content-between'>
-                            <div style={{ width: '55%' }}>
-                              <h5 className="card-title games_desc">{contest?.name}</h5>
-                              <p className="card-text games_desc">Entry :{contest?.reqCoinsToJoin}</p>
-                              <p className="card-text games_desc">Players Limit : {contest?.playersLimit}</p>
-                              <p className="card-text games_desc">Date :{formatDate(contest?.contestDate)}</p>
+      {loader === true ?
+        <Loader />
+        :
+        <div className="tournament_list container-fluid overflow-hidden">
+          <div className="tournament_div">
+            <div className="mt-1">
+              <p className="tournament_text d-flex align-items-center">
+                MY GAMES{" "}
+                {contestList?.length > 0 && (
+                  <>
+                    {contestList?.map((contest, index) => (
+                      <Image
+                        key={index}
+                        className="ms-2"
+                        width={25} height={20} alt="network"
+                        src={
+                          contest?.contestFiles?.[0]?.fileUrl
+                            ? `${NEXT_PUBLIC_SERVER_URL}/getFiles/${contest.contestFiles[0].fileUrl}`
+                            : "/dashboard/tournament_bgmi.png"
+                        }
+                      />
+                    ))}
+                  </>)}
+              </p>
+              <div className="row">
+                {contestList?.length > 0 ? (
+                  <>
+                    {contestList?.map((contest, index) => (
+                      <div key={index} className="col-md-6 col-lg-6 col-xl-6 col-xxl-6 mb-3">
+                        <div className="card tournament_card">
+                          <Image
+                            src="/dashboard/tournament_bgmi.png"
+                            width={300}
+                            height={200}
+                            alt="Battle Ground Mobile India"
+                            className="tournament_card_img img-fluid"
+                          />
+                          <div className="card-body">
+                            <div className='d-flex justify-content-between'>
+                              <div style={{ width: '55%' }}>
+                                <h5 className="card-title games_desc">{contest?.name}</h5>
+                                <p className="card-text games_desc">Entry :{contest?.reqCoinsToJoin}</p>
+                                <p className="card-text games_desc">Players Limit : {contest?.playersLimit}</p>
+                                <p className="card-text games_desc">Date :{formatDate(contest?.contestDate)}</p>
+                              </div>
+                              <div style={{ width: '45%' }}>
+                                <h5 className="card-title games_desc">{contest?.gameType?.toUpperCase()}</h5>
+                                <p className="card-text games_desc">Price : {contest?.winningPrice}</p>
+                                <p className="card-text games_desc">Players Joined : {contest?.joinedCount}</p>
+                                <p className="card-text games_desc">Time : {contest?.contestTime}</p>
+                              </div>
                             </div>
-                            <div style={{ width: '45%' }}>
-                              <h5 className="card-title games_desc">{contest?.gameType?.toUpperCase()}</h5>
-                              <p className="card-text games_desc">Price : {contest?.winningPrice}</p>
-                              <p className="card-text games_desc">Players Joined : {contest?.joinedCount}</p>
-                              <p className="card-text games_desc">Time : {contest?.contestTime}</p>
+                            <div className='mt-2'>
+                              <p className="card-text games_desc games_info">{contest?.description}</p>
                             </div>
-                          </div>
-                          <div className='mt-2'>
-                            <p className="card-text games_desc games_info">{contest?.description}</p>
-                          </div>
-                          <hr className='hr_line_games'></hr>
-                          <div className='d-flex justify-content-between'>
-                            <div style={{ width: '100%' }}>
-                              <h6 className="card-title games_desc">Room ID : {contest?.roomId}</h6>
-                              <h6 className="card-title games_desc">Password : {contest?.passwordToJoin}</h6>
-                              {/* <p className="card-text games_desc">Room ID : 6646VWVFGY</p> */}
+                            <hr className='hr_line_games'></hr>
+                            <div className='d-flex justify-content-between'>
+                              <div style={{ width: '100%' }}>
+                                <h6 className="card-title games_desc">Room ID : {contest?.roomId}</h6>
+                                <h6 className="card-title games_desc">Password : {contest?.passwordToJoin}</h6>
+                                {/* <p className="card-text games_desc">Room ID : 6646VWVFGY</p> */}
 
-                            </div>
-                            {/* <div style={{ width: '45%' }}>
+                              </div>
+                              {/* <div style={{ width: '45%' }}>
                           <h6 className="card-title games_desc">Password : 46324EHHUW</h6>
                         </div> */}
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
-                </>) : (
-                <p className="no_data">Data Not Available</p>
-              )}
+                    ))}
+                  </>) : (
+                  <p className="no_data">Data Not Available</p>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      }
 
     </>
   );

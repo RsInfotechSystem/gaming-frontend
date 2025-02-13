@@ -81,7 +81,7 @@ export default function LoginModal({ onClose, openSignUp, openForgotPassword }) 
 
                         <div className="login_main mt-5 mb-4">
                             <button className="popup_btn" type="submit" disabled={isLoading}>
-                                {isLoading ? "Logging in..." : "LET’S PLAY"}
+                                {isLoading ? "Logging in..." : "Login"}
                             </button>
                         </div>
                     </form>

@@ -16,6 +16,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
 import { communication } from '@/services/communication';
+import Loader from '@/app/common-component/Loader';
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 
 export default function GamesList() {
@@ -58,18 +59,15 @@ export default function GamesList() {
       const serverResponse = await communication.getContestList();
       if (serverResponse?.data?.status === "SUCCESS") {
         setContestList(serverResponse?.data?.contestList);
-        setLoader(false);
       } else if (serverResponse?.data?.status === "JWT_INVALID") {
-        Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
+        Swal.fire({ text: serverResponse?.data?.message, icon: "error" });
         router.push("/");
-        setLoader(false);
       } else {
-        Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
+        setContestList([])
       }
+      setLoader(false);
     } catch (error) {
       Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
-      setLoader(false);
-    } finally {
       setLoader(false);
     }
   };
@@ -81,18 +79,15 @@ export default function GamesList() {
       const serverResponse = await communication.getGamesList();
       if (serverResponse?.data?.status === "SUCCESS") {
         setGameList(serverResponse?.data?.gameList);
-        setLoader(false);
       } else if (serverResponse?.data?.status === "JWT_INVALID") {
-        Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
+        Swal.fire({ text: serverResponse?.data?.message, icon: "error" });
         router.push("/");
-        setLoader(false);
       } else {
-        Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
+        setGameList([])
       }
+      setLoader(false);
     } catch (error) {
       Swal.fire({ text: error?.serverResponse?.data?.message, icon: "error" });
-      setLoader(false);
-    } finally {
       setLoader(false);
     }
   };
@@ -101,100 +96,103 @@ export default function GamesList() {
     getGamesList();
   }, []);
 
-
   return (
     <>
-      <div className="tournament_list">
-        <div style={{ width: "90%", margin: "0px auto" }}>
-          {contestList.length > 0 || gameList.length > 0 ? (
-            <>
-              {contestList.length > 0 && (
-                <div className="mt-1">
-                  <p className="tournament_text">
-                    TOURNAMENTS LIVE{" "}
-                    <Image className="me-2" width={25} height={20} src={network} alt="network" />
-                  </p>
+      {loader === true ?
+        <Loader />
+        :
+        <div className="tournament_list">
+          <div style={{ width: "90%", margin: "0px auto" }}>
+            {contestList?.length > 0 || gameList.length > 0 ? (
+              <>
+                {contestList?.length > 0 && (
+                  <div className="mt-1">
+                    <p className="tournament_text">
+                      TOURNAMENTS LIVE{" "}
+                      <Image className="me-2" width={25} height={20} src={network} alt="network" />
+                    </p>
 
-                  {/* Tournament Slider */}
-                  <Slider {...settings}>
-                    {contestList.map((contestDetails, index) => (
-                      <div className="px-2" key={index}>
-                        <div className="card tournament_card d-flex">
-                          <Image
-                            src={
-                              contestDetails?.contestFiles?.[0]?.fileUrl
-                                ? `${NEXT_PUBLIC_SERVER_URL}/getFiles/${contestDetails.contestFiles[0].fileUrl}`
-                                : "/dashboard/tournament_bgmi.png"
-                            }
-                            width={300}
-                            height={200}
-                            alt={contestDetails?.name || "Contest Image"}
-                            className="tournament_card_img"
-                          />
-                          <div className="card-body d-flex justify-content-between align-items-center">
-                            <div>
-                              <h5 className="card-title card_content">{contestDetails?.name}</h5>
-                              <p className="card-text card_content">{contestDetails?.description}</p>
-                            </div>
-                            <div
-                              className="d-flex align-items-center"
-                              style={{
-                                backgroundColor: "#2b2b2b",
-                                padding: "8px 12px",
-                                borderRadius: "8px",
-                                minWidth: "80px",
-                              }}
-                            >
-                              <Image className="me-2" width={25} height={25} src={coin_img} alt="coin" />
-                              <span className="text-white fw-bold">{contestDetails?.winningPrice}</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </Slider>
-                </div>
-              )}
-
-              {gameList.length > 0 && (
-                <div className="mt-1">
-                  <p className="tournament_text mt-5">
-                    ALL GAMES <Image className="me-2" width={25} height={20} src={all_games} alt="all games" />
-                  </p>
-                  <div className="d-flex flex-wrap justify-content-around mb-3">
-                    {gameList.map((game, index) => (
-                      <div className="games_bg mb-3" key={index}>
-                        <div className="games_bg_inner">
-                          <div>
+                    {/* Tournament Slider */}
+                    <Slider {...settings}>
+                      {contestList?.map((contestDetails, index) => (
+                        <div className="px-2" key={index}>
+                          <div className="card tournament_card d-flex">
                             <Image
-                              className="me-2"
-                              style={{ borderRadius: "15px" }}
-                              width={76}
-                              height={76}
                               src={
-                                game?.gamefiles?.[0]?.fileUrl
-                                  ? `${NEXT_PUBLIC_SERVER_URL}/getFiles/${game?.gamefiles[0].fileUrl}`
-                                  : "/dashboard/default_game.png"
+                                contestDetails?.contestFiles?.[0]?.fileUrl
+                                  ? `${NEXT_PUBLIC_SERVER_URL}/getFiles/${contestDetails.contestFiles[0].fileUrl}`
+                                  : "/dashboard/tournament_bgmi.png"
                               }
-                              alt={"game img"}
+                              width={300}
+                              height={200}
+                              alt={contestDetails?.name || "Contest Image"}
+                              className="tournament_card_img"
                             />
-                          </div>
-                          <div>
-                            <p className="game_name">{game?.name || "Unknown Game"}</p>
-                            <p className="game_info">{game?.playedCount || "0"} Millions played</p>
+                            <div className="card-body d-flex justify-content-between align-items-center">
+                              <div>
+                                <h5 className="card-title card_content">{contestDetails?.name}</h5>
+                                <p className="card-text card_content">{contestDetails?.description}</p>
+                              </div>
+                              <div
+                                className="d-flex align-items-center"
+                                style={{
+                                  backgroundColor: "#2b2b2b",
+                                  padding: "8px 12px",
+                                  borderRadius: "8px",
+                                  minWidth: "80px",
+                                }}
+                              >
+                                <Image className="me-2" width={25} height={25} src={coin_img} alt="coin" />
+                                <span className="text-white fw-bold">{contestDetails?.winningPrice}</span>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </Slider>
                   </div>
-                </div>
-              )}
-            </>
-          ) : (
-            <p className="no_data">Data Not Available</p>
-          )}
+                )}
+
+                {gameList?.length > 0 && (
+                  <div className="mt-1">
+                    <p className="tournament_text mt-5">
+                      ALL GAMES <Image className="me-2" width={25} height={20} src={all_games} alt="all games" />
+                    </p>
+                    <div className="d-flex flex-wrap justify-content-around mb-3">
+                      {gameList?.map((game, index) => (
+                        <div className="games_bg mb-3" key={index}>
+                          <div className="games_bg_inner">
+                            <div>
+                              <Image
+                                className="me-2"
+                                style={{ borderRadius: "15px" }}
+                                width={76}
+                                height={76}
+                                src={
+                                  game?.gamefiles?.[0]?.fileUrl
+                                    ? `${NEXT_PUBLIC_SERVER_URL}/getFiles/${game?.gamefiles[0].fileUrl}`
+                                    : "/dashboard/default_game.png"
+                                }
+                                alt={"game img"}
+                              />
+                            </div>
+                            <div>
+                              <p className="game_name">{game?.name || "Unknown Game"}</p>
+                              <p className="game_info">{game?.playedCount || "0"} Millions played</p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
+            ) : (
+              <p className="no_data">Data Not Available</p>
+            )}
+          </div>
         </div>
-      </div>
+      }
     </>
   );
 
