@@ -167,7 +167,7 @@ export default function GamesList() {
                     <div className="d-flex flex-wrap justify-content-around mb-3">
                       {gameList?.map((game, index) => (
                         <div className="games_bg mb-3" key={index}>
-                          <div className="games_bg_inner" onClick={() => handleGameClick(game?.id)}>
+                          <div className="games_bg_inner" style={{ cursor: "pointer" }} onClick={() => handleGameClick(game?.id)}>
                             <div>
                               <Image
                                 className="me-2"
