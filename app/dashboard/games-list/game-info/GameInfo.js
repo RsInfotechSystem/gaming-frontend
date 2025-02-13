@@ -49,6 +49,7 @@ export default function GameInfo() {
     getGameWiseContestList()
   }, []);
 
+  console.log("gameWiseContestsList : ", gameWiseContestsList)
   return (
     <>
       {loader === true ?
@@ -92,14 +93,16 @@ export default function GameInfo() {
                 </li>
               </ul>
 
+              {/* {gameWiseContestsList?.map((contest, index) => { console.log(" contest gameType", contest?.gameType) })} */}
               {/* Tab Content */}
               <div className="tab-content">
                 {/* solo contest start */}
                 {activeTab === "home" && (
                   <div className="container tab-pane active">
                     <div className="row gy-4">
+
                       {gameWiseContestsList?.map((contest, index) =>
-                      (contest?.gameType === "solo" &&
+                      (contest?.gameType === "duo" &&
                         <div className="col-sm-12 col-md-6 col-lg-6" key={index}>
                           <div className="card custom-card-contest">
                             <div className="card-header-contest d-flex justify-content-between align-items-center">
