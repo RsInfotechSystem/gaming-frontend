@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import Link from "next/link";
+
 export default function Footer() {
   return (
     <>
@@ -68,9 +68,7 @@ export default function Footer() {
           <div className='terms_condtion text-center d-flex'>
             <span>FAQs</span>
             <span>Contact us</span>
-            <Link href="../" className="text-gray-500 hover:underline">
             <span>T&C</span>
-            </Link>
           </div>
 
           <div className='text-center company_design'>

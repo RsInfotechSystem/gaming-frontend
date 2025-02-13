@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import Navbar from '../Navbar';
+import Footer from '../Footer';
 import { motion } from "framer-motion"
 
 export default function Contact() {
@@ -56,7 +56,7 @@ export default function Contact() {
       {/* Right Side - Contact Info Section */}
       <motion.div 
         className='col-6 contact_right_side'
-        initial={{ x: 100, opacity: 0 }} // Start from the right
+        initial={{ x: 200, opacity: 0 }} // Start from the right
         animate={{ x: 0, opacity: 1 }} // Move to its original position
         transition={{ duration: 1, ease: "easeOut" }} // Animation duration
       >

@@ -13,8 +13,10 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import HrLineLeft from './components/pages/home/HrLineLeft';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Faq from './components/pages/home/Faq';
-import Contact from './components/pages/home/Contact';
+import Faq from './components/pages/home/faq/Faq';
+import Contact from './components/pages/home/contact/Contact';
+import AboutUS from './components/pages/home/about/AboutUS';
+
 
 const Page = () => {
   useEffect(() => {
@@ -23,16 +25,17 @@ const Page = () => {
 
   return (
     <>
-      {/* <Navbar />
+      <Navbar />
       <HeroSection />
       <GamesAvailable />
       <GameLead />
       <RecentNews />
       <HrLineRight />
       <Footer />
-      <HrLineLeft /> */}
-      {/* <Faq /> */}
-      <Contact />
+      <HrLineLeft />
+      {/* <Faq/> */}
+      {/* <Contact /> */}
+      {/* <AboutUS /> */}
     </>
   );
 };

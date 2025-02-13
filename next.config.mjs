@@ -6,17 +6,17 @@ const nextConfig = {
       {
         source: "/admin",
         destination: "/admin/game-list",
-        permanent: false
-      }
-    ]
+        permanent: false,
+      },
+    ];
   },
   images: {
     remotePatterns: [
       {
-        protocol: process.env.NEXT_PUBLIC_PROTOCAL,
-        hostname: process.env.NEXT_PUBLIC_HOSTNAME,
-        port: process.env.NEXT_PUBLIC_PORT,
-        pathname: '/getFiles/**',
+        protocol: process.env.NEXT_PUBLIC_PROTOCAL || "https",
+        hostname: process.env.NEXT_PUBLIC_HOSTNAME || "example.com",
+        port: process.env.NEXT_PUBLIC_PORT ? Number(process.env.NEXT_PUBLIC_PORT) : undefined,
+        pathname: "/getFiles/**",
       },
     ],
   },
