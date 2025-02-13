@@ -63,7 +63,7 @@ export default function GamesList() {
         Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
         router.push("/");
       } else {
-        setContestList([])
+        Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
       }
       setLoader(false);
     } catch (error) {
@@ -83,7 +83,7 @@ export default function GamesList() {
         Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
         router.push("/");
       } else {
-        setGameList([])
+        Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
       }
       setLoader(false);
     } catch (error) {
@@ -154,13 +154,14 @@ export default function GamesList() {
                           </div>
                         </div>
                       ))}
+
                     </Slider>
                   </div>
                 )}
 
                 {gameList?.length > 0 && (
                   <div className="mt-1">
-                    <p className="tournament_text mt-5">
+                    <p className="tournament_text mt-5 ">
                       ALL GAMES <Image className="me-2" width={25} height={20} src={all_games} alt="all games" />
                     </p>
                     <div className="d-flex flex-wrap justify-content-around mb-3">

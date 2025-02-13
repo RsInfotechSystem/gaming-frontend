@@ -37,7 +37,7 @@ export default function MyGames() {
         Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
         router.push("/");
       } else {
-        setContestList([]);
+        Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
       }
       setLoader(false);
     } catch (error) {

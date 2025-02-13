@@ -1,20 +1,25 @@
 "use client"
 import Loader from '@/app/common-component/Loader';
+import { gameTypeArray } from '@/helper/game-type';
 import { adminCommunication } from '@/services/admin-communication';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 
-const CreateGame = ({ setModalStates, type, gameId, getGameList }) => {
+const CreateContest = ({ setModalStates, type, getGameList }) => {
     const { register, handleSubmit, formState: { errors }, getValues, watch, setValue } = useForm();
     const [loader, setLoader] = useState(false);
     const [selectedImages, setSelectedImages] = useState([]);
+    const [games, setGames] = useState([])
     const fileInputRef = useRef(null);
-    const router = useRouter();
+
+    //watch the game id on changing value
+    const gameId = watch("gameId");
+    const gameType = watch("gameType");
+
     const handleImageChange = (e) => {
         const files = Array.from(e.target.files);
         setSelectedImages(prevImages => [...prevImages, ...files]);
@@ -84,10 +89,30 @@ const CreateGame = ({ setModalStates, type, gameId, getGameList }) => {
         }
     }
 
+
+    async function getGames() {
+        try {
+            setLoader(true);
+            const serverResponse = await adminCommunication.getActiveGames();
+            if (serverResponse.data.status === "SUCCESS") {
+                setGames(serverResponse?.data?.games);
+            } else if (serverResponse?.data?.status === "JWT_INVALID") {
+                Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+                router.push("/login");
+            } else {
+                setGames([])
+            }
+            setLoader(false)
+        } catch (error) {
+            Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning", });
+            setLoader(false)
+        }
+    }
     useEffect(() => {
         if (type === "update") {
             getGameById()
         }
+        getGames();
     }, [])
     return (
         <>
@@ -103,21 +128,83 @@ const CreateGame = ({ setModalStates, type, gameId, getGameList }) => {
                         <div className="p-4">
                             {/* Login Form */}
                             <form onSubmit={handleSubmit(onSubmit)}>
+                                <select
+                                    className="login_input"
+                                    {...register("gameId", { required: "Game is required" })}
+                                    value={getValues("gameId") ?? ""}
+                                >
+                                    <option value="">Select Games</option>
+                                    {games?.map((ele, index) => (
+                                        <option value={ele?.id} key={index + 1}>
+                                            {ele?.name}
+                                        </option>
+                                    ))}
+                                </select>
+                                {errors?.gameId && <p className="text-danger">{errors?.gameId?.message}</p>}
+
+                                <select
+                                    className="login_input"
+                                    {...register("gameType", { required: "Game Type is required" })}
+                                    value={getValues("gameType") ?? ""}
+                                >
+                                    <option value="">Select Type</option>
+                                    {gameTypeArray?.map((ele, index) => (
+                                        <option value={ele} key={index + 1}>
+                                            {ele}
+                                        </option>
+                                    ))}
+                                </select>
+                                {errors?.gameType && <p className="text-danger">{errors?.gameType?.message}</p>}
+
                                 <input
                                     className="login_input"
-                                    type="text"
-                                    placeholder="Game Name"
-                                    {...register("name", { required: "Game Name is required" })}
-                                />
-                                {errors?.name && <p className="text-danger">{errors?.name?.message}</p>}
-                                <textarea
-                                    className="login_input"
-                                    placeholder="Game Description"
-                                    {...register("description", {
-                                        required: "Game Description is required",
+                                    type="number"
+                                    placeholder="Contest Limit"
+                                    {...register("playersLimit", {
+                                        required: "Contest Limit is required",
                                     })}
                                 />
-                                {errors?.description && <p className="text-danger">{errors?.description?.message}</p>}
+                                {errors?.playersLimit && <p className="text-danger">{errors?.playersLimit?.message}</p>}
+
+                                <input
+                                    className="login_input"
+                                    type="date"
+                                    placeholder="Contest Date"
+                                    {...register("contestDate", {
+                                        required: "Contest Date is required",
+                                    })}
+                                />
+                                {errors?.contestDate && <p className="text-danger">{errors?.contestDate?.message}</p>}
+
+                                <input
+                                    className="login_input"
+                                    type="time"
+                                    placeholder="Contest Time"
+                                    {...register("contestTime", {
+                                        required: "Contest time is required",
+                                    })}
+                                />
+                                {errors?.contestTime && <p className="text-danger">{errors?.contestTime?.message}</p>}
+
+                                <input
+                                    className="login_input"
+                                    type="number"
+                                    placeholder="Entry Fee In coins"
+                                    {...register("reqCoinsToJoin", {
+                                        required: "Entry Fees is required",
+                                    })}
+                                />
+                                {errors?.reqCoinsToJoin && <p className="text-danger">{errors?.reqCoinsToJoin?.message}</p>}
+
+                                <input
+                                    className="login_input"
+                                    type="number"
+                                    placeholder="Winning Price"
+                                    {...register("winningPrice", {
+                                        required: "Winning Price is required",
+                                    })}
+                                />
+                                {errors?.winningPrice && <p className="text-danger">{errors?.winningPrice?.message}</p>}
 
                                 <input
                                     className="login_input"
@@ -177,5 +264,6 @@ const CreateGame = ({ setModalStates, type, gameId, getGameList }) => {
     )
 }
 
-export default CreateGame
+export default CreateContest
+
 
