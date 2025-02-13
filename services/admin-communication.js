@@ -221,5 +221,17 @@ export const adminCommunication = {
             Swal.fire({ text: error.message, icon: "warning" });
         }
     },
+    getActiveGames: async function () {
+        try {
+            return axios.get(`${getServerUrl()}/game/get-active-game`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
 
 }
