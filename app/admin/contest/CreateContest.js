@@ -9,7 +9,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 
-const CreateContest = ({ setModalStates, type,contestId, getGameList }) => {
+const CreateContest = ({ setModalStates, type, contestId, getGameList }) => {
     const { register, handleSubmit, formState: { errors }, getValues, watch, setValue } = useForm();
     const [loader, setLoader] = useState(false);
     const [selectedImages, setSelectedImages] = useState([]);
@@ -29,6 +29,7 @@ const CreateContest = ({ setModalStates, type,contestId, getGameList }) => {
             if (serverResponse.data.status === "SUCCESS") {
                 Swal.fire({ text: serverResponse?.data?.message, icon: "success", timer: 2000 });
                 setModalStates({ contestId: "", type: "", modal: false });
+                window.location.reload();
             } else if (serverResponse?.data?.status === "JWT_INVALID") {
                 Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
                 router.push("/login");
@@ -67,7 +68,7 @@ const CreateContest = ({ setModalStates, type,contestId, getGameList }) => {
         }
     }
 
-    
+
 
 
     async function getGames() {
