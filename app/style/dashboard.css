@@ -148,6 +148,19 @@ body {
   /* width: 220px; */
   letter-spacing: 2px;
 }
+.tab_inactive {
+  color: #fff;
+  text-decoration: none;
+  background: rgb(20, 19, 19);
+  background: linear-gradient(90deg, rgb(22, 21, 21) 0%, rgba(22, 10, 10, 1) 77%);
+  padding: 30px 20px;
+  font-family: "Orbitron", serif;
+  font-weight: 500;
+  display: block;
+  /* width: 220px; */
+  letter-spacing: 2px;
+}
+
 .ad_text{
   color: #fff;
   font-family: "Orbitron", serif;
