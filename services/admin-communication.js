@@ -34,6 +34,20 @@ export const adminCommunication = {
             Swal.fire({ text: error.message, icon: "warning" });
         }
     },
+    //?----------------- Role management--------------------
+    getRoleList: async function (page = 1, searchString) {
+        try {
+            return axios.post(`${getServerUrl()}/role/get-role-list`, { page, searchString }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+
     //?----------------- User management--------------------
     createUser: async function (dataToSend) {
         try {
