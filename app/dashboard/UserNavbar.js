@@ -52,7 +52,7 @@ export default function UserNavbar() {
                         <div className='main_dash_heading'>
                             <p>DASHBOARD</p>
                         </div>
-                        <div className='dash_btn nav_dash_width' >
+                        <div className='dash_btn' >
                             <div>
                                 <div className='coin_btn d-flex'>
                                     <Image className='me-2' width={25} height={25} src={coin_img} alt="user" />

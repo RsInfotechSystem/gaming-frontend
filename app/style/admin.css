@@ -964,3 +964,8 @@ option {
     background-color: black;
     /* Background color for options */
 }
+/* ***********navbar css start************** */
+.nav_dash_width{
+    width: 15%;
+}
+/* ***********navbar css END************** */
