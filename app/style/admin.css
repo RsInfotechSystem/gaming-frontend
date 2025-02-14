@@ -969,3 +969,98 @@ option {
     width: 15%;
 }
 /* ***********navbar css END************** */
+/* ***********create role css start************** */
+/* Style the container */
+.tab-access {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Style the checkbox wrapper */
+.tab-access div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Hide default checkbox */
+.tab-access input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #007bff; /* Blue border */
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Create custom checkmark */
+.tab-access input[type="checkbox"]::before {
+    content: "✔";
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all 0.2s ease-in-out;
+}
+
+/* When checked, change background and show checkmark */
+.tab-access input[type="checkbox"]:checked {
+    /* background-color: #007bff; */
+    border-color: #007bff;
+}
+
+.tab-access input[type="checkbox"]:checked::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Label styling */
+.tab-access label {
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* On hover, slightly change color */
+.tab-access input[type="checkbox"]:hover {
+    border-color: #0056b3;
+}
+/* Parent container for checkboxes */
+.tab-access-grid {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap into multiple lines */
+    gap: 15px; /* Space between items */
+    justify-content: space-between; /* Even spacing */
+    margin-top: 10px;
+}
+
+/* Individual checkbox container */
+.tab-access-grid div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 48%; /* Ensures two columns */
+}
+
+/* Custom checkbox styles */
+.tab-access-grid input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #007bff; /* Blue checkbox */
+    cursor: pointer;
+}
+
+/* Label styling */
+.tab-access-grid label {
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+}
+
+
+/* ***********create role css END****************************** */
+
