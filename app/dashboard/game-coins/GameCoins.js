@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import coin_img from '../../../public/dashboard/coin_img.png';
-import coins from '../../../public/dashboard/coins.png';
+import coins from '../../../public/dashboard/coin_new.png';
 import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
 import { communication } from '@/services/communication';

@@ -19,7 +19,7 @@ export default function TopHeader() {
                         <div className='nav_dash_width'>
                         </div>
                         <div className='main_dash_heading'>
-                            <p>DASHBOARD</p>
+                            <p>ADMIN DASHBOARD</p>
                         </div>
                         <div className='dash_btn nav_dash_width' >
 

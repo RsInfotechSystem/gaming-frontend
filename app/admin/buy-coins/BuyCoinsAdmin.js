@@ -6,7 +6,7 @@ import cod_game from '../../../public/dashboard/cod_game.jpeg';
 import freefire_game from '../../../public/dashboard/freefire_game_rd.png';
 import Image from 'next/image';
 import coin_img from '../../../public/dashboard/coin_img.png';
-import coins from '../../../public/dashboard/coins.png';
+import coins from '../../../public/dashboard/coin_new.png';
 import CreateCoins from './CreateCoins';
 import { useRouter } from 'next/navigation';
 import { adminCommunication } from '@/services/admin-communication';
