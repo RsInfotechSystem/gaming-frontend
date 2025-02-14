@@ -13,9 +13,9 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: process.env.NEXT_PUBLIC_PROTOCAL || "https",
-        hostname: process.env.NEXT_PUBLIC_HOSTNAME || "example.com",
-        port: process.env.NEXT_PUBLIC_PORT ? Number(process.env.NEXT_PUBLIC_PORT) : undefined,
+        protocol: process.env.NEXT_PUBLIC_PROTOCAL,
+        hostname: process.env.NEXT_PUBLIC_HOSTNAME,
+        port: process.env.NEXT_PUBLIC_PORT,
         pathname: "/getFiles/**",
       },
     ],

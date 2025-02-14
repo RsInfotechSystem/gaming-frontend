@@ -1,5 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
+import Image from "next/image";
+import sideimg from "../../../../../public/homepage/sideimg.jpg";
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 export default function Faq() {
@@ -9,9 +11,6 @@ export default function Faq() {
     <Navbar/>
 
       <div className='faq_section'>
-          <div className='faq_head text-center'>
-            <p>HELP & FAQ'S</p>
-          </div>
           <div className='faq_head_main text-center'>
             <p>Help & FAQ’s</p>
           </div>
@@ -19,8 +18,8 @@ export default function Faq() {
             <p>Galactic is a thrilling adventure game set on a mysterious island.
             will transport you to a universe full of possibilities!</p>
           </div>
-          <div className='horizontal_line'></div>
-          <div className='horizontal_line_small'></div>
+          {/* <div className='horizontal_line'></div>
+          <div className='horizontal_line_small'></div> */}
       </div>
 
       <div className='row d-flex input_bar'>
@@ -102,16 +101,27 @@ export default function Faq() {
           </div>
 
           <div className="col-4 parent_input">
-  <div className="form-group has-search search_bar">
-    <input type="text" className="form-control" placeholder="Search..." />
-    <span className="bi bi-search form-control-feedback"></span>
-  </div>
-</div>
+             {/* <div className="form-group has-search search_bar">
+              <input type="text" className="form-control" placeholder="Search..." />
+              <span className="bi bi-search form-control-feedback"></span>
+              </div>
 
+              <div className='games_categories'>
+                 <div className='category_head'>Categories</div>
+                 <div className='faq_games_list'>
+                     <a href='/'>Cyberpunk</a>
+                     <a href='/'>Dota 2</a>
+                     <a href='/'>PC Games</a>
+                     <a href='/'>PlayStation</a>
+                     <a href='/'>Xbox</a>
+                 </div>
+              </div> */}
+            <Image src={sideimg} alt="Office Desk" className='img-fluid'/>
+          </div>
+          
       </div>
-
-      <div className='horizontal_line_right'></div>
-      <div className='horizontal_line_sright'></div>
+      {/* <div className='horizontal_line_right'></div>
+      <div className='horizontal_line_sright'></div> */}
       <Footer />
     </>
   );
