@@ -180,4 +180,17 @@ export const communication = {
             Swal.fire({ text: error.message, icon: "warning" });
         }
     },
+    joinContest: async function (dataToSend) {
+        try {
+            return axios.post(`${getServerUrl()}/contest/join-contest`, dataToSend, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${getCookie("GAMING")}`,
+                },
+            }
+            );
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
 }
