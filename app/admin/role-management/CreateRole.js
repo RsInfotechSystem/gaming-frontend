@@ -98,66 +98,58 @@ const CreateRole = ({ setModalStates, type, userId, getUserList }) => {
                             <input
                                 className="login_input"
                                 type="text"
-                                placeholder="Name"
-                                {...register("name", { required: "Name is required" })}
+                                placeholder="Role Name"
+                                {...register("roleName", { required: "Role Name is required" })}
                             />
-                            {errors?.name && <p className="text-danger">{errors?.name?.message}</p>}
-                            <input
-                                className="login_input"
-                                type="email"
-                                placeholder="Email"
-                                {...register("email", {
-                                    required: "Email is required",
-                                    pattern: {
-                                        value: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
-                                        message: "Invalid email address",
-                                    },
-                                })}
-                            />
-                            {errors?.email && <p className="text-danger">{errors?.email?.message}</p>}
+                            {errors?.roleName && <p className="text-danger">{errors?.roleName?.message}</p>}
 
-                            {/* <input
-                                className="login_input"
-                                type="number"
-                                placeholder="Mobile"
-                                {...register("mobile", {
-                                    required: "Mobile Number is required",
-                                    minLength: {
-                                        value: 10,
-                                        message: "Mobile Should be 10 digits",
-                                    },
-                                    maxLength: {
-                                        value: 10,
-                                        message: "Mobile Should be 10 digits",
-                                    },
-                                })}
-                            />
-                            {errors?.mobile && <p className="text-danger">{errors?.mobile?.message}</p>} */}
+                            {/* Checkbox group for tab access */}
+                            <div className="tab-access mt-3 mx-4">
+                                <label><strong className='text-white'>Select Tab Access:</strong></label>
+                                <div className="tab-access-grid">
+                                    <div>
+                                        <input type="checkbox" value="dashboard" />
+                                        <label className='text-white'> Dashboard</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" value="settings" />
+                                        <label className='text-white'> Settings</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" value="reports" />
+                                        <label className='text-white'> Reports</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" value="analytics" />
+                                        <label className='text-white'> Analytics</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" value="analytics" />
+                                        <label className='text-white'> Analytics</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" value="analytics" />
+                                        <label className='text-white'> Analytics</label>
+                                    </div>
+                                </div>
+                            </div>
 
-                            <select
-                                className="login_input"
-                                {...register("roleId", { required: "Role is required" })}
-                                value={getValues("roleId") ?? ""}
-                            >
-                                <option value="">Select Role</option>
-                                {roles?.map((ele, index) => (
-                                    <option value={ele?.id} key={index + 1}>
-                                        {ele?.name}
-                                    </option>
-                                ))}
-                            </select>
-                            {errors?.roleId && <p className="text-danger">{errors?.roleId?.message}</p>}
-                           
 
+                            {/* Buttons */}
                             <div className="login_main modal_button_wrapper mt-5 mb-4">
                                 <button className="popup_btn" type="submit">
                                     {type === "create" ? "Create" : "Update"}
                                 </button>
-                                <button className="popup_btn" onClick={() => setModalStates({ userId: "", type: "", modal: false })}>
+                                <button
+                                    className="popup_btn"
+                                    type="button"
+                                    onClick={() => setModalStates({ userId: "", type: "", modal: false })}
+                                >
                                     Close
                                 </button>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>

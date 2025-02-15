@@ -16,7 +16,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Faq from './components/pages/home/faq/Faq';
 import Contact from './components/pages/home/contact/Contact';
 import AboutUS from './components/pages/home/about/AboutUS';
-
+import Terms from './components/pages/home/termsandcondition/Temp';
 
 const Page = () => {
   useEffect(() => {
@@ -36,6 +36,7 @@ const Page = () => {
       {/* <Faq/> */}
       {/* <Contact /> */}
       {/* <AboutUS /> */}
+      {/* <Terms /> */}
     </>
   );
 };
