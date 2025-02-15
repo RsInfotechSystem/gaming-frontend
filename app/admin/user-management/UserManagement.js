@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import { useRouter } from 'next/navigation';
 import Loader from '@/app/common-component/Loader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faDeleteLeft, faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import CustomSearchBox from '@/app/common-component/CustomSearchBox';
 import CreateUser from './CreateUser';
 const pageLimit = process.env.NEXT_PUBLIC_LIMIT ?? 20;
@@ -45,6 +45,86 @@ const UserManagement = () => {
           ...pre, totalPages: 0,
         }))
       }
+      setLoader(false)
+    } catch (error) {
+      Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning", });
+      setLoader(false)
+    }
+  }
+  async function deleteUser(userId) {
+    try {
+
+      Swal.fire({
+        text: "Are you sure ,you want to Delete the user?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+      }).then(async function (result) {
+        if (result.isConfirmed) {
+          try {
+            setLoader(true);
+            const serverResponse = await adminCommunication.deleteUser([userId]);
+            if (serverResponse.data.status === "SUCCESS") {
+              Swal.fire({ text: serverResponse?.data?.message, icon: "success" });
+              getUserList(1, "")
+            } else if (serverResponse?.data?.status === "JWT_INVALID") {
+              Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+              router.push("/login");
+            } else {
+              Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+            }
+            setLoader(false)
+          } catch (error) {
+            Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning", });
+            setLoader(false)
+          }
+
+        } else {
+          return;
+        }
+      });
+
+      setLoader(false)
+    } catch (error) {
+      Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning", });
+      setLoader(false)
+    }
+  }
+  async function chnageUserStatus(userId) {
+    try {
+
+      Swal.fire({
+        text: "Are you sure ,you want to Change the User Status?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+      }).then(async function (result) {
+        if (result.isConfirmed) {
+          try {
+            setLoader(true);
+            const serverResponse = await adminCommunication.chnageUserStatus(userId);
+            if (serverResponse.data.status === "SUCCESS") {
+              Swal.fire({ text: serverResponse?.data?.message, icon: "success" });
+              getUserList(1, "")
+            } else if (serverResponse?.data?.status === "JWT_INVALID") {
+              Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+              router.push("/login");
+            } else {
+              Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+            }
+            setLoader(false)
+          } catch (error) {
+            Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning", });
+            setLoader(false)
+          }
+
+        } else {
+          return;
+        }
+      });
+
       setLoader(false)
     } catch (error) {
       Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning", });
@@ -96,13 +176,25 @@ const UserManagement = () => {
                       {users.map((userDetails, index) => (
                         <div className="table_data fontfam_play" key={index}>
                           <div className="col_10p"><h6>{((Number(pageLimit) * (paginationData.page - 1))) + (index + 1)}</h6></div>
-                          <div className="col_15p"><h6>{userDetails?.name}</h6></div>
+                          <div className="col_15p"><h6 className='text-capitalize'>{userDetails?.name}</h6></div>
                           <div className="col_25p"><h6>{userDetails?.email}</h6></div>
                           <div className="col_10p"><h6>{userDetails?.mobile}</h6></div>
-                          <div className="col_15p"><h6>{userDetails?.role?.name}</h6></div>
+                          <div className="col_15p"><h6 className='text-capitalize'>{userDetails?.role?.name}</h6></div>
                           <div className="col_15p">
                             <div className="action">
-                              <FontAwesomeIcon icon={faPenToSquare} onClick={() => setModalStates({ type: "update", modal: true, userId: userDetails?.id })} className="edit_icon" />
+
+                              <FontAwesomeIcon icon={faPenToSquare} title='update user' onClick={() => setModalStates({ type: "update", modal: true, userId: userDetails?.id })} className="edit_icon" />
+
+                              <FontAwesomeIcon icon={faTrash} title='delete user' onClick={() => deleteUser(userDetails?.id)} className="edit_icon" />
+                              <div className="form-switch ">
+                                <input
+                                  className="form-check-input cursor-pointer"
+                                  type="checkbox"
+                                  onChange={() => chnageUserStatus(userDetails?.id)}
+                                  checked={userDetails?.isActive || false}
+                                />
+                              </div>
+
                             </div>
                           </div>
                         </div>
