@@ -1,4 +1,5 @@
 "use client"
+import Link from 'next/link';
 import React from 'react';
 
 export default function Footer() {
@@ -66,9 +67,11 @@ export default function Footer() {
           </div>
 
           <div className='terms_condtion text-center d-flex'>
-            <span>FAQs</span>
-            <span>Contact us</span>
-            <span>T&C</span>
+            {/* <span>FAQs</span> */}
+            <span><Link href='/components/pages/home/faq'> FAQs</Link>
+            </span>
+            <span><Link href='/components/pages/home/contact'> Contact Us</Link></span>
+            <span><Link href='/components/pages/home/termsandcondition'> T&C</Link></span>
           </div>
 
           <div className='text-center company_design'>
