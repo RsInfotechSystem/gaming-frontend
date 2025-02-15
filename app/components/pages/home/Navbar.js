@@ -1,15 +1,18 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation'; // Import useRouter for navigation
+import { usePathname, useRouter } from 'next/navigation'; // Import useRouter for navigation
 import LoginModal from '../LoginModal';
 import SignUpModal from '../SignUpModal';
 import ForgotPasswordModal from '../ForgotPasswordModal';
 import OtpModal from '../OtpModal';
 import RegisterSuccessModal from '../RegisterSuccessModal';
 import ResetPasswordModal from '../ResetPasswordModal';
+import Link from 'next/link';
 
 export default function Navbar() {
   const router = useRouter(); // Initialize router
+  const currentUrl = usePathname().split("/");
+
 
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSignUpOpen, setSignUpOpen] = useState(false);
@@ -35,17 +38,21 @@ export default function Navbar() {
       <section className='nav row'>
         <div className='nav_main'>
           <div className='logo'>
-            <p>PlayZone</p>
+            <p>
+              <Link href='/'> PlayZone</Link></p>
+
+            {/* <p>PlayZone</p> */}
           </div>
           <div className='nav_tab'>
             <div className='tabs'>
-              <p>About</p>
+              <p>
+                <Link href='/components/pages/home/about'> About</Link></p>
             </div>
             <div className='tabs'>
-              <p>FAQs</p>
+              <p><Link href='/components/pages/home/faq'> FAQs</Link></p>
             </div>
-            <div className='tabs' onClick={() => router.push('/Contact')} style={{ cursor: "pointer" }}>
-              <p>Contact US</p>
+            <div className='tabs'>
+              <p><Link href='/components/pages/home/contact'> Contact US</Link></p>
             </div>
           </div>
         </div>
