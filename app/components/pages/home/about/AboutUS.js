@@ -1,11 +1,12 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Navbar';
-import officedesk from "../../../../../public/homepage/officedesk.jpg";
+import aboutg4 from "../../../../../public/homepage/aboutg4.jpg";
 import Image from "next/image";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Footer from '../Footer';
+import Link from 'next/link';
 
 export default function AboutUS() {
 
@@ -15,8 +16,10 @@ export default function AboutUS() {
        <div>
        <section className='contact_section'>
             <div className='text-center center_head'>
-                <p className='contact_page'>ABOUT <span style={{color:"red"}}>US</span></p>
-                <p className='contact_content'><span style={{color:"red"}}>HOME</span> / ABOUT</p>
+                <p className='contact_page'>ABOUT <span style={{color:"red"}}>US</span>
+                
+                </p>
+                <p className='contact_content'><Link href='/'><span style={{color:"red"}}>HOME</span></Link> / ABOUT</p>
             </div>  
             {/* <div className='horizontal_line'></div>
           <div className='horizontal_line_small'></div> */}
@@ -33,7 +36,7 @@ export default function AboutUS() {
                 <div className='about_head_main'>
                    <p>
                      About Time Must <br></br>
-                     <span>Gaming</span>
+                     <span>PlayZone Gaming</span>
                      {/* <span style={{color:"#DA00AB"}}>P</span>
                      <span style={{color:"#83B320"}}>r</span>
                      <span style={{color:"#0470CA"}}>o</span>
@@ -61,7 +64,7 @@ export default function AboutUS() {
                </div>
 
                <div className='col-6 about_image_side'>
-               <Image src={officedesk} alt="Office Desk" height={600} className='w-100'/>
+               <Image src={aboutg4} alt="Office Desk" height={450} className='w-100'/>
                </div>
           </section>
 

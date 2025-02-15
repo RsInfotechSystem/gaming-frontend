@@ -46,13 +46,16 @@ export default function Navbar() {
           <div className='nav_tab'>
             <div className='tabs'>
               <p>
-                <Link href='/components/pages/home/about'> About</Link></p>
+                <Link href='/components/pages/home/about' className={currentUrl.includes("about") ? "dash_tab_active" : "tab_inactive_home"}> About</Link></p>
+                
             </div>
             <div className='tabs'>
-              <p><Link href='/components/pages/home/faq'> FAQs</Link></p>
+              <p><Link href='/components/pages/home/faq' className={currentUrl.includes("faq") ? "dash_tab_active" : "tab_inactive_home"}> FAQs</Link></p>
+              
             </div>
             <div className='tabs'>
-              <p><Link href='/components/pages/home/contact'> Contact US</Link></p>
+              <p><Link href='/components/pages/home/contact'  className={currentUrl.includes("contact") ? "dash_tab_active" : "tab_inactive_home"}> Contact US</Link></p>
+              
             </div>
           </div>
         </div>
