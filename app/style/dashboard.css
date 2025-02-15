@@ -247,12 +247,13 @@ body {
 .games_bg {
   display: flex;
   align-items: center;
-  width: 45%;
+  /* width: 45%; */
   padding: 3px; /* Small padding to create the illusion of a border */
   border-radius: 14px;
   position: relative;
   overflow: hidden;
   z-index: 0;
+  /* min-height: 90px; */
 }
 
 /* Gradient border effect */
@@ -270,6 +271,7 @@ body {
 
 /* Inner container to hold the actual content */
 .games_bg_inner {
+  min-height: 90px;
   display: flex;
   align-items: center;
   background-color: #2b2b2b;
