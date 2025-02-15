@@ -122,42 +122,39 @@ const GameListAdmin = () => {
                     </div>
 
 
-                    <div className='mt-4'>
+                    <div className="mt-4">
+  <div className="row">
+    {games?.map((gameDetails, index) => (
+      <div className="col-12 col-md-6 col-lg-4 mb-3" key={index + 1}>
+        <div className="games_bg">
+          <div className="games_bg_inner">
+            {/* <FontAwesomeIcon icon={faEdit} className="edit_icon delete_btn me-4" /> */}
+            <FontAwesomeIcon icon={faEdit} title='update game' onClick={() => setModalStates({ type: "update", modal: true, gameId: gameDetails?.id })}className="edit_icon delete_btn me-5"/>
+            <FontAwesomeIcon icon={faTrashCan} className="edit_icon delete_btn" onClick={() => deleteGame(gameDetails.id)} />
+            
+            <div>
+              <Image
+                className="me-2"
+                style={{ borderRadius: "15px" }}
+                width={70}
+                height={70}
+                src={`${getServerUrl()}/getFiles/${gameDetails?.gamefiles[0].fileUrl}`}
+                alt="game_image"
+              />
+            </div>
+            <div>
+              <p className="game_name">{gameDetails?.name}</p>
+              <p className="game_info">{gameDetails?.description}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+</div>
 
-                        <div className='d-flex justify-content-around mb-3'>
-                            {games?.map((gameDetails, index) => {
-                                return (
-                                    <div className="games_bg" key={index + 1}>
-                                        <div className="games_bg_inner">
-                                            
 
-                                            <FontAwesomeIcon icon={faEdit} title='update game' onClick={() => setModalStates({ type: "update", modal: true, gameId: gameDetails?.id })}className="edit_icon delete_btn me-5"/>
-
-                                            <FontAwesomeIcon icon={faTrashCan} className="edit_icon delete_btn" onClick={() => deleteGame(gameDetails.id)} />
-                                           
-                                            <div>
-                                                <Image
-                                                    className="me-2"
-                                                    style={{ borderRadius: "15px" }}
-                                                    width={76}
-                                                    height={76}
-                                                    src={`${getServerUrl()}/getFiles/${gameDetails?.gamefiles[0].fileUrl}`}
-                                                    alt="game_image"
-                                                />
-                                            </div>
-                                            <div>
-                                                <p className="game_name">{gameDetails?.name}</p>
-                                                <p className="game_info">{gameDetails?.description}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )
-                            })}
-
-                        </div>
-
-                    </div>
-                </div>
             }
             {modalStates?.modal && <CreateGame setModalStates={setModalStates} type={modalStates?.type} gameId={modalStates?.gameId ?? ""} getGameList={getGameList} />}
         </>
