@@ -12,10 +12,12 @@ import CreateGame from './CreateGame';
 import { useRouter } from 'next/navigation';
 import { adminCommunication, getServerUrl } from '@/services/admin-communication';
 import Swal from 'sweetalert2';
+import CustomSearchBox from '@/app/common-component/CustomSearchBox';
+
 
 
 const GameListAdmin = () => {
-    const [modalStates, setModalStates] = useState({ type: "", modal: false, gameId: "" })
+   
     const [loader, setLoader] = useState(false);
     const [searchString, setSearchString] = useState("");
     const [games, setGames] = useState([]);
@@ -25,6 +27,7 @@ const GameListAdmin = () => {
         totalPages: 1,
         page: 1
     });
+    const [modalStates, setModalStates] = useState({ type: "", modal: false, gameId: "" })
     const router = useRouter();
 
     async function getGameList(page = 1, searchString = "") {
@@ -112,10 +115,7 @@ const GameListAdmin = () => {
                         </p>
                     </div>
                     <div className='nav_search'>
-                        <div className="search_box">
-                            <input type="search" placeholder="Search" className="search_input" />
-                            <i className="fas fa-search search_icon"></i>
-                        </div>
+                    <CustomSearchBox searchString={searchString} setSearchString={setSearchString} apiCall={getGameList} />
                         <div className="add_btn_main">
                             <button className='add_btn' onClick={() => setModalStates({ modal: true, type: "create", gameId: "" })}>Add</button>
                         </div>
@@ -129,8 +129,10 @@ const GameListAdmin = () => {
                                 return (
                                     <div className="games_bg" key={index + 1}>
                                         <div className="games_bg_inner">
-                                            {/* <FontAwesomeIcon icon={faPenToSquare} onClick={() => setModalStates({ type: "update", modal: true, gameId: gameDetails?.id })} className="edit_icon" /> */}
-                                            <FontAwesomeIcon icon={faEdit} className="edit_icon delete_btn me-5"/>
+                                            
+
+                                            <FontAwesomeIcon icon={faEdit} title='update game' onClick={() => setModalStates({ type: "update", modal: true, gameId: gameDetails?.id })}className="edit_icon delete_btn me-5"/>
+
                                             <FontAwesomeIcon icon={faTrashCan} className="edit_icon delete_btn" onClick={() => deleteGame(gameDetails.id)} />
                                            
                                             <div>
