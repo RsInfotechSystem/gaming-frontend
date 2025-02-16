@@ -1,82 +1,92 @@
-"use client"
+"use client";
+
+import { useState, useEffect } from "react";
+import Select from "react-select";
 import { adminCommunication } from '@/services/admin-communication';
-import React, { useEffect, useState } from 'react'
-import network from '../../../../public/dashboard/network.png';
-import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 import Swal from 'sweetalert2';
-import { useRouter } from 'next/navigation';
-import Loader from '@/app/common-component/Loader';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-import CustomSearchBox from '@/app/common-component/CustomSearchBox';
-const pageLimit = process.env.NEXT_PUBLIC_LIMIT ?? 20;
+import Loader from "@/app/common-component/Loader";
 
-const WinnerDeclare = () => {
-    const [searchString, setSearchString] = useState("");
+export default function PlayerSearch() {
+    const [selectedPlayers, setSelectedPlayers] = useState([]);
+    const [winner, setWinner] = useState(null);
+    const [players, setPlayers] = useState([]);
+    const [loader, setLoader] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);  // NEW state to track mounting
+    const searchParams = useSearchParams();
 
+    async function getContestWisePlayerList() {
+        try {
+            setLoader(true);
+            const serverResponse = await adminCommunication.getContestWisePlayerList(searchParams.get("contestId"));
+            if (serverResponse.data.status === "SUCCESS") {
+                setPlayers(serverResponse?.data?.data.map(player => ({ value: player.name, label: player.name })));
+            } else if (serverResponse?.data?.status === "JWT_INVALID") {
+                Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+            } else {
+                setPlayers([]);
+            }
+            setLoader(false);
+        } catch (error) {
+            Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning" });
+            setLoader(false);
+        }
+    }
+
+    useEffect(() => {
+        setIsMounted(true);  // Set the component as mounted
+        getContestWisePlayerList();
+    }, []);
 
     return (
         <>
-            {/* {loader === true ?
+            {loader === true ? (
                 <Loader />
-                : */}
-            <div style={{ width: "90%", margin: "0px auto" }}>
+            ) : (
+                <div className="p-6 max-w-lg mx-auto bg-gray-100 rounded-xl shadow-md space-y-4">
+                    <h1 className="text-2xl font-bold text-center">eSports Player Selection</h1>
 
-                <div className="mt-1">
-                    <p className="tournament_text">
-                    Winner Declare{" "}
-                        <Image className="me-2" width={25} height={20} src={network} alt="network" />
-                    </p>
-                </div>
-                <div className='nav_search'>
-                    <CustomSearchBox searchString={searchString} setSearchString={setSearchString} />
-                    {/* <div className="add_btn_main">
-                        <button className='add_btn'>Add</button>
-                    </div> */}
-                </div>
+                    {/* Render Select only after mounting to prevent hydration mismatch */}
+                    {isMounted && (
+                        <Select
+                            options={players}
+                            isMulti
+                            value={selectedPlayers}
+                            onChange={setSelectedPlayers}
+                            placeholder="Search & Select Players"
+                            styles={{
+                                multiValue: (styles) => ({
+                                    ...styles,
+                                    backgroundColor: "#184965",
+                                    color: "#fff",
+                                    borderRadius: "4px",
+                                    padding: "4px 8px",
+                                }),
+                                control: (styles) => ({
+                                    ...styles,
+                                    padding: "8px",
+                                    borderRadius: "4px",
+                                    border: "1px solid #ccc",
+                                }),
+                            }}
+                        />
+                    )}
 
+                    <button
+                        onClick={() => setWinner(selectedPlayers?.map(player => player.label).join(", "))}
+                        disabled={selectedPlayers.length === 0}
+                        className="w-full bg-green-500 text-white py-2 rounded-lg disabled:bg-gray-400"
+                    >
+                        Declare Winner
+                    </button>
 
-                {/* table  */}
-                <div className="table_wrapper">
-                    <div className="table_main">
-                        {/* Scrollable container */}
-                        <div className="table_scroll">
-                            <div className="table_section">
-                                <div className="table_header fontfam_play">
-                                    <div className="col_10p"><h5>SR No</h5></div>
-                                    <div className="col_15p"><h5>Name</h5></div>
-                                    {/* <div className="col_10p"><h5>Mobile</h5></div> */}
-                                    <div className="col_15p"><h5>User Name</h5></div>
-                                    <div className="col_15p"><h5>Available Coins</h5></div>
-                                    <div className="col_15p"><h5>Action</h5></div>
-                                </div>
-                                {/* {player?.length > 0 ? ( */}
-                                <>
-                                    {/* {player.map((userDetails, index) => ( */}
-                                    <div className="table_data fontfam_play" >
-                                        <div className="col_10p"><h6>{1}</h6></div>
-                                        <div className="col_15p"><h6>userDetails</h6></div>
-
-                                        {/* <div className="col_10p"><h6>userDetails</h6></div> */}
-                                        <div className="col_15p"><h6>userDetails</h6></div>
-                                        <div className="col_15p"><h6>400</h6></div>
-                                        <div className="col_15p">
-                                            <div className="action">
-                                                <FontAwesomeIcon icon={faPenToSquare} className="edit_icon" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {/* ))} */}
-                                </>
-
-                            </div>
+                    {winner && (
+                        <div className="text-center text-lg font-semibold text-green-700">
+                            Winner: {winner}
                         </div>
-                    </div>
+                    )}
                 </div>
-            </div>
-            {/* } */}
+            )}
         </>
-    )
+    );
 }
-
-export default WinnerDeclare;

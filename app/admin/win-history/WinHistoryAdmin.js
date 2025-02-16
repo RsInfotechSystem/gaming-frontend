@@ -1,4 +1,4 @@
-"use client"
+ro"use client"
 import { adminCommunication } from '@/services/admin-communication';
 import React, { useEffect, useState } from 'react'
 import network from '../../../public/dashboard/network.png';

@@ -296,4 +296,19 @@ export const adminCommunication = {
             Swal.fire({ text: error.message, icon: "warning" });
         }
     },
+    //-----------------------------------------Declare winner APIs start----------------------------------------
+
+    getContestWisePlayerList: async function (contestId) {
+        try {
+            return axios.post(`${getServerUrl()}/contest/get-contest-wise-joined-player-list`, { contestId: contestId }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    //-----------------------------------------Declare winner APIs end----------------------------------------
 }

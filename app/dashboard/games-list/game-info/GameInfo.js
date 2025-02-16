@@ -15,7 +15,7 @@ import { getUserDetails } from "@/utilities/get-user-details-from-cokies";
 export default function GameInfo() {
   const [activeTab, setActiveTab] = useState("home");
   const [loader, setLoader] = useState(false);
-  const [joinContest, setJoinContest] = useState(false);
+  const [selectedContestId, setSelectedContestId] = useState(null);
   const [gameWiseContestsList, setGameWiseContestsList] = useState([]);
 
   const router = useRouter();
@@ -58,8 +58,8 @@ export default function GameInfo() {
     }
   });
 
-  const handleJoinClick = () => {
-    setJoinContest(true);
+  const handleJoinClick = (contestId) => {
+    setSelectedContestId(contestId); // Store the clicked contest ID
   };
 
   const handleJoinContest = async (data, contestId) => {
@@ -92,6 +92,7 @@ export default function GameInfo() {
     menu1: "DUO",
     menu2: "SQUAD",
   };
+
 
   return (
     <>
@@ -176,7 +177,7 @@ export default function GameInfo() {
 
                             <button
                               className="btn btn-warning-contest w-100 mt-3 fw-bold"
-                              onClick={handleJoinClick}
+                              onClick={() => handleJoinClick(contest?.id)}
                             >
                               JOIN NOW
                             </button>
@@ -187,42 +188,55 @@ export default function GameInfo() {
                   </div>
                 </div>
 
-                {joinContest && (
-                  <div className="modal-overlay" onClick={() => setJoinContest(false)}>
+                {selectedContestId && (
+                  <div className="modal-overlay" onClick={() => setSelectedContestId(null)}>
                     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                       <div className="p-4">
-                        {groupedContests[tabMapping[activeTab]]?.map((contest, index) => (
-                          <div className="modal-content-contest" key={index}>
-                            {/* Modal Header */}
-                            <div className="modal-header-contest">
-                              <h5 className="modal-title-contest" id="modalTitle">{contest?.name}</h5>
-                              {/* <button type="button" className="btn-close" aria-label="Close"></button> */}
-                            </div>
+                        {groupedContests[tabMapping[activeTab]]
+                          ?.filter((contest) => contest.id === selectedContestId) // Show only selected contest
+                          ?.map((contest, index) => (
+                            <div className="modal-content-contest" key={index}>
+                              <div className="modal-header-contest">
+                                <h5 className="modal-title-contest">{contest?.name}</h5>
+                              </div>
+                              <div className="modal-body">
+                                <p className="pb-4">
+                                  <span className="float-start">
+                                    Stumble Guys - {tabMapping[activeTab].toUpperCase()}
+                                  </span>
+                                  <span className="float-end">
+                                    {formatDate(contest?.contestDate)} {convertTo12HourFormat(contest?.contestTime)}
+                                  </span>
+                                </p>
+                                <form onSubmit={handleSubmit((data) => handleJoinContest(data, contest?.id))}>
+                                  <input
+                                    className="login_input"
+                                    type="text"
+                                    placeholder="Username"
+                                    {...register("gameUserName", { required: "Username is required" })}
+                                  />
+                                  {errors?.gameUserName && <p className="text-danger">{errors?.gameUserName?.message}</p>}
 
-                            {/* Modal Body */}
-                            <div className="modal-body">
-                              <p className="pb-4"> <span className="float-start"> Stumble Guys - {tabMapping[activeTab].toUpperCase()} </span><span className="float-end">{formatDate(contest?.contestDate)} {convertTo12HourFormat(contest?.contestTime)}</span></p>
-                              {/* <div className="confirmation-box">Confirmation Coin Balance = <span>270</span></div> */}
-                              <form onSubmit={handleSubmit((data) => handleJoinContest(data, contest?.id))}>
-                                <input
-                                  className="login_input"
-                                  type="text"
-                                  placeholder="Username"
-                                  {...register("gameUserName", { required: "Username is required" })}
-                                />
-                                {errors?.gameUserName && <p className="text-danger">{errors?.gameUserName?.message}</p>}
-
-                                <div className="entry-box"><span>Entry Fee</span> <span>{contest?.reqCoinsToJoin === 0 ? `Free` : `${contest?.reqCoinsToJoin}`}</span></div>
-                                <div className="entry-box"><span>To Pay</span> <span>{contest?.reqCoinsToJoin === 0 ? `Free` : `${contest?.reqCoinsToJoin}`}</span></div>
-                                <button className="join-btn" type="submit">JOIN CONTEST →</button>
-                              </form>
+                                  <div className="entry-box">
+                                    <span>Entry Fee</span>
+                                    <span>{contest?.reqCoinsToJoin === 0 ? `Free` : `${contest?.reqCoinsToJoin}`}</span>
+                                  </div>
+                                  <div className="entry-box">
+                                    <span>To Pay</span>
+                                    <span>{contest?.reqCoinsToJoin === 0 ? `Free` : `${contest?.reqCoinsToJoin}`}</span>
+                                  </div>
+                                  <button className="join-btn" type="submit">
+                                    JOIN CONTEST →
+                                  </button>
+                                </form>
+                              </div>
                             </div>
-                          </div>
-                        ))}
+                          ))}
                       </div>
                     </div>
                   </div>
                 )}
+
               </div>
             </div>
           </div >
