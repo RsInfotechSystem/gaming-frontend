@@ -1,6 +1,6 @@
 "use client"
 import Loader from '@/app/common-component/Loader';
-import { adminCommunication } from '@/services/admin-communication';
+import { adminCommunication, getServerUrl } from '@/services/admin-communication';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
@@ -62,14 +62,13 @@ const CreateGame = ({ setModalStates, type, gameId, getGameList }) => {
     //get User by Id
     async function getGameById() {
         try {
-            if (!gameId) {
-                return
-            }
+            console.log("gameId", gameId);
+
             setLoader(true);
             const serverResponse = await adminCommunication.getGameById(gameId);
             if (serverResponse.data.status === "SUCCESS") {
                 setValue("name", serverResponse?.data?.game?.name);
-                setValue("email", serverResponse?.data?.game?.description);
+                setValue("description", serverResponse?.data?.game?.description);
                 setSelectedImages(serverResponse?.data?.game?.gamefiles);
             } else if (serverResponse?.data?.status === "JWT_INVALID") {
                 Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
@@ -138,7 +137,9 @@ const CreateGame = ({ setModalStates, type, gameId, getGameList }) => {
                                             {selectedImages?.map((file, index) => (
                                                 <div key={index} style={{ position: 'relative', width: '100px', height: '100px' }}>
                                                     <Image
-                                                        src={URL.createObjectURL(file)}
+                                                        src={(typeof file === "object" && file.fileUrl)
+                                                            ? `${getServerUrl()}/getFiles/${file.fileUrl}`
+                                                            : URL.createObjectURL(file)}
                                                         alt={`Selected ${index + 1}`}
                                                         layout="fill"
                                                         objectFit="cover"

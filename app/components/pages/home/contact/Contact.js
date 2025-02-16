@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 import { motion } from "framer-motion"
+import Link from 'next/link';
 
 export default function Contact() {
 
@@ -13,7 +14,7 @@ export default function Contact() {
       <section className='contact_section'>
         <div className='text-center center_head'>
           <p className='contact_page'>CONTACT <span style={{ color: "red" }}>US</span></p>
-          <p className='contact_content'><span style={{ color: "red" }}>HOME</span> / CONTACT US</p>
+          <p className='contact_content'><Link href='/'><span style={{color:"red"}}>HOME</span></Link> / CONTACT US</p>
         </div>
         {/* <div className='horizontal_line'></div>
           <div className='horizontal_line_small'></div> */}
@@ -97,7 +98,7 @@ export default function Contact() {
 
       {/* Google Map Section */}
       <section className='row map_section mt-5'>
-        <div className='col-12'>
+        <div className='col-6 map_side'>
           <h3 className='text-center mb-4'></h3>
           <div className='map-container' style={{ width: '100%', height: '400px' }}>
             <iframe
@@ -110,6 +111,15 @@ export default function Contact() {
               loading='lazy'
             ></iframe>
           </div>
+        </div>
+        <div className='col-6 address_side'>
+          <h3>Contact Information</h3>
+          <p className='address_bar'>
+          Address: 10, Saurabh Nagar-2, Besa Rd, near Hanuman Mandir, Saubhagya Nagar, Ghogali, Nagpur, Maharashtra 440034
+          </p>
+          <p>Phone : +91 7972192831</p>
+          <p>Phone : +91 9545073418</p>
+          <p>Email : rightserveinfotechsystems@gmail.com</p>
         </div>
         <div className='nav_hr_line'></div>
       </section>

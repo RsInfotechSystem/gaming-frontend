@@ -14,7 +14,7 @@ const CreateUser = ({ setModalStates, type, userId, getUserList }) => {
 
     //On  submit call api
     async function onSubmit(params) {
-        try {
+        try { 
             setLoader(true);
             const serverResponse = (type === "create") ? await adminCommunication.createUser(params) : await adminCommunication.updateUser({ ...params, userId });
             if (serverResponse.data.status === "SUCCESS") {

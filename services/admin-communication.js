@@ -97,6 +97,30 @@ export const adminCommunication = {
             Swal.fire({ text: error.message, icon: "warning" });
         }
     },
+    deleteUser: async function (userIds) {
+        try {
+            return axios.post(`${getServerUrl()}/user/delete-user`, { userIds }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    chnageUserStatus: async function (userId) {
+        try {
+            return axios.post(`${getServerUrl()}/user/change-user-status`, { userId }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
     //----------------Role Manegement------------------------------
     getActiveRoles: async function () {
         try {

@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import Image from "next/image";
-import sideimg from "../../../../../public/homepage/sideimg.jpg";
+import faqv from "../../../../../public/homepage/faqv.jpg";
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 export default function Faq() {
@@ -23,7 +23,7 @@ export default function Faq() {
       </div>
 
       <div className='row d-flex input_bar'>
-          <div className='col-8 faq_bar'>
+          <div className='col-7 faq_bar'>
           <div className="accordion" id="accordionExample">
   <div className="accordion-item">
     <h2 className="accordion-header" id="headingOne">
@@ -100,7 +100,7 @@ export default function Faq() {
 </div>
           </div>
 
-          <div className="col-4 parent_input">
+          <div className="col-5 parent_input">
              {/* <div className="form-group has-search search_bar">
               <input type="text" className="form-control" placeholder="Search..." />
               <span className="bi bi-search form-control-feedback"></span>
@@ -116,7 +116,7 @@ export default function Faq() {
                      <a href='/'>Xbox</a>
                  </div>
               </div> */}
-            <Image src={sideimg} alt="Office Desk" className='img-fluid'/>
+            <Image src={faqv} alt="Office Desk" className='img-fluid'/>
           </div>
           
       </div>
