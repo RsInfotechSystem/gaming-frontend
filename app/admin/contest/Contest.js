@@ -128,8 +128,8 @@ const Contest = () => {
                                                 {details?.roomId && <div className="bg-warning-contest w-100 mt-3 fw-bold d-flex justify-content-between align-items-center">
                                                     {details?.roomId && <span className="badge custom-badge-contest">ID: {details?.roomId}</span>}
                                                     {details?.passwordToJoin && <span className="badge custom-badge-contest">Pass: {details?.passwordToJoin}</span>}
-                                                   {/* <span style={{cursor:"pointer"}} className="badge custom-badge-contest">Declare winner</span> */}
-                                                    <button style={{border:"none",outline:"none",background:"none"}} className='' onClick={() => router.push('/admin/contest/winner-declare')}> <span  className="badge custom-badge-contest">Declare winner</span></button>
+                                                    {/* <span style={{cursor:"pointer"}} className="badge custom-badge-contest">Declare winner</span> */}
+                                                    <button style={{ border: "none", outline: "none", background: "none" }} className='' onClick={() => router.push(`/admin/contest/winner-declare?contestId=${details?.id}`)}> <span className="badge custom-badge-contest">Declare winner</span></button>
                                                 </div>
                                                 }
                                                 {!details?.roomId && <button className="btn btn-warning-contest w-100 mt-3 fw-bold" onClick={() => setContestModal({ modal: true, contestId: details?.id })}>Add Room Id</button>}
