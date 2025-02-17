@@ -24,6 +24,8 @@ const RoleList = () => {
         totalPages: 1,
         page: 1
     });
+    const [selectAllChecked, setSelectAllChecked] = useState(false);
+    const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
     const router = useRouter();
 
     async function getRoleList(page = 1, searchString = "") {
@@ -52,6 +54,33 @@ const RoleList = () => {
             setLoader(false)
         }
     }
+
+    const handleSelectAllChange = (e) => {
+        setSelectAllChecked(e.target.checked);
+        // Check if there are any roles available
+        if (selectedCheckboxes.length <= 0) {
+            setSelectedCheckboxes([]);
+        } else {
+            // Update the array of selected checkboxes based on the "Select All" checkbox
+            setSelectedCheckboxes((prevSelected) =>
+                e.target.checked ? roles.map((brandDetails) => brandDetails._id) : []
+            );
+        }
+    };
+
+    const handleCheckboxChange = (e) => {
+        const checkboxId = e.target.id;
+        setSelectAllChecked((!selectedCheckboxes.includes(checkboxId) && (selectedCheckboxes.length + 1 === roles?.length)))
+        setSelectedCheckboxes((prevSelected) => {
+            if (prevSelected.includes(checkboxId)) {
+                // If the checkbox is already in the array, remove it
+                return prevSelected.filter((id) => id !== checkboxId);
+            } else {
+                // If the checkbox is not in the array, add it
+                return [...prevSelected, checkboxId];
+            }
+        });
+    };
 
     useEffect(() => {
         getRoleList(paginationData.currentPage, searchString);
@@ -85,6 +114,18 @@ const RoleList = () => {
                             <div className="table_scroll">
                                 <div className="table_section">
                                     <div className="table_header fontfam_play">
+                                        <div className="col_5p">
+                                            <div className="check_box">
+                                                <input
+                                                    className="form-check-input"
+                                                    type="checkbox"
+                                                    id="selectAllCheckbox"
+                                                    onChange={(e) => handleSelectAllChange(e)}
+                                                    checked={selectAllChecked}
+                                                />
+                                                <label className="form-check-label"></label>
+                                            </div>
+                                        </div>
                                         <div className="col_10p"><h5>Sr. No</h5></div>
                                         <div className="col_15p"><h5>Role Type</h5></div>
                                         <div className="col_35p"><h5>Tab Access</h5></div>
@@ -94,6 +135,18 @@ const RoleList = () => {
                                         <>
                                             {roles.map((roleDetails, index) => (
                                                 <div className="table_data fontfam_play" key={index}>
+                                                    <div className="col_5p">
+                                                        <div className="check_box">
+                                                            <input
+                                                                className="form-check-input"
+                                                                type="checkbox"
+                                                                id={roleDetails?._id}
+                                                                onChange={(e) => handleCheckboxChange(e)}
+                                                                checked={selectedCheckboxes.includes(roleDetails?._id)}
+                                                            />
+                                                            <label className="form-check-label"></label>
+                                                        </div>
+                                                    </div>
                                                     <div className="col_10p"><h6>{((Number(pageLimit) * (paginationData.page - 1))) + (index + 1)}</h6></div>
                                                     <div className="col_15p"><h6>{roleDetails?.name}</h6></div>
                                                     <div className="col_35p"><h6> {roleDetails?.tab?.join(', ')}</h6></div>
