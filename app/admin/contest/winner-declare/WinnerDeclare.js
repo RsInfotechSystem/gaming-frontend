@@ -1,7 +1,7 @@
-"use client";
+"use client";  
 
 import { useState, useEffect } from "react";
-import Select from "react-select";
+import Select from 'react-select';
 import { adminCommunication } from '@/services/admin-communication';
 import { useSearchParams } from 'next/navigation';
 import Swal from 'sweetalert2';
@@ -9,10 +9,10 @@ import Loader from "@/app/common-component/Loader";
 
 export default function PlayerSearch() {
     const [selectedPlayers, setSelectedPlayers] = useState([]);
-    const [winner, setWinner] = useState(null);
+    const [winners, setWinners] = useState([]);
     const [players, setPlayers] = useState([]);
     const [loader, setLoader] = useState(false);
-    const [isMounted, setIsMounted] = useState(false);  // NEW state to track mounting
+    const [isMounted, setIsMounted] = useState(false);
     const searchParams = useSearchParams();
 
     async function getContestWisePlayerList() {
@@ -34,31 +34,48 @@ export default function PlayerSearch() {
     }
 
     useEffect(() => {
-        setIsMounted(true);  // Set the component as mounted
+        setIsMounted(true);
         getContestWisePlayerList();
     }, []);
 
+    // Function to declare the winners
+    const handleDeclareWinner = () => {
+        if (selectedPlayers.length > 0) {
+            setWinners(selectedPlayers.map(player => player.label)); // Officially set the winners
+        } else {
+            Swal.fire({ text: "Please select at least one winner first!", icon: "warning" });
+        }
+    };
+
     return (
         <>
-            {loader === true ? (
+            {loader ? 
                 <Loader />
-            ) : (
-                <div className="p-6 max-w-lg mx-auto bg-gray-100 rounded-xl shadow-md space-y-4">
-                    <h1 className="text-2xl font-bold text-center">Declare Winner</h1>
+             : 
+             <div style={{ width: "90%", margin: "0px auto" }}>
+                <div className="mt-1">
+                    <p className="tournament_text">DECLARE WINNERS</p>
+                </div>
 
-                    {/* Render Select only after mounting to prevent hydration mismatch */}
+                {/* Winner Selection Dropdown & Declare Winner Button (Side by Side) */}
+                <div 
+                    className="d-flex align-items-center" 
+                    style={{ display: "flex", alignItems: "center", gap: "10px", justifyContent: "space-between" }}
+                >
+                    {/* Select Box */}
                     {isMounted && (
-                        <Select
-                            options={players}
+                    <div className="search-input-container" style={{ width: "80%" }}>
+                        <Select 
+                            options={players} 
                             isMulti
-                            value={selectedPlayers}
-                            onChange={setSelectedPlayers}
-                            placeholder="Search & Select Players"
-                            styles={{
+                            value={selectedPlayers} 
+                            onChange={setSelectedPlayers} 
+                            placeholder="Search and Select Winners"
+                            styles={{   
                                 multiValue: (styles) => ({
                                     ...styles,
-                                    backgroundColor: "#184965",
-                                    color: "#fff",
+                                    backgroundColor: "#ff3737",
+                                    color: "white",
                                     borderRadius: "4px",
                                     padding: "4px 8px",
                                 }),
@@ -67,26 +84,48 @@ export default function PlayerSearch() {
                                     padding: "8px",
                                     borderRadius: "4px",
                                     border: "1px solid #ccc",
+                                    backgroundColor: "Charcoal",
+                                    color: "#FFFFFF",
+                                }),
+                                placeholder: (styles) => ({
+                                    ...styles,
+                                    color: "#FFFFFF",
+                                    fontFamily:"play"
                                 }),
                             }}
                         />
+                    </div>
                     )}
-
-                    <button
-                        onClick={() => setWinner(selectedPlayers?.map(player => player.label).join(", "))}
-                        disabled={selectedPlayers.length === 0}
-                        className="w-full bg-green-500 text-white py-2 rounded-lg disabled:bg-gray-400"
-                    >
-                        Declare Winner
-                    </button>
-
-                    {winner && (
-                        <div className="text-center text-lg font-semibold text-green-700">
-                            Winner: {winner}
-                        </div>
-                    )}
+                    {/* Declare Winner Button with Gradient */}
+                    <div style={{ width: "20%", textAlign: "right" }}>
+                        <button 
+                            className="add_btn" 
+                            style={{ 
+                                width: "100%", minWidth: "120px", 
+                                padding: "10px", 
+                                background: "linear-gradient(45deg,  #ff1717, #9d04f6)",  
+                                color: "#fff", 
+                                borderRadius: "5px", 
+                                border: "none", 
+                                cursor: "pointer",
+                                fontWeight: "bold",
+                                transition: "all 0.3s ease",
+                            }}
+                            onClick={handleDeclareWinner}
+                        >
+                            Declare Winners
+                        </button>
+                    </div>
                 </div>
-            )}
+
+                {/* Show Declared Winners */}
+                {winners.length > 0 && (
+                    <div className="winner_declared text-center text-lg font-semibold text-green-700 mt-3">
+                        Winners: <span style={{color:"red"}}>{winners.join(", ")}</span>
+                    </div>
+                )}
+            </div>
+            }
         </>
     );
 }

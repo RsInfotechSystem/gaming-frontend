@@ -255,6 +255,11 @@ body {
   z-index: 0;
   /* min-height: 90px; */
 }
+.winner_declared{
+  color: #FFFFFF;
+  font-size: 25px;
+  padding-top: 80px;
+}
 
 /* Gradient border effect */
 .games_bg::before {
@@ -402,6 +407,7 @@ body {
   background-image: linear-gradient(to right, #ff1717, #9d04f6);
   position: relative;
   /* bottom: 10px; */
+  /* margin-left: 70px; */
 }
 
 /****************** COMMON PERCENTAGE WIDTH CLASSES CSS START ******************/
@@ -987,6 +993,11 @@ div:where(.col_100p) {
 .table_section {
     min-width: 800px; /* Adjust based on your content */
     white-space: nowrap; /* Prevents text from wrapping */
+}
+
+.search-input-container {
+  width: 80%;
+  padding-right: 30px;
 }
 
 
