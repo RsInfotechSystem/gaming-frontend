@@ -85,9 +85,9 @@ export const communication = {
             throw error;
         }
     },
-    getGamesList: async () => {
+    getGamesList: async (page = 1, searchString) => {
         try {
-            return await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/game/get-game-list`, {}, {
+            return await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/game/get-game-list`, {page , searchString}, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${getCookie("GAMING")}`,
@@ -97,9 +97,9 @@ export const communication = {
             throw error;
         }
     },
-    getCoinList: async () => {
+    getCoinList: async (page = 1,searchString) => {
         try {
-            return await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/coin/get-coin-list-for-user`, {}, {
+            return await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/coin/get-coin-list-for-user`, {page ,searchString}, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${getCookie("GAMING")}`,
@@ -109,9 +109,9 @@ export const communication = {
             throw error;
         }
     },
-    getJoinedContestList: async () => {
+    getJoinedContestList: async (page = 1,searchString) => {
         try {
-            return await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/contest/get-joined-contest-list`, {}, {
+            return await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/contest/get-joined-contest-list`, {page ,searchString}, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${getCookie("GAMING")}`,
@@ -138,11 +138,11 @@ export const communication = {
         }
     },
 
-    getGameWiseContestList: async function (id) {
+    getGameWiseContestList: async function (id, page = 1, searchString) {
         try {
             return axios.post(
                 `${getServerUrl()}/contest/get-game-wise-contest-list`,
-                { gameId: id },
+                { gameId: id , page, searchString},
                 {
                     headers: {
                         "Content-Type": "application/json",

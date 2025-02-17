@@ -11,27 +11,48 @@ import { useRazorpay } from "react-razorpay";
 import { useDispatch } from 'react-redux';
 import { setCoins } from '@/redux-stores/slices/coinSlice';
 import Loader from '@/app/common-component/Loader';
+import CustomSearchBox from '@/app/common-component/CustomSearchBox';
 
 export default function GameCoins() {
   const [coinList, setCoinList] = useState([]);
   const [loader, setLoader] = useState(false);
+  const [searchString, setSearchString] = useState("");
+const [paginationData, setPaginationData] = useState({
+    currentPage: 1,
+    isPageUpdated: false,
+    totalPages: 1,
+    page: 1
+});
   const router = useRouter();
   const { Razorpay } = useRazorpay();
   const dispatch = useDispatch();
 
 
   //get Contest on initial load
-  const getCoinList = async () => {
+  const getCoinList = async (page = 1,searchString = "") => {
     try {
       setLoader(true);
-      const serverResponse = await communication.getCoinList();
+      console.log("payload",searchString)
+
+      const serverResponse = await communication.getCoinList(page,searchString);
+      console.log("API Response:", serverResponse?.data);
+
       if (serverResponse?.data?.status === "SUCCESS") {
         setCoinList(serverResponse?.data?.coinList);
+        setPaginationData(pre => ({
+          ...pre, totalPages: serverResponse?.data?.totalPages,
+          page: page,
+          currentPage: page,
+      }))
       } else if (serverResponse?.data?.status === "JWT_INVALID") {
         Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
         router.push("/");
       } else {
         Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+        setCoinList([]);
+        setPaginationData(pre => ({
+          ...pre, totalPages: 0,
+      }))
       }
       setLoader(false);
     } catch (error) {
@@ -65,8 +86,8 @@ export default function GameCoins() {
   };
 
   useEffect(() => {
-    getCoinList()
-  }, []);
+    getCoinList(paginationData.currentPage, searchString);
+  }, [paginationData.isPageUpdated]);
 
   return (
     <>
@@ -76,6 +97,9 @@ export default function GameCoins() {
         <div className='tournament_list'>
           <div className='mt-1 coin_pack'>
             <p className='tournament_text'>COINS PACK </p>
+            <div className='nav_search mb-4'>
+              <CustomSearchBox searchString={searchString} setSearchString={setSearchString} apiCall={getCoinList} />
+            </div>
             <div className="container mt-4">
               <div className="row">
                 {coinList?.length > 0 ? (

@@ -17,6 +17,7 @@ import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
 import { communication } from '@/services/communication';
 import Loader from '@/app/common-component/Loader';
+import CustomSearchBox from '@/app/common-component/CustomSearchBox';
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 
 export default function GamesList() {
@@ -49,6 +50,13 @@ export default function GamesList() {
   const [contestList, setContestList] = useState([]);
   const [gameList, setGameList] = useState([]);
   const [loader, setLoader] = useState(false);
+  const [searchString, setSearchString] = useState("");
+  const [paginationData, setPaginationData] = useState({
+        currentPage: 1,
+        isPageUpdated: false,
+        totalPages: 1,
+        page: 1
+    });
   const router = useRouter();
   const NEXT_PUBLIC_SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
@@ -73,17 +81,27 @@ export default function GamesList() {
   };
 
   //get Contest on initial load
-  const getGamesList = async () => {
+  const getGamesList = async (page = 1,searchString = "") => {
     try {
       setLoader(true);
-      const serverResponse = await communication.getGamesList();
+      const serverResponse = await communication.getGamesList(page,searchString);
       if (serverResponse?.data?.status === "SUCCESS") {
         setGameList(serverResponse?.data?.gameList);
+        setPaginationData(pre => ({
+          ...pre, totalPages: serverResponse?.data?.totalPages,
+          page: page,
+          currentPage: page,
+      }))
+        // console.log(searchString);
       } else if (serverResponse?.data?.status === "JWT_INVALID") {
         Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
         router.push("/");
       } else {
-        Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+        // Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+        setGameList([]);
+        setPaginationData(pre => ({
+          ...pre, totalPages: 0,
+      }))
       }
       setLoader(false);
     } catch (error) {
@@ -96,10 +114,16 @@ export default function GamesList() {
     router.push(`/dashboard/games-list/game-info?gameId=${id}`)
   }
 
+  
   useEffect(() => {
-    getContestList()
-    getGamesList();
+    getContestList();
   }, []);
+
+  useEffect(() => {
+    getGamesList(paginationData.currentPage, searchString);
+    }, [paginationData.isPageUpdated]);
+
+
 
   return (
     <>
@@ -164,6 +188,9 @@ export default function GamesList() {
                     <p className="tournament_text mt-5 ">
                       ALL GAMES <Image className="me-2" width={25} height={20} src={all_games} alt="all games" />
                     </p>
+                    <div className='nav_search mb-4'>
+                      <CustomSearchBox searchString={searchString} setSearchString={setSearchString} apiCall={getGamesList} />
+                    </div>
                     <div className="d-flex flex-wrap justify-content-around mb-3">
                       {gameList?.map((game, index) => (
                         <div className="games_bg mb-3" key={index}>

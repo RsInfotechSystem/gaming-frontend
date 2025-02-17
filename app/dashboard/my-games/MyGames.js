@@ -18,26 +18,43 @@ import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
 import { formatDate } from '@/helper/formatDate';
 import Loader from '@/app/common-component/Loader';
+import CustomSearchBox from '@/app/common-component/CustomSearchBox';
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
 
 export default function MyGames() {
   const [contestList, setContestList] = useState([]);
   const [loader, setLoader] = useState(false);
+  const [searchString, setSearchString] = useState("");
+  const [paginationData, setPaginationData] = useState({
+        currentPage: 1,
+        isPageUpdated: false,
+        totalPages: 1,
+        page: 1
+    });
   const router = useRouter();
   const NEXT_PUBLIC_SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
   //get Contest on initial load
-  const getJoinedContestList = async () => {
+  const getJoinedContestList = async (page = 1,searchString = "") => {
     try {
       setLoader(true);
-      const serverResponse = await communication.getJoinedContestList();
+      const serverResponse = await communication.getJoinedContestList(page,searchString);
       if (serverResponse?.data?.status === "SUCCESS") {
         setContestList(serverResponse?.data?.contestList);
+        setPaginationData(pre => ({
+          ...pre, totalPages: serverResponse?.data?.totalPages,
+          page: page,
+          currentPage: page,
+      }))
       } else if (serverResponse?.data?.status === "JWT_INVALID") {
         Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
         router.push("/");
       } else {
         Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+        getJoinedContestList([]);
+        setPaginationData(pre => ({
+          ...pre, totalPages: 0,
+      }))
       }
       setLoader(false);
     } catch (error) {
@@ -47,9 +64,8 @@ export default function MyGames() {
   };
 
   useEffect(() => {
-    getJoinedContestList()
-  }, []);
-
+    getJoinedContestList(paginationData.currentPage, searchString);
+  }, [paginationData.isPageUpdated]);
 
   return (
     <>
@@ -77,6 +93,9 @@ export default function MyGames() {
                     ))}
                   </>)}
               </p>
+              <div className='nav_search mb-4'>
+                <CustomSearchBox searchString={searchString} setSearchString={setSearchString} apiCall={getJoinedContestList} />
+              </div>
               <div className="row">
                 {contestList?.length > 0 ? (
                   <>

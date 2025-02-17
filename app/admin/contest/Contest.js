@@ -63,7 +63,7 @@ const Contest = () => {
                         <p className="tournament_text">
                             All Contest{" "}
                             <Image className="me-2" width={25} height={20} src={network} alt="network" />
-                        </p>
+                        </p> 
                     </div>
                     <div className='nav_search'>
                         <CustomSearchBox searchString={searchString} setSearchString={setSearchString} apiCall={getContestList} />
