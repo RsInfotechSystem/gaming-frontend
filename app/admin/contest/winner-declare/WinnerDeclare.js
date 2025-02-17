@@ -44,7 +44,7 @@ export default function PlayerSearch() {
                 <Loader />
             ) : (
                 <div className="p-6 max-w-lg mx-auto bg-gray-100 rounded-xl shadow-md space-y-4">
-                    <h1 className="text-2xl font-bold text-center">eSports Player Selection</h1>
+                    <h1 className="text-2xl font-bold text-center">Declare Winner</h1>
 
                     {/* Render Select only after mounting to prevent hydration mismatch */}
                     {isMounted && (
