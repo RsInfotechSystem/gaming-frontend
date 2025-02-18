@@ -26,26 +26,26 @@ export default function MyGames() {
   const [loader, setLoader] = useState(false);
   const [searchString, setSearchString] = useState("");
   const [paginationData, setPaginationData] = useState({
-        currentPage: 1,
-        isPageUpdated: false,
-        totalPages: 1,
-        page: 1
-    });
+    currentPage: 1,
+    isPageUpdated: false,
+    totalPages: 1,
+    page: 1
+  });
   const router = useRouter();
   const NEXT_PUBLIC_SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
   //get Contest on initial load
-  const getJoinedContestList = async (page = 1,searchString = "") => {
+  const getJoinedContestList = async (page = 1, searchString = "") => {
     try {
       setLoader(true);
-      const serverResponse = await communication.getJoinedContestList(page,searchString);
+      const serverResponse = await communication.getJoinedContestList(page, searchString);
       if (serverResponse?.data?.status === "SUCCESS") {
         setContestList(serverResponse?.data?.contestList);
         setPaginationData(pre => ({
           ...pre, totalPages: serverResponse?.data?.totalPages,
           page: page,
           currentPage: page,
-      }))
+        }))
       } else if (serverResponse?.data?.status === "JWT_INVALID") {
         Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
         router.push("/");
@@ -54,7 +54,7 @@ export default function MyGames() {
         // getJoinedContestList([]);
         setPaginationData(pre => ({
           ...pre, totalPages: 0,
-      }))
+        }))
       }
       setLoader(false);
     } catch (error) {

@@ -85,9 +85,26 @@ export const communication = {
             throw error;
         }
     },
+    getGameDetails: async function (gameId) {
+        try {
+            return axios.post(
+                `${getServerUrl()}/game/get-game-by-id`,
+                { gameId },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${getCookie("GAMING")}`,
+                    },
+                }
+            );
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+
     getGamesList: async (page = 1, searchString) => {
         try {
-            return await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/game/get-game-list`, {page , searchString}, {
+            return await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/game/get-game-list`, { page, searchString }, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${getCookie("GAMING")}`,
@@ -97,9 +114,9 @@ export const communication = {
             throw error;
         }
     },
-    getCoinList: async (page = 1,searchString) => {
+    getCoinList: async (page = 1, searchString) => {
         try {
-            return await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/coin/get-coin-list-for-user`, {page ,searchString}, {
+            return await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/coin/get-coin-list-for-user`, { page, searchString }, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${getCookie("GAMING")}`,
@@ -109,9 +126,9 @@ export const communication = {
             throw error;
         }
     },
-    getJoinedContestList: async (page = 1,searchString) => {
+    getJoinedContestList: async (page = 1, searchString) => {
         try {
-            return await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/contest/get-joined-contest-list`, {page ,searchString}, {
+            return await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/contest/get-joined-contest-list`, { page, searchString }, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${getCookie("GAMING")}`,
@@ -142,7 +159,7 @@ export const communication = {
         try {
             return axios.post(
                 `${getServerUrl()}/contest/get-game-wise-contest-list`,
-                { gameId: id , page, searchString},
+                { gameId: id, page, searchString },
                 {
                     headers: {
                         "Content-Type": "application/json",

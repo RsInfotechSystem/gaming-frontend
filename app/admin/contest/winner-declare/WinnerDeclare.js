@@ -1,4 +1,4 @@
-"use client";  
+"use client";
 
 import { useState, useEffect } from "react";
 import Select from 'react-select';
@@ -49,82 +49,82 @@ export default function PlayerSearch() {
 
     return (
         <>
-            {loader ? 
+            {loader ?
                 <Loader />
-             : 
-             <div style={{ width: "90%", margin: "0px auto" }}>
-                <div className="mt-1">
-                    <p className="tournament_text">DECLARE WINNERS</p>
-                </div>
-
-                {/* Winner Selection Dropdown & Declare Winner Button (Side by Side) */}
-                <div 
-                    className="d-flex align-items-center" 
-                    style={{ display: "flex", alignItems: "center", gap: "10px", justifyContent: "space-between" }}
-                >
-                    {/* Select Box */}
-                    {isMounted && (
-                    <div className="search-input-container" style={{ width: "80%" }}>
-                        <Select 
-                            options={players} 
-                            isMulti
-                            value={selectedPlayers} 
-                            onChange={setSelectedPlayers} 
-                            placeholder="Search and Select Winners"
-                            styles={{   
-                                multiValue: (styles) => ({
-                                    ...styles,
-                                    backgroundColor: "#ff3737",
-                                    color: "white",
-                                    borderRadius: "4px",
-                                    padding: "4px 8px",
-                                }),
-                                control: (styles) => ({
-                                    ...styles,
-                                    padding: "8px",
-                                    borderRadius: "4px",
-                                    border: "1px solid #ccc",
-                                    backgroundColor: "Charcoal",
-                                    color: "#FFFFFF",
-                                }),
-                                placeholder: (styles) => ({
-                                    ...styles,
-                                    color: "#FFFFFF",
-                                    fontFamily:"play"
-                                }),
-                            }}
-                        />
+                :
+                <div style={{ width: "90%", margin: "0px auto" }}>
+                    <div className="mt-1">
+                        <p className="tournament_text">DECLARE WINNERS</p>
                     </div>
+
+                    {/* Winner Selection Dropdown & Declare Winner Button (Side by Side) */}
+                    <div
+                        className="d-flex align-items-center"
+                        style={{ display: "flex", alignItems: "center", gap: "10px", justifyContent: "space-between" }}
+                    >
+                        {/* Select Box */}
+                        {isMounted && (
+                            <div className="search-input-container" style={{ width: "80%" }}>
+                                <Select
+                                    options={players}
+                                    isMulti
+                                    value={selectedPlayers}
+                                    onChange={setSelectedPlayers}
+                                    placeholder="Search and Select Winners"
+                                    styles={{
+                                        multiValue: (styles) => ({
+                                            ...styles,
+                                            backgroundColor: "#ff3737",
+                                            color: "white",
+                                            borderRadius: "4px",
+                                            padding: "4px 8px",
+                                        }),
+                                        control: (styles) => ({
+                                            ...styles,
+                                            padding: "8px",
+                                            borderRadius: "4px",
+                                            border: "1px solid #ccc",
+                                            backgroundColor: "Charcoal",
+                                            color: "#FFFFFF",
+                                        }),
+                                        placeholder: (styles) => ({
+                                            ...styles,
+                                            color: "#FFFFFF",
+                                            fontFamily: "play"
+                                        }),
+                                    }}
+                                />
+                            </div>
+                        )}
+                        {/* Declare Winner Button with Gradient */}
+                        <div style={{ width: "20%", textAlign: "right" }}>
+                            <button
+                                className="add_btn"
+                                style={{
+                                    width: "100%", minWidth: "120px",
+                                    padding: "10px",
+                                    background: "linear-gradient(45deg,  #ff1717, #9d04f6)",
+                                    color: "#fff",
+                                    borderRadius: "5px",
+                                    border: "none",
+                                    cursor: "pointer",
+                                    fontWeight: "bold",
+                                    transition: "all 0.3s ease",
+                                }}
+                                onClick={handleDeclareWinner}
+                            >
+                                Declare Winners
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Show Declared Winners */}
+                    {winners.length > 0 && (
+                        <div className="winner_declared text-center text-lg font-semibold text-green-700 mt-3">
+                            Winners: <span style={{ color: "red" }}>{winners.join(", ")}</span>
+                        </div>
                     )}
-                    {/* Declare Winner Button with Gradient */}
-                    <div style={{ width: "20%", textAlign: "right" }}>
-                        <button 
-                            className="add_btn" 
-                            style={{ 
-                                width: "100%", minWidth: "120px", 
-                                padding: "10px", 
-                                background: "linear-gradient(45deg,  #ff1717, #9d04f6)",  
-                                color: "#fff", 
-                                borderRadius: "5px", 
-                                border: "none", 
-                                cursor: "pointer",
-                                fontWeight: "bold",
-                                transition: "all 0.3s ease",
-                            }}
-                            onClick={handleDeclareWinner}
-                        >
-                            Declare Winners
-                        </button>
-                    </div>
                 </div>
-
-                {/* Show Declared Winners */}
-                {winners.length > 0 && (
-                    <div className="winner_declared text-center text-lg font-semibold text-green-700 mt-3">
-                        Winners: <span style={{color:"red"}}>{winners.join(", ")}</span>
-                    </div>
-                )}
-            </div>
             }
         </>
     );
