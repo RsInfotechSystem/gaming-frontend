@@ -12,6 +12,7 @@ import { convertTo12HourFormat } from "@/helper/convert-time-in-12-hours";
 import { useForm } from "react-hook-form";
 import { getUserDetails } from "@/utilities/get-user-details-from-cokies";
 import CustomSearchBox from "@/app/common-component/CustomSearchBox";
+import { getCookie } from "cookies-next";
 
 export default function GameInfo() {
   const [activeTab, setActiveTab] = useState("home");
@@ -19,27 +20,28 @@ export default function GameInfo() {
   const [selectedContestId, setSelectedContestId] = useState(null);
   const [gameWiseContestsList, setGameWiseContestsList] = useState([]);
   const [searchString, setSearchString] = useState("");
+  const [game, setGame] = useState(null);
   const [paginationData, setPaginationData] = useState({
-        currentPage: 1,
-        isPageUpdated: false,
-        totalPages: 1,
-        page: 1
-    });
+    currentPage: 1,
+    isPageUpdated: false,
+    totalPages: 1,
+    page: 1
+  });
   const router = useRouter();
   const searchParams = useSearchParams();
   const { register, handleSubmit, formState: { errors }, getValues, watch, setValue } = useForm();
 
-  const getGameWiseContestList = async (page = 1,searchString = "") => {
+  const getGameWiseContestList = async (page = 1, searchString = "") => {
     try {
       setLoader(true);
-      const serverResponse = await communication.getGameWiseContestList(searchParams.get("gameId"), page,searchString);
+      const serverResponse = await communication.getGameWiseContestList(searchParams.get("gameId"), page, searchString);
       if (serverResponse?.data?.status === "SUCCESS") {
         setGameWiseContestsList(serverResponse?.data?.contestList);
         setPaginationData(pre => ({
           ...pre, totalPages: serverResponse?.data?.totalPages,
           page: page,
           currentPage: page,
-      }))
+        }))
       } else if (serverResponse?.data?.status === "JWT_INVALID") {
         Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
         router.push("/");
@@ -47,7 +49,7 @@ export default function GameInfo() {
         setGameWiseContestsList([]);
         setPaginationData(pre => ({
           ...pre, totalPages: 0,
-      }))
+        }))
       }
     } catch (error) {
       Swal.fire({ text: error?.response?.data?.message || error?.message, icon: "warning" });
@@ -67,7 +69,7 @@ export default function GameInfo() {
     SQUAD: [],
   };
 
-  gameWiseContestsList.forEach((contest) => {
+  gameWiseContestsList?.forEach((contest) => {
     if (contest?.gameType) {
       groupedContests[contest.gameType]?.push(contest);
     }
@@ -108,7 +110,37 @@ export default function GameInfo() {
     menu2: "SQUAD",
   };
 
+  //get Contest on initial load
+  const getGameDetails = async () => {
+    try {
+      setLoader(true);
+      const userDetails = getUserDetails(router);
+      const serverResponse = await communication.getGameDetails(searchParams.get("gameId"));
+      if (serverResponse?.data?.status === "SUCCESS") {
+        setGame(serverResponse?.data?.game);
+      } else if (serverResponse?.data?.status === "JWT_INVALID") {
+        Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+        router.push("/");
+      } else {
+        Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+      }
+      setLoader(false);
+    } catch (error) {
+      Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning" });
+      setLoader(false)
+    } finally {
+      setLoader(false);
+    }
+  };
 
+  useEffect(() => {
+    const userDetails = getCookie("gamingUserDetails");
+    if (!userDetails) {
+      router.push("/");
+    } else {
+      getGameDetails()
+    }
+  }, []);
   return (
     <>
       {loader ? (
@@ -116,12 +148,43 @@ export default function GameInfo() {
       ) : (
         <div className="tournament_list">
           <div className="mt-1 coin_pack">
-            <p className="tournament_text">
-              CONTEST <Image className="me-2" width={25} height={20} src={network} alt="network" />
-            </p>
-              <div className='nav_search mb-4'>
-                <CustomSearchBox searchString={searchString} setSearchString={setSearchString} apiCall={getGameWiseContestList} />
-              </div>
+            <div className="header-container">
+              <p className="tournament_text">
+                {game ? `${game?.name}` : `Contest`}
+                <Image className="me-2" width={25} height={20} src={network} alt="network" />
+              </p>
+              {/* back with icon */}
+              {/* <div
+                className="back_btn"
+                onClick={() => {
+                  router.back();
+                }}
+              >
+                <div>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="white"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M3.07615 5.61732C3.23093 5.24364 3.59557 5 4.00003 5H14C17.866 5 21 8.13401 21 12C21 15.866 17.866 19 14 19H5.00003C4.44774 19 4.00003 18.5523 4.00003 18C4.00003 17.4477 4.44774 17 5.00003 17H14C16.7615 17 19 14.7614 19 12C19 9.23858 16.7615 7 14 7H6.41424L8.20714 8.79289C8.59766 9.18342 8.59766 9.81658 8.20714 10.2071C7.81661 10.5976 7.18345 10.5976 6.79292 10.2071L3.29292 6.70711C3.00692 6.42111 2.92137 5.99099 3.07615 5.61732Z"
+                    />
+                  </svg>
+                </div>Back
+              </div> */}
+
+              {/* back button */}
+              <button type="button" className="btn btn-outline-light back_btn" onClick={() => router.back()}> Back </button>
+            </div>
+
+
+            <div className='nav_search mb-4'>
+              <CustomSearchBox searchString={searchString} setSearchString={setSearchString} apiCall={getGameWiseContestList} />
+            </div>
             <div className="container">
               {/* Tabs */}
               <ul className="nav nav-pills mb-2">

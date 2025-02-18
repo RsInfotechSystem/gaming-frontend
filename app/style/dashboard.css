@@ -89,7 +89,7 @@ body {
 .tournament_main{
   background-color: #0B0202;
   display: flex;
-  padding: 0px 10px;
+  /* padding: 0px 10px; */
 }
 .menu_tabs {
   width: 18%;
@@ -219,7 +219,7 @@ body {
 }
 
 /* Inner container to create the border illusion */
-.tournament_card > .card-body {
+.tournament_card > .card-body-slider {
   background: #2b2b2b;
   border-radius: 0px 0px 10px 10px;
   padding: 15px;
@@ -1285,4 +1285,25 @@ div:where(.col_100p) {
 .login_input::placeholder {
   color: #fff;
   opacity: 1;
+}
+
+/* ============back button======================== */
+/* .back_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+}*/
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} 
+
+.back_btn{
+  border-radius: 10px;
 }
