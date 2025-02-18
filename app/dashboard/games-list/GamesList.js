@@ -52,11 +52,11 @@ export default function GamesList() {
   const [loader, setLoader] = useState(false);
   const [searchString, setSearchString] = useState("");
   const [paginationData, setPaginationData] = useState({
-        currentPage: 1,
-        isPageUpdated: false,
-        totalPages: 1,
-        page: 1
-    });
+    currentPage: 1,
+    isPageUpdated: false,
+    totalPages: 1,
+    page: 1
+  });
   const router = useRouter();
   const NEXT_PUBLIC_SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
@@ -81,17 +81,17 @@ export default function GamesList() {
   };
 
   //get Contest on initial load
-  const getGamesList = async (page = 1,searchString = "") => {
+  const getGamesList = async (page = 1, searchString = "") => {
     try {
       setLoader(true);
-      const serverResponse = await communication.getGamesList(page,searchString);
+      const serverResponse = await communication.getGamesList(page, searchString);
       if (serverResponse?.data?.status === "SUCCESS") {
         setGameList(serverResponse?.data?.gameList);
         setPaginationData(pre => ({
           ...pre, totalPages: serverResponse?.data?.totalPages,
           page: page,
           currentPage: page,
-      }))
+        }))
         // console.log(searchString);
       } else if (serverResponse?.data?.status === "JWT_INVALID") {
         Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
@@ -101,7 +101,7 @@ export default function GamesList() {
         setGameList([]);
         setPaginationData(pre => ({
           ...pre, totalPages: 0,
-      }))
+        }))
       }
       setLoader(false);
     } catch (error) {
@@ -114,14 +114,14 @@ export default function GamesList() {
     router.push(`/dashboard/games-list/game-info?gameId=${id}`)
   }
 
-  
+
   useEffect(() => {
     getContestList();
   }, []);
 
   useEffect(() => {
     getGamesList(paginationData.currentPage, searchString);
-    }, [paginationData.isPageUpdated]);
+  }, [paginationData.isPageUpdated]);
 
 
 
@@ -192,33 +192,33 @@ export default function GamesList() {
                       <CustomSearchBox searchString={searchString} setSearchString={setSearchString} apiCall={getGamesList} />
                     </div>
                     <div className="row g-4 mb-3">
-  {gameList?.map((game, index) => (
-    <div key={index} className="col-12 col-md-6 col-lg-4">
-      <div className="games_bg h-100">
-        <div className="games_bg_inner" style={{ cursor: "pointer" }} onClick={() => handleGameClick(game?.id)}>
-          <div>
-            <Image
-              className="me-2"
-              style={{ borderRadius: "15px" }}
-              width={76}
-              height={76}
-              src={
-                game?.gamefiles?.[0]?.fileUrl
-                  ? `${NEXT_PUBLIC_SERVER_URL}/getFiles/${game?.gamefiles[0].fileUrl}`
-                  : "/dashboard/default_game.png"
-              }
-              alt={"game img"}
-            />
-          </div>
-          <div>
-            <p className="game_name">{game?.name || "Unknown Game"}</p>
-            <p className="game_info">{game?.playedCount || "0"} Millions played</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
+                      {gameList?.map((game, index) => (
+                        <div key={index} className="col-12 col-md-6 col-lg-4">
+                          <div className="games_bg h-100">
+                            <div className="games_bg_inner" style={{ cursor: "pointer" }} onClick={() => handleGameClick(game?.id)}>
+                              <div>
+                                <Image
+                                  className="me-2"
+                                  style={{ borderRadius: "15px" }}
+                                  width={76}
+                                  height={76}
+                                  src={
+                                    game?.gamefiles?.[0]?.fileUrl
+                                      ? `${NEXT_PUBLIC_SERVER_URL}/getFiles/${game?.gamefiles[0]?.fileUrl}`
+                                      : "/dashboard/default_game.png"
+                                  }
+                                  alt={"game img"}
+                                />
+                              </div>
+                              <div>
+                                <p className="game_name">{game?.name || "Unknown Game"}</p>
+                                <p className="game_info">{game?.playedCount || "0"} Millions played</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
 
 
                   </div>
