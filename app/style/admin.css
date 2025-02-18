@@ -942,7 +942,7 @@ div:where(.col_100p) {
 
 /* ***********Coins Tab css start************** */
 .coin_div {
-    width: 22%;
+    /* width: 22%; */
     background-color: #242424;
     height: 210px;
     border: 1px solid #fff;
@@ -950,7 +950,7 @@ div:where(.col_100p) {
     color: #fff;
     padding: 20px 0px;
     position: relative;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 .delete_btn {

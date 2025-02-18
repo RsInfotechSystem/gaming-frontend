@@ -186,9 +186,22 @@ export const adminCommunication = {
             Swal.fire({ text: error.message, icon: "warning" });
         }
     },
-    getCoinsList: async function () {
+    deleteCoin: async function (coinIds) {
         try {
-            return axios.post(`${getServerUrl()}/coin/get-coin-list`, {}, {
+            return axios.post(`${getServerUrl()}/coin/delete-coin`, { coinIds }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    
+    getCoinsList: async function (page = 1, searchString) {
+        try {
+            return axios.post(`${getServerUrl()}/coin/get-coin-list`, {page, searchString}, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
