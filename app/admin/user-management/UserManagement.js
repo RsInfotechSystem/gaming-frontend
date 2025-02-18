@@ -159,16 +159,18 @@ const UserManagement = () => {
 
           {/* table  */}
           <div className="table_wrapper">
-            <div className="table_main">
+            {/* <div className="table_main"> */}
               {/* Scrollable container */}
               <div className="table_scroll">
                 <div className="table_section">
                   <div className="table_header fontfam_play">
                     <div className="col_10p"><h5>SR No</h5></div>
-                    <div className="col_15p"><h5>Name</h5></div>
-                    <div className="col_25p"><h5>Email</h5></div>
+                    <div className="col_20p"><h5>Name</h5></div>
+                    <div className="col_30p"><h5>Email</h5></div>
+                    
                     <div className="col_10p"><h5>Mobile</h5></div>
                     <div className="col_15p"><h5>Role</h5></div>
+              
                     <div className="col_15p"><h5>Action</h5></div>
                   </div>
                   {users?.length > 0 ? (
@@ -176,17 +178,16 @@ const UserManagement = () => {
                       {users.map((userDetails, index) => (
                         <div className="table_data fontfam_play" key={index}>
                           <div className="col_10p"><h6>{((Number(pageLimit) * (paginationData.page - 1))) + (index + 1)}</h6></div>
-                          <div className="col_15p"><h6 className='text-capitalize'>{userDetails?.name}</h6></div>
-                          <div className="col_25p"><h6>{userDetails?.email}</h6></div>
+                          <div className="col_20p"><h6 className='text-capitalize'>{userDetails?.name}</h6></div>
+                          <div className="col_30p"><h6>{userDetails?.email}</h6></div>
+                         
                           <div className="col_10p"><h6>{userDetails?.mobile}</h6></div>
                           <div className="col_15p"><h6 className='text-capitalize'>{userDetails?.role?.name}</h6></div>
+                    
                           <div className="col_15p">
                             <div className="action">
-
                               <FontAwesomeIcon icon={faPenToSquare} title='update user' onClick={() => setModalStates({ type: "update", modal: true, userId: userDetails?.id })} className="edit_icon" />
-
-                              <FontAwesomeIcon icon={faTrash} title='delete user' onClick={() => deleteUser(userDetails?.id)} className="edit_icon" />
-                              <div className="form-switch ">
+                              <div className="form-switch">
                                 <input
                                   className="form-check-input cursor-pointer"
                                   type="checkbox"
@@ -194,7 +195,7 @@ const UserManagement = () => {
                                   checked={userDetails?.isActive || false}
                                 />
                               </div>
-
+                              <FontAwesomeIcon icon={faTrash} title='delete user' onClick={() => deleteUser(userDetails?.id)} className="edit_icon" />
                             </div>
                           </div>
                         </div>
@@ -205,7 +206,7 @@ const UserManagement = () => {
                   )}
                 </div>
               </div>
-            </div>
+            {/* </div> */}
           </div>
 
 

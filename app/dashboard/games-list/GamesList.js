@@ -191,32 +191,36 @@ export default function GamesList() {
                     <div className='nav_search mb-4'>
                       <CustomSearchBox searchString={searchString} setSearchString={setSearchString} apiCall={getGamesList} />
                     </div>
-                    <div className="d-flex flex-wrap justify-content-around mb-3">
+                    <div className="row g-4 mb-3">
                       {gameList?.map((game, index) => (
-                        <div className="games_bg mb-3" key={index}>
-                          <div className="games_bg_inner" style={{ cursor: "pointer" }} onClick={() => handleGameClick(game?.id)}>
-                            <div>
-                              <Image
-                                className="me-2"
-                                style={{ borderRadius: "15px" }}
-                                width={76}
-                                height={76}
-                                src={
-                                  game?.gamefiles?.[0]?.fileUrl
-                                    ? `${NEXT_PUBLIC_SERVER_URL}/getFiles/${game?.gamefiles[0]?.fileUrl}`
-                                    : "/dashboard/default_game.png"
-                                }
-                                alt={"game img"}
-                              />
-                            </div>
-                            <div>
-                              <p className="game_name">{game?.name || "Unknown Game"}</p>
-                              <p className="game_info">{game?.playedCount || "0"} Millions played</p>
+                        <div key={index} className="col-12 col-md-6 col-lg-4">
+                          <div className="games_bg h-100">
+                            <div className="games_bg_inner" style={{ cursor: "pointer" }} onClick={() => handleGameClick(game?.id)}>
+                              <div>
+                                <Image
+                                  className="me-2"
+                                  style={{ borderRadius: "15px" }}
+                                  width={76}
+                                  height={76}
+                                  src={
+                                    game?.gamefiles?.[0]?.fileUrl
+                                      ? `${NEXT_PUBLIC_SERVER_URL}/getFiles/${game?.gamefiles[0]?.fileUrl}`
+                                      : "/dashboard/default_game.png"
+                                  }
+                                  alt={"game img"}
+                                />
+                              </div>
+                              <div>
+                                <p className="game_name">{game?.name || "Unknown Game"}</p>
+                                <p className="game_info">{game?.playedCount || "0"} Millions played</p>
+                              </div>
                             </div>
                           </div>
                         </div>
                       ))}
                     </div>
+
+
                   </div>
                 )}
               </>

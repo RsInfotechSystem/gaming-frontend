@@ -51,7 +51,7 @@ export default function MyGames() {
         router.push("/");
       } else {
         Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
-        getJoinedContestList([]);
+        // getJoinedContestList([]);
         setPaginationData(pre => ({
           ...pre, totalPages: 0,
       }))
