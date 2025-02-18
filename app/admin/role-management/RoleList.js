@@ -128,7 +128,7 @@ const RoleList = () => {
                                         </div>
                                         <div className="col_10p"><h5>Sr. No</h5></div>
                                         <div className="col_15p"><h5>Role Type</h5></div>
-                                        <div className="col_35p"><h5>Tab Access</h5></div>
+                                        <div className="col_90p"><h5>Tab Access</h5></div>
                                         <div className="col_10p"><h5>Action</h5></div>
                                     </div>
                                     {roles?.length > 0 ? (
@@ -149,7 +149,7 @@ const RoleList = () => {
                                                     </div>
                                                     <div className="col_10p"><h6>{((Number(pageLimit) * (paginationData.page - 1))) + (index + 1)}</h6></div>
                                                     <div className="col_15p"><h6>{roleDetails?.name}</h6></div>
-                                                    <div className="col_35p"><h6> {roleDetails?.tab?.join(', ')}</h6></div>
+                                                    <div className="col_90p"><h6> {roleDetails?.tab?.join(', ')}</h6></div>
                                                     <div className="col_10p">
                                                         <div className="action">
                                                             <FontAwesomeIcon icon={faPenToSquare} className="edit_icon" />

@@ -644,9 +644,9 @@ div:where(.col_100p) {
 }
 
 .table_main {
-    width: 100%;
-    min-width: 700px;
-    border-radius: 10px;
+    /* width: 100%; */
+    /* min-width: 1100px; */
+    /* border-radius: 10px; */
     /* padding: 10px; */
     /* border: 1px solid #d80f6ead; */
 }
@@ -707,14 +707,15 @@ div:where(.col_100p) {
 
 .table_scroll {
     width: 100%;
+    /* min-width: 1100px; */
     overflow-x: auto;
     /* Enables horizontal scrolling */
-    max-width: 100%;
+    /* max-width: 100%; */
 }
 
 /* Default minimum width for large screens */
 .table_section {
-    min-width: 1400px;
+    min-width: 1100px;
     white-space: nowrap;
 }
 
@@ -926,7 +927,10 @@ div:where(.col_100p) {
     display: flex;
     justify-content: center;
     align-items: center;
-    column-gap: 15px;
+    column-gap: 10px;
+}
+.form-switch {
+    text-align: center;
 }
 
 .modal_button_wrapper {
