@@ -4,7 +4,7 @@ import React from "react";
 export default function GamesAvailable() {
   return (
     <section className="games_section">
-      <div className="d-flex main_games_section">
+      <div className="main_games_section">
         <div className="game_list d-flex justify-content-center">
           <div className="available_games_heading">
             <p className="gradient-text">Games Available</p>
