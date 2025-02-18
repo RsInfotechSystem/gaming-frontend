@@ -1286,3 +1286,24 @@ div:where(.col_100p) {
   color: #fff;
   opacity: 1;
 }
+
+/* ============back button======================== */
+/* .back_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+}*/
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} 
+
+.back_btn{
+  border-radius: 10px;
+}

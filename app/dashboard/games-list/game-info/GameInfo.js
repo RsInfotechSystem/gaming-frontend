@@ -148,9 +148,40 @@ export default function GameInfo() {
       ) : (
         <div className="tournament_list">
           <div className="mt-1 coin_pack">
-            <p className="tournament_text">
-              {game ? `${game?.name}` : `Contest`} <Image className="me-2" width={25} height={20} src={network} alt="network" />
-            </p>
+            <div className="header-container">
+              <p className="tournament_text">
+                {game ? `${game?.name}` : `Contest`}
+                <Image className="me-2" width={25} height={20} src={network} alt="network" />
+              </p>
+              {/* back with icon */}
+              {/* <div
+                className="back_btn"
+                onClick={() => {
+                  router.back();
+                }}
+              >
+                <div>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="white"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M3.07615 5.61732C3.23093 5.24364 3.59557 5 4.00003 5H14C17.866 5 21 8.13401 21 12C21 15.866 17.866 19 14 19H5.00003C4.44774 19 4.00003 18.5523 4.00003 18C4.00003 17.4477 4.44774 17 5.00003 17H14C16.7615 17 19 14.7614 19 12C19 9.23858 16.7615 7 14 7H6.41424L8.20714 8.79289C8.59766 9.18342 8.59766 9.81658 8.20714 10.2071C7.81661 10.5976 7.18345 10.5976 6.79292 10.2071L3.29292 6.70711C3.00692 6.42111 2.92137 5.99099 3.07615 5.61732Z"
+                    />
+                  </svg>
+                </div>Back
+              </div> */}
+
+              {/* back button */}
+              <button type="button" className="btn btn-outline-light back_btn" onClick={() => router.back()}> Back </button>
+            </div>
+
+
             <div className='nav_search mb-4'>
               <CustomSearchBox searchString={searchString} setSearchString={setSearchString} apiCall={getGameWiseContestList} />
             </div>
