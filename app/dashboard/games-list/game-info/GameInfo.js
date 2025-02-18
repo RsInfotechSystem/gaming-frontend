@@ -12,6 +12,7 @@ import { convertTo12HourFormat } from "@/helper/convert-time-in-12-hours";
 import { useForm } from "react-hook-form";
 import { getUserDetails } from "@/utilities/get-user-details-from-cokies";
 import CustomSearchBox from "@/app/common-component/CustomSearchBox";
+import { getCookie } from "cookies-next";
 
 export default function GameInfo() {
   const [activeTab, setActiveTab] = useState("home");
@@ -19,27 +20,28 @@ export default function GameInfo() {
   const [selectedContestId, setSelectedContestId] = useState(null);
   const [gameWiseContestsList, setGameWiseContestsList] = useState([]);
   const [searchString, setSearchString] = useState("");
+  const [game, setGame] = useState(null);
   const [paginationData, setPaginationData] = useState({
-        currentPage: 1,
-        isPageUpdated: false,
-        totalPages: 1,
-        page: 1
-    });
+    currentPage: 1,
+    isPageUpdated: false,
+    totalPages: 1,
+    page: 1
+  });
   const router = useRouter();
   const searchParams = useSearchParams();
   const { register, handleSubmit, formState: { errors }, getValues, watch, setValue } = useForm();
 
-  const getGameWiseContestList = async (page = 1,searchString = "") => {
+  const getGameWiseContestList = async (page = 1, searchString = "") => {
     try {
       setLoader(true);
-      const serverResponse = await communication.getGameWiseContestList(searchParams.get("gameId"), page,searchString);
+      const serverResponse = await communication.getGameWiseContestList(searchParams.get("gameId"), page, searchString);
       if (serverResponse?.data?.status === "SUCCESS") {
         setGameWiseContestsList(serverResponse?.data?.contestList);
         setPaginationData(pre => ({
           ...pre, totalPages: serverResponse?.data?.totalPages,
           page: page,
           currentPage: page,
-      }))
+        }))
       } else if (serverResponse?.data?.status === "JWT_INVALID") {
         Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
         router.push("/");
@@ -47,7 +49,7 @@ export default function GameInfo() {
         setGameWiseContestsList([]);
         setPaginationData(pre => ({
           ...pre, totalPages: 0,
-      }))
+        }))
       }
     } catch (error) {
       Swal.fire({ text: error?.response?.data?.message || error?.message, icon: "warning" });
@@ -67,7 +69,7 @@ export default function GameInfo() {
     SQUAD: [],
   };
 
-  gameWiseContestsList.forEach((contest) => {
+  gameWiseContestsList?.forEach((contest) => {
     if (contest?.gameType) {
       groupedContests[contest.gameType]?.push(contest);
     }
@@ -108,7 +110,37 @@ export default function GameInfo() {
     menu2: "SQUAD",
   };
 
+  //get Contest on initial load
+  const getGameDetails = async () => {
+    try {
+      setLoader(true);
+      const userDetails = getUserDetails(router);
+      const serverResponse = await communication.getGameDetails(searchParams.get("gameId"));
+      if (serverResponse?.data?.status === "SUCCESS") {
+        setGame(serverResponse?.data?.game);
+      } else if (serverResponse?.data?.status === "JWT_INVALID") {
+        Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+        router.push("/");
+      } else {
+        Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+      }
+      setLoader(false);
+    } catch (error) {
+      Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning" });
+      setLoader(false)
+    } finally {
+      setLoader(false);
+    }
+  };
 
+  useEffect(() => {
+    const userDetails = getCookie("gamingUserDetails");
+    if (!userDetails) {
+      router.push("/");
+    } else {
+      getGameDetails()
+    }
+  }, []);
   return (
     <>
       {loader ? (
@@ -117,11 +149,11 @@ export default function GameInfo() {
         <div className="tournament_list">
           <div className="mt-1 coin_pack">
             <p className="tournament_text">
-              CONTEST <Image className="me-2" width={25} height={20} src={network} alt="network" />
+              {game ? `${game?.name}` : `Contest`} <Image className="me-2" width={25} height={20} src={network} alt="network" />
             </p>
-              <div className='nav_search mb-4'>
-                <CustomSearchBox searchString={searchString} setSearchString={setSearchString} apiCall={getGameWiseContestList} />
-              </div>
+            <div className='nav_search mb-4'>
+              <CustomSearchBox searchString={searchString} setSearchString={setSearchString} apiCall={getGameWiseContestList} />
+            </div>
             <div className="container">
               {/* Tabs */}
               <ul className="nav nav-pills mb-2">
