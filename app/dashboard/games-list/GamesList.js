@@ -157,7 +157,7 @@ export default function GamesList() {
                               alt={contestDetails?.name || "Contest Image"}
                               className="tournament_card_img"
                             />
-                            <div className="card-body d-flex justify-content-between align-items-center">
+                            <div className="card-body-slider d-flex justify-content-between align-items-center">
                               <div>
                                 <h5 className="card-title card_content">{contestDetails?.name}</h5>
                                 <p className="card-text card_content">{contestDetails?.description}</p>
