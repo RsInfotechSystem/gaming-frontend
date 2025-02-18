@@ -276,7 +276,7 @@ body {
 
 /* Inner container to hold the actual content */
 .games_bg_inner {
-  min-height: 97px;
+  min-height: 90px;
   display: flex;
   align-items: center;
   background-color: #2b2b2b;
