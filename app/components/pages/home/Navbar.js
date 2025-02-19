@@ -1,19 +1,18 @@
-"use client"
-import React, { useEffect, useState } from 'react';
-import { usePathname, useRouter } from 'next/navigation'; // Import useRouter for navigation
-import LoginModal from '../LoginModal';
-import SignUpModal from '../SignUpModal';
-import ForgotPasswordModal from '../ForgotPasswordModal';
-import OtpModal from '../OtpModal';
-import RegisterSuccessModal from '../RegisterSuccessModal';
-import ResetPasswordModal from '../ResetPasswordModal';
-import Link from 'next/link';
+"use client";
+import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import LoginModal from "../LoginModal";
+import SignUpModal from "../SignUpModal";
+import ForgotPasswordModal from "../ForgotPasswordModal";
+import OtpModal from "../OtpModal";
+import RegisterSuccessModal from "../RegisterSuccessModal";
+import Link from "next/link";
+import { Menu, X } from "lucide-react"; 
+import "animate.css"; // Import animate.css
 
 export default function Navbar() {
-  const router = useRouter(); // Initialize router
   const currentUrl = usePathname().split("/");
-
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSignUpOpen, setSignUpOpen] = useState(false);
   const [isForgotPasswordOpen, setForgotPasswordOpen] = useState(false);
@@ -22,12 +21,7 @@ export default function Navbar() {
   const [isSuccessOpen, setSuccessOpen] = useState(false);
 
   useEffect(() => {
-    if (isLoginOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
+    document.body.style.overflow = isLoginOpen ? "hidden" : "auto";
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -35,73 +29,66 @@ export default function Navbar() {
 
   return (
     <>
-      <section className='nav row'>
-        <div className='nav_main'>
-          <div className='logo'>
-            <p>
-              <Link href='/'> PlayZone</Link></p>
-
-            {/* <p>PlayZone</p> */}
+      <section className="nav row">
+        <div className="nav_main">
+          <div className="logo">
+            <p className="animate__animated animate__flash animate__infinite">
+              <Link href="/"> PlayZone</Link>
+            </p>
           </div>
-          <div className='nav_tab'>
-            <div className='tabs'>
+
+          <button className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+
+          <div className="nav_tab desktop">
+            <div className="tabs animate__animated animate__bounceInRight">
               <p>
-                <Link href='/components/pages/home/about' className={currentUrl.includes("about") ? "dash_tab_active" : "tab_inactive_home"}> About</Link></p>
-                
+                <Link href="/components/pages/home/about" className={currentUrl.includes("about") ? "dash_tab_active" : "tab_inactive_home"}>
+                  About
+                </Link>
+              </p>
             </div>
-            <div className='tabs'>
-              <p><Link href='/components/pages/home/faq' className={currentUrl.includes("faq") ? "dash_tab_active" : "tab_inactive_home"}> FAQs</Link></p>
-              
+            <div className="tabs animate__animated animate__bounceInRight">
+              <p>
+                <Link href="/components/pages/home/faq" className={currentUrl.includes("faq") ? "dash_tab_active" : "tab_inactive_home"}>
+                  FAQs
+                </Link>
+              </p>
             </div>
-            <div className='tabs'>
-              <p><Link href='/components/pages/home/contact'  className={currentUrl.includes("contact") ? "dash_tab_active" : "tab_inactive_home"}> Contact US</Link></p>
-              
+            <div className="tabs animate__animated animate__bounceInRight">
+              <p>
+                <Link href="/components/pages/home/contact" className={currentUrl.includes("contact") ? "dash_tab_active" : "tab_inactive_home"}>
+                  Contact Us
+                </Link>
+              </p>
             </div>
           </div>
         </div>
 
-        <div className='second_nav'>
-          <div className='nav_hr_line'></div>
-          <div className='login_main'>
-            <button onClick={() => setIsLoginOpen(true)} className='login_btn'>LOG IN</button>
+        {isMenuOpen && (
+          <div className="mobile_menu animate__animated animate__bounceInLeft">
+            <Link href="/components/pages/home/about" onClick={() => setIsMenuOpen(false)}>About</Link>
+            <Link href="/components/pages/home/faq" onClick={() => setIsMenuOpen(false)}>FAQs</Link>
+            <Link href="/components/pages/home/contact" onClick={() => setIsMenuOpen(false)}>Contact Us</Link>
+            <button onClick={() => setIsLoginOpen(true)} className="login_btn">
+              LOG IN
+            </button>
+          </div>
+        )}
 
-            {/* Login Modal */}
-            {isLoginOpen &&
-              <LoginModal
-                onClose={() => setIsLoginOpen(false)}
-                openSignUp={() => setSignUpOpen(true)}
-                openForgotPassword={() => setForgotPasswordOpen(true)}
-              />}
+        <div className="second_nav">
+          <div className="nav_hr_line"></div>
+          <div className="login_main">
+            <button onClick={() => setIsLoginOpen(true)} className="login_btn">
+              LOG IN
+            </button>
 
-            {/* SignUp Modal */}
-            {isSignUpOpen &&
-              <SignUpModal
-                onClose={() => setSignUpOpen(false)}
-                openLoginModal={() => setIsLoginOpen(true)}
-                openOtpModal={() => setOtpOpen(true)}
-              />}
-
-            {/* ForgotPassword Modal */}
-            {isForgotPasswordOpen &&
-              <ForgotPasswordModal
-                onClose={() => setForgotPasswordOpen(false)}
-                openLoginModal={() => setIsLoginOpen(true)}
-              />}
-
-            {/* OTP Modal */}
-            {isOtpOpen &&
-              <OtpModal
-                onClose={() => setOtpOpen(false)}
-                openSignUp={() => setSignUpOpen(true)}
-                openSuccessModal={() => setSuccessOpen(true)}
-              />}
-
-            {/* Success Modal */}
-            {isSuccessOpen &&
-              <RegisterSuccessModal
-                onClose={() => setSuccessOpen(false)}
-                openOtpModal={() => setOtpOpen(true)}
-              />}
+            {isLoginOpen && <LoginModal onClose={() => setIsLoginOpen(false)} openSignUp={() => setSignUpOpen(true)} openForgotPassword={() => setForgotPasswordOpen(true)} />}
+            {isSignUpOpen && <SignUpModal onClose={() => setSignUpOpen(false)} openLoginModal={() => setIsLoginOpen(true)} openOtpModal={() => setOtpOpen(true)} />}
+            {isForgotPasswordOpen && <ForgotPasswordModal onClose={() => setForgotPasswordOpen(false)} openLoginModal={() => setIsLoginOpen(true)} />}
+            {isOtpOpen && <OtpModal onClose={() => setOtpOpen(false)} openSignUp={() => setSignUpOpen(true)} openSuccessModal={() => setSuccessOpen(true)} />}
+            {isSuccessOpen && <RegisterSuccessModal onClose={() => setSuccessOpen(false)} openOtpModal={() => setOtpOpen(true)} />}
           </div>
         </div>
       </section>

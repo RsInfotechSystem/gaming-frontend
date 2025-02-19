@@ -54,6 +54,52 @@ body {
     position: relative;
 }
 
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  color: #FFFFFF;
+  right: 15px;
+  top: 15px;
+  z-index: 1001;
+}
+
+.mobile_menu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0px;
+  right: -100;
+  width: 250px;
+  height: 100vh;
+  background: #222;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  gap: 15px;
+  transition: right 0.3s ease-in-out;
+}
+
+.mobile_menu.show {
+  right: 0;
+}
+
+.mobile_menu a {
+  color: white;
+  background: none;
+  border: none;
+  font-size: 30px;
+  text-decoration: none;
+  padding: 10px 0;
+  display: block;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+
 .nav {
     height: 85px;
     width: 100vw;
@@ -84,6 +130,7 @@ body {
     align-items: center;
     font-size: 25px;
     font-family: Orbitron ;
+    animation: animate__flash;
 }
 .logo a{
   text-decoration: none;
@@ -181,6 +228,10 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 } */
+ .hero_image{
+  display: flex;
+  justify-content: space-around;
+ }
 
 .skill_play{
 letter-spacing: 8px;
@@ -257,7 +308,12 @@ margin: auto;
    padding-top: 10%;
    /* width: 50%; */
    transform: perspective(50em) rotatey(30deg);
+   cursor: pointer;
   }
+  /* .game_list p:hover{
+   background: red;
+   font-size: 20px;
+  } */
   .gradient-text {
     background-image: linear-gradient(to top, #ff1717, #9d04f6);
     -webkit-background-clip: text;
@@ -287,7 +343,15 @@ margin: auto;
     font-weight: bold;
     color: #000000;
     padding-top: 4%;
+    transition: font-size 0.3s ease;
   }
+  /* #bgmi_tab:hover, #cod_tab:hover, #freefire_tab:hover {
+    font-size: 70px;
+}
+#cod_tab:hover ~ #bgmi_tab,
+#freefire_tab:hover ~ #bgmi_tab {
+    font-size: 40px; 
+} */
   #cod_tab{
     font-size: 27px;
     color: #000000;
@@ -338,6 +402,9 @@ margin: auto;
     padding-left: 50px;
   color: white;
   letter-spacing: 0.5px;
+}
+.game_title span{
+  padding-left: 65px;
 }
 .user_percentage{
     padding-left: 50px;
@@ -1067,6 +1134,7 @@ padding-right: 20px;
 .lets_play_set{
   position: relative;
   left: 85px;
+  text-align: center
 }
 .frame_logo img{
   position: relative;
@@ -1093,6 +1161,7 @@ color: #FFFFFF;
 }
 .social_media_icon a i{
   width: 200px;
+  margin: auto;
   height: 200px;
 }
 .terms_condtion{
@@ -1448,12 +1517,32 @@ padding-top: 12%;
   .nav_tab {
     display: none;
 }
+.mobile_menu button {
+  width: 100%;
+  margin-top: 10px;
+  background-image: linear-gradient(45deg, #ff1717, #9d04f6);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
 .login_main .login_btn {
-  width: 130px;
-  margin-right: 10px;
+  /* width: 130px;
+  margin-right: 10px; */
+  display: none;
+}
+.nav_hr_line {
+  width: 100vw;
+}
+.hero_image {
+  display: inline-block;
 }
 .carousel-control-prev-icon {
   display: none;
+}
+.text_pad{
+  padding-top: 15%;
 }
 .carousel-control-next-icon {
   display: none;
@@ -1469,11 +1558,19 @@ padding-top: 12%;
   margin-top: 20%;
 }
 .skill_play {
-  font-size: 40px;
+  font-size: 42px;
+  font-weight: 900;
+}
+.skill_play_content {
+  line-height: 23px;
 }
 .gun_set img {
   width: 160px;
-  height: 200px;
+  height: 180px;
+  position: relative;
+  left: 50%;
+  bottom: 50%;
+  bottom: 120px;
 }
 .main_games_section {
   display: inline-block;
@@ -1481,7 +1578,10 @@ padding-top: 12%;
 .game_list{
   width: 90%;
   margin: auto;
-  padding-left: 0px;
+  padding: 15% 0 0 0;
+}
+.game_image_container {
+  padding-top: 0%;
 }
 .game_list,.game_image_container{
   transform: none;
@@ -1489,33 +1589,33 @@ padding-top: 12%;
 }
 .game_image_container .poster_div {
   width: 85%;
-  height: 300px;
+  height: 275px;
   margin: auto;
 }
-/* .games_vr_line_right, .games_vr_line {
- display: none;
-} */
 .games_vr_line {
-  height: 23vh;
+  height: 24vh;
   width: 5px;
 }
 .games_vr_line_right {
-  height: 38vh;
+  height: 40vh;
 }
 .available_games_heading p {
-  font-size: 36px;
+  font-size: 38px;
 }
 #bgmi_tab {
-  font-size: 50px;
+  font-size: 52px;
+  padding-top: 20px;
+  margin-bottom: 22px;
 }
 #cod_tab {
-  font-size: 20px;
+  font-size: 21px;
+  margin-bottom: 22px;
 }
 #freefire_tab {
   font-size: 21px;
 }
 .card .poster_image {
-  padding: 15px 13px 20px 12px;
+  padding: 15px 13px 10px 12px;
   height: 200px;
   width: 100%;
   margin: auto;
@@ -1535,7 +1635,7 @@ padding-top: 12%;
 }
 .cards_image {
   width: 100%;
-  height: 170px;
+  height: 316px;
 }
 .game_lead_section {
   height: 100vh;
@@ -1573,10 +1673,104 @@ padding-top: 12%;
 }
 .game_title {
   padding-left: 10%;
-  font-size: 13px;
+  font-size: 10px;
 }
 .game_title span{
     font-size: 9px;
-    padding-left: 20px;
+    padding-left:15%;
+    margin-bottom: 0px;
+}
+.news_section {
+  padding: 0px;
+  height: 82vh;
+}
+.news_head p {
+  padding-left: 10%;
+}
+.card_section {
+  /* display: flex; */
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 10px;
+    scroll-padding-left: 10px;
+}
+
+.cards_content {
+  flex: 0 0 90%;
+  max-width: 90%;
+  scroll-snap-align: center;
+}
+
+.card {
+  width: 100%;
+}
+.right_side_footer p {
+  display: none;
+}
+.input_btn{
+  width: 100%;
+ margin: auto;
+}
+.lets_play{
+  width: 100%;
+}
+.frame_logo img, .lets_play .xyz_gaming {
+  display: none;
+}
+.lets_play .lets_play_set {
+  text-align: center;
+  position: relative;
+  left: 0;
+  font-size: 41px;
+  letter-spacing: 5px;
+  padding-top: 20px;
+}
+.left_side_footer p {
+  margin-bottom: 15px;
+  padding-top: 5px;
+}
+.social_media_icon {
+  width: 50%;
+  padding-top: 20px;
+}
+.terms_condtion {
+  margin: auto;
+  width: 75%;
+}
+.company_design {
+  width: 360px;
+  margin: auto;
+  padding-top: 20%;
+}
+.register_btn{
+  padding: 15px 0px 10px 0px;
+}
+.footer_section {
+  height: 75vh;
+}
+.input_btn .email_box {
+  height: 50px;
+}
+.input_btn .lets_go_btn {
+  height: 52px;
+}
+.register_btn button {
+  width: 200px;
+  height: 54px;
+  font-size: 16px;
+}
+.desktop {
+  display: none;
+}
+.hamburger {
+  display: block;
+}
+.mobile_menu {
+  height: 100%;
+  width: 100%;
+  background: #222;
+  background-size: cover;
 }
 }

@@ -29,7 +29,7 @@ const Contest = () => {
     async function getContestList(page = 1, searchString = "") {
         try {
             setLoader(true);
-            const serverResponse = await adminCommunication.getContestList(page, searchString);
+            const serverResponse = await adminCommunication.getAdminContestList(page, searchString);
             if (serverResponse.data.status === "SUCCESS") {
                 setContestList(serverResponse?.data?.contestList);
                 setPaginationData(pre => ({
@@ -63,7 +63,7 @@ const Contest = () => {
                         <p className="tournament_text">
                             All Contest{" "}
                             <Image className="me-2" width={25} height={20} src={network} alt="network" />
-                        </p> 
+                        </p>
                     </div>
                     <div className='nav_search'>
                         <CustomSearchBox searchString={searchString} setSearchString={setSearchString} apiCall={getContestList} />

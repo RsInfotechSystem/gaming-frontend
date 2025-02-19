@@ -33,7 +33,7 @@ const GameListAdmin = () => {
     async function getGameList(page = 1, searchString = "") {
         try {
             setLoader(true);
-            const serverResponse = await adminCommunication.getGameList(page, searchString);
+            const serverResponse = await adminCommunication.getAdminGameList(page, searchString);
             if (serverResponse.data.status === "SUCCESS") {
                 setGames(serverResponse?.data?.gameList);
                 setPaginationData(pre => ({
