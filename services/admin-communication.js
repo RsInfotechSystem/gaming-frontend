@@ -226,7 +226,7 @@ export const adminCommunication = {
     },
     updateGame: async function (dataToSend) {
         try {
-            return axios.post(`${getServerUrl()}/game/update-game`, dataToSend, {
+            return axios.post(`${getServerUrl()}/game/update-game?isFileAttached=${isFileAttached}`, dataToSend, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
@@ -251,6 +251,18 @@ export const adminCommunication = {
     getGameList: async function (page = 1, searchString) {
         try {
             return axios.post(`${getServerUrl()}/game/get-game-list`, { page, searchString, }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    getAdminGameList: async function (page = 1, searchString) {
+        try {
+            return axios.post(`${getServerUrl()}/game/get-admin-game-list`, { page, searchString, }, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
@@ -312,6 +324,18 @@ export const adminCommunication = {
     getContestList: async function (page = 1, searchString, gameId, gameType) {
         try {
             return axios.post(`${getServerUrl()}/contest/get-contest-list`, { page, searchString, gameId, gameType }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
+                },
+            });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    getAdminContestList: async function (page = 1, searchString, gameId, gameType) {
+        try {
+            return axios.post(`${getServerUrl()}/contest/get-admin-contest-list`, { page, searchString, gameId, gameType }, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
