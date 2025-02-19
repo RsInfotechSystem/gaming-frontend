@@ -29,35 +29,62 @@ const CreateGame = ({ setModalStates, type, gameId, getGameList }) => {
     };
 
 
-    //On  submit call api
     async function onSubmit(params) {
         try {
             if (selectedImages?.length === 0) {
                 return Swal.fire({ text: "Please select at least one image", icon: "warning" });
             }
+
             setLoader(true);
-            const formData = new FormData();
-            selectedImages.forEach((file) => {
-                formData.append("gamefiles", file);
-            });
-            formData.append("gameDetails", JSON.stringify({ ...params, title: params.name }));
-            const serverResponse = (type === "create") ? await adminCommunication.createGame(formData) : await adminCommunication.updateGame({ ...params, gameId });
-            if (serverResponse.data.status === "SUCCESS") {
-                Swal.fire({ text: serverResponse?.data?.message, icon: "success", timer: 2000 });
+            let response;
+            let formData = new FormData();
+            let dataToSend = { ...params, title: params.name };
+
+            if (type === "create") {
+                selectedImages.forEach((file) => {
+                    formData.append("gamefiles", file);
+                });
+                formData.append("gameDetails", JSON.stringify(dataToSend));
+                response = await adminCommunication.createGame(formData);
+            } else {
+                let isFileAttached = false;
+                dataToSend.gameId = gameId;
+
+                for (let i = 0; i < selectedImages.length; i++) {
+                    const element = selectedImages[i];
+                    if (typeof element !== "string") {
+                        isFileAttached = true;
+                        formData.append("gamefiles", element);
+                    }
+                }
+
+                if (isFileAttached) {
+                    formData.append("gameDetails", JSON.stringify(dataToSend));
+                } else {
+                    formData = dataToSend;
+                }
+                response = await adminCommunication.updateGame(isFileAttached, formData);
+            }
+
+            if (response?.data?.status === "SUCCESS") {
+                Swal.fire({ text: response?.data?.message, icon: "success", timer: 2000 });
                 setModalStates({ gameId: "", type: "", modal: false });
-                getGameList(1, "")
-            } else if (serverResponse?.data?.status === "JWT_INVALID") {
-                Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+                getGameList(1, "");
+            } else if (response?.data?.status === "JWT_INVALID") {
+                Swal.fire({ text: response?.data?.message, icon: "warning" });
                 router.push("/login");
             } else {
-                Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+                Swal.fire({ text: response?.data?.message, icon: "warning" });
             }
-            setLoader(false)
+
+            setLoader(false);
         } catch (error) {
-            Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning", });
-            setLoader(false)
+            console.log(" error : ", error)
+            Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning" });
+            setLoader(false);
         }
     }
+
 
     //get User by Id
     async function getGameById() {
