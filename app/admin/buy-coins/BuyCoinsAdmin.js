@@ -12,12 +12,21 @@ import { useRouter } from 'next/navigation';
 import { adminCommunication } from '@/services/admin-communication';
 import Loader from '@/app/common-component/Loader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2';
+import CustomSearchBox from '@/app/common-component/CustomSearchBox';
 
 
 const BuyCoinsAdmin = () => {
   const [coinsArray, setCoinsArray] = useState([]);
   const [loader, setLoader] = useState(false);
+  const [searchString, setSearchString] = useState("");
+  const [paginationData, setPaginationData] = useState({
+      currentPage: 1,
+      isPageUpdated: false,
+      totalPages: 1,
+      page: 1
+  });
   const [modalStates, setModalStates] = useState({ type: "", modal: false, coinId: "" })
   const router = useRouter();
 
@@ -40,9 +49,50 @@ const BuyCoinsAdmin = () => {
     }
   }
 
+    async function deleteCoin(coinIds) {
+          try {
+  
+              Swal.fire({
+                  text: "Are you sure ,you want to Delete the Game?",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonText: "Yes",
+                  cancelButtonText: "No",
+              }).then(async function (result) {
+                  if (result.isConfirmed) {
+                      try {
+                          setLoader(true);
+                          const serverResponse = await adminCommunication.deleteCoin([coinIds]);
+                          if (serverResponse.data.status === "SUCCESS") {
+                              Swal.fire({ text: serverResponse?.data?.message, icon: "success" });
+                              getCoinsList(1, "")
+                          } else if (serverResponse?.data?.status === "JWT_INVALID") {
+                              Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+                              router.push("/login");
+                          } else {
+                              Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
+                          }
+                          setLoader(false)
+                      } catch (error) {
+                          Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning", });
+                          setLoader(false)
+                      }
+  
+                  } else {
+                      return;
+                  }
+              });
+  
+              setLoader(false)
+          } catch (error) {
+              Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning", });
+              setLoader(false)
+          }
+      }
+
   useEffect(() => {
-    getCoinsList();
-  }, []);
+    getCoinsList(paginationData.currentPage, searchString);
+  }, [paginationData.isPageUpdated]);
 
   return (
     <>
@@ -58,23 +108,22 @@ const BuyCoinsAdmin = () => {
             </p>
           </div>
           <div className='nav_search'>
-            <div className="search_box">
-              <input type="search" placeholder="Search" className="search_input" />
-              <i className="fas fa-search search_icon"></i>
-            </div>
+            <CustomSearchBox searchString={searchString} setSearchString={setSearchString} apiCall={getCoinsList} />
             <div className="add_btn_main">
               <button className='add_btn' onClick={() => setModalStates({ coinId: "", type: "create", modal: true })}>Add</button>
             </div>
           </div>
 
 
-          <div className='mt-4'>
-            <div className='row justify-content-between mb-3'>
+          <div className='container mt-4'>
+            <div className='row mb-3'>
               {coinsArray?.map((ele, index) => {
                 return (
-                  <div className='coin_div' key={index}>
-                       <FontAwesomeIcon icon={faEdit} className="edit_icon delete_btn me-4" />
-                       <FontAwesomeIcon icon={faTrashCan} className="edit_icon delete_btn" />
+                  <div className='col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4' key={index}>
+                  <div className='coin_div'>
+                       {/* <FontAwesomeIcon icon={faEdit} className="edit_icon delete_btn me-4" /> */}
+                       <FontAwesomeIcon icon={faPenToSquare} title='update user' onClick={() => setModalStates({ type: "update", modal: true, coinId: ele?.id })} className="edit_icon delete_btn me-4" />
+                       <FontAwesomeIcon icon={faTrashCan} className="edit_icon delete_btn" onClick={() => deleteCoin(ele.id)}/>
                     <div className="text-center">
                       <Image src={coins} width={60} height={60} alt="coins"></Image>
                     </div>
@@ -84,6 +133,7 @@ const BuyCoinsAdmin = () => {
                     <div className="text-center">
                       <button className='get_coin_btn'>&#8377; {ele?.rupeesAmt}</button>
                     </div>
+                  </div>
                   </div>
                 )
               })}
