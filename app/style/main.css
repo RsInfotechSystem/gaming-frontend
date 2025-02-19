@@ -54,6 +54,52 @@ body {
     position: relative;
 }
 
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  color: #FFFFFF;
+  right: 15px;
+  top: 15px;
+  z-index: 1001;
+}
+
+.mobile_menu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0px;
+  right: -100;
+  width: 250px;
+  height: 100vh;
+  background: #222;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  gap: 15px;
+  transition: right 0.3s ease-in-out;
+}
+
+.mobile_menu.show {
+  right: 0;
+}
+
+.mobile_menu a {
+  color: white;
+  background: none;
+  border: none;
+  font-size: 30px;
+  text-decoration: none;
+  padding: 10px 0;
+  display: block;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+
 .nav {
     height: 85px;
     width: 100vw;
@@ -84,6 +130,7 @@ body {
     align-items: center;
     font-size: 25px;
     font-family: Orbitron ;
+    animation: animate__flash;
 }
 .logo a{
   text-decoration: none;
@@ -261,7 +308,12 @@ margin: auto;
    padding-top: 10%;
    /* width: 50%; */
    transform: perspective(50em) rotatey(30deg);
+   cursor: pointer;
   }
+  /* .game_list p:hover{
+   background: red;
+   font-size: 20px;
+  } */
   .gradient-text {
     background-image: linear-gradient(to top, #ff1717, #9d04f6);
     -webkit-background-clip: text;
@@ -291,7 +343,15 @@ margin: auto;
     font-weight: bold;
     color: #000000;
     padding-top: 4%;
+    transition: font-size 0.3s ease;
   }
+  /* #bgmi_tab:hover, #cod_tab:hover, #freefire_tab:hover {
+    font-size: 70px;
+}
+#cod_tab:hover ~ #bgmi_tab,
+#freefire_tab:hover ~ #bgmi_tab {
+    font-size: 40px; 
+} */
   #cod_tab{
     font-size: 27px;
     color: #000000;
@@ -1457,9 +1517,23 @@ padding-top: 12%;
   .nav_tab {
     display: none;
 }
+.mobile_menu button {
+  width: 100%;
+  margin-top: 10px;
+  background-image: linear-gradient(45deg, #ff1717, #9d04f6);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
 .login_main .login_btn {
-  width: 130px;
-  margin-right: 10px;
+  /* width: 130px;
+  margin-right: 10px; */
+  display: none;
+}
+.nav_hr_line {
+  width: 100vw;
 }
 .hero_image {
   display: inline-block;
@@ -1686,5 +1760,17 @@ padding-top: 12%;
   width: 200px;
   height: 54px;
   font-size: 16px;
+}
+.desktop {
+  display: none;
+}
+.hamburger {
+  display: block;
+}
+.mobile_menu {
+  height: 100%;
+  width: 100%;
+  background: #222;
+  background-size: cover;
 }
 }
