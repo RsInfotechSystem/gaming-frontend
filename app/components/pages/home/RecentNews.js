@@ -11,7 +11,7 @@ export default function CardsCarousel() {
       <div className="news_head">
         <p>Recent News</p>
       </div>
-      <div className="row card_section flex-wrap justify-content-center">
+      <div className="row card_section justify-content-center">
         <div className="cards_content col-md-3 col-xl-4 d-flex justify-content-center">
           <div className="card card_radius">
             <Image src={tournament1} alt="Card 1" className="cards_image d-block" />

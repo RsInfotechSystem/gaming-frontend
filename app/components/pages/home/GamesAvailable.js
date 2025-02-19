@@ -32,7 +32,7 @@ export default function GamesAvailable() {
              <div className="card-body">
                <h5 className="game_name">BGMI</h5>
                <p className="game_title">Battle Ground Mobile India
-                <span style={{paddingLeft:"65px",color:"red",fontWeight:"bold"}}>75% User Playing</span></p>
+                <span style={{color:"red",fontWeight:"bold"}}>75% User Playing</span></p>
              </div>
            </div>
          </div>

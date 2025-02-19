@@ -23,9 +23,9 @@ export default function HeroSection() {
         <div className="carousel-inner content_height">
           {/* First Slide with Text and Images */}
           <div className="carousel-item active hero_center">
-            <div className="hero_image d-flex justify-content-around">
+            <div className="hero_image">
               {/* Left Section */}
-              <div className="text_content">
+              <div className="text_content text_pad">
                 <p className="skill_play">PLAY FOR SKILL</p>
                 <p className="skill_play_content">
                   The electric blue color reminds me of the police.

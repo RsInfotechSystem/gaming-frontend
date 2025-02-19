@@ -34,7 +34,7 @@ export default function Footer() {
           </div>
 
          <div className='lets_play'>
-              <p className='text-center lets_play_set'>
+              <p className='lets_play_set'>
                   LET'S PLAY 
                   <span className='xyz_gaming'>PlayZone GAMING</span>
               </p>
