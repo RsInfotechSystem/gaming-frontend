@@ -247,13 +247,23 @@ body {
   display: flex;
   align-items: center;
   /* width: 45%; */
-  padding: 3px; /* Small padding to create the illusion of a border */
+  padding: 3px;
+  margin: 5px; 
   border-radius: 14px;
   position: relative;
   overflow: hidden;
   z-index: 0;
   /* min-height: 90px; */
 }
+
+/* .nav_game_info {
+    height: 85px;
+    width: 100%;
+    background-color: #0B0202;
+    position: sticky;
+    top: 0px;
+    z-index: 3000;
+} */
 .winner_declared{
   color: #FFFFFF;
   font-size: 25px;
@@ -288,7 +298,7 @@ body {
 }
 
 
-.game_name{
+.game_name_all{
   font-family: "Play", sans-serif;
   font-weight: 700;
   font-size: 20px;
@@ -1081,7 +1091,7 @@ div:where(.col_100p) {
     color: white;
     border-radius: 10px;
     /* max-width: 350px; */
-    margin: auto;
+    margin: 4px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   }
   

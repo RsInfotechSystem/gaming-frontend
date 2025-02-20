@@ -54,6 +54,8 @@ export default function Profile() {
         <Loader />
         :
         <div className="tournament_list container-fluid mt-5 pt-5">
+                    <div style={{ width: "90%", margin: "0px auto" }}>
+
           <p className="tournament_text d-flex align-items-center">
             MY PROFILE{" "}
             <Image className="ms-2" width={25} height={20} src={network} alt="network" />
@@ -82,6 +84,7 @@ export default function Profile() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       }
     </>

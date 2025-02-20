@@ -147,7 +147,9 @@ export default function GameInfo() {
         <Loader />
       ) : (
         <div className="tournament_list">
-          <div className="mt-1 coin_pack">
+          <div style={{ width: "90%", margin: "0px auto" }}>
+
+          <div className="mt-1">
             <div className="header-container">
               <p className="tournament_text">
                 {game ? `${game?.name}` : `Contest`}
@@ -185,7 +187,7 @@ export default function GameInfo() {
             <div className='nav_search mb-4'>
               <CustomSearchBox searchString={searchString} setSearchString={setSearchString} apiCall={getGameWiseContestList} />
             </div>
-            <div className="container">
+            <div className="">
               {/* Tabs */}
               <ul className="nav nav-pills mb-2">
                 {Object.entries(tabMapping).map(([key, value]) => (
@@ -202,7 +204,7 @@ export default function GameInfo() {
 
               {/* Render contests dynamically based on activeTab */}
               <div className="tab-content">
-                <div className="container tab-pane active">
+                <div className="tab-pane active">
                   <div className="row gy-4">
                     {groupedContests[tabMapping[activeTab]]?.map((contest, index) => (
                       <div className="col-sm-12 col-md-6 col-lg-6" key={index}>
@@ -321,6 +323,7 @@ export default function GameInfo() {
               </div>
             </div>
           </div >
+        </div >
         </div >
       )
       }
