@@ -198,10 +198,10 @@ export const adminCommunication = {
             Swal.fire({ text: error.message, icon: "warning" });
         }
     },
-    
+
     getCoinsList: async function (page = 1, searchString) {
         try {
-            return axios.post(`${getServerUrl()}/coin/get-coin-list`, {page, searchString}, {
+            return axios.post(`${getServerUrl()}/coin/get-coin-list`, { page, searchString }, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
@@ -224,7 +224,7 @@ export const adminCommunication = {
             Swal.fire({ text: error.message, icon: "warning" });
         }
     },
-    updateGame: async function (dataToSend) {
+    updateGame: async function (isFileAttached, dataToSend) {
         try {
             return axios.post(`${getServerUrl()}/game/update-game?isFileAttached=${isFileAttached}`, dataToSend, {
                 headers: {
