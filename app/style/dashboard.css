@@ -247,13 +247,23 @@ body {
   display: flex;
   align-items: center;
   /* width: 45%; */
-  padding: 3px; /* Small padding to create the illusion of a border */
+  padding: 3px;
+  margin: 5px; 
   border-radius: 14px;
   position: relative;
   overflow: hidden;
   z-index: 0;
   /* min-height: 90px; */
 }
+
+/* .nav_game_info {
+    height: 85px;
+    width: 100%;
+    background-color: #0B0202;
+    position: sticky;
+    top: 0px;
+    z-index: 3000;
+} */
 .winner_declared{
   color: #FFFFFF;
   font-size: 25px;
@@ -288,7 +298,7 @@ body {
 }
 
 
-.game_name{
+.game_name_all{
   font-family: "Play", sans-serif;
   font-weight: 700;
   font-size: 20px;
@@ -348,8 +358,8 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  width: 100%;
-  max-width: 100px;
+  /* width: 100%; */
+  max-width: 200px;
 }
 .add_btn {
  background-color: #AB06D5;
@@ -400,13 +410,13 @@ body {
   letter-spacing: 2px;
 }
 .add_btn_main .add_btn {
-  width: 170px;
+  width: 100px;
   /* height: 40px; */
-  border-radius: 50px;
+  /* border-radius: 50px; */
   background-image: linear-gradient(to right, #ff1717, #9d04f6);
   position: relative;
   /* bottom: 10px; */
-  /* margin-left: 70px; */
+  margin-left: 10px;
 }
 
 /****************** COMMON PERCENTAGE WIDTH CLASSES CSS START ******************/
@@ -1081,7 +1091,7 @@ div:where(.col_100p) {
     color: white;
     border-radius: 10px;
     /* max-width: 350px; */
-    margin: auto;
+    margin: 4px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   }
   
@@ -1304,6 +1314,7 @@ div:where(.col_100p) {
 } 
 
 .back_btn{
+  width: 100px;
   border-radius: 10px;
 }
 

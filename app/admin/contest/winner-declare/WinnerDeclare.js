@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Select from 'react-select';
 import { adminCommunication } from '@/services/admin-communication';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Swal from 'sweetalert2';
 import Loader from "@/app/common-component/Loader";
 
@@ -14,6 +14,7 @@ export default function PlayerSearch() {
     const [loader, setLoader] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
     const searchParams = useSearchParams();
+    const router = useRouter();
 
     async function getContestWisePlayerList() {
         try {
@@ -53,8 +54,9 @@ export default function PlayerSearch() {
                 <Loader />
                 :
                 <div style={{ width: "90%", margin: "0px auto" }}>
-                    <div className="mt-1">
+                    <div className="mt-1 header-container">
                         <p className="tournament_text">DECLARE WINNERS</p>
+                        <button type="button" className="btn btn-outline-light back_btn" onClick={() => router.back()}> Back </button>
                     </div>
 
                     {/* Winner Selection Dropdown & Declare Winner Button (Side by Side) */}

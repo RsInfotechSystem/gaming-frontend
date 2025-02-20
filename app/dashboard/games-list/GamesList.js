@@ -185,13 +185,13 @@ export default function GamesList() {
 
                 {gameList?.length > 0 && (
                   <div className="mt-1">
-                    <p className="tournament_text mt-5 ">
+                    <p className="tournament_text mt-5">
                       ALL GAMES <Image className="me-2" width={25} height={20} src={all_games} alt="all games" />
                     </p>
                     <div className='nav_search mb-4'>
                       <CustomSearchBox searchString={searchString} setSearchString={setSearchString} apiCall={getGamesList} />
                     </div>
-                    <div className="d-flex flex-wrap justify-content-around mb-3">
+                    {/* <div className="d-flex flex-wrap justify-content-around mb-3">
                       {gameList?.map((game, index) => (
                         <div className="games_bg mb-3" key={index}>
                           <div className="games_bg_inner" style={{ cursor: "pointer" }} onClick={() => handleGameClick(game?.id)}>
@@ -216,7 +216,40 @@ export default function GamesList() {
                           </div>
                         </div>
                       ))}
+                    </div> */}
+                    <div className="row g-3 mb-3">
+                      {gameList?.map((game, index) => (
+                        <div className="col-12 col-sm-6 col-md-6 col-lg-4" key={index}>
+                          <div className="games_bg">
+                            <div
+                              className="games_bg_inner d-flex align-items-center"
+                              style={{ cursor: "pointer" }}
+                              onClick={() => handleGameClick(game?.id)}
+                            >
+                              <Image
+                                className="me-3"
+                                style={{ borderRadius: "15px" }}
+                                width={76}
+                                height={76}
+                                src={
+                                  game?.gamefiles?.[0]?.fileUrl
+                                    ? `${NEXT_PUBLIC_SERVER_URL}/getFiles/${game?.gamefiles[0].fileUrl}`
+                                    : "/dashboard/default_game.png"
+                                }
+                                alt="game img"
+                              />
+                              <div>
+                                <p className="game_name_all mb-1">{game?.name}</p>
+                                <p className="game_info">
+                                  {game?.playedCount || "0"} Millions played
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
+
                   </div>
                 )}
               </>

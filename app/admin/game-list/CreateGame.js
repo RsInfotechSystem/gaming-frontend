@@ -31,7 +31,7 @@ const CreateGame = ({ setModalStates, type, gameId, getGameList }) => {
 
     async function onSubmit(params) {
         try {
-            if (selectedImages?.length === 0) {
+            if (!selectedImages || selectedImages.length === 0) {
                 return Swal.fire({ text: "Please select at least one image", icon: "warning" });
             }
 
@@ -40,31 +40,40 @@ const CreateGame = ({ setModalStates, type, gameId, getGameList }) => {
             let formData = new FormData();
             let dataToSend = { ...params, title: params.name };
 
-            if (type === "create") {
-                selectedImages.forEach((file) => {
-                    formData.append("gamefiles", file);
-                });
-                formData.append("gameDetails", JSON.stringify(dataToSend));
-                response = await adminCommunication.createGame(formData);
-            } else {
-                let isFileAttached = false;
-                dataToSend.gameId = gameId;
+            let isFileAttached = false;
+            dataToSend.gameId = gameId;
+            dataToSend.oldGameFiles = [];
 
-                for (let i = 0; i < selectedImages.length; i++) {
-                    const element = selectedImages[i];
-                    if (typeof element !== "string") {
-                        isFileAttached = true;
-                        formData.append("gamefiles", element);
+
+            selectedImages.forEach((item, index) => {
+                if (item instanceof File) {
+                    isFileAttached = true;
+                    formData.append("gamefiles", item);
+                } else if (item.fileUrl) {
+                    // Add existing image URLs to dataToSend   
+                    if (!dataToSend.existingImages) {
+                        dataToSend.existingImages = [];
                     }
-                }
-
-                if (isFileAttached) {
-                    formData.append("gameDetails", JSON.stringify(dataToSend));
+                    dataToSend.existingImages.push(item.fileUrl);
                 } else {
-                    formData = dataToSend;
+                    console.warn(`Skipping invalid entry at index ${index}:`, item);
                 }
-                response = await adminCommunication.updateGame(isFileAttached, formData);
+            });
+
+            console.log("Data to send:", JSON.stringify(dataToSend));
+
+            formData.append("gameDetails", JSON.stringify(dataToSend));
+
+            // Log FormData contents
+            for (let pair of formData.entries()) {
+                console.log("FormData Entry:", pair[0], pair[1]);
             }
+
+            response = type === "create"
+                ? await adminCommunication.createGame(formData)
+                : await adminCommunication.updateGame(isFileAttached, formData);
+
+            console.log("Server response:", response);
 
             if (response?.data?.status === "SUCCESS") {
                 Swal.fire({ text: response?.data?.message, icon: "success", timer: 2000 });
@@ -74,12 +83,12 @@ const CreateGame = ({ setModalStates, type, gameId, getGameList }) => {
                 Swal.fire({ text: response?.data?.message, icon: "warning" });
                 router.push("/login");
             } else {
+                console.log("Error:", response);
                 Swal.fire({ text: response?.data?.message, icon: "warning" });
             }
 
             setLoader(false);
         } catch (error) {
-            console.log(" error : ", error)
             Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning" });
             setLoader(false);
         }
@@ -90,23 +99,26 @@ const CreateGame = ({ setModalStates, type, gameId, getGameList }) => {
     async function getGameById() {
         try {
             console.log("gameId", gameId);
-
             setLoader(true);
             const serverResponse = await adminCommunication.getGameById(gameId);
+
             if (serverResponse.data.status === "SUCCESS") {
                 setValue("name", serverResponse?.data?.game?.name);
                 setValue("description", serverResponse?.data?.game?.description);
-                setSelectedImages(serverResponse?.data?.game?.gamefiles);
+
+                // Convert image URLs to objects with fileUrl property
+                const existingImages = serverResponse?.data?.game?.gamefiles?.map((fileUrl) => ({ fileUrl }));
+                setSelectedImages(existingImages);
             } else if (serverResponse?.data?.status === "JWT_INVALID") {
                 Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
                 router.push("/login");
             } else {
                 Swal.fire({ text: serverResponse?.data?.message, icon: "warning" });
             }
-            setLoader(false)
+            setLoader(false);
         } catch (error) {
-            Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning", });
-            setLoader(false)
+            Swal.fire({ text: error?.response?.data?.message || error.message, icon: "warning" });
+            setLoader(false);
         }
     }
 
