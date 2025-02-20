@@ -95,7 +95,8 @@ const [paginationData, setPaginationData] = useState({
         <Loader />
         :
         <div className='tournament_list'>
-          <div className='mt-1 coin_pack'>
+          <div style={{ width: "90%", margin: "0px auto" }}>
+          <div className='mt-1'>
             <p className='tournament_text'>COINS PACK </p>
             <div className='nav_search mb-4'>
               <CustomSearchBox searchString={searchString} setSearchString={setSearchString} apiCall={getCoinList} />
@@ -127,6 +128,7 @@ const [paginationData, setPaginationData] = useState({
               </div>
             </div>
           </div>
+        </div>
         </div>
       }
     </>
