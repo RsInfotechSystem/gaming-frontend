@@ -17,6 +17,8 @@ import Faq from './components/pages/home/faq/Faq';
 import Contact from './components/pages/home/contact/Contact';
 import AboutUS from './components/pages/home/about/AboutUS';
 import Terms from './components/pages/home/termsandcondition/Temp';
+import Stata from './components/Analytics';
+import Analytics from './components/Analytics';
 
 const Page = () => {
   useEffect(() => {
@@ -29,6 +31,7 @@ const Page = () => {
       <HeroSection />
       <GamesAvailable />
       <GameLead />
+      <Analytics/>
       <RecentNews />
       <HrLineRight />
       <Footer />
