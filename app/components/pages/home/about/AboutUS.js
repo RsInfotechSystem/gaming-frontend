@@ -56,7 +56,7 @@ export default function AboutUS() {
                 </div>
                 <div>
                 <p className='second_about_content'>
-                At <strong>PlayZone Gaming</strong> we believe that gaming is more than just a pastime—it’s an experience that brings people together, sparks creativity, and pushes the boundaries of technology. Our platform is built for gamers, by gamers, ensuring that you get the best content, exciting discussions, and a space to celebrate the games you love.
+                At <strong>PlayZone Gaming</strong> we believe that gaming is more than just a pastime—it’s an experience that brings people together, sparks creativity, and pushes the boundaries of technology. Our platform is built for gamers, by gamers, ensuring that you get the best content, exciting discussions.
                 </p>
                 </div>
                 

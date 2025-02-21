@@ -228,7 +228,7 @@ export const adminCommunication = {
         try {
             return axios.post(`${getServerUrl()}/game/update-game?isFileAttached=${isFileAttached}`, dataToSend, {
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "multipart/form-data",
                     "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
                 },
             });
@@ -367,6 +367,34 @@ export const adminCommunication = {
                     "Authorization": `Bearer ${getCookie("rsisGamingAdmin")}`
                 },
             });
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    declareWinner: async function (dataToSend) {
+        try {
+            console.log("declareWinner", dataToSend);
+
+            return axios.post(`${getServerUrl()}/contest/declare-winner`, dataToSend, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    Authorization: `Bearer ${getCookie("rsisGamingAdmin")}`,
+                },
+            }
+            );
+        } catch (error) {
+            Swal.fire({ text: error.message, icon: "warning" });
+        }
+    },
+    getContestDetails: async function (contestId) {
+        try {
+            return axios.post(`${getServerUrl()}/contest/get-admin-contest-by-id`, { contestId }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${getCookie("rsisGamingAdmin")}`,
+                },
+            }
+            );
         } catch (error) {
             Swal.fire({ text: error.message, icon: "warning" });
         }
