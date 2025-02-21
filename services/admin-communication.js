@@ -375,7 +375,7 @@ export const adminCommunication = {
         try {
             console.log("declareWinner", dataToSend);
 
-            return axios.post(`${getServerUrl()}/contest/join-contest`, dataToSend, {
+            return axios.post(`${getServerUrl()}/contest/declare-winner`, dataToSend, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     Authorization: `Bearer ${getCookie("rsisGamingAdmin")}`,
