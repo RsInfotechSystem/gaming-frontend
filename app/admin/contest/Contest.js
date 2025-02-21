@@ -26,6 +26,7 @@ const Contest = () => {
         totalPages: 1,
         page: 1
     });
+
     async function getContestList(page = 1, searchString = "") {
         try {
             setLoader(true);
