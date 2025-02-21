@@ -18,6 +18,8 @@ export default function UserNavbar({ openNav }) {
     const [user, setUser] = useState({});
     const [loader, setLoader] = useState(false);
     const router = useRouter();
+    const [isMobile, setIsMobile] = useState(false);
+
 
     async function getUserById() {
         try {
@@ -43,6 +45,17 @@ export default function UserNavbar({ openNav }) {
         getUserById();
     }, []);
 
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 500);
+        };
+
+        handleResize(); // Set initial state
+        window.addEventListener("resize", handleResize);
+        
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     return (
         <>
             {loader ? <Loader /> :
@@ -58,15 +71,22 @@ export default function UserNavbar({ openNav }) {
                         </div>
                         <div className='dash_btn'>
                             <div className='coin_btn d-flex'>
-                                <Image className='me-2' width={25} height={25} src={coin_img} alt="coins" />
+                                <Image className='me-2' width={20} height={20} src={coin_img} alt="coins" />
                                 <span>{coins}</span>
                             </div>
-                            <div>
+                            {/* <div>
                                 <button className='coin_btn profile_btn d-flex'>
                                     <span>{user?.name ?? ""}</span>
-                                    <Image className='mx-1 my-auto' width={13} height={13} src={down_arrow} alt="user" />
+                                    <Image className='mx-1 my-auto' width={10} height={10} src={down_arrow} alt="user" />
+                                </button>
+                            </div> */}
+                            <div>
+                                <button className='coin_btn profile_btn d-flex'>
+                                    <span className='text-capitalize'>{isMobile ? user?.name?.charAt(0) : user?.name}</span>
+                                    <Image className='mx-1 my-auto' width={10} height={10} src={down_arrow} alt="user" />
                                 </button>
                             </div>
+
                         </div>
                     </div>
                 </section>

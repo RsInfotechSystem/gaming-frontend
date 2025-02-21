@@ -219,7 +219,7 @@ export default function GamesList() {
                     </div> */}
                     <div className="row g-3 mb-3">
                       {gameList?.map((game, index) => (
-                        <div className="col-12 col-sm-6 col-md-6 col-lg-4" key={index}>
+                        <div className="col-12 col-sm-6 col-md-6 col-lg-6" key={index}>
                           <div className="games_bg">
                             <div
                               className="games_bg_inner d-flex align-items-center"

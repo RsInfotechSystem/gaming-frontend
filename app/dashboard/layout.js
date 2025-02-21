@@ -16,10 +16,10 @@ export default function RootLayout({ children }) {
             <Suspense>
                 <UserNavbar openNav={openNav} />
                 <UserLeftSidebar isOpen={isOpen} closeNav={closeNav} />
-                <div className="tournament_main">s
+                <div className="tournament_main">
                     {children}
                 </div>
-                {/* <UserRightSidebar/> */}
+                <UserRightSidebar/>
             </Suspense>
         </div>
     );

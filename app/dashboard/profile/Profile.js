@@ -54,9 +54,9 @@ export default function Profile() {
         <Loader />
         :
         <div className="tournament_list container-fluid mt-5 pt-5">
-                    <div style={{ width: "90%", margin: "0px auto" }}>
+                    <div style={{ width: "95%", margin: "0px auto" }}>
 
-          <p className="tournament_text d-flex align-items-center">
+          <p className="tournament_text d-flex align-items-center m-0 mb-2">
             MY PROFILE{" "}
             <Image className="ms-2" width={25} height={20} src={network} alt="network" />
           </p>

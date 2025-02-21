@@ -12,6 +12,8 @@ import { useDispatch } from 'react-redux';
 import { setCoins } from '@/redux-stores/slices/coinSlice';
 import Loader from '@/app/common-component/Loader';
 import CustomSearchBox from '@/app/common-component/CustomSearchBox';
+import network from '../../../public/dashboard/network.png';
+
 
 export default function GameCoins() {
   const [coinList, setCoinList] = useState([]);
@@ -95,13 +97,19 @@ const [paginationData, setPaginationData] = useState({
         <Loader />
         :
         <div className='tournament_list'>
-          <div style={{ width: "90%", margin: "0px auto" }}>
-          <div className='mt-1'>
-            <p className='tournament_text'>COINS PACK </p>
+          <div style={{ width: "95%", margin: "0px auto" }}>
+          {/* <div className='mt-1'> */}
+            <div className="mt-1">
+              <p className="tournament_text">
+              COINS PACK{" "}
+                <Image className="me-2" width={25} height={20} src={network} alt="network" />
+              </p>
+            </div>
+            {/* <p className='tournament_text'>COINS PACK </p> */}
             <div className='nav_search mb-4'>
               <CustomSearchBox searchString={searchString} setSearchString={setSearchString} apiCall={getCoinList} />
             </div>
-            <div className="container mt-4">
+            <div className="mt-4">
               <div className="row">
                 {coinList?.length > 0 ? (
                   <>
@@ -127,7 +135,7 @@ const [paginationData, setPaginationData] = useState({
                 )}
               </div>
             </div>
-          </div>
+          {/* </div> */}
         </div>
         </div>
       }

@@ -101,14 +101,15 @@ body {
   overflow-y: auto;
 }*/
 .tournament_list{
-  width: 82%;
+  /* width: 82%; */
+  width: 64%;
   height: 100%;
   border-left: 5px solid #F83333;
   border-right: 5px solid #BD09A9;
   margin-top: 70px;
   padding-top:20px ;
   margin-left: 18%; 
-  /* margin-right: 18%;  */
+  margin-right: 18%; 
   min-height: 100vh;
 
 }
@@ -129,6 +130,7 @@ body {
   top: 50px;
   right: 0;
   overflow-y: auto;
+  padding: 0px 5px;
 }
 
 
@@ -184,6 +186,8 @@ body {
   font-weight: 700;
   font-size: 30px;
   letter-spacing: 2px;
+  /* margin: 10px 20px; */
+
 
 }
 .tournament_card_main {
@@ -320,6 +324,7 @@ body {
   border-radius: 15px;
   color: #fff;
   padding: 20px 0px;
+  /* margin: 10px; */
 }
 .coin_pack{
   margin: 0px 30px;
@@ -346,6 +351,8 @@ body {
 .nav_search{
   display: flex;
   justify-content: space-between;
+  /* margin: 0px 20px; */
+
 }
 .search_box {
   position: relative;
@@ -353,6 +360,8 @@ body {
   align-items: center;
   width: 100%;
   max-width: 250px;
+  /* margin: 0px 20px; */
+
 }
 .add_btn_main {
   position: relative;
@@ -1096,13 +1105,13 @@ div:where(.col_100p) {
   }
   
   .card-header-contest {
-    background-color: #F4A701;
-    color: black;
+    /* background-color: #be4eff99; */
+    background: linear-gradient(90deg, #ff3737 0%, #160a0a 77%);
+    color: #fff;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     padding: 10px 15px;
-  }
-  
+}
   .custom-badge-contest {
     background-color: #F4A701;
     color: black;
@@ -1137,13 +1146,13 @@ div:where(.col_100p) {
   }
   
   .btn-warning-contest {
-    background-color: #F4A701;
-    color: black;
+    background-color: #fd161a79;
+    color: #fff;
     border: none;
   }
   
   .btn-warning-contest:hover {
-    background-color: #d49000;
+    background-color: #fd161ad6;
   }
   
 /* game-info tab css  end*/
@@ -1382,6 +1391,9 @@ div:where(.col_100p) {
 .openbtn:hover {
   background-color: #444;
 }
+.main_dash_heading{
+  display: block;
+}
 
 /* #main {
   transition: margin-left .5s;
@@ -1403,12 +1415,44 @@ div:where(.col_100p) {
 
    }
    .tournament_list{
-    width: 100%;
+    width: 80%;
     margin-left: 0%; 
   }
-}
-@media screen and (max-width: 768px) {
+  .ads_tabs {
+    width: 20%;
+  }
+  /* .tournament_list{
+    margin-left: 18%; 
+    margin-right: 18%; 
   
+  } */
+}
+@media (max-width: 768px) {
+   .tournament_list{
+    width: 100%;
+    margin-right: 0%; 
+  }
+  .ads_tabs {
+    display: none;
+    /* width: 0%; */
+  }
+  .main_dash_heading {
+    display: none;
+  }
+  .coin_btn{
+    padding: 6px 10px;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .coin_btn{
+    padding: 6px 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 12px;
+  }
 }
 
 /* hamburger css end **********************************************/

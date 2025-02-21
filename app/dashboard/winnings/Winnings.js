@@ -80,7 +80,7 @@ export default function Winnings() {
     return (
         <>
             <div className="tournament_list">
-                <div style={{ width: "90%", margin: "0px auto" }}>
+                <div style={{ width: "95%", margin: "0px auto" }}>
                     <div className="mt-1">
                         <p className="tournament_text">
                             WINNINGS{" "}
