@@ -82,7 +82,7 @@ export default function GamesAvailable() {
               alt={games.find((game) => game.id === selectedGame)?.name}
               height={300}
             />
-            <div className="card-body">
+            <div className="card-body game_right_card">
               <h5 className="game_name">
                 {games.find((game) => game.id === selectedGame)?.name}
               </h5>

@@ -60,15 +60,15 @@ export default function Navbar() {
             </div>
             <div className="tabs animate__animated animate__bounceInRight">
               <p>
-                <Link href="/components/pages/home/faq" className={currentUrl.includes("faq") ? "dash_tab_active" : "tab_inactive_home"}>
-                  FAQs
+                <Link href="/components/pages/home/tournaments" className={currentUrl.includes("tournaments") ? "dash_tab_active" : "tab_inactive_home"}>
+                  Tournaments
                 </Link>
               </p>
             </div>
             <div className="tabs animate__animated animate__bounceInRight">
               <p>
                 <Link href="/components/pages/home/contact" className={currentUrl.includes("contact") ? "dash_tab_active" : "tab_inactive_home"}>
-                  Contact Us
+                  Shop
                 </Link>
               </p>
             </div>
