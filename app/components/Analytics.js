@@ -8,7 +8,7 @@ export default function Analytics() {
         <div className="row d-flex justify-content-center align-items-center text-center">
           <div className="col-lg-3 col-md-3 col-6 animate__animated animate__bounceInLeft">
             <h5 className="gradient-text">1341</h5>
-            <p>Happy Clients</p>
+            <p>Total Matches</p>
           </div>
           <div className="col-lg-3 col-md-3 col-6 animate__animated animate__bounceInUp">
             <h5 className="gradient-text">3051</h5>
@@ -16,7 +16,7 @@ export default function Analytics() {
           </div>
           <div className="col-lg-3 col-md-3 col-6 animate__animated animate__bounceInDown">
             <h5 className="gradient-text">2045</h5>
-            <p>Activate Players</p>
+            <p>Active Players</p>
           </div>
           <div className="col-lg-3 col-md-3 col-6 animate__animated animate__bounceInRight">
             <h5 className="gradient-text">2451</h5>

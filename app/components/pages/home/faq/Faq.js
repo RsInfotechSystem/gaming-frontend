@@ -101,21 +101,6 @@ export default function Faq() {
           </div>
 
           <div className="col-5 parent_input">
-             {/* <div className="form-group has-search search_bar">
-              <input type="text" className="form-control" placeholder="Search..." />
-              <span className="bi bi-search form-control-feedback"></span>
-              </div>
-
-              <div className='games_categories'>
-                 <div className='category_head'>Categories</div>
-                 <div className='faq_games_list'>
-                     <a href='/'>Cyberpunk</a>
-                     <a href='/'>Dota 2</a>
-                     <a href='/'>PC Games</a>
-                     <a href='/'>PlayStation</a>
-                     <a href='/'>Xbox</a>
-                 </div>
-              </div> */}
             <Image src={faqv} alt="Office Desk" className='img-fluid'/>
           </div>
           
