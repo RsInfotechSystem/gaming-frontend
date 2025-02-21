@@ -542,6 +542,10 @@ margin: auto;
   background-image: linear-gradient(to right,rgb(56,22,63) , rgb(71,25,30));
   margin: 0 10px 10px;
   border-radius: 0px 0px 10px 10px;
+  flex: auto;
+  padding: 0px;
+  color: var(--bs-card-color);
+  height: 20px;
 }
 .read_btn {
   font-family: play;
@@ -560,6 +564,41 @@ margin: auto;
 }
 
 /* News section css End */
+
+/* Stata section css Start */
+.stata_main{
+  height: 30vh;
+  /* width: 95vw; */
+  /* margin: auto; */
+  /* background-color: #D9D9D9; */
+  background-color: #000000;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: play;
+  /* clip-path: polygon(5% 0, 100% 0%, 95% 100%, 0 100%); */
+}
+.gradient-text {
+  background: linear-gradient(to right, #ff1717, #9d04f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  display: inline-block;
+}
+.stata_main h5{
+  font-weight: 600;
+  font-size: 35px;
+}
+.stata_main p{
+  /* color: #000000; */
+  font-size: 20px;
+  /* margin-bottom: 0px; */
+}
+.stata_main .row {
+  width: 100%;
+}
+/* Stata section css End */
 
 /* Footer section css Start */
 .footer_section{
@@ -1527,9 +1566,11 @@ padding-top: 12%;
   cursor: pointer;
 }
 .login_main .login_btn {
-  /* width: 130px;
-  margin-right: 10px; */
+  width: 130px;
   display: none;
+}
+.login_btn{
+  margin-left: 0px;
 }
 .nav_hr_line {
   width: 100vw;
@@ -1541,24 +1582,27 @@ padding-top: 12%;
   display: none;
 }
 .text_pad{
-  padding-top: 15%;
+  padding-top: 0%;
 }
 .carousel-control-next-icon {
   display: none;
 }
 .carousel_main {
-  height: 90vh;
+  height: 85vh;
 }
 .carousel_images img {
-  width: 80%;
-  height: 400px;
-  padding-top: 10%;
+  width: 85%;
+  height: 350px;
+  padding-top: 0%;
   margin: auto;
-  margin-top: 20%;
+  margin-top: 25%;
 }
 .skill_play {
   font-size: 42px;
   font-weight: 900;
+  line-height: 50px;
+  letter-spacing: 2px;
+  margin-bottom: 26px;
 }
 .skill_play_content {
   line-height: 23px;
@@ -1574,13 +1618,14 @@ padding-top: 12%;
 .main_games_section {
   display: inline-block;
 }
-.game_list{
+.game_list {
   width: 90%;
   margin: auto;
-  padding: 15% 0 0 0;
+  padding: 15% 0 0;
+  justify-content: center;
 }
 .game_image_container {
-  padding-top: 0%;
+  padding-top: 5%;
 }
 .game_list,.game_image_container{
   transform: none;
@@ -1592,11 +1637,11 @@ padding-top: 12%;
   margin: auto;
 }
 .games_vr_line {
-  height: 24vh;
+  height: 23vh;
   width: 5px;
 }
 .games_vr_line_right {
-  height: 40vh;
+  height: 39vh;
 }
 .available_games_heading p {
   font-size: 38px;
@@ -1637,7 +1682,7 @@ padding-top: 12%;
   height: 316px;
 }
 .game_lead_section {
-  height: 100vh;
+  height: 86vh;
 }
 .game_lead_head p {
   padding-left: 50px;
@@ -1659,9 +1704,9 @@ padding-top: 12%;
   line-height: 20px;
   margin: 0;
   width: 100%;
-  font-weight: lighter;
   font-size: 17px;
   padding: 15px;
+  text-align: start;
 }
 .game_lead_main .play_main {
   width: 100%;
@@ -1765,11 +1810,30 @@ padding-top: 12%;
 }
 .hamburger {
   display: block;
+  position: absolute;
+  top: 2px;
+  right: 20px;
 }
 .mobile_menu {
-  height: 100%;
+  height: 100vh;
   width: 100%;
   background: #222;
   background-size: cover;
+  position: absolute;
+  right: 0;
+}
+.hero_center {
+  padding-top: 80px;
+}
+.mobile_menu a {
+  align-self: flex-start;
+  font-family: play;
+  display: inline-flex;
+}
+.cross_icon {
+  font-size: 50px; 
+  position: relative;
+  top: 10px;
+  left: 200px;
 }
 }

@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation"; // Import useRouter
 import { usePathname } from "next/navigation";
 import LoginModal from "../LoginModal";
 import SignUpModal from "../SignUpModal";
@@ -32,14 +33,22 @@ export default function Navbar() {
       <section className="nav_landing_page row">
         <div className="nav_main">
           <div className="logo">
-            <p className="animate__animated animate__flash animate__infinite">
+            <p className="animate__animated animate__heartBeat">
               <Link href="/"> PlayZone</Link>
             </p>
           </div>
 
-          <button className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
+          <button
+  className="hamburger"
+  onClick={() => {
+    if (isMenuOpen) {
+      router.push("/"); // Navigate to homepage when closing the menu
+    }
+    setIsMenuOpen(!isMenuOpen);
+  }}
+>
+  {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+</button>
 
           <div className="nav_tab desktop">
             <div className="tabs animate__animated animate__bounceInRight">
@@ -67,15 +76,21 @@ export default function Navbar() {
         </div>
 
         {isMenuOpen && (
-          <div className="mobile_menu animate__animated animate__bounceInLeft">
-            <Link href="/components/pages/home/about" onClick={() => setIsMenuOpen(false)}>About</Link>
-            <Link href="/components/pages/home/faq" onClick={() => setIsMenuOpen(false)}>FAQs</Link>
-            <Link href="/components/pages/home/contact" onClick={() => setIsMenuOpen(false)}>Contact Us</Link>
-            <button onClick={() => setIsLoginOpen(true)} className="login_btn">
-              LOG IN
-            </button>
-          </div>
-        )}
+  <div className="mobile_menu animate__animated animate__bounceInLeft">
+    <div className="menu_item">
+      <Link href="/components/pages/home/about" onClick={() => setIsMenuOpen(false)}>About</Link>
+      <Link href="/" onClick={() => setIsMenuOpen(false)}>
+        <span className="cross_icon bi bi-x"></span>
+      </Link>
+    </div>
+    <Link href="/components/pages/home/faq" onClick={() => setIsMenuOpen(false)}>FAQs</Link>
+    <Link href="/components/pages/home/contact" onClick={() => setIsMenuOpen(false)}>Contact Us</Link>
+    <button onClick={() => setIsLoginOpen(true)} className="login_btn">
+      LOG IN
+    </button>
+  </div>
+)}
+
 
         <div className="second_nav">
           <div className="nav_hr_line"></div>
