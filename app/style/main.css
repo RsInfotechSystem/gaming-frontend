@@ -17,6 +17,11 @@
       margin-left: calc(-.5 * var(--bs-gutter-x));
     
 }
+:root {
+  --animate-duration: 1s;
+  --animate-delay: 1s;
+  --animate-repeat: 1;
+}
 .row {
   --bs-gutter-x: 0rem;
   --bs-gutter-y: 0;
@@ -450,6 +455,9 @@ margin: auto;
     border-radius: 50%;
     box-shadow: 0 0 0 1px red;
 }
+.game_right_card{
+  padding: 0px;
+}
 .game_lead_main{
   width: 100%;
   padding-top: 100px;
@@ -567,11 +575,11 @@ margin: auto;
 
 /* Stata section css Start */
 .stata_main{
-  height: 30vh;
-  /* width: 95vw; */
-  /* margin: auto; */
-  /* background-color: #D9D9D9; */
-  background-color: #000000;
+  height: 25vh;
+  width: 95vw;
+  margin: auto;
+  background-color: #D9D9D9;
+  /* background-color: #000000; */
   color: #FFFFFF;
   display: flex;
   justify-content: center;
@@ -591,7 +599,7 @@ margin: auto;
   font-size: 35px;
 }
 .stata_main p{
-  /* color: #000000; */
+  color: #000000;
   font-size: 20px;
   /* margin-bottom: 0px; */
 }
@@ -1600,7 +1608,7 @@ padding-top: 12%;
 .skill_play {
   font-size: 42px;
   font-weight: 900;
-  line-height: 50px;
+  line-height: 60px;
   letter-spacing: 2px;
   margin-bottom: 26px;
 }
@@ -1637,14 +1645,14 @@ padding-top: 12%;
   margin: auto;
 }
 .games_vr_line {
-  height: 23vh;
+  height: 25vh;
   width: 5px;
 }
 .games_vr_line_right {
-  height: 39vh;
+  height: 41vh;
 }
 .available_games_heading p {
-  font-size: 38px;
+  font-size: 40px;
 }
 #bgmi_tab {
   font-size: 52px;
